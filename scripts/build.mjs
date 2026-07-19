@@ -40,6 +40,8 @@ const publicFiles = [
   "assets/img/bottle-sleep.webp",
   "assets/img/cover-lifestyle.webp",
   "assets/img/editorial-hair.webp",
+  "assets/img/editorial-hair-bite.webp",
+  "assets/img/editorial-gummy.webp",
   "assets/img/editorial-ritual.webp",
   "assets/img/editorial-skin.webp",
   "assets/img/favicon.svg",

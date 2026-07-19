@@ -557,6 +557,7 @@ p, li { text-wrap: pretty; }
 .split-media img.cover { width: 100%; height: 100%; object-fit: cover; }
 .split-media img.editorial-focus-hair { object-position: 50% 36%; }
 .split-media img.editorial-focus-skin { object-position: 50% 44%; }
+.split-media img.editorial-focus-gummy { object-position: 50% 42%; }
 .media-shop {
   position: absolute;
   inset: auto 20px 20px;
@@ -669,6 +670,20 @@ p, li { text-wrap: pretty; }
 }
 .tcard .who strong { display: block; font-size: 14px; }
 .tcard .who span { font-size: 12.5px; color: var(--muted); }
+.tcard .review-link {
+  display: block;
+  width: fit-content;
+  margin-top: 4px;
+  color: var(--a-dark);
+  font-size: 11.5px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s;
+}
+.tcard .review-link::after { content: " ↗"; }
+.tcard .review-link:hover { opacity: 0.6; }
 
 /* ---------- FAQ ---------- */
 .faq { max-width: 760px; margin-inline: auto; }
@@ -1080,6 +1095,7 @@ p, li { text-wrap: pretty; }
   margin-inline: auto;
   align-items: center;
 }
+.section.about-philosophy { padding-top: 64px; }
 .about-tile {
   position: relative;
   overflow: hidden;
@@ -1108,6 +1124,7 @@ p, li { text-wrap: pretty; }
 
 /* ---------- Utilidades (CSP-safe, sin estilos inline) ---------- */
 .pt-0 { padding-top: 0; }
+.section.faq-section { padding-top: 40px; }
 .mt-0 { margin-top: 0; }
 .center-cta { text-align: center; margin-top: 44px; }
 .section-head.centered { margin-inline: auto; text-align: center; max-width: 560px; }
@@ -1157,6 +1174,7 @@ p, li { text-wrap: pretty; }
 }
 
 @media (min-width: 901px) and (max-width: 1024px) {
+  #productos .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .products-grid.is-seven .pcard:last-child { grid-column: 2; }
   .steps > :last-child:nth-child(odd),
   .testimonials-grid > :last-child:nth-child(odd) {
@@ -1280,6 +1298,7 @@ p, li { text-wrap: pretty; }
   .wrap { width: calc(100% - 32px); }
   .section { padding: 52px 0; }
   .section.pt-0 { padding-top: 0; }
+  .section.faq-section { padding-top: 28px; }
   .section-head { margin-bottom: 28px; }
   .section-head h1, .section-head h2 { margin-top: 10px; font-size: clamp(30px, 9vw, 38px); }
   .section-head p { margin-top: 10px; font-size: 15px; }
@@ -1396,6 +1415,7 @@ p, li { text-wrap: pretty; }
   .about-hero { padding: 54px 0 58px; }
   .about-hero h1 { font-size: clamp(36px, 10vw, 42px); }
   .about-hero p { margin-top: 16px; font-size: 15.5px; }
+  .section.about-philosophy { padding-top: 36px; }
   .page-about .split-media { display: none; }
 
   .pd-hero { padding: 22px 0 50px; }
