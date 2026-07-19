@@ -6,9 +6,9 @@ Las personas y escenas se generaron el 19 de julio de 2026 con la herramienta in
 | --- | --- |
 | `cover-lifestyle.webp` | Cuatro amistades latinoamericanas compartiendo un bowl con gomitas azules, borgoña, púrpura oscuro, rojas y verdes fieles a los productos. |
 | `editorial-hair.webp` | Mujer afro-latina con cabello rizado sosteniendo una gomita translúcida rojo cereza con forma de oso. |
-| `editorial-hair-bite.webp` | Mujer latina de cabello largo y brillante mordiendo felizmente una gomita translúcida borgoña con forma de oso. |
+| `editorial-hair-bite.webp` | Mujer latina con top lavanda, cabello largo y brillante, mordiendo felizmente una gomita translúcida borgoña con forma de oso. |
 | `editorial-skin.webp` | Mujer latina con cabello corto mostrando una gomita azul con forma de media luna en un retrato de belleza. |
 | `editorial-ritual.webp` | Mujer latina cepillando su cabello largo con un cepillo de madera. |
-| `editorial-gummy.webp` | Mujer indígena/mestiza ecuatoriana sosteniendo una taza con osos naranja, estrellas borgoña, medias lunas azules y piezas púrpura oscuro. |
+| `editorial-gummy.webp` | Hombre joven ecuatoriano/latino con top azul petróleo sosteniendo una taza llena de ositos rojo cereza semiópacos, medias lunas teal oscuro semiópacas, discos borgoña y verdes, y estrellas borgoña oscuro. |
 
 Los archivos finales se exportaron a WebP sin metadatos incrustados. Este registro documenta el origen técnico de las imágenes y evita depender de fotografías de stock o de terceros para los modelos humanos del sitio.
