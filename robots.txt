@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://chiclove-ec.github.io/sitemap.xml

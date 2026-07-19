@@ -8,19 +8,30 @@
   <meta name="referrer" content="no-referrer">
   <title>Chic&amp;Love Ecuador — Vitaminas en gomitas</title>
   <meta name="description" content="Gomitas de vitaminas para cabello, piel, sueño, digestión y energía. Sin gluten, sin lactosa. Envíos a todo Ecuador. Tu dosis diaria de amor propio.">
+  <link rel="canonical" href="https://chiclove-ec.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_EC">
+  <meta property="og:title" content="Chic&amp;Love Ecuador — Tu dosis diaria de amor propio">
+  <meta property="og:description" content="Vitaminas en gomitas con activos naturales. Envíos a todo Ecuador y pago contra entrega.">
+  <meta property="og:url" content="https://chiclove-ec.github.io/">
+  <meta property="og:image" content="https://chiclove-ec.github.io/assets/img/cover-lifestyle.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <script src="js/frame-guard.js"></script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body class="page-home">
   <noscript><p class="no-script-notice">Activa JavaScript para usar la tienda Chic&amp;Love.</p></noscript>
 
   <div class="topbar"><span>Envío gratis desde $50 en todo Ecuador.</span> <span class="topbar-offer">Hasta 15% de ahorro en packs.</span></div>
 
   <header class="header">
     <div class="nav">
-      <a class="brand" href="index.html" aria-label="Chic&amp;Love Ecuador — inicio">
+      <a class="brand brand-lockup" href="index.html" aria-label="Chic&amp;Love Ecuador — inicio">
         <img src="assets/img/logo-dark.png" alt="Chic&amp;Love Ecuador">
+        <span class="brand-country" aria-hidden="true">Ecuador</span>
       </a>
       <nav class="nav-links" aria-label="Navegación principal">
         <a href="index.html" aria-current="page">Inicio</a>
@@ -46,7 +57,10 @@
 
   <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menú principal" aria-hidden="true" inert>
     <div class="mobile-menu-head">
-      <img src="assets/img/logo-dark.png" alt="Chic&amp;Love Ecuador" height="26">
+      <div class="brand-lockup brand-lockup-mobile">
+        <img src="assets/img/logo-dark.png" alt="Chic&amp;Love Ecuador" height="26">
+        <span class="brand-country" aria-hidden="true">Ecuador</span>
+      </div>
       <button class="icon-btn" id="menu-close" type="button" aria-label="Cerrar menú">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
@@ -68,13 +82,17 @@
       <div class="blob blob-2"></div>
       <div class="blob blob-3"></div>
       <div class="wrap hero-grid">
-        <div>
+        <div class="hero-copy">
           <span class="eyebrow">Wellness que sabe a capricho</span>
           <h1>Tu dosis diaria de <span class="accent-word">amor propio</span></h1>
-          <p class="hero-sub">Vitaminas en gomitas para cabello, piel, sueño y energía. Sin gluten, sin lactosa, con activos 100% naturales — y un sabor que vas a querer repetir.</p>
+          <p class="hero-sub">Vitaminas en gomitas para cabello, piel, sueño y energía. Fórmulas con propósito, activos naturales y un sabor que convierte cuidarte en tu momento favorito.</p>
+          <div class="hero-offer" role="group" aria-label="Precio y contenido">
+            <strong>Desde $25.90</strong>
+            <span>60 gummies por frasco</span>
+          </div>
           <div class="hero-ctas">
-            <a class="btn btn-primary" href="tienda.html">Comprar ahora</a>
-            <a class="btn btn-ghost" href="#productos">Descubre tu gomita</a>
+            <a class="btn btn-primary" href="tienda.html">Comprar bestsellers</a>
+            <a class="btn btn-ghost" href="#productos">Encontrar mi fórmula</a>
           </div>
           <div class="hero-proof">
             <span class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</span>
@@ -82,6 +100,8 @@
           </div>
         </div>
         <div class="hero-stage" aria-hidden="true">
+          <span class="stage-note stage-note-top">Belleza desde adentro</span>
+          <span class="stage-note stage-note-bottom">Tu ritual, todos los días</span>
           <div class="hero-bottle hb-2"><img src="assets/img/splash-radiant-skin.webp" alt="" width="946" height="1600" decoding="async"></div>
           <div class="hero-bottle hb-1"><img src="assets/img/splash-hair-nails.webp" alt="" width="1107" height="1600" decoding="async" fetchpriority="high"></div>
           <div class="hero-bottle hb-3"><img src="assets/img/splash-sleep.webp" alt="" width="955" height="1600" decoding="async"></div>
@@ -115,10 +135,13 @@
     <!-- ============ BESTSELLERS ============ -->
     <section class="section" id="productos">
       <div class="wrap">
-        <div class="section-head reveal">
-          <span class="eyebrow">Bestsellers</span>
-          <h2>Elige tu objetivo.<br>Nosotros hacemos el resto.</h2>
-          <p>Cada fórmula ataca un objetivo concreto con activos probados. Una gomita (o dos) al día y a brillar.</p>
+        <div class="section-head section-head-row reveal">
+          <div>
+            <span class="eyebrow">Bestsellers</span>
+            <h2>Una fórmula para cada versión de ti</h2>
+            <p>Elige tu objetivo y convierte el bienestar en el ritual más fácil del día.</p>
+          </div>
+          <a class="text-link" href="tienda.html">Explorar las 7 fórmulas</a>
         </div>
         <div class="products-grid" data-products-grid data-limit="4"></div>
         <div class="center-cta reveal">
@@ -131,7 +154,12 @@
     <section class="section pt-0">
       <div class="wrap split">
         <div class="split-media reveal">
-          <img class="cover editorial-focus-hair" src="assets/img/editorial-hair.webp" alt="Mujer con cabello largo y saludable, imagen editorial de Chic&amp;Love" width="1600" height="2400" loading="lazy" decoding="async">
+          <img class="cover editorial-focus-hair lazy-media" data-lazy-src="assets/img/editorial-hair.webp" alt="Mujer con cabello largo y saludable, imagen editorial de Chic&amp;Love" width="1600" height="2400" loading="lazy" decoding="async">
+          <a class="media-shop" href="producto.html?id=hair-nails-forte" aria-label="Ver Hair &amp; Nails Forte por $27.90">
+            <img class="lazy-media" data-lazy-src="assets/img/splash-hair-nails.webp" alt="" width="1107" height="1600" loading="lazy" decoding="async">
+            <span><strong>Hair &amp; Nails Forte</strong><small>$27.90</small></span>
+            <b>Ver producto</b>
+          </a>
         </div>
         <div class="reveal reveal-d1">
           <span class="eyebrow">Belleza desde adentro</span>
@@ -173,11 +201,11 @@
     </section>
 
     <!-- ============ TESTIMONIOS ============ -->
-    <section class="section">
+    <section class="section reviews-section">
       <div class="wrap">
         <div class="section-head reveal">
           <span class="eyebrow">Reseñas reales</span>
-          <h2>Ellas (y ellos) ya brillan</h2>
+          <h2>El ritual que sí quieres repetir</h2>
         </div>
         <div class="testimonials-grid">
           <article class="tcard reveal">
@@ -234,12 +262,18 @@
     <!-- ============ CTA FINAL ============ -->
     <section class="section pt-0">
       <div class="wrap">
-        <div class="cta-banner reveal">
+        <div class="cta-banner cta-editorial reveal">
           <div class="blob blob-1"></div>
           <div class="blob blob-2"></div>
-          <h2>Empieza tu glow-up hoy</h2>
-          <p>Encuentra la fórmula que encaja con tu objetivo y arma tu ritual diario.</p>
-          <a class="btn btn-white" href="tienda.html">Ver toda la colección</a>
+          <div class="cta-copy">
+            <span class="cta-kicker">Tu próximo ritual empieza aquí</span>
+            <h2>Sentirte increíble puede saber así de bien</h2>
+            <p>Encuentra la fórmula que encaja contigo y recibe tu pedido en cualquier lugar de Ecuador.</p>
+            <a class="btn btn-white" href="tienda.html">Elegir mi fórmula</a>
+          </div>
+          <div class="cta-visual" aria-hidden="true">
+            <img class="lazy-media" data-lazy-src="assets/img/splash-radiant-skin.webp" alt="" width="946" height="1600" loading="lazy" decoding="async">
+          </div>
         </div>
       </div>
     </section>
@@ -250,7 +284,7 @@
     <div class="wrap">
       <div class="footer-main">
         <div>
-          <a class="brand" href="index.html"><img src="assets/img/logo-white.png" alt="Chic&amp;Love Ecuador"></a>
+          <a class="brand brand-lockup" href="index.html"><img src="assets/img/logo-white.png" alt="Chic&amp;Love Ecuador"><span class="brand-country" aria-hidden="true">Ecuador</span></a>
           <p class="about">Vitaminas en gomitas con activos naturales para verte y sentirte increíble. Hecho con amor para Ecuador.</p>
           <div class="footer-social">
             <a href="https://www.instagram.com/chicloveec" target="_blank" rel="noopener noreferrer" aria-label="Instagram">

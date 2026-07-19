@@ -190,7 +190,7 @@ const CL_PRODUCTS = [
     bottle: "assets/img/bottle-antistress.webp",
     splash: "assets/img/splash-antistress.webp",
     goal: "calma",
-    goalLabel: "Calma y foco",
+    goalLabel: "Calma y enfoque",
     benefits: [
       "Alivia estados de estrés y ansiedad.",
       "Favorece la relajación y la calma mental.",

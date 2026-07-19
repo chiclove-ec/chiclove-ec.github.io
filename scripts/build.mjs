@@ -23,6 +23,7 @@ const publicFiles = [
   "nosotros.html",
   "producto.html",
   "robots.txt",
+  "sitemap.xml",
   "tienda.html",
   "css/styles.css",
   "js/frame-guard.js",

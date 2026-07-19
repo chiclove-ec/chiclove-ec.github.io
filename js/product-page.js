@@ -23,6 +23,12 @@ document.addEventListener("DOMContentLoaded", function () {
   document.documentElement.style.setProperty("--a-soft", product.soft);
 
   document.title = product.name + " — Chic&Love Ecuador";
+  var canonicalUrl = "https://chiclove-ec.github.io/producto.html?id=" + encodeURIComponent(product.id);
+  document.getElementById("pd-canonical").href = canonicalUrl;
+  document.getElementById("pd-og-title").content = product.name + " — Chic&Love Ecuador";
+  document.getElementById("pd-og-description").content = product.tagline + " " + product.desc;
+  document.getElementById("pd-og-url").content = canonicalUrl;
+  document.getElementById("pd-og-image").content = "https://chiclove-ec.github.io/" + product.splash;
 
   // Textos (todo con textContent: cero riesgo de inyección)
   document.getElementById("pd-crumb").textContent = product.name;
@@ -36,6 +42,9 @@ document.addEventListener("DOMContentLoaded", function () {
   var img = document.getElementById("pd-img");
   img.src = product.splash;
   img.alt = "Frasco de " + product.name;
+  document.getElementById("pd-sticky-img").src = product.bottle;
+  document.getElementById("pd-sticky-img").alt = product.name;
+  document.getElementById("pd-sticky-name").textContent = product.short;
 
   var rating = document.getElementById("pd-rating");
   rating.textContent = "";
@@ -70,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var saveAmt = product.price * 2 - product.pricePack;
   var variants = [
     { key: "uno", name: "1 frasco", sub: "60 gummies para 1 mes", price: product.price, save: 0 },
-    { key: "pack", name: "Pack x2 frascos", sub: "120 gummies para 2 meses", price: product.pricePack, save: saveAmt }
+    { key: "pack", name: "Pack x2 frascos", sub: clMoney(product.pricePack / 2) + " por frasco", price: product.pricePack, save: saveAmt }
   ];
   var vBox = document.getElementById("pd-variants");
 
@@ -86,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
     variants.forEach(function (v, index) {
       var b = document.createElement("button");
       b.type = "button";
-      b.className = "variant-opt" + (state.variant === v.key ? " on" : "");
+      b.className = "variant-opt" + (v.key === "pack" ? " featured" : "") + (state.variant === v.key ? " on" : "");
       b.setAttribute("role", "radio");
       b.setAttribute("aria-checked", state.variant === v.key ? "true" : "false");
       b.tabIndex = state.variant === v.key ? 0 : -1;
@@ -133,8 +142,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function updateBuy() {
+    var chosen = state.variant === "pack" ? "Pack x2" : "1 frasco";
     document.getElementById("pd-qty").textContent = String(state.qty);
     document.getElementById("pd-add-price").textContent = clMoney(currentPrice() * state.qty);
+    document.getElementById("pd-sticky-price").textContent = clMoney(currentPrice() * state.qty);
+    document.getElementById("pd-sticky-variant").textContent = chosen + (state.qty > 1 ? " por " + state.qty : "");
   }
 
   document.getElementById("pd-qminus").addEventListener("click", function () {
@@ -148,9 +160,24 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("pd-add").addEventListener("click", function () {
     cartAdd(product.id, state.variant, state.qty);
   });
+  document.getElementById("pd-sticky-add").addEventListener("click", function () {
+    cartAdd(product.id, state.variant, state.qty);
+  });
 
   renderVariants();
   updateBuy();
+
+  var sticky = document.getElementById("pd-sticky");
+  var buyBox = document.querySelector(".pd-buy");
+  if (sticky && buyBox && "IntersectionObserver" in window) {
+    var stickyObserver = new IntersectionObserver(function (entries) {
+      var shouldShow = !entries[0].isIntersecting && entries[0].boundingClientRect.top < 0;
+      sticky.classList.toggle("show", shouldShow);
+      sticky.setAttribute("aria-hidden", shouldShow ? "false" : "true");
+      sticky.inert = !shouldShow;
+    }, { threshold: 0 });
+    stickyObserver.observe(buyBox);
+  }
 
   // Relacionados: excluir el producto actual y re-renderizar
   var related = document.getElementById("related-grid");

@@ -8,19 +8,28 @@
   <meta name="referrer" content="no-referrer">
   <title>Producto — Chic&amp;Love Ecuador</title>
   <meta name="description" content="Gomitas de vitaminas Chic&amp;Love con activos naturales. Envíos a todo Ecuador.">
+  <link rel="canonical" id="pd-canonical" href="https://chiclove-ec.github.io/producto.html">
+  <meta property="og:type" content="product">
+  <meta property="og:locale" content="es_EC">
+  <meta property="og:title" id="pd-og-title" content="Producto — Chic&amp;Love Ecuador">
+  <meta property="og:description" id="pd-og-description" content="Gomitas de vitaminas Chic&amp;Love con activos naturales. Envíos a todo Ecuador.">
+  <meta property="og:url" id="pd-og-url" content="https://chiclove-ec.github.io/producto.html">
+  <meta property="og:image" id="pd-og-image" content="https://chiclove-ec.github.io/assets/img/splash-hair-nails.webp">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <script src="js/frame-guard.js"></script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body class="page-product">
   <noscript><p class="no-script-notice">Activa JavaScript para usar la tienda Chic&amp;Love.</p></noscript>
 
   <div class="topbar"><span>Envío gratis desde $50 en todo Ecuador.</span> <span class="topbar-offer">Hasta 15% de ahorro en packs.</span></div>
 
   <header class="header">
     <div class="nav">
-      <a class="brand" href="index.html" aria-label="Chic&amp;Love Ecuador — inicio">
+      <a class="brand brand-lockup" href="index.html" aria-label="Chic&amp;Love Ecuador — inicio">
         <img src="assets/img/logo-dark.png" alt="Chic&amp;Love Ecuador">
+        <span class="brand-country" aria-hidden="true">Ecuador</span>
       </a>
       <nav class="nav-links" aria-label="Navegación principal">
         <a href="index.html">Inicio</a>
@@ -46,7 +55,10 @@
 
   <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menú principal" aria-hidden="true" inert>
     <div class="mobile-menu-head">
-      <img src="assets/img/logo-dark.png" alt="Chic&amp;Love Ecuador" height="26">
+      <div class="brand-lockup brand-lockup-mobile">
+        <img src="assets/img/logo-dark.png" alt="Chic&amp;Love Ecuador" height="26">
+        <span class="brand-country" aria-hidden="true">Ecuador</span>
+      </div>
       <button class="icon-btn" id="menu-close" type="button" aria-label="Cerrar menú">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
@@ -67,7 +79,7 @@
       <div class="wrap pd-grid" id="pd-root">
         <div class="pd-stage" id="pd-stage">
           <div class="ring" aria-hidden="true"></div>
-          <img id="pd-img" src="assets/img/splash-hair-nails.webp" alt="" width="1107" height="1600" decoding="async" fetchpriority="high">
+          <img id="pd-img" alt="" width="1000" height="1600" decoding="async" fetchpriority="high">
         </div>
         <div class="pd-info">
           <p class="crumbs"><a href="index.html">Inicio</a> / <a href="tienda.html">Tienda</a> / <span id="pd-crumb">Producto</span></p>
@@ -78,6 +90,7 @@
           <p class="pd-desc" id="pd-desc"></p>
           <div class="pd-badges" id="pd-badges"></div>
 
+          <p class="pd-buy-label">Elige tu presentación</p>
           <div class="pd-variants" id="pd-variants" role="radiogroup" aria-label="Elige tu presentación"></div>
 
           <div class="pd-buy">
@@ -93,6 +106,11 @@
             <span>Paga al recibir</span>
             <span id="pd-flavor">Sabor</span>
             <span id="pd-dose">Dosis</span>
+          </div>
+          <div class="pd-assurance" role="group" aria-label="Información de compra">
+            <div><strong>Entrega rápida</strong><span>Recíbelo en 24–48 horas laborables.</span></div>
+            <div><strong>Compra acompañada</strong><span>Confirmamos tu pedido personalmente por WhatsApp.</span></div>
+            <div><strong>Pago flexible</strong><span>Contra entrega o transferencia.</span></div>
           </div>
 
           <div class="pd-benefits">
@@ -116,11 +134,19 @@
     </section>
   </main>
 
+  <div class="pd-sticky" id="pd-sticky" aria-hidden="true" inert>
+    <div class="pd-sticky-product">
+      <img id="pd-sticky-img" src="assets/img/bottle-hair-nails.webp" alt="" width="463" height="900">
+      <span><strong id="pd-sticky-name">Producto</strong><small id="pd-sticky-variant">1 frasco</small></span>
+    </div>
+    <button class="btn btn-accent" id="pd-sticky-add" type="button">Añadir <span id="pd-sticky-price">$0.00</span></button>
+  </div>
+
   <footer class="footer mt-0" id="contacto">
     <div class="wrap">
       <div class="footer-main">
         <div>
-          <a class="brand" href="index.html"><img src="assets/img/logo-white.png" alt="Chic&amp;Love Ecuador"></a>
+          <a class="brand brand-lockup" href="index.html"><img src="assets/img/logo-white.png" alt="Chic&amp;Love Ecuador"><span class="brand-country" aria-hidden="true">Ecuador</span></a>
           <p class="about">Vitaminas en gomitas con activos naturales para verte y sentirte increíble. Hecho con amor para Ecuador.</p>
           <div class="footer-social">
             <a href="https://www.instagram.com/chicloveec" target="_blank" rel="noopener noreferrer" aria-label="Instagram">

@@ -57,6 +57,35 @@ function toast(msg) {
   toastTimer = setTimeout(function () { el.classList.remove("show"); }, 2600);
 }
 
+/* ---------- imágenes diferidas ---------- */
+var lazyImageObserver = null;
+function revealLazyImage(image) {
+  var source = image.getAttribute("data-lazy-src");
+  if (!source) return;
+  image.addEventListener("load", function () { image.classList.add("loaded"); }, { once: true });
+  image.src = source;
+  image.removeAttribute("data-lazy-src");
+  if (image.complete) image.classList.add("loaded");
+}
+
+function observeLazyImages(scope) {
+  var images = (scope || document).querySelectorAll("img[data-lazy-src]");
+  if (!("IntersectionObserver" in window)) {
+    images.forEach(revealLazyImage);
+    return;
+  }
+  if (!lazyImageObserver) {
+    lazyImageObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        revealLazyImage(entry.target);
+        lazyImageObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: "320px 0px" });
+  }
+  images.forEach(function (image) { lazyImageObserver.observe(image); });
+}
+
 /* ---------- carrito ---------- */
 var CART_KEY = "cl_cart_v1";
 var MAX_CART_STORAGE_LENGTH = 8192;
@@ -194,6 +223,16 @@ function buildCartChrome() {
   totalValue.id = "cart-total";
   total.appendChild(totalValue);
   foot.appendChild(total);
+  var shipping = makeEl("div", "cart-shipping");
+  var shippingText = makeEl("p", "", "Añade productos para activar el envío gratis");
+  shippingText.id = "cart-shipping-text";
+  var shippingProgress = document.createElement("progress");
+  shippingProgress.id = "cart-shipping-progress";
+  shippingProgress.max = 50;
+  shippingProgress.value = 0;
+  shippingProgress.setAttribute("aria-label", "Progreso para obtener envío gratis");
+  shipping.append(shippingText, shippingProgress);
+  foot.appendChild(shipping);
   foot.appendChild(makeEl("p", "cart-note", "Total referencial. Confirmamos precio y disponibilidad por WhatsApp"));
   var checkout = makeEl("button", "btn btn-wa btn-wide");
   checkout.type = "button";
@@ -250,6 +289,8 @@ function renderCart() {
   var items = cartLoad();
   var box = document.getElementById("cart-items");
   var totalEl = document.getElementById("cart-total");
+  var shippingText = document.getElementById("cart-shipping-text");
+  var shippingProgress = document.getElementById("cart-shipping-progress");
   var countEl = document.getElementById("cart-count");
   if (countEl) {
     var n = cartCount(items);
@@ -301,7 +342,14 @@ function renderCart() {
       box.appendChild(row);
     });
   }
-  if (totalEl) totalEl.textContent = clMoney(cartTotal(items));
+  var total = cartTotal(items);
+  if (totalEl) totalEl.textContent = clMoney(total);
+  if (shippingProgress) shippingProgress.value = Math.min(total, 50);
+  if (shippingText) {
+    if (total >= 50) shippingText.textContent = "Tu pedido incluye envío gratis";
+    else if (total > 0) shippingText.textContent = "Te faltan " + clMoney(50 - total) + " para el envío gratis";
+    else shippingText.textContent = "Envío gratis en pedidos desde $50";
+  }
 }
 
 /* ---------- tarjetas de producto ---------- */
@@ -316,7 +364,8 @@ function productCard(p, revealDelay) {
   imageLink.href = productUrl;
   imageLink.setAttribute("aria-label", "Ver " + p.name);
   var image = makeEl("img");
-  image.src = p.splash;
+  image.className = "lazy-media";
+  image.setAttribute("data-lazy-src", p.splash);
   image.alt = p.name;
   image.loading = "lazy";
   image.decoding = "async";
@@ -338,7 +387,8 @@ function productCard(p, revealDelay) {
   var cardFoot = makeEl("div", "pcard-foot");
   var price = makeEl("div", "pcard-price", clMoney(p.price));
   price.appendChild(makeEl("small", "", "Pack x2 " + clMoney(p.pricePack)));
-  var add = makeEl("button", "add-btn", "Añadir +");
+  price.appendChild(makeEl("span", "pcard-saving", "Ahorras " + clMoney(p.price * 2 - p.pricePack)));
+  var add = makeEl("button", "add-btn", "Añadir");
   add.type = "button";
   add.setAttribute("aria-label", "Añadir " + p.name + " al carrito");
   add.addEventListener("click", function () { cartAdd(p.id, "uno", 1); });
@@ -365,6 +415,7 @@ function renderGrids() {
       filterStatus.textContent = list.length + (list.length === 1 ? " producto mostrado" : " productos mostrados");
     }
     observeReveals(grid);
+    observeLazyImages(grid);
   });
 }
 
@@ -446,6 +497,7 @@ document.addEventListener("DOMContentLoaded", function () {
   renderGrids();
   initChips();
   observeReveals(document);
+  observeLazyImages(document);
 
   var header = document.querySelector(".header");
   if (header) {
