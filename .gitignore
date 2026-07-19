@@ -5,4 +5,6 @@
 docs/
 output/
 dist/
+.netlify/
+.vercel/
 *.log
