@@ -173,30 +173,27 @@
 
   var sticky = document.getElementById("pd-sticky");
   var buyBox = document.querySelector(".pd-buy");
-  if (sticky && buyBox && "IntersectionObserver" in window) {
-    var buyBoxPassed = false;
-    var purchaseContextEnded = false;
+  if (sticky && buyBox) {
+    var relatedSection = document.querySelector(".related");
     function updateSticky() {
+      var buyBoxPassed = buyBox.getBoundingClientRect().bottom < 0;
+      var purchaseContextEnded = relatedSection && relatedSection.getBoundingClientRect().top <= window.innerHeight * 0.22;
       var shouldShow = buyBoxPassed && !purchaseContextEnded;
       sticky.classList.toggle("show", shouldShow);
       sticky.setAttribute("aria-hidden", shouldShow ? "false" : "true");
       sticky.inert = !shouldShow;
     }
-    var stickyObserver = new IntersectionObserver(function (entries) {
-      buyBoxPassed = !entries[0].isIntersecting && entries[0].boundingClientRect.top < 0;
-      updateSticky();
-    }, { threshold: 0 });
-    stickyObserver.observe(buyBox);
-
-    var relatedSection = document.querySelector(".related");
-    if (relatedSection) {
-      // Retira la barra antes de que compita con el título y las tarjetas relacionadas.
-      var stickyBoundaryObserver = new IntersectionObserver(function (entries) {
-        purchaseContextEnded = entries[0].isIntersecting || entries[0].boundingClientRect.top < 0;
+    var stickyFrame = null;
+    function queueStickyUpdate() {
+      if (stickyFrame !== null) return;
+      stickyFrame = window.requestAnimationFrame(function () {
+        stickyFrame = null;
         updateSticky();
-      }, { threshold: 0, rootMargin: "0px 0px -78% 0px" });
-      stickyBoundaryObserver.observe(relatedSection);
+      });
     }
+    window.addEventListener("scroll", queueStickyUpdate, { passive: true });
+    window.addEventListener("resize", queueStickyUpdate);
+    updateSticky();
   }
 
   // Relacionados: excluir el producto actual y re-renderizar

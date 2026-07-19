@@ -388,7 +388,7 @@ function productCard(p, revealDelay) {
   ratingStars.setAttribute("aria-label", Math.round(p.rating) + " de 5 estrellas");
   rating.append(ratingStars, document.createTextNode(" " + p.rating.toFixed(1) + " con " + p.reviews + " reseñas"));
   body.appendChild(rating);
-  var heading = makeEl("h3");
+  var heading = makeEl(document.body.classList.contains("page-store") ? "h2" : "h3");
   var nameLink = makeEl("a", "", p.name);
   nameLink.href = productUrl;
   heading.appendChild(nameLink);
