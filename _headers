@@ -11,6 +11,9 @@
   Origin-Agent-Cluster: ?1
   X-Permitted-Cross-Domain-Policies: none
 
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
 

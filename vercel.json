@@ -1,5 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build:vercel",
+  "outputDirectory": "dist",
   "headers": [
     {
       "source": "/(.*)",
@@ -15,6 +17,12 @@
         { "key": "Cross-Origin-Resource-Policy", "value": "same-origin" },
         { "key": "Origin-Agent-Cluster", "value": "?1" },
         { "key": "X-Permitted-Cross-Domain-Policies", "value": "none" }
+      ]
+    },
+    {
+      "source": "/",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
     },
     {

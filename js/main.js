@@ -124,7 +124,7 @@ function cartAdd(id, variant, qty) {
   else items.push({ id: id, variant: variant, qty: qty });
   cartSave(items);
   renderCart();
-  toast("✨ " + p.short + " añadido al carrito");
+  toast(p.short + " añadido al carrito");
   openCart();
 }
 
@@ -253,14 +253,17 @@ function renderCart() {
   var countEl = document.getElementById("cart-count");
   if (countEl) {
     var n = cartCount(items);
-    countEl.textContent = n > 99 ? "99+" : String(n);
+    var visibleCount = n > 99 ? "99+" : String(n);
+    countEl.textContent = visibleCount;
     countEl.classList.toggle("on", n > 0);
+    var cartTrigger = document.getElementById("cart-open");
+    if (cartTrigger) cartTrigger.setAttribute("aria-label", "Abrir carrito, " + visibleCount + (n === 1 ? " producto" : " productos"));
   }
   if (!box) return;
   box.textContent = "";
   if (!items.length) {
     var empty = makeEl("div", "cart-empty");
-    empty.appendChild(makeEl("div", "big", "🛍️"));
+    empty.appendChild(makeEl("div", "empty-mark", "0"));
     var emptyText = makeEl("p", "", "Tu carrito está vacío.");
     emptyText.append(document.createElement("br"), document.createTextNode("Tus gomitas favoritas te esperan."));
     empty.appendChild(emptyText);

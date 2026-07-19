@@ -30,8 +30,8 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("pd-name").textContent = product.name;
   document.getElementById("pd-tagline").textContent = product.tagline;
   document.getElementById("pd-desc").textContent = product.desc;
-  document.getElementById("pd-flavor").textContent = "🍭 Sabor " + product.flavor.toLowerCase();
-  document.getElementById("pd-dose").textContent = "💊 " + product.dose;
+  document.getElementById("pd-flavor").textContent = "Sabor " + product.flavor.toLowerCase();
+  document.getElementById("pd-dose").textContent = product.dose;
 
   var img = document.getElementById("pd-img");
   img.src = product.splash;

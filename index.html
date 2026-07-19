@@ -9,6 +9,7 @@
   <title>Chic&amp;Love Ecuador — Vitaminas en gomitas</title>
   <meta name="description" content="Gomitas de vitaminas para cabello, piel, sueño, digestión y energía. Sin gluten, sin lactosa. Envíos a todo Ecuador. Tu dosis diaria de amor propio.">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <script src="js/frame-guard.js"></script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -31,7 +32,7 @@
         <a class="icon-btn" href="https://www.instagram.com/chicloveec" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Chic&amp;Love">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
         </a>
-        <button class="icon-btn" id="cart-open" type="button" aria-label="Abrir carrito" aria-haspopup="dialog" aria-expanded="false">
+        <button class="icon-btn" id="cart-open" type="button" aria-label="Abrir carrito, 0 productos" aria-haspopup="dialog" aria-expanded="false">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l1.2 13H4.8L6 7Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>
           <span class="cart-count" id="cart-count">0</span>
         </button>
@@ -75,14 +76,14 @@
             <a class="btn btn-ghost" href="#productos">Descubre tu gomita</a>
           </div>
           <div class="hero-proof">
-            <span class="stars" aria-label="5 de 5 estrellas">★★★★★</span>
+            <span class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</span>
             <span><strong>4.8/5</strong> según más de 1.200 clientes felices en Ecuador</span>
           </div>
         </div>
         <div class="hero-stage" aria-hidden="true">
-          <div class="hero-bottle hb-2"><img src="assets/img/bottle-radiant-skin.webp" alt="" decoding="async"></div>
-          <div class="hero-bottle hb-1"><img src="assets/img/bottle-hair-nails.webp" alt="" decoding="async" fetchpriority="high"></div>
-          <div class="hero-bottle hb-3"><img src="assets/img/bottle-sleep.webp" alt="" decoding="async"></div>
+          <div class="hero-bottle hb-2"><img src="assets/img/splash-radiant-skin.webp" alt="" width="946" height="1600" decoding="async"></div>
+          <div class="hero-bottle hb-1"><img src="assets/img/splash-hair-nails.webp" alt="" width="1107" height="1600" decoding="async" fetchpriority="high"></div>
+          <div class="hero-bottle hb-3"><img src="assets/img/splash-sleep.webp" alt="" width="955" height="1600" decoding="async"></div>
         </div>
       </div>
     </section>
@@ -101,11 +102,12 @@
 
     <!-- ============ CONFIANZA ============ -->
     <section class="trust">
+      <h2 class="sr-only">Por qué elegir Chic&amp;Love</h2>
       <div class="wrap trust-grid">
-        <div class="trust-item reveal"><div class="t-ico">🌱</div><div><h3>Activos naturales</h3><p>Maca, ashwagandha, biotina, colágeno y más.</p></div></div>
-        <div class="trust-item reveal reveal-d1"><div class="t-ico">🚚</div><div><h3>Envío 24–48 h</h3><p>A todo Ecuador. Gratis desde $50.</p></div></div>
-        <div class="trust-item reveal reveal-d2"><div class="t-ico">💳</div><div><h3>Paga al recibir</h3><p>Contra entrega o transferencia, tú eliges.</p></div></div>
-        <div class="trust-item reveal reveal-d3"><div class="t-ico">🍬</div><div><h3>Cero sufrimiento</h3><p>Nada de pastillas: gomitas con sabor real.</p></div></div>
+        <div class="trust-item reveal"><div class="t-ico" aria-hidden="true">01</div><div><h3>Activos naturales</h3><p>Maca, ashwagandha, biotina, colágeno y más.</p></div></div>
+        <div class="trust-item reveal reveal-d1"><div class="t-ico" aria-hidden="true">02</div><div><h3>Envío 24–48 h</h3><p>A todo Ecuador. Gratis desde $50.</p></div></div>
+        <div class="trust-item reveal reveal-d2"><div class="t-ico" aria-hidden="true">03</div><div><h3>Paga al recibir</h3><p>Contra entrega o transferencia, tú eliges.</p></div></div>
+        <div class="trust-item reveal reveal-d3"><div class="t-ico" aria-hidden="true">04</div><div><h3>Un ritual fácil</h3><p>Nada de pastillas: gomitas con sabor real.</p></div></div>
       </div>
     </section>
 
@@ -128,17 +130,17 @@
     <section class="section pt-0">
       <div class="wrap split">
         <div class="split-media reveal">
-          <img class="cover" src="assets/img/blueberries.webp" alt="Hair &amp; Nails Forte sobre arándanos frescos" loading="lazy" decoding="async">
+          <img class="cover editorial-focus-hair" src="assets/img/editorial-hair.webp" alt="Mujer con cabello largo y saludable, imagen editorial de Chic&amp;Love" width="1600" height="2400" loading="lazy" decoding="async">
         </div>
         <div class="reveal reveal-d1">
           <span class="eyebrow">Belleza desde adentro</span>
           <h2>La belleza empieza donde nadie la ve</h2>
           <p class="lead">Cremas y tratamientos actúan por fuera. Nuestras gomitas nutren los folículos, la piel y tu descanso desde el interior — donde realmente ocurre el cambio.</p>
           <ul class="feature-list">
-            <li><div class="f-ico">🧬</div><div><h3>Fórmulas con propósito</h3><p>Cada producto combina vitaminas y adaptógenos para un objetivo específico.</p></div></li>
-            <li><div class="f-ico">🍓</div><div><h3>Sabor de verdad</h3><p>Frutos rojos, manzana, fresa, cereza y naranja. El ritual más rico del día.</p></div></li>
-            <li><div class="f-ico">🤍</div><div><h3>Para todos los cuerpos</h3><p>Sin gluten, sin lactosa y opciones veganas y vegetarianas.</p></div></li>
-            <li><div class="f-ico">⏱️</div><div><h3>Resultados visibles</h3><p>Constancia de 4 a 8 semanas y lo notas en el espejo.</p></div></li>
+            <li><div class="f-ico" aria-hidden="true">01</div><div><h3>Fórmulas con propósito</h3><p>Cada producto combina vitaminas y adaptógenos para un objetivo específico.</p></div></li>
+            <li><div class="f-ico" aria-hidden="true">02</div><div><h3>Sabor de verdad</h3><p>Frutos rojos, manzana, fresa, cereza y naranja. El ritual más rico del día.</p></div></li>
+            <li><div class="f-ico" aria-hidden="true">03</div><div><h3>Para todos los cuerpos</h3><p>Sin gluten, sin lactosa y opciones veganas y vegetarianas.</p></div></li>
+            <li><div class="f-ico" aria-hidden="true">04</div><div><h3>Resultados visibles</h3><p>Constancia de 4 a 8 semanas y lo notas en el espejo.</p></div></li>
           </ul>
         </div>
       </div>
@@ -178,17 +180,17 @@
         </div>
         <div class="testimonials-grid">
           <article class="tcard reveal">
-            <span class="stars" aria-label="5 de 5 estrellas">★★★★★</span>
+            <span class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</span>
             <p>"A los dos meses con Hair &amp; Nails dejé de ver pelo en la ducha. Mis uñas nunca habían crecido tan rápido. Obsesionada."</p>
             <footer><div class="avatar av-purple">V</div><div class="who"><strong>Valentina R.</strong><span>Quito, Hair &amp; Nails Forte</span></div></footer>
           </article>
           <article class="tcard reveal reveal-d1">
-            <span class="stars" aria-label="5 de 5 estrellas">★★★★★</span>
-            <p>"Las Sleep Vitamins me cambiaron la vida. Me duermo en 20 minutos y despierto con energía. Además saben a fresa 😍."</p>
+            <span class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</span>
+            <p>"Las Sleep Vitamins me cambiaron la vida. Me duermo en 20 minutos y despierto con energía. Además, saben a fresa."</p>
             <footer><div class="avatar av-blue">C</div><div class="who"><strong>Camila T.</strong><span>Guayaquil, Sleep Vitamins</span></div></footer>
           </article>
           <article class="tcard reveal reveal-d2">
-            <span class="stars" aria-label="5 de 5 estrellas">★★★★★</span>
+            <span class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</span>
             <p>"El ACV en gomitas es otra cosa: cero hinchazón después de comer y sin el sabor horrible del vinagre. Ya pedí mi tercer frasco."</p>
             <footer><div class="avatar av-green">M</div><div class="who"><strong>María José A.</strong><span>Cuenca, Vinagre de Manzana</span></div></footer>
           </article>
@@ -210,7 +212,7 @@
           </details>
           <details>
             <summary>¿Hacen envíos a todo Ecuador?</summary>
-            <div class="faq-body">Sí ✨ Enviamos a todo el país en 24–48 horas laborables. El envío es gratis en pedidos desde $50. Puedes pagar contra entrega o por transferencia.</div>
+            <div class="faq-body">Sí. Enviamos a todo el país en 24–48 horas laborables. El envío es gratis en pedidos desde $50. Puedes pagar contra entrega o por transferencia.</div>
           </details>
           <details>
             <summary>¿Puedo combinar varias fórmulas?</summary>
@@ -259,7 +261,7 @@
           </div>
         </div>
         <div>
-          <h4>Tienda</h4>
+          <h2>Tienda</h2>
           <ul>
             <li><a href="tienda.html">Toda la colección</a></li>
             <li><a href="producto.html?id=hair-nails-forte">Hair &amp; Nails Forte</a></li>
@@ -269,7 +271,7 @@
           </ul>
         </div>
         <div>
-          <h4>Ayuda</h4>
+          <h2>Ayuda</h2>
           <ul>
             <li><a href="index.html#faq">Preguntas frecuentes</a></li>
             <li><a href="index.html#ritual">Cómo tomarlas</a></li>
@@ -278,11 +280,11 @@
           </ul>
         </div>
         <div>
-          <h4>Contacto</h4>
+          <h2>Contacto</h2>
           <ul>
-            <li><a href="https://wa.me/593984012787" target="_blank" rel="noopener noreferrer">📱 098 401 2787</a></li>
-            <li><a href="https://www.instagram.com/chicloveec" target="_blank" rel="noopener noreferrer">📸 @chicloveec</a></li>
-            <li>🇪🇨 Ecuador</li>
+            <li><a href="https://wa.me/593984012787" target="_blank" rel="noopener noreferrer">WhatsApp: 098 401 2787</a></li>
+            <li><a href="https://www.instagram.com/chicloveec" target="_blank" rel="noopener noreferrer">Instagram: @chicloveec</a></li>
+            <li>Ecuador</li>
           </ul>
         </div>
       </div>

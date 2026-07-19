@@ -1,0 +1,13 @@
+.agents/
+.claude/
+.github/
+.playwright-cli/
+docs/
+output/
+dist/
+.DS_Store
+.gitignore
+.nojekyll
+README.md
+_headers
+netlify.toml

@@ -1,0 +1,16 @@
+{
+  "name": "chiclove-ecuador",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs --target=generic",
+    "build:github": "node scripts/build.mjs --target=github-pages",
+    "build:netlify": "node scripts/build.mjs --target=netlify",
+    "build:cloudflare": "node scripts/build.mjs --target=cloudflare",
+    "build:vercel": "node scripts/build.mjs --target=vercel"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
