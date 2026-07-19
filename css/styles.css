@@ -450,7 +450,7 @@ p, li { text-wrap: pretty; }
   font-weight: 700;
   letter-spacing: 0.08em;
 }
-.trust-item h3 { font-size: 15px; font-weight: 700; font-family: var(--font-body); letter-spacing: 0; }
+.trust-item h3 { margin-bottom: 4px; font-size: 15px; font-weight: 700; font-family: var(--font-body); letter-spacing: 0; }
 .trust-item p { font-size: 13px; color: var(--muted); line-height: 1.4; }
 
 /* ---------- Grid de productos ---------- */
@@ -614,7 +614,13 @@ p, li { text-wrap: pretty; }
 }
 .split h2 { font-size: clamp(30px, 4vw, 44px); margin-top: 14px; }
 .split .lead { color: var(--muted); margin-top: 16px; font-size: 17px; }
-.feature-list { margin-top: 28px; display: flex; flex-direction: column; gap: 18px; }
+.feature-list {
+  --feature-line-height: 22px;
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
 .feature-list li { display: flex; gap: 16px; align-items: flex-start; }
 .feature-list .f-ico {
   flex: none;
@@ -630,8 +636,18 @@ p, li { text-wrap: pretty; }
   font-weight: 700;
   letter-spacing: 0.08em;
 }
-.feature-list h3 { font-size: 16px; font-family: var(--font-body); font-weight: 700; letter-spacing: 0; }
-.feature-list p { font-size: 14px; color: var(--muted); }
+.feature-list h3 {
+  font-size: 16px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  line-height: var(--feature-line-height);
+  letter-spacing: 0;
+}
+.feature-list p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: var(--feature-line-height);
+}
 
 /* ---------- Ritual / pasos ---------- */
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
@@ -669,6 +685,7 @@ p, li { text-wrap: pretty; }
 
 /* ---------- Testimonios ---------- */
 .reviews-section { background: #e9e4f0; }
+.reviews-section .section-head p { color: #6b635c; }
 .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 .tcard {
   background: var(--card);
@@ -1277,6 +1294,7 @@ p, li { text-wrap: pretty; }
   .cta-visual { width: 42%; right: -12%; bottom: -16%; height: 94%; opacity: 0.72; }
   .footer-main { grid-template-columns: 1fr 1fr; gap: 34px 24px; padding: 56px 0 36px; }
   .footer-main > div:first-child { grid-column: 1 / -1; }
+  .footer-main > div:last-child { grid-column: 1 / -1; }
   .footer .about { max-width: 340px; }
   .footer h2 { margin-bottom: 14px; }
   .footer li { margin-bottom: 8px; }
@@ -1420,6 +1438,15 @@ p, li { text-wrap: pretty; }
     touch-action: pan-x pan-y;
     -webkit-overflow-scrolling: touch;
   }
+  #productos .products-grid {
+    grid-auto-columns: min(82vw, 320px);
+    padding-bottom: 18px;
+    overflow-y: hidden;
+    overscroll-behavior-inline: auto;
+    scroll-padding-inline: 16px;
+    touch-action: pan-x pan-y pinch-zoom;
+    -webkit-overflow-scrolling: touch;
+  }
   #productos .products-grid::-webkit-scrollbar,
   .page-product .related .products-grid::-webkit-scrollbar,
   .steps::-webkit-scrollbar,
@@ -1428,6 +1455,7 @@ p, li { text-wrap: pretty; }
   .page-product .related .pcard,
   .step,
   .tcard { scroll-snap-align: start; scroll-snap-stop: always; }
+  #productos .pcard { scroll-snap-stop: normal; }
   .page-store .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .page-store .products-grid:empty { min-height: 1238px; }
   .pcard { padding: 18px 14px 15px; border-radius: 22px; }
@@ -1448,11 +1476,11 @@ p, li { text-wrap: pretty; }
   .split-media { border-radius: 26px; aspect-ratio: 4 / 4.25; }
   .split h2 { margin-top: 10px; font-size: 32px; }
   .split .lead { margin-top: 12px; font-size: 15px; }
-  .feature-list { margin-top: 20px; gap: 12px; }
+  .feature-list { --feature-line-height: 18px; margin-top: 20px; gap: 12px; }
   .feature-list li { gap: 11px; }
   .feature-list .f-ico { width: 36px; height: 36px; border-radius: 11px; }
   .feature-list h3 { font-size: 14px; }
-  .feature-list p { font-size: 12.5px; line-height: 1.45; }
+  .feature-list p { font-size: 12.5px; }
   .media-shop { inset: auto 10px 10px; min-height: 66px; grid-template-columns: 38px 1fr auto; gap: 9px; border-radius: 17px; }
   .media-shop > img { width: 38px; height: 46px; }
   .media-shop b { padding: 8px 9px; }

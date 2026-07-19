@@ -223,6 +223,7 @@ function whatsappOrderMessage(items) {
 
   lines.push(
     "*TOTAL REFERENCIAL: " + clMoney(cartTotal(items)) + "*",
+    "El precio referencial será verificado por un agente de Chic&Love.",
     "",
     "",
     "*DATOS DE ENTREGA*",
@@ -590,6 +591,20 @@ function initBusinessData() {
   var instagramHandle = "@" + CL_INSTAGRAM;
   var julyPromoActive = clIsJulyPromoActive();
 
+  function activateExternalLink(link, url, label) {
+    if (!url) {
+      link.removeAttribute("href");
+      link.removeAttribute("target");
+      link.removeAttribute("rel");
+      link.removeAttribute("aria-label");
+      return;
+    }
+    link.href = url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    if (!link.textContent.trim()) link.setAttribute("aria-label", label);
+  }
+
   document.querySelectorAll("[data-single-start]").forEach(function (el) {
     el.textContent = julyPromoActive
       ? "Precio especial de julio: " + clMoney(singleMinimum)
@@ -617,15 +632,14 @@ function initBusinessData() {
 
   document.querySelectorAll("[data-whatsapp-link]").forEach(function (link) {
     var url = clWhatsAppUrl(link.getAttribute("data-whatsapp-text") || "");
-    if (url) link.href = url;
-    else link.removeAttribute("href");
+    activateExternalLink(link, url, "WhatsApp");
     if (link.hasAttribute("data-whatsapp-label")) link.textContent = "WhatsApp: " + whatsappDisplay;
   });
   document.querySelectorAll("[data-whatsapp-number]").forEach(function (el) {
     el.textContent = whatsappDisplay;
   });
   document.querySelectorAll("[data-instagram-link]").forEach(function (link) {
-    link.href = clInstagramUrl();
+    activateExternalLink(link, clInstagramUrl(), "Instagram");
     if (link.hasAttribute("data-instagram-label")) link.textContent = "Instagram: " + instagramHandle;
   });
   document.querySelectorAll("[data-instagram-handle]").forEach(function (el) {
