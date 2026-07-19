@@ -206,18 +206,21 @@ p, li { text-wrap: pretty; }
 }
 .brand-lockup img { height: 31px; width: auto; }
 .brand-country {
-  margin-top: 3px;
-  padding-left: 0.34em;
+  order: -1;
+  width: 100%;
+  margin: 0 0 4px;
   color: currentColor;
   font-family: var(--font-body);
-  font-size: 7px;
+  font-size: 7.5px;
   font-weight: 750;
   letter-spacing: 0.34em;
   line-height: 1;
+  text-align: center;
+  text-indent: 0.34em;
   text-transform: uppercase;
 }
 .brand-lockup-mobile img { height: 26px; }
-.brand-lockup-mobile .brand-country { font-size: 6px; }
+.brand-lockup-mobile .brand-country { margin-bottom: 3px; font-size: 6.25px; }
 .nav-links { display: flex; gap: 34px; font-size: 14px; font-weight: 650; }
 .nav-links a { position: relative; padding: 6px 0; color: var(--ink-2); transition: color 0.2s; }
 .nav-links a::after {
