@@ -2,8 +2,17 @@
    Los precios son editables aquí y se reflejan en todo el sitio. */
 "use strict";
 
-const CL_WHATSAPP = "593984012787"; // 0984012787 en formato internacional
+const CL_WHATSAPP = "593987591741"; // formato internacional sin espacios
 const CL_INSTAGRAM = "chicloveec";
+const CL_FREE_SHIPPING = 49.99;
+const CL_JULY_PROMO_PRICE = 25.49;
+const CL_JULY_PROMO_START = Date.parse("2026-07-01T00:00:00-05:00");
+const CL_JULY_PROMO_END = Date.parse("2026-08-01T00:00:00-05:00");
+const CL_PRODUCT_PRICING = Object.freeze({
+  price: 29.99,
+  pricePack: 49.99,
+  pricePack3: 74.99
+});
 
 const CL_PRODUCTS = [
   {
@@ -15,8 +24,7 @@ const CL_PRODUCTS = [
     accent: "#8C6FC9",
     accentDark: "#6A4FA8",
     soft: "#F1EBFB",
-    price: 27.9,
-    pricePack: 47.9,
+    ...CL_PRODUCT_PRICING,
     flavor: "Frutos rojos",
     badges: ["Sin gluten", "Sin lactosa", "Vegetariano"],
     bottle: "assets/img/bottle-hair-nails.webp",
@@ -45,8 +53,7 @@ const CL_PRODUCTS = [
     accent: "#E88998",
     accentDark: "#B44F64",
     soft: "#FBEBEE",
-    price: 27.9,
-    pricePack: 47.9,
+    ...CL_PRODUCT_PRICING,
     flavor: "Frutos rojos",
     badges: ["Sin gluten", "Sin lactosa"],
     bottle: "assets/img/bottle-radiant-skin.webp",
@@ -75,8 +82,7 @@ const CL_PRODUCTS = [
     accent: "#35B34A",
     accentDark: "#238536",
     soft: "#E9F7EC",
-    price: 25.9,
-    pricePack: 44.9,
+    ...CL_PRODUCT_PRICING,
     flavor: "Manzana",
     badges: ["Sin gluten", "Sin lactosa", "Vegano"],
     bottle: "assets/img/bottle-acv.webp",
@@ -105,8 +111,7 @@ const CL_PRODUCTS = [
     accent: "#4FA8D8",
     accentDark: "#2F7FAD",
     soft: "#E8F4FB",
-    price: 26.9,
-    pricePack: 45.9,
+    ...CL_PRODUCT_PRICING,
     flavor: "Fresa",
     badges: ["Sin gluten", "Sin azúcar", "Vegano"],
     bottle: "assets/img/bottle-sleep.webp",
@@ -135,8 +140,7 @@ const CL_PRODUCTS = [
     accent: "#B3538F",
     accentDark: "#8C3A6E",
     soft: "#F7EAF2",
-    price: 29.9,
-    pricePack: 52.9,
+    ...CL_PRODUCT_PRICING,
     flavor: "Cereza",
     badges: ["Sin gluten", "Sin lactosa", "Vegano"],
     bottle: "assets/img/bottle-sexual-w.webp",
@@ -165,8 +169,7 @@ const CL_PRODUCTS = [
     accent: "#2E7FC2",
     accentDark: "#1F5C90",
     soft: "#E8F1FA",
-    price: 29.9,
-    pricePack: 52.9,
+    ...CL_PRODUCT_PRICING,
     flavor: "Cereza",
     badges: ["Sin gluten", "Sin lactosa", "Vegano"],
     bottle: "assets/img/bottle-sexual-m.webp",
@@ -195,8 +198,7 @@ const CL_PRODUCTS = [
     accent: "#2B4FC7",
     accentDark: "#1D3894",
     soft: "#E9EDFA",
-    price: 26.9,
-    pricePack: 45.9,
+    ...CL_PRODUCT_PRICING,
     flavor: "Naranja",
     badges: ["Sin gluten", "Sin lactosa", "Vegano"],
     bottle: "assets/img/bottle-antistress.webp",
@@ -230,6 +232,72 @@ const CL_GOALS = [
 
 function clFindProduct(id) {
   return CL_PRODUCTS.find(function (p) { return p.id === id; }) || null;
+}
+
+function clCatalogMinimum(field) {
+  return Math.min.apply(null, CL_PRODUCTS.map(function (product) { return product[field]; }));
+}
+
+function clCurrentSingleMinimum(now) {
+  return Math.min.apply(null, CL_PRODUCTS.map(function (product) { return clSinglePrice(product, now); }));
+}
+
+function clWhatsAppDisplay() {
+  if (/^593\d{9}$/.test(CL_WHATSAPP)) {
+    return "+" + CL_WHATSAPP.slice(0, 3) + " " + CL_WHATSAPP.slice(3, 5) + " " + CL_WHATSAPP.slice(5, 8) + " " + CL_WHATSAPP.slice(8);
+  }
+  return "+" + CL_WHATSAPP;
+}
+
+function clWhatsAppUrl(message) {
+  if (!/^\d{8,15}$/.test(CL_WHATSAPP)) return "";
+  return "https://wa.me/" + CL_WHATSAPP + (message ? "?text=" + encodeURIComponent(message) : "");
+}
+
+function clInstagramUrl() {
+  return "https://www.instagram.com/" + encodeURIComponent(CL_INSTAGRAM);
+}
+
+function clIsJulyPromoActive(now) {
+  var timestamp = now instanceof Date ? now.getTime() : (typeof now === "number" ? now : Date.now());
+  return timestamp >= CL_JULY_PROMO_START && timestamp < CL_JULY_PROMO_END;
+}
+
+function clSinglePrice(product, now) {
+  return clIsJulyPromoActive(now) ? CL_JULY_PROMO_PRICE : product.price;
+}
+
+function clBestSingleBundle(product, quantity, now) {
+  var qty = Math.min(Math.max(parseInt(quantity, 10) || 0, 0), 99);
+  var singleCents = Math.round(clSinglePrice(product, now) * 100);
+  var pack2Cents = Math.round(product.pricePack * 100);
+  var pack3Cents = Math.round(product.pricePack3 * 100);
+  var best = null;
+
+  for (var packs3 = 0; packs3 <= Math.floor(qty / 3); packs3 += 1) {
+    for (var packs2 = 0; packs2 <= Math.floor((qty - packs3 * 3) / 2); packs2 += 1) {
+      var singles = qty - packs3 * 3 - packs2 * 2;
+      var totalCents = packs3 * pack3Cents + packs2 * pack2Cents + singles * singleCents;
+      var packedBottles = packs3 * 3 + packs2 * 2;
+      if (!best || totalCents < best.totalCents || (totalCents === best.totalCents && packedBottles > best.packedBottles)) {
+        best = {
+          totalCents: totalCents,
+          packedBottles: packedBottles,
+          singles: singles,
+          packs2: packs2,
+          packs3: packs3
+        };
+      }
+    }
+  }
+
+  return {
+    total: best.totalCents / 100,
+    savings: (singleCents * qty - best.totalCents) / 100,
+    singles: best.singles,
+    packs2: best.packs2,
+    packs3: best.packs3
+  };
 }
 
 function clMoney(n) {

@@ -31,14 +31,18 @@ se comporta igual que en producción.)
 ## Cómo funciona la compra
 
 No hay backend: el carrito vive en `localStorage` y "Finalizar pedido" abre
-WhatsApp (**0984012787**) con el pedido ya redactado (productos, cantidades y total).
+WhatsApp con el pedido ya redactado (productos, cantidades y total).
 Para cambiar el número, edita `CL_WHATSAPP` en `js/products.js`.
 
-## Editar precios / productos
+## Editar datos comerciales
 
-Todo el catálogo está en `js/products.js` (`CL_PRODUCTS`): precio por frasco
-(`price`), precio del pack x2 (`pricePack`), beneficios, activos, colores, etc.
-Los cambios se reflejan automáticamente en tienda, tarjetas, detalle y carrito.
+Todo el catálogo está en `js/products.js`. `CL_PRODUCT_PRICING` controla el
+precio por frasco, el pack x2 y el pack x3 para todos los productos. `CL_PRODUCTS`
+contiene nombres, beneficios, activos, colores e imágenes.
+El mismo archivo concentra `CL_WHATSAPP`, `CL_INSTAGRAM`, `CL_FREE_SHIPPING` y
+las constantes de la promoción temporal. Los HTML no repiten esos valores.
+Los cambios se reflejan automáticamente en portada, tienda, tarjetas, detalle,
+carrito, enlaces de contacto y pedido de WhatsApp.
 
 ## Build seguro
 

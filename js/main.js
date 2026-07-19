@@ -95,7 +95,7 @@ function observeLazyImages(scope) {
 /* ---------- carrito ---------- */
 var CART_KEY = "cl_cart_v1";
 var MAX_CART_STORAGE_LENGTH = 8192;
-var MAX_CART_LINES = CL_PRODUCTS.length * 2;
+var MAX_CART_LINES = CL_PRODUCTS.length * 3;
 
 function cartLoad() {
   try {
@@ -113,7 +113,7 @@ function cartLoad() {
     var normalized = [];
     raw.forEach(function (it) {
       if (!it || !clFindProduct(it.id) ||
-          (it.variant !== "uno" && it.variant !== "pack") ||
+          (it.variant !== "uno" && it.variant !== "pack" && it.variant !== "pack3") ||
           !Number.isInteger(it.qty) || it.qty < 1 || it.qty > 99) return;
       var found = normalized.find(function (known) {
         return known.id === it.id && known.variant === it.variant;
@@ -137,11 +137,18 @@ function cartSave(items) {
 
 function itemPrice(it) {
   var p = clFindProduct(it.id);
-  return it.variant === "pack" ? p.pricePack : p.price;
+  if (it.variant === "pack3") return p.pricePack3;
+  return it.variant === "pack" ? p.pricePack : clSinglePrice(p);
+}
+
+function itemTotal(it) {
+  var p = clFindProduct(it.id);
+  if (it.variant === "uno") return clBestSingleBundle(p, it.qty).total;
+  return itemPrice(it) * it.qty;
 }
 
 function cartTotal(items) {
-  return items.reduce(function (sum, it) { return sum + itemPrice(it) * it.qty; }, 0);
+  return items.reduce(function (sum, it) { return sum + itemTotal(it); }, 0);
 }
 
 function cartCount(items) {
@@ -151,7 +158,7 @@ function cartCount(items) {
 function cartAdd(id, variant, qty) {
   var p = clFindProduct(id);
   if (!p) return;
-  variant = variant === "pack" ? "pack" : "uno";
+  if (variant !== "pack" && variant !== "pack3") variant = "uno";
   qty = Math.min(Math.max(parseInt(qty, 10) || 1, 1), 99);
   var items = cartLoad();
   var found = items.find(function (it) { return it.id === id && it.variant === variant; });
@@ -183,15 +190,16 @@ function checkoutWhatsApp() {
   var lines = ["¡Hola Chic&Love! Quiero hacer este pedido:", ""];
   items.forEach(function (it) {
     var p = clFindProduct(it.id);
-    var v = it.variant === "pack" ? "Pack x2" : "1 frasco";
-    lines.push("• " + p.name + " (" + v + ") × " + it.qty + " — " + clMoney(itemPrice(it) * it.qty));
+    var v = it.variant === "pack3" ? "Pack x3" : (it.variant === "pack" ? "Pack x2" : "1 frasco");
+    var automaticDiscount = it.variant === "uno" && it.qty > 1 ? ", descuento por packs aplicado" : "";
+    lines.push("• " + p.name + " (" + v + ") × " + it.qty + automaticDiscount + " — " + clMoney(itemTotal(it)));
   });
   lines.push("", "Total referencial: " + clMoney(cartTotal(items)), "El precio final será confirmado por Chic&Love.", "", "Mi nombre es: ");
-  if (!/^\d{8,15}$/.test(CL_WHATSAPP)) {
+  var url = clWhatsAppUrl(lines.join("\n"));
+  if (!url) {
     toast("No se pudo abrir WhatsApp. Escríbenos desde el enlace de contacto.");
     return;
   }
-  var url = "https://wa.me/" + CL_WHATSAPP + "?text=" + encodeURIComponent(lines.join("\n"));
   var checkoutWindow = window.open(url, "_blank", "noopener,noreferrer");
   if (checkoutWindow) checkoutWindow.opener = null;
 }
@@ -233,7 +241,7 @@ function buildCartChrome() {
   shippingText.id = "cart-shipping-text";
   var shippingProgress = document.createElement("progress");
   shippingProgress.id = "cart-shipping-progress";
-  shippingProgress.max = 50;
+  shippingProgress.max = CL_FREE_SHIPPING;
   shippingProgress.value = 0;
   shippingProgress.setAttribute("aria-label", "Progreso para obtener envío gratis");
   shipping.append(shippingText, shippingProgress);
@@ -317,7 +325,13 @@ function renderCart() {
   } else {
     items.forEach(function (it) {
       var p = clFindProduct(it.id);
-      var vLabel = it.variant === "pack" ? "Pack x2 frascos" : "1 frasco con 60 gummies";
+      var vLabel;
+      if (it.variant === "pack3") vLabel = "Pack x3 frascos";
+      else if (it.variant === "pack") vLabel = "Pack x2 frascos";
+      else if (it.qty === 2) vLabel = "2 frascos, pack x2 aplicado";
+      else if (it.qty === 3) vLabel = "3 frascos, pack x3 aplicado";
+      else if (it.qty > 3) vLabel = it.qty + " frascos, descuento por packs aplicado";
+      else vLabel = "1 frasco con 60 gummies";
       var row = makeEl("div", "cart-item");
       var image = makeEl("img");
       image.src = p.bottle;
@@ -326,7 +340,7 @@ function renderCart() {
       var details = makeEl("div");
       details.appendChild(makeEl("h4", "", p.name));
       details.appendChild(makeEl("div", "variant", vLabel));
-      details.appendChild(makeEl("div", "price", clMoney(itemPrice(it) * it.qty)));
+      details.appendChild(makeEl("div", "price", clMoney(itemTotal(it))));
       var qtyControl = makeEl("span", "qty");
       var minus = makeEl("button", "", "−");
       minus.type = "button";
@@ -347,13 +361,26 @@ function renderCart() {
       box.appendChild(row);
     });
   }
+  var addMore = makeEl("a", "btn btn-ghost btn-wide cart-add-more");
+  addMore.href = "tienda.html";
+  var addMoreIcon = makeEl("span", "cart-add-more-icon", "+");
+  addMoreIcon.setAttribute("aria-hidden", "true");
+  addMore.append(addMoreIcon, document.createTextNode("Añadir más productos"));
+  addMore.addEventListener("click", function (event) {
+    if (!document.body.classList.contains("page-store")) return;
+    event.preventDefault();
+    closeCart();
+    var productGrid = document.querySelector("[data-products-grid]");
+    if (productGrid) productGrid.scrollIntoView({ block: "start" });
+  });
+  box.appendChild(addMore);
   var total = cartTotal(items);
   if (totalEl) totalEl.textContent = clMoney(total);
-  if (shippingProgress) shippingProgress.value = Math.min(total, 50);
+  if (shippingProgress) shippingProgress.value = Math.min(total, CL_FREE_SHIPPING);
   if (shippingText) {
-    if (total >= 50) shippingText.textContent = "Tu pedido incluye envío gratis";
-    else if (total > 0) shippingText.textContent = "Te faltan " + clMoney(50 - total) + " para el envío gratis";
-    else shippingText.textContent = "Envío gratis en pedidos desde $50";
+    if (total >= CL_FREE_SHIPPING) shippingText.textContent = "Tu pedido incluye envío gratis";
+    else if (total > 0) shippingText.textContent = "Te faltan " + clMoney(CL_FREE_SHIPPING - total) + " para el envío gratis";
+    else shippingText.textContent = "Envío gratis en pedidos desde " + clMoney(CL_FREE_SHIPPING);
   }
 }
 
@@ -395,9 +422,21 @@ function productCard(p, revealDelay) {
   body.appendChild(heading);
   body.appendChild(makeEl("p", "ptagline", p.tagline));
   var cardFoot = makeEl("div", "pcard-foot");
-  var price = makeEl("div", "pcard-price", clMoney(p.price));
-  price.appendChild(makeEl("small", "", "Pack x2 " + clMoney(p.pricePack)));
-  price.appendChild(makeEl("span", "pcard-saving", "Ahorras " + clMoney(p.price * 2 - p.pricePack)));
+  var singlePrice = clSinglePrice(p);
+  var promoActive = clIsJulyPromoActive();
+  var price = makeEl("div", "pcard-price");
+  var priceHead = makeEl("div", "pcard-price-head");
+  priceHead.appendChild(makeEl("strong", "pcard-now-price", clMoney(singlePrice)));
+  if (promoActive) {
+    priceHead.appendChild(makeEl("del", "pcard-was-price", clMoney(p.price)));
+    priceHead.appendChild(makeEl("span", "pcard-promo", "Promo julio"));
+  }
+  price.appendChild(priceHead);
+  var packPrices = makeEl("div", "pcard-pack-prices");
+  packPrices.appendChild(makeEl("small", "", "Pack x2 " + clMoney(p.pricePack)));
+  packPrices.appendChild(makeEl("small", "", "Pack x3 " + clMoney(p.pricePack3)));
+  price.appendChild(packPrices);
+  price.appendChild(makeEl("span", "pcard-saving", "Ahorra hasta " + clMoney(p.price * 3 - p.pricePack3)));
   var add = makeEl("button", "add-btn", "Añadir");
   add.type = "button";
   add.setAttribute("aria-label", "Añadir " + p.name + " al carrito");
@@ -500,14 +539,76 @@ function closeMenu() {
   }
 }
 
+/* ---------- datos comerciales desde una sola fuente ---------- */
+function initBusinessData() {
+  var singleMinimum = clCurrentSingleMinimum();
+  var pack2Minimum = clCatalogMinimum("pricePack");
+  var pack3Minimum = clCatalogMinimum("pricePack3");
+  var whatsappDisplay = clWhatsAppDisplay();
+  var instagramHandle = "@" + CL_INSTAGRAM;
+
+  document.querySelectorAll("[data-single-start]").forEach(function (el) {
+    el.textContent = "Desde " + clMoney(singleMinimum);
+  });
+  document.querySelectorAll("[data-free-shipping-banner]").forEach(function (el) {
+    el.textContent = "Envío gratis desde " + clMoney(CL_FREE_SHIPPING) + " en todo Ecuador.";
+  });
+  document.querySelectorAll("[data-free-shipping-short]").forEach(function (el) {
+    el.textContent = "A todo Ecuador. Gratis desde " + clMoney(CL_FREE_SHIPPING) + ".";
+  });
+  document.querySelectorAll("[data-free-shipping-faq]").forEach(function (el) {
+    el.textContent = "Sí, enviamos a todo el país. La entrega suele tardar entre 24 y 48 horas hábiles. Los pedidos desde " + clMoney(CL_FREE_SHIPPING) + " tienen envío gratis.";
+  });
+  document.querySelectorAll("[data-catalog-offer]").forEach(function (el) {
+    el.textContent = clIsJulyPromoActive()
+      ? "Promo julio: 1 frasco por " + clMoney(singleMinimum) + "."
+      : "Packs x2 por " + clMoney(pack2Minimum) + " y x3 por " + clMoney(pack3Minimum) + ".";
+  });
+
+  document.querySelectorAll("[data-whatsapp-link]").forEach(function (link) {
+    var url = clWhatsAppUrl(link.getAttribute("data-whatsapp-text") || "");
+    if (url) link.href = url;
+    else link.removeAttribute("href");
+    if (link.hasAttribute("data-whatsapp-label")) link.textContent = "WhatsApp: " + whatsappDisplay;
+  });
+  document.querySelectorAll("[data-whatsapp-number]").forEach(function (el) {
+    el.textContent = whatsappDisplay;
+  });
+  document.querySelectorAll("[data-instagram-link]").forEach(function (link) {
+    link.href = clInstagramUrl();
+    if (link.hasAttribute("data-instagram-label")) link.textContent = "Instagram: " + instagramHandle;
+  });
+  document.querySelectorAll("[data-instagram-handle]").forEach(function (el) {
+    el.textContent = instagramHandle;
+  });
+}
+
 /* ---------- init ---------- */
 document.addEventListener("DOMContentLoaded", function () {
+  initBusinessData();
   buildCartChrome();
   renderCart();
   renderGrids();
   initChips();
   observeReveals(document);
   observeLazyImages(document);
+
+  document.querySelectorAll("[data-editorial-product]").forEach(function (link) {
+    var product = clFindProduct(link.getAttribute("data-editorial-product"));
+    var price = link.querySelector("[data-editorial-price]");
+    if (!product || !price) return;
+    var currentPrice = clSinglePrice(product);
+    price.textContent = "";
+    if (clIsJulyPromoActive()) {
+      price.appendChild(makeEl("del", "", clMoney(product.price)));
+      price.appendChild(makeEl("span", "", clMoney(currentPrice)));
+      price.appendChild(makeEl("em", "", "Solo julio"));
+      link.setAttribute("aria-label", "Ver " + product.name + " por " + clMoney(currentPrice) + ", precio normal " + clMoney(product.price));
+    } else {
+      price.textContent = clMoney(product.price);
+      link.setAttribute("aria-label", "Ver " + product.name + " por " + clMoney(product.price));
+    }
+  });
 
   var header = document.querySelector(".header");
   if (header) {

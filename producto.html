@@ -18,12 +18,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <script src="js/frame-guard.js"></script>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=20260719-1622">
 </head>
 <body class="page-product">
   <noscript><p class="no-script-notice">Activa JavaScript para usar la tienda Chic&amp;Love.</p></noscript>
 
-  <div class="topbar"><span>Envío gratis desde $50 en todo Ecuador.</span> <span class="topbar-offer">Hasta 15% de ahorro en packs.</span></div>
+  <div class="topbar"><span data-free-shipping-banner>Envío gratis en todo Ecuador.</span> <span class="topbar-offer" data-catalog-offer>Consulta nuestros packs.</span></div>
 
   <header class="header">
     <div class="nav">
@@ -39,7 +39,7 @@
         <a href="index.html#faq">Ayuda</a>
       </nav>
       <div class="nav-actions">
-        <a class="icon-btn" href="https://www.instagram.com/chicloveec" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Chic&amp;Love">
+        <a class="icon-btn" data-instagram-link target="_blank" rel="noopener noreferrer" aria-label="Instagram de Chic&amp;Love">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
         </a>
         <button class="icon-btn" id="cart-open" type="button" aria-label="Abrir carrito, 0 productos" aria-haspopup="dialog" aria-expanded="false">
@@ -91,10 +91,7 @@
           <div class="pd-badges" id="pd-badges"><span>Sin gluten</span><span>Sin lactosa</span><span>Vegetariano</span></div>
 
           <p class="pd-buy-label">Elige tu presentación</p>
-          <div class="pd-variants" id="pd-variants" role="radiogroup" aria-label="Elige tu presentación">
-            <div class="variant-opt on"><span><span class="v-name">1 frasco</span><br><span class="v-sub">60 gummies para 1 mes</span></span><span class="v-price">$27.90</span></div>
-            <div class="variant-opt featured"><span><span class="v-name">Pack x2 frascos <span class="save">Ahorra $7.90</span></span><br><span class="v-sub">$23.95 por frasco</span></span><span class="v-price">$47.90</span></div>
-          </div>
+          <div class="pd-variants" id="pd-variants" role="radiogroup" aria-label="Elige tu presentación"></div>
 
           <div class="pd-buy">
             <span class="qty">
@@ -102,7 +99,7 @@
               <span class="q" id="pd-qty">1</span>
               <button id="pd-qplus" type="button" aria-label="Aumentar cantidad">+</button>
             </span>
-            <button class="btn btn-accent" id="pd-add" type="button">Añadir al carrito — <span id="pd-add-price" aria-live="polite">$27.90</span></button>
+            <button class="btn btn-accent" id="pd-add" type="button">Añadir al carrito — <span id="pd-add-price" aria-live="polite">Precio</span></button>
           </div>
           <div class="pd-meta">
             <span>Envío 24–48 h</span>
@@ -142,7 +139,7 @@
       <img id="pd-sticky-img" src="assets/img/bottle-hair-nails.webp" alt="" width="463" height="900">
       <span><strong id="pd-sticky-name">Producto</strong><small id="pd-sticky-variant">1 frasco</small></span>
     </div>
-    <button class="btn btn-accent" id="pd-sticky-add" type="button">Añadir <span id="pd-sticky-price">$0.00</span></button>
+    <button class="btn btn-accent" id="pd-sticky-add" type="button">Añadir <span id="pd-sticky-price">Precio</span></button>
   </div>
 
   <footer class="footer mt-0" id="contacto">
@@ -152,10 +149,10 @@
           <a class="brand brand-lockup" href="index.html"><img src="assets/img/logo-white.png" alt="Chic&amp;Love Ecuador" width="610" height="197"><span class="brand-country" aria-hidden="true">Ecuador</span></a>
           <p class="about">Vitaminas en gomitas con activos naturales para verte y sentirte increíble. Hecho con amor para Ecuador.</p>
           <div class="footer-social">
-            <a href="https://www.instagram.com/chicloveec" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <a data-instagram-link target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
             </a>
-            <a href="https://wa.me/593984012787" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <a data-whatsapp-link target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1a13 13 0 0 1-5.7-5 6.6 6.6 0 0 1-1.3-3.4c0-1.6.9-2.4 1.2-2.7.3-.3.7-.4.9-.4h.6c.2 0 .5-.1.7.5l1 2.3c0 .2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.1.3.7 1.1 1.5 1.9 1 .9 1.9 1.2 2.2 1.4.3.1.5.1.7-.1l.8-1c.2-.3.4-.2.7-.1l2.2 1c.3.2.5.3.6.4 0 .2 0 .7-.2 1.2Z"/></svg>
             </a>
           </div>
@@ -175,15 +172,15 @@
           <ul>
             <li><a href="index.html#faq">Preguntas frecuentes</a></li>
             <li><a href="index.html#ritual">Cómo tomarlas</a></li>
-            <li><a href="https://wa.me/593984012787" target="_blank" rel="noopener noreferrer">Estado de mi pedido</a></li>
+            <li><a data-whatsapp-link target="_blank" rel="noopener noreferrer">Estado de mi pedido</a></li>
             <li><a href="nosotros.html">Sobre nosotros</a></li>
           </ul>
         </div>
         <div>
           <h2>Contacto</h2>
           <ul>
-            <li><a href="https://wa.me/593984012787" target="_blank" rel="noopener noreferrer">WhatsApp: 098 401 2787</a></li>
-            <li><a href="https://www.instagram.com/chicloveec" target="_blank" rel="noopener noreferrer">Instagram: @chicloveec</a></li>
+            <li><a data-whatsapp-link data-whatsapp-label target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+            <li><a data-instagram-link data-instagram-label target="_blank" rel="noopener noreferrer">Instagram</a></li>
             <li>Ecuador</li>
           </ul>
         </div>
@@ -195,8 +192,8 @@
     </div>
   </footer>
 
-  <script src="js/products.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/product-page.js"></script>
+  <script src="js/products.js?v=20260719-1622"></script>
+  <script src="js/main.js?v=20260719-1622"></script>
+  <script src="js/product-page.js?v=20260719-1622"></script>
 </body>
 </html>

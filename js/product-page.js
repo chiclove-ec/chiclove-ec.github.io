@@ -80,10 +80,17 @@
   });
 
   // Variantes
-  var saveAmt = product.price * 2 - product.pricePack;
+  var singlePrice = clSinglePrice(product);
+  var promoActive = clIsJulyPromoActive();
+  var saveSingle = product.price - singlePrice;
+  var originalPack2 = product.price * 2;
+  var originalPack3 = product.price * 3;
+  var savePack2 = originalPack2 - product.pricePack;
+  var savePack3 = originalPack3 - product.pricePack3;
   var variants = [
-    { key: "uno", name: "1 frasco", sub: "60 gummies para 1 mes", price: product.price, save: 0 },
-    { key: "pack", name: "Pack x2 frascos", sub: clMoney(product.pricePack / 2) + " por frasco", price: product.pricePack, save: saveAmt }
+    { key: "uno", name: "1 frasco", sub: promoActive ? "Antes " + clMoney(product.price) + ", ahorras " + clMoney(saveSingle) : "60 gummies para 1 mes", price: singlePrice, badge: promoActive ? "Promo julio" : "" },
+    { key: "pack", name: "Pack x2 frascos", sub: "Antes " + clMoney(originalPack2), price: product.pricePack, badge: "Ahorra " + clMoney(savePack2) },
+    { key: "pack3", name: "Pack x3 frascos", sub: "Antes " + clMoney(originalPack3), price: product.pricePack3, badge: "Ahorra " + clMoney(savePack3) }
   ];
   var vBox = document.getElementById("pd-variants");
 
@@ -99,7 +106,7 @@
     variants.forEach(function (v, index) {
       var b = document.createElement("button");
       b.type = "button";
-      b.className = "variant-opt" + (v.key === "pack" ? " featured" : "") + (state.variant === v.key ? " on" : "");
+      b.className = "variant-opt" + (v.key !== "uno" ? " featured" : "") + (state.variant === v.key ? " on" : "");
       b.setAttribute("role", "radio");
       b.setAttribute("aria-checked", state.variant === v.key ? "true" : "false");
       b.tabIndex = state.variant === v.key ? 0 : -1;
@@ -108,10 +115,10 @@
       var nm = document.createElement("span");
       nm.className = "v-name";
       nm.textContent = v.name;
-      if (v.save > 0.009) {
+      if (v.badge) {
         var sv = document.createElement("span");
         sv.className = "save";
-        sv.textContent = "Ahorra " + clMoney(v.save);
+        sv.textContent = v.badge;
         nm.appendChild(sv);
       }
       var sub = document.createElement("span");
@@ -142,15 +149,24 @@
   }
 
   function currentPrice() {
-    return state.variant === "pack" ? product.pricePack : product.price;
+    if (state.variant === "pack3") return product.pricePack3;
+    return state.variant === "pack" ? product.pricePack : clSinglePrice(product);
+  }
+
+  function currentTotal() {
+    if (state.variant === "uno") return clBestSingleBundle(product, state.qty).total;
+    return currentPrice() * state.qty;
   }
 
   function updateBuy() {
-    var chosen = state.variant === "pack" ? "Pack x2" : "1 frasco";
+    var chosen = state.variant === "pack3" ? "Pack x3" : (state.variant === "pack" ? "Pack x2" : "1 frasco");
+    if (state.variant === "uno" && state.qty === 2) chosen = "2 frascos, pack x2 aplicado";
+    else if (state.variant === "uno" && state.qty === 3) chosen = "3 frascos, pack x3 aplicado";
+    else if (state.variant === "uno" && state.qty > 3) chosen = state.qty + " frascos, descuento por packs aplicado";
     document.getElementById("pd-qty").textContent = String(state.qty);
-    document.getElementById("pd-add-price").textContent = clMoney(currentPrice() * state.qty);
-    document.getElementById("pd-sticky-price").textContent = clMoney(currentPrice() * state.qty);
-    document.getElementById("pd-sticky-variant").textContent = chosen + (state.qty > 1 ? " por " + state.qty : "");
+    document.getElementById("pd-add-price").textContent = clMoney(currentTotal());
+    document.getElementById("pd-sticky-price").textContent = clMoney(currentTotal());
+    document.getElementById("pd-sticky-variant").textContent = state.variant === "uno" ? chosen : chosen + (state.qty > 1 ? " por " + state.qty : "");
   }
 
   document.getElementById("pd-qminus").addEventListener("click", function () {
