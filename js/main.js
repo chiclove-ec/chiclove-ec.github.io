@@ -159,7 +159,6 @@ function cartAdd(id, variant, qty) {
   else items.push({ id: id, variant: variant, qty: qty });
   cartSave(items);
   renderCart();
-  toast(p.short + " añadido al carrito");
   openCart();
 }
 
@@ -374,6 +373,8 @@ function productCard(p, revealDelay) {
   image.setAttribute("data-lazy-src", p.splash);
   image.setAttribute("data-lazy-srcset", p.splashSmall + " 640w, " + p.splash + " " + p.splashWidth + "w");
   image.setAttribute("data-lazy-sizes", "(max-width: 720px) 80vw, 280px");
+  image.width = p.splashWidth;
+  image.height = 1600;
   image.alt = p.name;
   image.loading = "lazy";
   image.decoding = "async";

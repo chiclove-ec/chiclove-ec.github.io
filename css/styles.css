@@ -272,6 +272,8 @@ p, li { text-wrap: pretty; }
   display: flex;
   flex-direction: column;
   padding: 24px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   transform: translateX(100%);
   transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s linear 0.35s;
   visibility: hidden;
@@ -887,7 +889,7 @@ p, li { text-wrap: pretty; }
 }
 .cart-item .rm:hover { background: #fbe9e9; color: #c0392b; }
 .cart-item .qty button { width: 36px; height: 36px; }
-.cart-foot { border-top: 1px solid var(--line); padding: 20px 24px 26px; }
+.cart-foot { border-top: 1px solid var(--line); padding: 20px 24px max(26px, calc(16px + env(safe-area-inset-bottom, 0px))); }
 .cart-total { display: flex; justify-content: space-between; font-weight: 700; font-size: 17px; margin-bottom: 6px; }
 .cart-shipping { margin: 12px 0 14px; }
 .cart-shipping p { color: var(--ink-2); font-size: 12px; font-weight: 650; }
@@ -1268,7 +1270,7 @@ p, li { text-wrap: pretty; }
   .pd-assurance > div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
   .pd-sticky {
     position: fixed;
-    inset: auto 10px 10px;
+    inset: auto 10px max(10px, env(safe-area-inset-bottom, 0px));
     z-index: 45;
     display: flex;
     align-items: center;
@@ -1318,7 +1320,7 @@ p, li { text-wrap: pretty; }
   .header .nav-actions > a.icon-btn { display: none; }
   .header .brand-lockup img { height: 28px; }
   .header .brand-country { font-size: 6px; }
-  .mobile-menu { width: min(330px, 90vw); padding: 24px; }
+  .mobile-menu { width: 100%; padding: 24px; }
   .mobile-menu-head { margin-bottom: 26px; }
   .mobile-menu nav a { padding: 12px 4px; font-size: 18px; }
 
@@ -1370,7 +1372,7 @@ p, li { text-wrap: pretty; }
   #productos .pcard,
   .page-product .related .pcard,
   .step,
-  .tcard { scroll-snap-align: start; }
+  .tcard { scroll-snap-align: start; scroll-snap-stop: always; }
   .page-store .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .pcard { padding: 18px 14px 15px; border-radius: 22px; }
   .pcard-tag { top: 12px; left: 12px; padding: 4px 8px; font-size: 8.5px; }

@@ -174,13 +174,29 @@
   var sticky = document.getElementById("pd-sticky");
   var buyBox = document.querySelector(".pd-buy");
   if (sticky && buyBox && "IntersectionObserver" in window) {
-    var stickyObserver = new IntersectionObserver(function (entries) {
-      var shouldShow = !entries[0].isIntersecting && entries[0].boundingClientRect.top < 0;
+    var buyBoxPassed = false;
+    var purchaseContextEnded = false;
+    function updateSticky() {
+      var shouldShow = buyBoxPassed && !purchaseContextEnded;
       sticky.classList.toggle("show", shouldShow);
       sticky.setAttribute("aria-hidden", shouldShow ? "false" : "true");
       sticky.inert = !shouldShow;
+    }
+    var stickyObserver = new IntersectionObserver(function (entries) {
+      buyBoxPassed = !entries[0].isIntersecting && entries[0].boundingClientRect.top < 0;
+      updateSticky();
     }, { threshold: 0 });
     stickyObserver.observe(buyBox);
+
+    var relatedSection = document.querySelector(".related");
+    if (relatedSection) {
+      // Retira la barra antes de que compita con el título y las tarjetas relacionadas.
+      var stickyBoundaryObserver = new IntersectionObserver(function (entries) {
+        purchaseContextEnded = entries[0].isIntersecting || entries[0].boundingClientRect.top < 0;
+        updateSticky();
+      }, { threshold: 0, rootMargin: "0px 0px -78% 0px" });
+      stickyBoundaryObserver.observe(relatedSection);
+    }
   }
 
   // Relacionados: excluir el producto actual y re-renderizar
