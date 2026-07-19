@@ -184,18 +184,59 @@ function cartRemove(id, variant) {
   renderCart();
 }
 
+function whatsappItemDetails(it) {
+  var product = clFindProduct(it.id);
+  var quantity;
+
+  if (it.variant === "pack3") {
+    quantity = it.qty + (it.qty === 1 ? " pack de 3 frascos" : " packs de 3 frascos");
+  } else if (it.variant === "pack") {
+    quantity = it.qty + (it.qty === 1 ? " pack de 2 frascos" : " packs de 2 frascos");
+  } else {
+    quantity = it.qty + (it.qty === 1 ? " frasco" : " frascos");
+  }
+
+  var details = [
+    "*" + product.name + "*",
+    quantity + " - *" + clMoney(itemTotal(it)) + "*"
+  ];
+  if (it.variant === "uno" && it.qty > 1) {
+    details.push("Descuento por pack aplicado");
+  }
+  return details;
+}
+
+function whatsappOrderMessage(items) {
+  var lines = [
+    "Hola Chic&Love, quiero hacer este pedido:",
+    "",
+    "",
+    "*PEDIDO*",
+    "",
+    ""
+  ];
+
+  items.forEach(function (it) {
+    lines = lines.concat(whatsappItemDetails(it));
+    lines.push("", "");
+  });
+
+  lines.push(
+    "*TOTAL REFERENCIAL: " + clMoney(cartTotal(items)) + "*",
+    "",
+    "",
+    "*DATOS DE ENTREGA*",
+    "Nombre:",
+    "Ciudad:",
+    "Dirección:"
+  );
+  return lines.join("\n");
+}
+
 function checkoutWhatsApp() {
   var items = cartLoad();
   if (!items.length) { toast("Tu carrito está vacío"); return; }
-  var lines = ["¡Hola Chic&Love! Quiero hacer este pedido:", ""];
-  items.forEach(function (it) {
-    var p = clFindProduct(it.id);
-    var v = it.variant === "pack3" ? "Pack x3" : (it.variant === "pack" ? "Pack x2" : "1 frasco");
-    var automaticDiscount = it.variant === "uno" && it.qty > 1 ? ", descuento por packs aplicado" : "";
-    lines.push("• " + p.name + " (" + v + ") × " + it.qty + automaticDiscount + " — " + clMoney(itemTotal(it)));
-  });
-  lines.push("", "Total referencial: " + clMoney(cartTotal(items)), "El precio final será confirmado por Chic&Love.", "", "Mi nombre es: ");
-  var url = clWhatsAppUrl(lines.join("\n"));
+  var url = clWhatsAppUrl(whatsappOrderMessage(items));
   if (!url) {
     toast("No se pudo abrir WhatsApp. Escríbenos desde el enlace de contacto.");
     return;
@@ -542,13 +583,22 @@ function closeMenu() {
 /* ---------- datos comerciales desde una sola fuente ---------- */
 function initBusinessData() {
   var singleMinimum = clCurrentSingleMinimum();
+  var regularSingleMinimum = clCatalogMinimum("price");
   var pack2Minimum = clCatalogMinimum("pricePack");
   var pack3Minimum = clCatalogMinimum("pricePack3");
   var whatsappDisplay = clWhatsAppDisplay();
   var instagramHandle = "@" + CL_INSTAGRAM;
+  var julyPromoActive = clIsJulyPromoActive();
 
   document.querySelectorAll("[data-single-start]").forEach(function (el) {
-    el.textContent = "Desde " + clMoney(singleMinimum);
+    el.textContent = julyPromoActive
+      ? "Precio especial de julio: " + clMoney(singleMinimum)
+      : "Desde " + clMoney(singleMinimum);
+  });
+  document.querySelectorAll("[data-single-regular]").forEach(function (el) {
+    var wrapper = el.closest("[data-single-regular-wrap]");
+    if (wrapper) wrapper.hidden = !julyPromoActive;
+    el.textContent = julyPromoActive ? clMoney(regularSingleMinimum) : "";
   });
   document.querySelectorAll("[data-free-shipping-banner]").forEach(function (el) {
     el.textContent = "Envío gratis desde " + clMoney(CL_FREE_SHIPPING) + " en todo Ecuador.";
@@ -560,7 +610,7 @@ function initBusinessData() {
     el.textContent = "Sí, enviamos a todo el país. La entrega suele tardar entre 24 y 48 horas hábiles. Los pedidos desde " + clMoney(CL_FREE_SHIPPING) + " tienen envío gratis.";
   });
   document.querySelectorAll("[data-catalog-offer]").forEach(function (el) {
-    el.textContent = clIsJulyPromoActive()
+    el.textContent = julyPromoActive
       ? "Promo julio: 1 frasco por " + clMoney(singleMinimum) + "."
       : "Packs x2 por " + clMoney(pack2Minimum) + " y x3 por " + clMoney(pack3Minimum) + ".";
   });
