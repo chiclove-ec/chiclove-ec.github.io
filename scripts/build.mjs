@@ -40,20 +40,32 @@ const publicFiles = [
   "assets/img/bottle-sleep.webp",
   "assets/img/cover-lifestyle.webp",
   "assets/img/editorial-hair.webp",
+  "assets/img/editorial-hair-960.webp",
   "assets/img/editorial-hair-bite.webp",
+  "assets/img/editorial-hair-bite-960.webp",
   "assets/img/editorial-gummy.webp",
+  "assets/img/editorial-gummy-960.webp",
   "assets/img/editorial-ritual.webp",
+  "assets/img/editorial-ritual-960.webp",
   "assets/img/editorial-skin.webp",
+  "assets/img/editorial-skin-960.webp",
   "assets/img/favicon.svg",
   "assets/img/logo-dark.png",
   "assets/img/logo-white.png",
   "assets/img/splash-acv.webp",
+  "assets/img/splash-acv-640.webp",
   "assets/img/splash-antistress.webp",
+  "assets/img/splash-antistress-640.webp",
   "assets/img/splash-hair-nails.webp",
+  "assets/img/splash-hair-nails-640.webp",
   "assets/img/splash-radiant-skin.webp",
+  "assets/img/splash-radiant-skin-640.webp",
   "assets/img/splash-sexual-m.webp",
+  "assets/img/splash-sexual-m-640.webp",
   "assets/img/splash-sexual-w.webp",
-  "assets/img/splash-sleep.webp"
+  "assets/img/splash-sexual-w-640.webp",
+  "assets/img/splash-sleep.webp",
+  "assets/img/splash-sleep-640.webp"
 ];
 
 async function safeSource(entry) {

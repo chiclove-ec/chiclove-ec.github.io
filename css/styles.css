@@ -355,7 +355,7 @@ p, li { text-wrap: pretty; }
   will-change: transform;
 }
 .hero-bottle img { height: 100%; width: auto; object-fit: contain; }
-.hb-1 { height: 455px; left: 50%; top: 49%; translate: -50% -50%; z-index: 3; }
+.hb-1 { height: 455px; left: 50%; top: 49%; translate: -50% -50%; z-index: 3; animation: none; will-change: auto; }
 .hb-2 { height: 275px; left: 2%; top: 4%; z-index: 2; animation-delay: -2.4s; rotate: -7deg; }
 .hb-3 { height: 265px; right: 1%; bottom: -1%; z-index: 2; animation-delay: -4.8s; rotate: 6deg; }
 .stage-note {
@@ -946,7 +946,7 @@ p, li { text-wrap: pretty; }
   max-width: 72%;
   width: auto;
   filter: drop-shadow(0 30px 40px rgba(19, 19, 19, 0.2));
-  animation: floaty 7s ease-in-out infinite;
+  animation: none;
 }
 .pd-stage .ring {
   position: absolute;

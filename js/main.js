@@ -63,8 +63,14 @@ function revealLazyImage(image) {
   var source = image.getAttribute("data-lazy-src");
   if (!source) return;
   image.addEventListener("load", function () { image.classList.add("loaded"); }, { once: true });
+  var sourceSet = image.getAttribute("data-lazy-srcset");
+  var sizes = image.getAttribute("data-lazy-sizes");
+  if (sourceSet) image.srcset = sourceSet;
+  if (sizes) image.sizes = sizes;
   image.src = source;
   image.removeAttribute("data-lazy-src");
+  image.removeAttribute("data-lazy-srcset");
+  image.removeAttribute("data-lazy-sizes");
   if (image.complete) image.classList.add("loaded");
 }
 
@@ -366,6 +372,8 @@ function productCard(p, revealDelay) {
   var image = makeEl("img");
   image.className = "lazy-media";
   image.setAttribute("data-lazy-src", p.splash);
+  image.setAttribute("data-lazy-srcset", p.splashSmall + " 640w, " + p.splash + " " + p.splashWidth + "w");
+  image.setAttribute("data-lazy-sizes", "(max-width: 720px) 80vw, 280px");
   image.alt = p.name;
   image.loading = "lazy";
   image.decoding = "async";
@@ -375,6 +383,7 @@ function productCard(p, revealDelay) {
   var body = makeEl("div", "pcard-body");
   var rating = makeEl("div", "pcard-rating");
   var ratingStars = makeEl("span", "stars", starsFor(p.rating));
+  ratingStars.setAttribute("role", "img");
   ratingStars.setAttribute("aria-label", Math.round(p.rating) + " de 5 estrellas");
   rating.append(ratingStars, document.createTextNode(" " + p.rating.toFixed(1) + " con " + p.reviews + " reseñas"));
   body.appendChild(rating);

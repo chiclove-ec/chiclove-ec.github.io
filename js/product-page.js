@@ -3,7 +3,7 @@
    nunca se inyecta contenido de la URL en el DOM. */
 "use strict";
 
-document.addEventListener("DOMContentLoaded", function () {
+(function initProductPage() {
   var params = new URLSearchParams(window.location.search);
   var product = clFindProduct(params.get("id") || "");
 
@@ -41,6 +41,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var img = document.getElementById("pd-img");
   img.src = product.splash;
+  img.srcset = product.splashSmall + " 640w, " + product.splash + " " + product.splashWidth + "w";
+  img.sizes = "(max-width: 720px) 70vw, (max-width: 1024px) 440px, 500px";
   img.alt = "Frasco de " + product.name;
   document.getElementById("pd-sticky-img").src = product.bottle;
   document.getElementById("pd-sticky-img").alt = product.name;
@@ -51,10 +53,12 @@ document.addEventListener("DOMContentLoaded", function () {
   var stars = document.createElement("span");
   stars.className = "stars";
   stars.textContent = "★★★★★";
+  stars.setAttribute("role", "img");
   stars.setAttribute("aria-label", Math.round(product.rating) + " de 5 estrellas");
   rating.append(stars, " " + product.rating.toFixed(1) + " con " + product.reviews + " reseñas verificadas");
 
   var badges = document.getElementById("pd-badges");
+  badges.textContent = "";
   product.badges.forEach(function (b) {
     var s = document.createElement("span");
     s.textContent = b;
@@ -185,4 +189,4 @@ document.addEventListener("DOMContentLoaded", function () {
     related.setAttribute("data-exclude", product.id);
     renderGrids();
   }
-});
+}());

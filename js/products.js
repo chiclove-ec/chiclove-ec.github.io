@@ -21,6 +21,8 @@ const CL_PRODUCTS = [
     badges: ["Sin gluten", "Sin lactosa", "Vegetariano"],
     bottle: "assets/img/bottle-hair-nails.webp",
     splash: "assets/img/splash-hair-nails.webp",
+    splashSmall: "assets/img/splash-hair-nails-640.webp",
+    splashWidth: 1107,
     goal: "cabello",
     goalLabel: "Cabello y uñas",
     benefits: [
@@ -49,6 +51,8 @@ const CL_PRODUCTS = [
     badges: ["Sin gluten", "Sin lactosa"],
     bottle: "assets/img/bottle-radiant-skin.webp",
     splash: "assets/img/splash-radiant-skin.webp",
+    splashSmall: "assets/img/splash-radiant-skin-640.webp",
+    splashWidth: 946,
     goal: "piel",
     goalLabel: "Piel radiante",
     benefits: [
@@ -77,6 +81,8 @@ const CL_PRODUCTS = [
     badges: ["Sin gluten", "Sin lactosa", "Vegano"],
     bottle: "assets/img/bottle-acv.webp",
     splash: "assets/img/splash-acv.webp",
+    splashSmall: "assets/img/splash-acv-640.webp",
+    splashWidth: 1118,
     goal: "digestion",
     goalLabel: "Digestión y balance",
     benefits: [
@@ -105,6 +111,8 @@ const CL_PRODUCTS = [
     badges: ["Sin gluten", "Sin azúcar", "Vegano"],
     bottle: "assets/img/bottle-sleep.webp",
     splash: "assets/img/splash-sleep.webp",
+    splashSmall: "assets/img/splash-sleep-640.webp",
+    splashWidth: 955,
     goal: "sueno",
     goalLabel: "Sueño reparador",
     benefits: [
@@ -133,6 +141,8 @@ const CL_PRODUCTS = [
     badges: ["Sin gluten", "Sin lactosa", "Vegano"],
     bottle: "assets/img/bottle-sexual-w.webp",
     splash: "assets/img/splash-sexual-w.webp",
+    splashSmall: "assets/img/splash-sexual-w-640.webp",
+    splashWidth: 1235,
     goal: "energia",
     goalLabel: "Energía íntima",
     benefits: [
@@ -161,6 +171,8 @@ const CL_PRODUCTS = [
     badges: ["Sin gluten", "Sin lactosa", "Vegano"],
     bottle: "assets/img/bottle-sexual-m.webp",
     splash: "assets/img/splash-sexual-m.webp",
+    splashSmall: "assets/img/splash-sexual-m-640.webp",
+    splashWidth: 1100,
     goal: "energia",
     goalLabel: "Energía íntima",
     benefits: [
@@ -178,7 +190,7 @@ const CL_PRODUCTS = [
     id: "anti-stress",
     name: "Anti-Stress Gummies",
     short: "Anti-Stress",
-    tagline: "Calma mental, en serio.",
+    tagline: "Serenidad para días intensos.",
     desc: "Ashwagandha, melisa y ginseng que regulan el cortisol para aliviar el estrés y la ansiedad, y ayudarte a fluir con el cambio.",
     accent: "#2B4FC7",
     accentDark: "#1D3894",
@@ -189,6 +201,8 @@ const CL_PRODUCTS = [
     badges: ["Sin gluten", "Sin lactosa", "Vegano"],
     bottle: "assets/img/bottle-antistress.webp",
     splash: "assets/img/splash-antistress.webp",
+    splashSmall: "assets/img/splash-antistress-640.webp",
+    splashWidth: 939,
     goal: "calma",
     goalLabel: "Calma y enfoque",
     benefits: [
