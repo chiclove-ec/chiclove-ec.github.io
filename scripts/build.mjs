@@ -17,6 +17,7 @@ if (basename(outputDir) !== "dist" || dirname(outputDir) !== projectRoot) {
 }
 
 const publicFiles = [
+  ".well-known/security.txt",
   "404.html",
   "index.html",
   "nosotros.html",
@@ -58,6 +59,9 @@ async function safeSource(entry) {
   const relativePath = relative(projectRoot, resolved);
   if (relativePath.startsWith("..") || isAbsolute(relativePath)) {
     throw new Error(`La entrada pública sale del proyecto: ${entry}`);
+  }
+  if (resolved !== resolve(source)) {
+    throw new Error(`La entrada pública contiene un enlace simbólico: ${entry}`);
   }
   return source;
 }

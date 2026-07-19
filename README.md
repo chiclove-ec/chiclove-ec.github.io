@@ -82,6 +82,7 @@ Después de desplegar, comprueba que `/README.md`, `/vercel.json`, `/_headers`,
 - Guard visual anti-frame como defensa adicional en hosts sin cabeceras configurables.
 - Build de despliegue por lista blanca: documentación, logs, capturas y configuración
   interna no llegan al artefacto público.
+- Canal de reporte de vulnerabilidades estándar en `/.well-known/security.txt`.
 - El `id` de producto de la URL se valida contra el catálogo (whitelist); nunca
   se inyecta contenido de la URL o del usuario en el DOM.
 - Enlaces externos con `rel="noopener noreferrer"`.

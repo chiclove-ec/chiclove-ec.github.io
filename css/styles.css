@@ -24,8 +24,21 @@
   --header-h: 72px;
 }
 
-/* frame-guard.js solo revela el documento cuando es la ventana superior. */
-html:not(.top-level) { visibility: hidden; }
+/* frame-guard.js solo revela la interfaz cuando es la ventana superior. */
+html:not(.top-level) body > * { visibility: hidden; }
+html:not(.top-level) .no-script-notice {
+  visibility: visible;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-content: center;
+  padding: 32px;
+  background: var(--paper);
+  color: var(--ink);
+  text-align: center;
+  font: 600 18px/1.5 var(--font-body);
+}
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
