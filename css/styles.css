@@ -54,7 +54,7 @@ html:not(.top-level) .no-script-notice {
   border: 0;
 }
 
-html { scroll-behavior: smooth; overflow-x: clip; scrollbar-gutter: stable; }
+html { scroll-behavior: smooth; overflow-x: clip; scrollbar-gutter: stable; scroll-padding-top: calc(var(--header-h) + 40px); }
 
 body {
   font-family: var(--font-body);
@@ -63,7 +63,7 @@ body {
   line-height: 1.6;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body.ui-locked { overflow: hidden; }
@@ -151,6 +151,13 @@ p, li { text-wrap: pretty; }
 .btn-white:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -12px rgba(0,0,0,0.45); }
 .btn-wide { width: 100%; }
 
+/* ---------- Cabecera fija (topbar + header apilados) ---------- */
+.site-top {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+}
+
 /* ---------- Barra superior ---------- */
 .topbar {
   position: relative;
@@ -176,8 +183,7 @@ p, li { text-wrap: pretty; }
 
 /* ---------- Header ---------- */
 .header {
-  position: sticky;
-  top: 0;
+  position: relative;
   z-index: 50;
   height: var(--header-h);
   display: flex;
