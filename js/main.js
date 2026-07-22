@@ -221,13 +221,17 @@ function whatsappOrderMessage(items) {
     lines.push("", "");
   });
 
+  var orderTotal = cartTotal(items);
+  var totalLine = "*TOTAL REFERENCIAL: " + clMoney(orderTotal) + "*";
+  if (orderTotal > 0 && orderTotal < CL_FREE_SHIPPING) totalLine += " + envío";
   lines.push(
-    "*TOTAL REFERENCIAL: " + clMoney(cartTotal(items)) + "*",
+    totalLine,
     "El precio referencial será verificado por un agente de Chic&Love.",
     "",
     "",
     "*DATOS DE ENTREGA*",
     "Nombre:",
+    "Celular:",
     "Cédula / RUC:",
     "Email:",
     "Ciudad:",
@@ -419,7 +423,12 @@ function renderCart() {
   });
   box.appendChild(addMore);
   var total = cartTotal(items);
-  if (totalEl) totalEl.textContent = clMoney(total);
+  if (totalEl) {
+    totalEl.textContent = clMoney(total);
+    if (total > 0 && total < CL_FREE_SHIPPING) {
+      totalEl.appendChild(makeEl("span", "cart-total-ship", "+ envío"));
+    }
+  }
   if (shippingProgress) shippingProgress.value = Math.min(total, CL_FREE_SHIPPING);
   if (shippingText) {
     if (total >= CL_FREE_SHIPPING) shippingText.textContent = "Tu pedido incluye envío gratis";
