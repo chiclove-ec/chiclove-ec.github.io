@@ -19,6 +19,7 @@ if (basename(outputDir) !== "dist" || dirname(outputDir) !== projectRoot) {
 const publicFiles = [
   ".well-known/security.txt",
   "404.html",
+  "googlee70d0e2c8fe95f2c.html",
   "index.html",
   "nosotros.html",
   "producto.html",
