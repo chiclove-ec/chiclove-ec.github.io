@@ -5,13 +5,15 @@
 
 (function initProductPage() {
   var params = new URLSearchParams(window.location.search);
-  var product = clFindProduct(params.get("id") || "");
+  // La página dedicada (/<id>.html) lleva el id en el body; la antigua producto.html usa ?id=
+  var pageId = (document.body && document.body.getAttribute("data-product-id")) || params.get("id") || "";
+  var product = clFindProduct(pageId);
 
   // id inválido o ausente → primer producto del catálogo como fallback amable
   if (!product) {
     product = CL_PRODUCTS[0];
     try {
-      window.history.replaceState(null, "", "producto.html?id=" + encodeURIComponent(product.id));
+      window.history.replaceState(null, "", product.id + ".html");
     } catch (e) { /* file:// puede restringir replaceState */ }
   }
 
@@ -25,7 +27,7 @@
   document.title = product.name + " — Chic&Love Ecuador";
   var pdDescription = document.getElementById("pd-description");
   if (pdDescription) pdDescription.content = product.desc + " Sabor " + product.flavor.toLowerCase() + ", 60 gummies. Envíos a todo Ecuador.";
-  var canonicalUrl = "https://chiclove-ec.github.io/producto.html?id=" + encodeURIComponent(product.id);
+  var canonicalUrl = "https://chiclove-ec.github.io/" + product.id + ".html";
   document.getElementById("pd-canonical").href = canonicalUrl;
   document.getElementById("pd-og-title").content = product.name + " — Chic&Love Ecuador";
   document.getElementById("pd-og-description").content = product.tagline + " " + product.desc;

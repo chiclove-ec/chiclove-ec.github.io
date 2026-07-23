@@ -438,7 +438,7 @@ function productCard(p, revealDelay) {
   card.style.setProperty("--a", p.accent);
   card.style.setProperty("--a-dark", p.accentDark);
   card.style.setProperty("--soft", p.soft);
-  var productUrl = "producto.html?id=" + encodeURIComponent(p.id);
+  var productUrl = encodeURIComponent(p.id) + ".html";
   card.appendChild(makeEl("span", "pcard-tag", p.goalLabel));
   var imageLink = makeEl("a", "pcard-img");
   imageLink.href = productUrl;
