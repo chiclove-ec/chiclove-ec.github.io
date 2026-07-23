@@ -23,6 +23,8 @@
   document.documentElement.style.setProperty("--a-soft", product.soft);
 
   document.title = product.name + " — Chic&Love Ecuador";
+  var pdDescription = document.getElementById("pd-description");
+  if (pdDescription) pdDescription.content = product.desc + " Sabor " + product.flavor.toLowerCase() + ", 60 gummies. Envíos a todo Ecuador.";
   var canonicalUrl = "https://chiclove-ec.github.io/producto.html?id=" + encodeURIComponent(product.id);
   document.getElementById("pd-canonical").href = canonicalUrl;
   document.getElementById("pd-og-title").content = product.name + " — Chic&Love Ecuador";
