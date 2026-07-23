@@ -122,7 +122,7 @@ const CL_PRODUCTS = [
     soft: "#E8F4FB",
     ...CL_PRODUCT_PRICING,
     flavor: "Fresa",
-    badges: ["Sin gluten", "Sin azúcar", "Vegano"],
+    badges: ["Sin gluten", "Sin lactosa", "Vegano"],
     bottle: "assets/img/bottle-sleep.webp",
     splash: "assets/img/splash-sleep.webp",
     splashSmall: "assets/img/splash-sleep-640.webp",

@@ -226,7 +226,7 @@ function whatsappOrderMessage(items) {
     "",
     "*DATOS DE ENTREGA*",
     "Nombre:",
-    "Celular:",
+    "Teléfono:",
     "Cédula / RUC:",
     "Email:",
     "Ciudad:",
