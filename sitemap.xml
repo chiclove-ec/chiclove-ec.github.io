@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://chiclove-ec.github.io/</loc></url>
-  <url><loc>https://chiclove-ec.github.io/tienda.html</loc></url>
-  <url><loc>https://chiclove-ec.github.io/nosotros.html</loc></url>
-  <url><loc>https://chiclove-ec.github.io/producto.html?id=hair-nails-forte</loc></url>
-  <url><loc>https://chiclove-ec.github.io/producto.html?id=radiant-skin</loc></url>
-  <url><loc>https://chiclove-ec.github.io/producto.html?id=vinagre-de-manzana</loc></url>
-  <url><loc>https://chiclove-ec.github.io/producto.html?id=sleep-vitamins</loc></url>
-  <url><loc>https://chiclove-ec.github.io/producto.html?id=sexual-booster-women</loc></url>
-  <url><loc>https://chiclove-ec.github.io/producto.html?id=sexual-booster-men</loc></url>
-  <url><loc>https://chiclove-ec.github.io/producto.html?id=anti-stress</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url><loc>https://chiclove-ec.github.io/</loc><lastmod>2026-07-23</lastmod><image:image><image:loc>https://chiclove-ec.github.io/assets/img/cover-lifestyle.webp</image:loc></image:image></url>
+  <url><loc>https://chiclove-ec.github.io/tienda.html</loc><lastmod>2026-07-23</lastmod></url>
+  <url><loc>https://chiclove-ec.github.io/nosotros.html</loc><lastmod>2026-07-23</lastmod></url>
+  <url><loc>https://chiclove-ec.github.io/producto.html?id=hair-nails-forte</loc><lastmod>2026-07-23</lastmod><image:image><image:loc>https://chiclove-ec.github.io/assets/img/hero-hair-nails.webp</image:loc><image:title>Hair &amp; Nails Forte</image:title></image:image></url>
+  <url><loc>https://chiclove-ec.github.io/producto.html?id=radiant-skin</loc><lastmod>2026-07-23</lastmod><image:image><image:loc>https://chiclove-ec.github.io/assets/img/hero-radiant-skin.webp</image:loc><image:title>Radiant Skin Vitamins</image:title></image:image></url>
+  <url><loc>https://chiclove-ec.github.io/producto.html?id=vinagre-de-manzana</loc><lastmod>2026-07-23</lastmod><image:image><image:loc>https://chiclove-ec.github.io/assets/img/hero-acv.webp</image:loc><image:title>Vinagre de Manzana</image:title></image:image></url>
+  <url><loc>https://chiclove-ec.github.io/producto.html?id=sleep-vitamins</loc><lastmod>2026-07-23</lastmod><image:image><image:loc>https://chiclove-ec.github.io/assets/img/hero-sleep.webp</image:loc><image:title>Sleep Vitamins</image:title></image:image></url>
+  <url><loc>https://chiclove-ec.github.io/producto.html?id=sexual-booster-women</loc><lastmod>2026-07-23</lastmod><image:image><image:loc>https://chiclove-ec.github.io/assets/img/hero-sexual-w.webp</image:loc><image:title>Sexual Booster Women</image:title></image:image></url>
+  <url><loc>https://chiclove-ec.github.io/producto.html?id=sexual-booster-men</loc><lastmod>2026-07-23</lastmod><image:image><image:loc>https://chiclove-ec.github.io/assets/img/hero-sexual-m.webp</image:loc><image:title>Sexual Booster Men</image:title></image:image></url>
+  <url><loc>https://chiclove-ec.github.io/producto.html?id=anti-stress</loc><lastmod>2026-07-23</lastmod><image:image><image:loc>https://chiclove-ec.github.io/assets/img/hero-antistress.webp</image:loc><image:title>Anti-Stress Gummies</image:title></image:image></url>
 </urlset>

@@ -29,6 +29,10 @@
   document.getElementById("pd-og-description").content = product.tagline + " " + product.desc;
   document.getElementById("pd-og-url").content = canonicalUrl;
   document.getElementById("pd-og-image").content = "https://chiclove-ec.github.io/" + product.hero;
+  var pdOgImageAlt = document.getElementById("pd-og-image-alt");
+  if (pdOgImageAlt) pdOgImageAlt.content = "Frasco de " + product.name;
+  var pdTwImage = document.getElementById("pd-tw-image");
+  if (pdTwImage) pdTwImage.content = "https://chiclove-ec.github.io/" + product.hero;
 
   // Textos (todo con textContent: cero riesgo de inyección)
   document.getElementById("pd-crumb").textContent = product.name;
