@@ -40,13 +40,6 @@ function trapDialogFocus(container, event) {
   }
 }
 
-function starsFor(rating) {
-  var full = Math.round(rating);
-  var out = "";
-  for (var i = 0; i < 5; i++) out += i < full ? "★" : "☆";
-  return out;
-}
-
 var toastTimer = null;
 function toast(msg) {
   var el = document.getElementById("cl-toast");
@@ -166,6 +159,8 @@ function cartAdd(id, variant, qty) {
   else items.push({ id: id, variant: variant, qty: qty });
   cartSave(items);
   renderCart();
+  var cartBadge = document.getElementById("cart-count");
+  if (cartBadge) { cartBadge.classList.remove("bump"); void cartBadge.offsetWidth; cartBadge.classList.add("bump"); }
   openCart();
 }
 
@@ -367,7 +362,7 @@ function renderCart() {
     var empty = makeEl("div", "cart-empty");
     empty.appendChild(makeEl("div", "empty-mark", "0"));
     var emptyText = makeEl("p", "", "Tu carrito está vacío.");
-    emptyText.append(document.createElement("br"), document.createTextNode("Tus gomitas favoritas te esperan."));
+    emptyText.append(document.createElement("br"), document.createTextNode("Tus vitaminas favoritas te esperan."));
     empty.appendChild(emptyText);
     box.appendChild(empty);
   } else {
@@ -450,11 +445,15 @@ function productCard(p, revealDelay) {
   imageLink.setAttribute("aria-label", "Ver " + p.name);
   var image = makeEl("img");
   image.className = "lazy-media";
-  image.setAttribute("data-lazy-src", p.splash);
-  image.setAttribute("data-lazy-srcset", p.splashSmall + " 640w, " + p.splash + " " + p.splashWidth + "w");
+  var useStore = (document.body.classList.contains("page-store") || document.body.classList.contains("page-product")) && p.store;
+  var cardSrc = useStore ? p.store : p.splash;
+  var cardSmall = useStore ? p.storeSmall : p.splashSmall;
+  var cardWidth = useStore ? 900 : p.splashWidth;
+  image.setAttribute("data-lazy-src", cardSrc);
+  image.setAttribute("data-lazy-srcset", cardSmall + " 640w, " + cardSrc + " " + cardWidth + "w");
   image.setAttribute("data-lazy-sizes", "(max-width: 720px) 80vw, 280px");
-  image.width = p.splashWidth;
-  image.height = 1600;
+  image.width = cardWidth;
+  image.height = useStore ? 1361 : 1600;
   image.alt = p.name;
   image.loading = "lazy";
   image.decoding = "async";
@@ -462,12 +461,8 @@ function productCard(p, revealDelay) {
   card.appendChild(imageLink);
 
   var body = makeEl("div", "pcard-body");
-  var rating = makeEl("div", "pcard-rating");
-  var ratingStars = makeEl("span", "stars", starsFor(p.rating));
-  ratingStars.setAttribute("role", "img");
-  ratingStars.setAttribute("aria-label", Math.round(p.rating) + " de 5 estrellas");
-  rating.append(ratingStars, document.createTextNode(" " + p.rating.toFixed(1) + " con " + p.reviews + " reseñas"));
-  body.appendChild(rating);
+  var meta = makeEl("div", "pcard-rating", "Sabor " + p.flavor + ", 60 gummies");
+  body.appendChild(meta);
   var heading = makeEl(document.body.classList.contains("page-store") ? "h2" : "h3");
   var nameLink = makeEl("a", "", p.name);
   nameLink.href = productUrl;
@@ -565,6 +560,47 @@ function observeReveals(scope) {
   (scope || document).querySelectorAll(".reveal:not(.in)").forEach(function (el) { revealObserver.observe(el); });
 }
 
+/* ---------- contadores animados (delicados) ---------- */
+var countObserver = null;
+function animateCount(el) {
+  if (el.dataset.counted) return;
+  var text = el.textContent.trim();
+  var match = text.match(/\d[\d.]*/);
+  if (!match) return;
+  var raw = match[0];
+  var thousands = /\d\.\d{3}/.test(raw);
+  var target = parseInt(raw.replace(/\./g, ""), 10);
+  if (!isFinite(target) || target <= 0) return;
+  el.dataset.counted = "1";
+  var prefix = text.slice(0, match.index);
+  var suffix = text.slice(match.index + raw.length);
+  var fmt = function (n) { return thousands ? String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ".") : String(n); };
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) { el.textContent = prefix + fmt(target) + suffix; return; }
+  var duration = 1100, startTs = null;
+  var step = function (ts) {
+    if (startTs === null) startTs = ts;
+    var p = Math.min((ts - startTs) / duration, 1);
+    var eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = prefix + fmt(Math.round(target * eased)) + suffix;
+    if (p < 1) requestAnimationFrame(step);
+    else el.textContent = prefix + fmt(target) + suffix;
+  };
+  requestAnimationFrame(step);
+}
+function observeCounters(scope) {
+  var nums = (scope || document).querySelectorAll(".stat .num");
+  if (!("IntersectionObserver" in window)) { nums.forEach(animateCount); return; }
+  if (!countObserver) {
+    countObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { animateCount(en.target); countObserver.unobserve(en.target); }
+      });
+    }, { threshold: 0.7 });
+  }
+  nums.forEach(function (n) { countObserver.observe(n); });
+}
+
 /* ---------- menú móvil ---------- */
 function openMenu() {
   var m = document.getElementById("mobile-menu");
@@ -633,7 +669,7 @@ function initBusinessData() {
     el.textContent = "A todo Ecuador. Gratis desde " + clMoney(CL_FREE_SHIPPING) + ".";
   });
   document.querySelectorAll("[data-free-shipping-faq]").forEach(function (el) {
-    el.textContent = "Sí, enviamos a todo el país. La entrega suele tardar entre 24 y 48 horas hábiles. Los pedidos desde " + clMoney(CL_FREE_SHIPPING) + " tienen envío gratis.";
+    el.textContent = "Sí, enviamos a todo el país. Los pedidos desde " + clMoney(CL_FREE_SHIPPING) + " tienen envío gratis.";
   });
   document.querySelectorAll("[data-catalog-offer]").forEach(function (el) {
     el.textContent = julyPromoActive
@@ -641,8 +677,9 @@ function initBusinessData() {
       : "Packs x2 por " + clMoney(pack2Minimum) + " y x3 por " + clMoney(pack3Minimum) + ".";
   });
 
+  var whatsappContactMessage = "Hola Chic&Love, soy ... y quiero más información sobre las gummies.";
   document.querySelectorAll("[data-whatsapp-link]").forEach(function (link) {
-    var url = clWhatsAppUrl(link.getAttribute("data-whatsapp-text") || "");
+    var url = clWhatsAppUrl(link.getAttribute("data-whatsapp-text") || whatsappContactMessage);
     activateExternalLink(link, url, "WhatsApp");
     if (link.hasAttribute("data-whatsapp-label")) link.textContent = "WhatsApp: " + whatsappDisplay;
   });
@@ -666,6 +703,7 @@ document.addEventListener("DOMContentLoaded", function () {
   renderGrids();
   initChips();
   observeReveals(document);
+  observeCounters(document);
   observeLazyImages(document);
 
   document.querySelectorAll("[data-editorial-product]").forEach(function (link) {

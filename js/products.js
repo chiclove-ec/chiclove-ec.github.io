@@ -25,12 +25,16 @@ const CL_PRODUCTS = [
     accentDark: "#6A4FA8",
     soft: "#F1EBFB",
     ...CL_PRODUCT_PRICING,
-    flavor: "Frutos rojos",
-    badges: ["Sin gluten", "Sin lactosa", "Vegetariano"],
+    flavor: "Arándanos",
+    badges: ["Sin gluten", "Sin lactosa", "Vegano"],
     bottle: "assets/img/bottle-hair-nails.webp",
     splash: "assets/img/splash-hair-nails.webp",
     splashSmall: "assets/img/splash-hair-nails-640.webp",
-    splashWidth: 1107,
+    store: "assets/img/store-hair-nails.webp",
+    storeSmall: "assets/img/store-hair-nails-640.webp",
+    hero: "assets/img/hero-hair-nails.webp",
+    heroSmall: "assets/img/hero-hair-nails-640.webp",
+    splashWidth: 1160,
     goal: "cabello",
     goalLabel: "Cabello y uñas",
     benefits: [
@@ -40,8 +44,7 @@ const CL_PRODUCTS = [
       "El grupo de vitaminas B aumenta el flujo de sangre al cuero cabelludo para un pelo fuerte y brillante."
     ],
     actives: ["Biotina", "Vitamina B12", "Ácido fólico", "Vitamina A", "Vitamina D", "Ashwagandha", "Zinc"],
-    dose: "2 gummies al día",
-    rating: 4.9,
+    dose: "2 gummies al día después de la comida",
     reviews: 214
   },
   {
@@ -49,7 +52,7 @@ const CL_PRODUCTS = [
     name: "Radiant Skin Vitamins",
     short: "Radiant Skin",
     tagline: "Tu piel, en modo glow.",
-    desc: "Colágeno, coenzima Q10 y biotina en una gomita que ilumina, hidrata y devuelve la elasticidad a tu piel desde adentro.",
+    desc: "Colágeno, coenzima Q10 y biotina en una gummy que ilumina, hidrata y devuelve la elasticidad a tu piel desde adentro.",
     accent: "#E88998",
     accentDark: "#B44F64",
     soft: "#FBEBEE",
@@ -59,6 +62,10 @@ const CL_PRODUCTS = [
     bottle: "assets/img/bottle-radiant-skin.webp",
     splash: "assets/img/splash-radiant-skin.webp",
     splashSmall: "assets/img/splash-radiant-skin-640.webp",
+    store: "assets/img/store-radiant-skin.webp",
+    storeSmall: "assets/img/store-radiant-skin-640.webp",
+    hero: "assets/img/hero-radiant-skin.webp",
+    heroSmall: "assets/img/hero-radiant-skin-640.webp",
     splashWidth: 946,
     goal: "piel",
     goalLabel: "Piel radiante",
@@ -70,15 +77,14 @@ const CL_PRODUCTS = [
     ],
     actives: ["Colágeno", "Coenzima Q10", "Biotina", "Vitamina C", "Vitamina E"],
     dose: "2 gummies al día",
-    rating: 4.8,
     reviews: 189
   },
   {
     id: "vinagre-de-manzana",
-    name: "Vinagre de Manzana ACV",
-    short: "Apple Cider",
-    tagline: "Digestión ligera. Energía limpia.",
-    desc: "ACV con extracto de jengibre: glucosa estable, digestión feliz y control de peso — sin el sabor ácido del vinagre.",
+    name: "Vinagre de Manzana",
+    short: "Vinagre",
+    tagline: "Digestión ligera.",
+    desc: "Vinagre de manzana con extracto de jengibre: glucosa estable, digestión y control de peso — sin el sabor ácido del vinagre.",
     accent: "#35B34A",
     accentDark: "#1D712D",
     soft: "#E9F7EC",
@@ -88,18 +94,21 @@ const CL_PRODUCTS = [
     bottle: "assets/img/bottle-acv.webp",
     splash: "assets/img/splash-acv.webp",
     splashSmall: "assets/img/splash-acv-640.webp",
+    store: "assets/img/store-acv.webp",
+    storeSmall: "assets/img/store-acv-640.webp",
+    hero: "assets/img/hero-acv.webp",
+    heroSmall: "assets/img/hero-acv-640.webp",
     splashWidth: 1118,
     goal: "digestion",
     goalLabel: "Digestión y balance",
     benefits: [
       "Ayuda a mantener estables los niveles de glucosa en sangre y facilita la digestión.",
       "Efecto probiótico que favorece la generación de bacterias saludables en el tracto intestinal.",
-      "El jengibre desinflama la microbiota: menos gases, menos hinchazón, adiós toxinas.",
+      "Regula la digestión y la microbiota, y reduce la hinchazón.",
       "Contribuye al control de peso y ayuda a absorber minerales y vitaminas."
     ],
-    actives: ["Vinagre de manzana", "Extracto de jengibre", "Vitamina B12"],
-    dose: "2 gummies en ayunas, o 1 después de la comida",
-    rating: 4.8,
+    actives: ["Vinagre de manzana", "Extracto de jengibre"],
+    dose: "2 gummies al día después de la comida",
     reviews: 176
   },
   {
@@ -117,6 +126,10 @@ const CL_PRODUCTS = [
     bottle: "assets/img/bottle-sleep.webp",
     splash: "assets/img/splash-sleep.webp",
     splashSmall: "assets/img/splash-sleep-640.webp",
+    store: "assets/img/store-sleep.webp",
+    storeSmall: "assets/img/store-sleep-640.webp",
+    hero: "assets/img/hero-sleep.webp",
+    heroSmall: "assets/img/hero-sleep-640.webp",
     splashWidth: 955,
     goal: "sueno",
     goalLabel: "Sueño reparador",
@@ -127,8 +140,7 @@ const CL_PRODUCTS = [
       "Melatonina + B6: regenera las defensas de piel y pelo contra el estrés oxidativo."
     ],
     actives: ["Melatonina", "Vitamina B6"],
-    dose: "1–3 gummies antes de dormir según tu patrón de sueño",
-    rating: 4.9,
+    dose: "1–3 gummies al día antes de dormir",
     reviews: 241
   },
   {
@@ -146,6 +158,10 @@ const CL_PRODUCTS = [
     bottle: "assets/img/bottle-sexual-w.webp",
     splash: "assets/img/splash-sexual-w.webp",
     splashSmall: "assets/img/splash-sexual-w-640.webp",
+    store: "assets/img/store-sexual-w.webp",
+    storeSmall: "assets/img/store-sexual-w-640.webp",
+    hero: "assets/img/hero-sexual-w.webp",
+    heroSmall: "assets/img/hero-sexual-w-640.webp",
     splashWidth: 1235,
     goal: "energia",
     goalLabel: "Energía íntima",
@@ -157,7 +173,6 @@ const CL_PRODUCTS = [
     ],
     actives: ["Maca", "Damiana", "Ashwagandha"],
     dose: "2 gummies al día después del desayuno",
-    rating: 4.7,
     reviews: 132
   },
   {
@@ -175,18 +190,21 @@ const CL_PRODUCTS = [
     bottle: "assets/img/bottle-sexual-m.webp",
     splash: "assets/img/splash-sexual-m.webp",
     splashSmall: "assets/img/splash-sexual-m-640.webp",
+    store: "assets/img/store-sexual-m.webp",
+    storeSmall: "assets/img/store-sexual-m-640.webp",
+    hero: "assets/img/hero-sexual-m.webp",
+    heroSmall: "assets/img/hero-sexual-m-640.webp",
     splashWidth: 1100,
     goal: "energia",
     goalLabel: "Energía íntima",
     benefits: [
       "Aumenta la libido y el rendimiento sexual.",
       "Mejora la calidad del esperma e incrementa la fertilidad.",
-      "Estabiliza los canales de energía con maca y damiana.",
+      "Estabiliza los canales de energía con maca.",
       "Ingredientes activos 100% naturales."
     ],
-    actives: ["Maca", "Fenogreco", "Zinc"],
+    actives: ["Maca", "Fenogreco", "Zinc", "L-arginina"],
     dose: "2 gummies al día después del desayuno",
-    rating: 4.7,
     reviews: 118
   },
   {
@@ -204,6 +222,10 @@ const CL_PRODUCTS = [
     bottle: "assets/img/bottle-antistress.webp",
     splash: "assets/img/splash-antistress.webp",
     splashSmall: "assets/img/splash-antistress-640.webp",
+    store: "assets/img/store-antistress.webp",
+    storeSmall: "assets/img/store-antistress-640.webp",
+    hero: "assets/img/hero-antistress.webp",
+    heroSmall: "assets/img/hero-antistress-640.webp",
     splashWidth: 939,
     goal: "calma",
     goalLabel: "Calma y enfoque",
@@ -214,8 +236,7 @@ const CL_PRODUCTS = [
       "La ashwagandha, planta adaptógena, regula los niveles de cortisol."
     ],
     actives: ["Ashwagandha", "Melisa", "Ginseng"],
-    dose: "2 gummies al día en periodos de estrés",
-    rating: 4.8,
+    dose: "2 gummies al día después de la cena",
     reviews: 167
   }
 ];

@@ -28,7 +28,7 @@
   document.getElementById("pd-og-title").content = product.name + " — Chic&Love Ecuador";
   document.getElementById("pd-og-description").content = product.tagline + " " + product.desc;
   document.getElementById("pd-og-url").content = canonicalUrl;
-  document.getElementById("pd-og-image").content = "https://chiclove-ec.github.io/" + product.splash;
+  document.getElementById("pd-og-image").content = "https://chiclove-ec.github.io/" + product.hero;
 
   // Textos (todo con textContent: cero riesgo de inyección)
   document.getElementById("pd-crumb").textContent = product.name;
@@ -40,22 +40,13 @@
   document.getElementById("pd-dose").textContent = product.dose;
 
   var img = document.getElementById("pd-img");
-  img.src = product.splash;
-  img.srcset = product.splashSmall + " 640w, " + product.splash + " " + product.splashWidth + "w";
+  img.src = product.hero;
+  img.srcset = product.heroSmall + " 640w, " + product.hero + " 1080w";
   img.sizes = "(max-width: 720px) 70vw, (max-width: 1024px) 440px, 500px";
   img.alt = "Frasco de " + product.name;
   document.getElementById("pd-sticky-img").src = product.bottle;
   document.getElementById("pd-sticky-img").alt = product.name;
   document.getElementById("pd-sticky-name").textContent = product.short;
-
-  var rating = document.getElementById("pd-rating");
-  rating.textContent = "";
-  var stars = document.createElement("span");
-  stars.className = "stars";
-  stars.textContent = "★★★★★";
-  stars.setAttribute("role", "img");
-  stars.setAttribute("aria-label", Math.round(product.rating) + " de 5 estrellas");
-  rating.append(stars, " " + product.rating.toFixed(1) + " con " + product.reviews + " reseñas verificadas");
 
   var badges = document.getElementById("pd-badges");
   badges.textContent = "";
