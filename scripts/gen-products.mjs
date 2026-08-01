@@ -17,7 +17,7 @@ const productsSrc = readFileSync(resolve(root, "js/products.js"), "utf8").replac
 const catalog = {};
 new Function(
   "Date",
-  productsSrc + "\nthis.CL_PRODUCTS=CL_PRODUCTS; this.clSinglePrice=clSinglePrice; this.clIsJulyPromoActive=clIsJulyPromoActive;"
+  productsSrc + "\nthis.CL_PRODUCTS=CL_PRODUCTS; this.clSinglePrice=clSinglePrice;"
 ).call(catalog, Date);
 
 const template = readFileSync(resolve(root, "producto.html"), "utf8");
@@ -31,7 +31,6 @@ for (const p of catalog.CL_PRODUCTS) {
   const metaDesc = p.desc + " Sabor " + p.flavor.toLowerCase() + ", 60 gummies. Envíos a todo Ecuador.";
   const ogDesc = p.tagline + " " + p.desc;
   const imgAlt = "Frasco de " + p.name;
-  const promo = catalog.clIsJulyPromoActive();
 
   const productLd = {
     "@context": "https://schema.org",
@@ -47,8 +46,8 @@ for (const p of catalog.CL_PRODUCTS) {
       "@type": "Offer",
       url: url,
       priceCurrency: "USD",
-      price: catalog.clSinglePrice(p).toFixed(2),
-      priceValidUntil: promo ? "2026-08-01" : "2027-07-31",
+      price: p.price.toFixed(2),
+      priceValidUntil: "2027-07-31",
       availability: "https://schema.org/InStock",
       itemCondition: "https://schema.org/NewCondition",
       seller: { "@id": BASE + "#organization" }

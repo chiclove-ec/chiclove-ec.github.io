@@ -80,14 +80,12 @@
 
   // Variantes
   var singlePrice = clSinglePrice(product);
-  var promoActive = clIsJulyPromoActive();
-  var saveSingle = product.price - singlePrice;
   var originalPack2 = product.price * 2;
   var originalPack3 = product.price * 3;
   var savePack2 = originalPack2 - product.pricePack;
   var savePack3 = originalPack3 - product.pricePack3;
   var variants = [
-    { key: "uno", name: "1 frasco", sub: promoActive ? "Antes " + clMoney(product.price) + ", ahorras " + clMoney(saveSingle) : "60 gummies para 1 mes", price: singlePrice, badge: promoActive ? "Promo julio" : "" },
+    { key: "uno", name: "1 frasco", sub: "60 gummies para 1 mes", price: singlePrice, badge: "" },
     { key: "pack", name: "Pack x2 frascos", sub: "Antes " + clMoney(originalPack2), price: product.pricePack, badge: "Ahorra " + clMoney(savePack2) },
     { key: "pack3", name: "Pack x3 frascos", sub: "Antes " + clMoney(originalPack3), price: product.pricePack3, badge: "Ahorra " + clMoney(savePack3) }
   ];

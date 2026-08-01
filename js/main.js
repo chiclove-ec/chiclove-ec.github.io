@@ -471,14 +471,9 @@ function productCard(p, revealDelay) {
   body.appendChild(makeEl("p", "ptagline", p.tagline));
   var cardFoot = makeEl("div", "pcard-foot");
   var singlePrice = clSinglePrice(p);
-  var promoActive = clIsJulyPromoActive();
   var price = makeEl("div", "pcard-price");
   var priceHead = makeEl("div", "pcard-price-head");
   priceHead.appendChild(makeEl("strong", "pcard-now-price", clMoney(singlePrice)));
-  if (promoActive) {
-    priceHead.appendChild(makeEl("del", "pcard-was-price", clMoney(p.price)));
-    priceHead.appendChild(makeEl("span", "pcard-promo", "Promo julio"));
-  }
   price.appendChild(priceHead);
   var packPrices = makeEl("div", "pcard-pack-prices");
   packPrices.appendChild(makeEl("small", "", "Pack x2 " + clMoney(p.pricePack)));
@@ -631,12 +626,10 @@ function closeMenu() {
 /* ---------- datos comerciales desde una sola fuente ---------- */
 function initBusinessData() {
   var singleMinimum = clCurrentSingleMinimum();
-  var regularSingleMinimum = clCatalogMinimum("price");
   var pack2Minimum = clCatalogMinimum("pricePack");
   var pack3Minimum = clCatalogMinimum("pricePack3");
   var whatsappDisplay = clWhatsAppDisplay();
   var instagramHandle = "@" + CL_INSTAGRAM;
-  var julyPromoActive = clIsJulyPromoActive();
 
   function activateExternalLink(link, url, label) {
     if (!url) {
@@ -653,14 +646,7 @@ function initBusinessData() {
   }
 
   document.querySelectorAll("[data-single-start]").forEach(function (el) {
-    el.textContent = julyPromoActive
-      ? "Precio especial de julio: " + clMoney(singleMinimum)
-      : "Desde " + clMoney(singleMinimum);
-  });
-  document.querySelectorAll("[data-single-regular]").forEach(function (el) {
-    var wrapper = el.closest("[data-single-regular-wrap]");
-    if (wrapper) wrapper.hidden = !julyPromoActive;
-    el.textContent = julyPromoActive ? clMoney(regularSingleMinimum) : "";
+    el.textContent = "Desde " + clMoney(singleMinimum);
   });
   document.querySelectorAll("[data-free-shipping-banner]").forEach(function (el) {
     el.textContent = "Envío gratis desde " + clMoney(CL_FREE_SHIPPING) + " en todo Ecuador.";
@@ -672,9 +658,7 @@ function initBusinessData() {
     el.textContent = "Sí, enviamos a todo el país. Los pedidos desde " + clMoney(CL_FREE_SHIPPING) + " tienen envío gratis.";
   });
   document.querySelectorAll("[data-catalog-offer]").forEach(function (el) {
-    el.textContent = julyPromoActive
-      ? "Promo julio: 1 frasco por " + clMoney(singleMinimum) + "."
-      : "Packs x2 por " + clMoney(pack2Minimum) + " y x3 por " + clMoney(pack3Minimum) + ".";
+    el.textContent = "Packs x2 por " + clMoney(pack2Minimum) + " y x3 por " + clMoney(pack3Minimum) + ".";
   });
 
   var whatsappContactMessage = "Hola Chic&Love, soy ... y quiero más información sobre las gummies.";
@@ -710,17 +694,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var product = clFindProduct(link.getAttribute("data-editorial-product"));
     var price = link.querySelector("[data-editorial-price]");
     if (!product || !price) return;
-    var currentPrice = clSinglePrice(product);
-    price.textContent = "";
-    if (clIsJulyPromoActive()) {
-      price.appendChild(makeEl("del", "", clMoney(product.price)));
-      price.appendChild(makeEl("span", "", clMoney(currentPrice)));
-      price.appendChild(makeEl("em", "", "Solo julio"));
-      link.setAttribute("aria-label", "Ver " + product.name + " por " + clMoney(currentPrice) + ", precio normal " + clMoney(product.price));
-    } else {
-      price.textContent = clMoney(product.price);
-      link.setAttribute("aria-label", "Ver " + product.name + " por " + clMoney(product.price));
-    }
+    price.textContent = clMoney(product.price);
+    link.setAttribute("aria-label", "Ver " + product.name + " por " + clMoney(product.price));
   });
 
   var header = document.querySelector(".header");

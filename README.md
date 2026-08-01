@@ -39,8 +39,8 @@ Para cambiar el número, edita `CL_WHATSAPP` en `js/products.js`.
 Todo el catálogo está en `js/products.js`. `CL_PRODUCT_PRICING` controla el
 precio por frasco, el pack x2 y el pack x3 para todos los productos. `CL_PRODUCTS`
 contiene nombres, beneficios, activos, colores e imágenes.
-El mismo archivo concentra `CL_WHATSAPP`, `CL_INSTAGRAM`, `CL_FREE_SHIPPING` y
-las constantes de la promoción temporal. Los HTML no repiten esos valores.
+El mismo archivo concentra `CL_WHATSAPP`, `CL_INSTAGRAM` y `CL_FREE_SHIPPING`.
+Los HTML no repiten esos valores.
 Los cambios se reflejan automáticamente en portada, tienda, tarjetas, detalle,
 carrito, enlaces de contacto y pedido de WhatsApp.
 

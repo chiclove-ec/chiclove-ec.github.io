@@ -329,8 +329,6 @@ p, li { text-wrap: pretty; }
 .hero-offer { margin-top: 25px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
 .hero-offer strong { flex-basis: 100%; font-family: var(--font-display); font-size: 23px; letter-spacing: -0.025em; }
 .hero-offer span { color: #625b55; font-size: 13.5px; font-weight: 650; }
-.hero-offer .hero-regular-price { color: #514a44; font-weight: 700; }
-.hero-regular-price del { text-decoration-thickness: 1px; }
 .hero-offer-content { white-space: nowrap; }
 .hero-ctas { margin-top: 26px; display: flex; gap: 12px; flex-wrap: wrap; }
 .hero-proof { margin-top: 30px; display: flex; align-items: center; gap: 13px; font-size: 13.5px; color: var(--muted); }
@@ -535,8 +533,6 @@ p, li { text-wrap: pretty; }
 .pcard-price { min-width: 0; }
 .pcard-price-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 9px; }
 .pcard-now-price { font-family: var(--font-display); font-size: 19px; line-height: 1; }
-.pcard-was-price { color: var(--muted); font-family: var(--font-body); font-size: 12px; font-weight: 500; }
-.pcard-promo { display: inline-flex; align-items: center; width: max-content; padding: 3px 7px; border-radius: 999px; background: #fff0f2; color: #aa3650; font-family: var(--font-body); font-size: 10px; font-weight: 800; letter-spacing: 0.025em; line-height: 1.35; text-transform: uppercase; }
 .pcard-pack-prices { display: flex; flex-wrap: wrap; gap: 3px 15px; margin-top: 9px; }
 .pcard-pack-prices small { font-family: var(--font-body); font-weight: 600; font-size: 11.5px; color: var(--muted); letter-spacing: 0; }
 .pcard-saving { display: inline-flex; width: max-content; max-width: 100%; margin-top: 8px; padding: 4px 8px; border-radius: 999px; background: #edf6ed; color: #267437; font-family: var(--font-body); font-size: 10px; font-weight: 750; letter-spacing: 0.01em; }
@@ -1230,6 +1226,7 @@ p, li { text-wrap: pretty; }
   align-items: center;
 }
 .section.about-philosophy { padding-top: 64px; }
+.page-about .split > div > p + p { margin-top: 12px; }
 .about-tile {
   position: relative;
   overflow: hidden;
@@ -1576,8 +1573,6 @@ p, li { text-wrap: pretty; }
   .pcard-foot { margin-top: 10px; padding-top: 11px; gap: 6px; }
   .pcard-price-head { gap: 5px 6px; }
   .pcard-now-price { font-size: 16px; }
-  .pcard-was-price { font-size: 10.5px; }
-  .pcard-promo { padding: 2px 6px; font-size: 8px; }
   .pcard .add-btn { min-height: 44px; padding: 9px 13px; font-size: 12px; }
   .center-cta { margin-top: 24px; }
 

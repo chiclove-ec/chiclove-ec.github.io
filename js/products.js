@@ -5,9 +5,6 @@
 const CL_WHATSAPP = "593987591741"; // formato internacional sin espacios
 const CL_INSTAGRAM = "chicloveec";
 const CL_FREE_SHIPPING = 49.99;
-const CL_JULY_PROMO_PRICE = 25.49;
-const CL_JULY_PROMO_START = Date.parse("2026-07-01T00:00:00-05:00");
-const CL_JULY_PROMO_END = Date.parse("2026-08-01T00:00:00-05:00");
 const CL_PRODUCT_PRICING = Object.freeze({
   price: 29.99,
   pricePack: 49.99,
@@ -259,8 +256,8 @@ function clCatalogMinimum(field) {
   return Math.min.apply(null, CL_PRODUCTS.map(function (product) { return product[field]; }));
 }
 
-function clCurrentSingleMinimum(now) {
-  return Math.min.apply(null, CL_PRODUCTS.map(function (product) { return clSinglePrice(product, now); }));
+function clCurrentSingleMinimum() {
+  return Math.min.apply(null, CL_PRODUCTS.map(function (product) { return clSinglePrice(product); }));
 }
 
 function clWhatsAppDisplay() {
@@ -279,18 +276,13 @@ function clInstagramUrl() {
   return "https://www.instagram.com/" + encodeURIComponent(CL_INSTAGRAM);
 }
 
-function clIsJulyPromoActive(now) {
-  var timestamp = now instanceof Date ? now.getTime() : (typeof now === "number" ? now : Date.now());
-  return timestamp >= CL_JULY_PROMO_START && timestamp < CL_JULY_PROMO_END;
+function clSinglePrice(product) {
+  return product.price;
 }
 
-function clSinglePrice(product, now) {
-  return clIsJulyPromoActive(now) ? CL_JULY_PROMO_PRICE : product.price;
-}
-
-function clBestSingleBundle(product, quantity, now) {
+function clBestSingleBundle(product, quantity) {
   var qty = Math.min(Math.max(parseInt(quantity, 10) || 0, 0), 99);
-  var singleCents = Math.round(clSinglePrice(product, now) * 100);
+  var singleCents = Math.round(clSinglePrice(product) * 100);
   var pack2Cents = Math.round(product.pricePack * 100);
   var pack3Cents = Math.round(product.pricePack3 * 100);
   var best = null;
