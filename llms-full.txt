@@ -1,0 +1,754 @@
+# Chic&Love Ecuador — contenido completo
+
+> Todo el contenido en markdown del sitio https://chiclove-ec.github.io/ en un solo
+> archivo. Cada sección conserva su URL de origen. Índice: https://chiclove-ec.github.io/llms.txt
+> Instrucciones para agentes: https://chiclove-ec.github.io/agents.md
+
+---
+
+<!-- source: https://chiclove-ec.github.io/index.md -->
+
+# Chic&Love Ecuador — vitaminas en gummies
+
+> Tienda oficial de Chic&Love en Ecuador: siete fórmulas de complementos alimenticios en
+> formato gummy para cabello y uñas, piel, digestión, sueño, energía íntima y calma. Desde $29.99 el frasco de 60 gummies, pedidos por WhatsApp (+593 98 759 1741) y envíos a todo el país.
+
+Las fórmulas se desarrollan en España con activos naturales (biotina, colágeno, coenzima Q10,
+melatonina, maca, ashwagandha, vinagre de manzana) y se distribuyen en Ecuador a través de
+Laboratorios Lira. Todas son sin gluten y sin lactosa. El sitio no procesa pagos ni pide
+datos personales: el carrito arma el pedido en el navegador y la compra se cierra por
+WhatsApp con transferencia bancaria. La analítica de uso es opcional y solo se carga con
+consentimiento.
+
+## Colección
+
+- [Hair & Nails Forte](https://chiclove-ec.github.io/hair-nails-forte.md): Cabello más fuerte. Uñas de acero. Cabello y uñas, sabor arándanos, $29.99.
+- [Radiant Skin Vitamins](https://chiclove-ec.github.io/radiant-skin.md): Tu piel, en modo glow. Piel radiante, sabor frutos rojos, $29.99.
+- [Vinagre de Manzana](https://chiclove-ec.github.io/vinagre-de-manzana.md): Digestión ligera. Digestión y balance, sabor manzana, $29.99.
+- [Sleep Vitamins](https://chiclove-ec.github.io/sleep-vitamins.md): Duerme profundo. Despierta increíble. Sueño reparador, sabor fresa, $29.99.
+- [Sexual Booster Women](https://chiclove-ec.github.io/sexual-booster-women.md): Enciende tu energía. Energía íntima, sabor cereza, $29.99.
+- [Sexual Booster Men](https://chiclove-ec.github.io/sexual-booster-men.md): Rendimiento al máximo. Energía íntima, sabor cereza, $29.99.
+- [Anti-Stress Gummies](https://chiclove-ec.github.io/anti-stress.md): Serenidad para días intensos. Calma y enfoque, sabor naranja, $29.99.
+
+## Preguntas frecuentes
+
+- **¿Cómo hago un pedido?** Se arma el carrito en la tienda y se finaliza por WhatsApp, donde
+  se confirman productos, dirección y pago por transferencia.
+- **¿Hacen envíos a todo Ecuador?** Sí, a todo el país; gratis desde $49.99.
+- **¿Cuánto dura un frasco?** Cada frasco trae 60 gummies; con 2 al día dura alrededor de un mes.
+- **¿Hay opciones veganas y sin gluten?** Todas son sin gluten y sin lactosa, y todas son
+  veganas excepto Radiant Skin, cuyo colágeno es de origen bovino.
+- **¿Cuándo se notan los resultados?** Con uso diario y constante, habitualmente entre la
+  cuarta y la octava semana.
+- **¿Se pueden combinar fórmulas?** Sí; ante medicación o condiciones médicas, consultar antes
+  con un profesional de la salud.
+- **¿Se aceptan devoluciones?** No. Por tratarse de un producto alimenticio no se aceptan
+  devoluciones ni cambios por decisión del cliente; los pedidos dañados, incompletos o
+  equivocados se resuelven por WhatsApp.
+
+## Páginas
+
+- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
+- [Información de la empresa](https://chiclove-ec.github.io/about.md)
+- [Contacto y atención al cliente](https://chiclove-ec.github.io/contact.md)
+- [Política de privacidad](https://chiclove-ec.github.io/privacy.md)
+- [Nuestra historia](https://chiclove-ec.github.io/nosotros.md)
+- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
+
+---
+
+Complemento alimenticio. No sustituye una dieta equilibrada ni un estilo de vida saludable.
+
+---
+
+<!-- source: https://chiclove-ec.github.io/tienda.md -->
+
+# Tienda Chic&Love Ecuador — catálogo completo
+
+> Las siete fórmulas de Chic&Love disponibles en Ecuador, con precio, objetivo, sabor, dosis
+> y activos. Precio por frasco de 60 gummies: $29.99 · pack x2 $49.99 · pack x3 $74.99. Envío gratis desde $49.99.
+
+Los pedidos se cierran por WhatsApp (+593 98 759 1741) con pago por
+transferencia bancaria. Los precios publicados son referenciales hasta esa confirmación.
+No se aceptan devoluciones ni cambios por decisión del cliente: es un producto alimenticio.
+
+## Hair & Nails Forte
+
+Cabello más fuerte. Uñas de acero. La fórmula forte con biotina, ashwagandha y extracto de semilla de calabaza que frena la caída y acelera el crecimiento desde la raíz.
+
+- **Objetivo:** Cabello y uñas
+- **Precio:** $29.99 · pack x2 $49.99 · pack x3 $74.99
+- **Sabor:** Arándanos
+- **Dosis:** 2 gummies al día después de la comida
+- **Distintivos:** Sin gluten, Sin lactosa, Vegano
+- **Activos:** Biotina, Vitamina B12, Ácido fólico, Vitamina A, Vitamina D, Ashwagandha, Zinc
+- **Ficha completa:** [hair-nails-forte.md](https://chiclove-ec.github.io/hair-nails-forte.md) · [versión HTML](https://chiclove-ec.github.io/hair-nails-forte.html)
+
+## Radiant Skin Vitamins
+
+Tu piel, en modo glow. Colágeno, coenzima Q10 y biotina en una gummy que ilumina, hidrata y devuelve la elasticidad a tu piel desde adentro.
+
+- **Objetivo:** Piel radiante
+- **Precio:** $29.99 · pack x2 $49.99 · pack x3 $74.99
+- **Sabor:** Frutos rojos
+- **Dosis:** 2 gummies al día
+- **Distintivos:** Sin gluten, Sin lactosa
+- **Activos:** Colágeno, Coenzima Q10, Biotina, Vitamina C, Vitamina E
+- **Ficha completa:** [radiant-skin.md](https://chiclove-ec.github.io/radiant-skin.md) · [versión HTML](https://chiclove-ec.github.io/radiant-skin.html)
+
+## Vinagre de Manzana
+
+Digestión ligera. Vinagre de manzana con extracto de jengibre: glucosa estable, digestión y control de peso — sin el sabor ácido del vinagre.
+
+- **Objetivo:** Digestión y balance
+- **Precio:** $29.99 · pack x2 $49.99 · pack x3 $74.99
+- **Sabor:** Manzana
+- **Dosis:** 2 gummies al día después de la comida
+- **Distintivos:** Sin gluten, Sin lactosa, Vegano
+- **Activos:** Vinagre de manzana, Extracto de jengibre
+- **Ficha completa:** [vinagre-de-manzana.md](https://chiclove-ec.github.io/vinagre-de-manzana.md) · [versión HTML](https://chiclove-ec.github.io/vinagre-de-manzana.html)
+
+## Sleep Vitamins
+
+Duerme profundo. Despierta increíble. Melatonina + vitamina B6 para conciliar el sueño rápido y disfrutar un descanso reparador que regenera piel y cabello mientras duermes.
+
+- **Objetivo:** Sueño reparador
+- **Precio:** $29.99 · pack x2 $49.99 · pack x3 $74.99
+- **Sabor:** Fresa
+- **Dosis:** 1–3 gummies al día antes de dormir
+- **Distintivos:** Sin gluten, Sin lactosa, Vegano
+- **Activos:** Melatonina, Vitamina B6
+- **Ficha completa:** [sleep-vitamins.md](https://chiclove-ec.github.io/sleep-vitamins.md) · [versión HTML](https://chiclove-ec.github.io/sleep-vitamins.html)
+
+## Sexual Booster Women
+
+Enciende tu energía. Maca y damiana 100% naturales que estabilizan tus canales de energía, estimulan la libido y reducen el estrés.
+
+- **Objetivo:** Energía íntima
+- **Precio:** $29.99 · pack x2 $49.99 · pack x3 $74.99
+- **Sabor:** Cereza
+- **Dosis:** 2 gummies al día después del desayuno
+- **Distintivos:** Sin gluten, Sin lactosa, Vegano
+- **Activos:** Maca, Damiana, Ashwagandha
+- **Ficha completa:** [sexual-booster-women.md](https://chiclove-ec.github.io/sexual-booster-women.md) · [versión HTML](https://chiclove-ec.github.io/sexual-booster-women.html)
+
+## Sexual Booster Men
+
+Rendimiento al máximo. Maca y fenogreco para mejorar el rendimiento, la calidad del esperma y la fertilidad — energía estable todo el día.
+
+- **Objetivo:** Energía íntima
+- **Precio:** $29.99 · pack x2 $49.99 · pack x3 $74.99
+- **Sabor:** Cereza
+- **Dosis:** 2 gummies al día después del desayuno
+- **Distintivos:** Sin gluten, Sin lactosa, Vegano
+- **Activos:** Maca, Fenogreco, Zinc, L-arginina
+- **Ficha completa:** [sexual-booster-men.md](https://chiclove-ec.github.io/sexual-booster-men.md) · [versión HTML](https://chiclove-ec.github.io/sexual-booster-men.html)
+
+## Anti-Stress Gummies
+
+Serenidad para días intensos. Ashwagandha, melisa y ginseng que regulan el cortisol para aliviar el estrés y la ansiedad, y ayudarte a fluir con el cambio.
+
+- **Objetivo:** Calma y enfoque
+- **Precio:** $29.99 · pack x2 $49.99 · pack x3 $74.99
+- **Sabor:** Naranja
+- **Dosis:** 2 gummies al día después de la cena
+- **Distintivos:** Sin gluten, Sin lactosa, Vegano
+- **Activos:** Ashwagandha, Melisa, Ginseng
+- **Ficha completa:** [anti-stress.md](https://chiclove-ec.github.io/anti-stress.md) · [versión HTML](https://chiclove-ec.github.io/anti-stress.html)
+
+## Enlaces
+
+- [Inicio](https://chiclove-ec.github.io/index.md)
+- [Contacto](https://chiclove-ec.github.io/contact.md)
+- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
+
+---
+
+Complemento alimenticio. No sustituye una dieta equilibrada ni un estilo de vida saludable.
+
+---
+
+<!-- source: https://chiclove-ec.github.io/hair-nails-forte.md -->
+
+# Hair & Nails Forte — Chic&Love Ecuador
+
+> Cabello más fuerte. Uñas de acero. La fórmula forte con biotina, ashwagandha y extracto de semilla de calabaza que frena la caída y acelera el crecimiento desde la raíz.
+
+- **Precio:** $29.99 por frasco de 60 gummies · pack x2 $49.99 · pack x3 $74.99
+- **Disponibilidad:** en stock, envíos a todo Ecuador (gratis desde $49.99)
+- **Objetivo:** Cabello y uñas
+- **Sabor:** Arándanos
+- **Dosis recomendada:** 2 gummies al día después de la comida
+- **Distintivos:** Sin gluten, Sin lactosa, Vegano
+- **Activos:** Biotina, Vitamina B12, Ácido fólico, Vitamina A, Vitamina D, Ashwagandha, Zinc
+
+## Beneficios
+
+- Previene y frena la caída, acelera el crecimiento y engrosa la fibra capilar.
+- Activa la microcirculación del cuero cabelludo: más nutrientes a los folículos pilosos.
+- Crecimiento y fuerza visibles en cabello y uñas.
+- El grupo de vitaminas B aumenta el flujo de sangre al cuero cabelludo para un pelo fuerte y brillante.
+
+## Cómo comprarlo
+
+El pedido se cierra por WhatsApp (+593 98 759 1741): confirmamos disponibilidad, precio final
+y datos de envío, y el pago se hace por transferencia bancaria. Los precios publicados son
+referenciales hasta esa confirmación. Ver [/contact.md](https://chiclove-ec.github.io/contact.md).
+
+**Devoluciones:** no se aceptan devoluciones ni cambios por decisión del cliente, por tratarse
+de un producto alimenticio. Si el pedido llega dañado, incompleto o equivocado, se resuelve por
+WhatsApp.
+
+## Enlaces
+
+- [Página del producto](https://chiclove-ec.github.io/hair-nails-forte.html)
+- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
+- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
+
+---
+
+Complemento alimenticio. No sustituye una dieta equilibrada ni un estilo de vida saludable.
+No es un medicamento y no trata ni previene enfermedades.
+
+---
+
+<!-- source: https://chiclove-ec.github.io/radiant-skin.md -->
+
+# Radiant Skin Vitamins — Chic&Love Ecuador
+
+> Tu piel, en modo glow. Colágeno, coenzima Q10 y biotina en una gummy que ilumina, hidrata y devuelve la elasticidad a tu piel desde adentro.
+
+- **Precio:** $29.99 por frasco de 60 gummies · pack x2 $49.99 · pack x3 $74.99
+- **Disponibilidad:** en stock, envíos a todo Ecuador (gratis desde $49.99)
+- **Objetivo:** Piel radiante
+- **Sabor:** Frutos rojos
+- **Dosis recomendada:** 2 gummies al día
+- **Distintivos:** Sin gluten, Sin lactosa
+- **Activos:** Colágeno, Coenzima Q10, Biotina, Vitamina C, Vitamina E
+
+## Beneficios
+
+- Potencia la luminosidad y vitalidad de la piel.
+- El colágeno y la coenzima Q10 mejoran la elasticidad y combaten los signos de la edad.
+- La biotina fortalece la barrera cutánea y aporta un glow saludable.
+- Piel perfecta: hidratación y firmeza desde el interior.
+
+## Cómo comprarlo
+
+El pedido se cierra por WhatsApp (+593 98 759 1741): confirmamos disponibilidad, precio final
+y datos de envío, y el pago se hace por transferencia bancaria. Los precios publicados son
+referenciales hasta esa confirmación. Ver [/contact.md](https://chiclove-ec.github.io/contact.md).
+
+**Devoluciones:** no se aceptan devoluciones ni cambios por decisión del cliente, por tratarse
+de un producto alimenticio. Si el pedido llega dañado, incompleto o equivocado, se resuelve por
+WhatsApp.
+
+## Enlaces
+
+- [Página del producto](https://chiclove-ec.github.io/radiant-skin.html)
+- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
+- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
+
+---
+
+Complemento alimenticio. No sustituye una dieta equilibrada ni un estilo de vida saludable.
+No es un medicamento y no trata ni previene enfermedades.
+
+---
+
+<!-- source: https://chiclove-ec.github.io/vinagre-de-manzana.md -->
+
+# Vinagre de Manzana — Chic&Love Ecuador
+
+> Digestión ligera. Vinagre de manzana con extracto de jengibre: glucosa estable, digestión y control de peso — sin el sabor ácido del vinagre.
+
+- **Precio:** $29.99 por frasco de 60 gummies · pack x2 $49.99 · pack x3 $74.99
+- **Disponibilidad:** en stock, envíos a todo Ecuador (gratis desde $49.99)
+- **Objetivo:** Digestión y balance
+- **Sabor:** Manzana
+- **Dosis recomendada:** 2 gummies al día después de la comida
+- **Distintivos:** Sin gluten, Sin lactosa, Vegano
+- **Activos:** Vinagre de manzana, Extracto de jengibre
+
+## Beneficios
+
+- Ayuda a mantener estables los niveles de glucosa en sangre y facilita la digestión.
+- Efecto probiótico que favorece la generación de bacterias saludables en el tracto intestinal.
+- Regula la digestión y la microbiota, y reduce la hinchazón.
+- Contribuye al control de peso y ayuda a absorber minerales y vitaminas.
+
+## Cómo comprarlo
+
+El pedido se cierra por WhatsApp (+593 98 759 1741): confirmamos disponibilidad, precio final
+y datos de envío, y el pago se hace por transferencia bancaria. Los precios publicados son
+referenciales hasta esa confirmación. Ver [/contact.md](https://chiclove-ec.github.io/contact.md).
+
+**Devoluciones:** no se aceptan devoluciones ni cambios por decisión del cliente, por tratarse
+de un producto alimenticio. Si el pedido llega dañado, incompleto o equivocado, se resuelve por
+WhatsApp.
+
+## Enlaces
+
+- [Página del producto](https://chiclove-ec.github.io/vinagre-de-manzana.html)
+- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
+- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
+
+---
+
+Complemento alimenticio. No sustituye una dieta equilibrada ni un estilo de vida saludable.
+No es un medicamento y no trata ni previene enfermedades.
+
+---
+
+<!-- source: https://chiclove-ec.github.io/sleep-vitamins.md -->
+
+# Sleep Vitamins — Chic&Love Ecuador
+
+> Duerme profundo. Despierta increíble. Melatonina + vitamina B6 para conciliar el sueño rápido y disfrutar un descanso reparador que regenera piel y cabello mientras duermes.
+
+- **Precio:** $29.99 por frasco de 60 gummies · pack x2 $49.99 · pack x3 $74.99
+- **Disponibilidad:** en stock, envíos a todo Ecuador (gratis desde $49.99)
+- **Objetivo:** Sueño reparador
+- **Sabor:** Fresa
+- **Dosis recomendada:** 1–3 gummies al día antes de dormir
+- **Distintivos:** Sin gluten, Sin lactosa, Vegano
+- **Activos:** Melatonina, Vitamina B6
+
+## Beneficios
+
+- Ayuda a conciliar el sueño de manera rápida.
+- Sueño reparador y profundo, noche tras noche.
+- Protege la piel y el cabello del envejecimiento celular.
+- Melatonina + B6: regenera las defensas de piel y pelo contra el estrés oxidativo.
+
+## Cómo comprarlo
+
+El pedido se cierra por WhatsApp (+593 98 759 1741): confirmamos disponibilidad, precio final
+y datos de envío, y el pago se hace por transferencia bancaria. Los precios publicados son
+referenciales hasta esa confirmación. Ver [/contact.md](https://chiclove-ec.github.io/contact.md).
+
+**Devoluciones:** no se aceptan devoluciones ni cambios por decisión del cliente, por tratarse
+de un producto alimenticio. Si el pedido llega dañado, incompleto o equivocado, se resuelve por
+WhatsApp.
+
+## Enlaces
+
+- [Página del producto](https://chiclove-ec.github.io/sleep-vitamins.html)
+- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
+- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
+
+---
+
+Complemento alimenticio. No sustituye una dieta equilibrada ni un estilo de vida saludable.
+No es un medicamento y no trata ni previene enfermedades.
+
+---
+
+<!-- source: https://chiclove-ec.github.io/sexual-booster-women.md -->
+
+# Sexual Booster Women — Chic&Love Ecuador
+
+> Enciende tu energía. Maca y damiana 100% naturales que estabilizan tus canales de energía, estimulan la libido y reducen el estrés.
+
+- **Precio:** $29.99 por frasco de 60 gummies · pack x2 $49.99 · pack x3 $74.99
+- **Disponibilidad:** en stock, envíos a todo Ecuador (gratis desde $49.99)
+- **Objetivo:** Energía íntima
+- **Sabor:** Cereza
+- **Dosis recomendada:** 2 gummies al día después del desayuno
+- **Distintivos:** Sin gluten, Sin lactosa, Vegano
+- **Activos:** Maca, Damiana, Ashwagandha
+
+## Beneficios
+
+- Aumenta la libido y potencia el bienestar sexual.
+- Mantiene en condiciones óptimas la ovulación.
+- Impulso de energía y menos niveles de estrés.
+- Maca y damiana: ingredientes activos 100% naturales.
+
+## Cómo comprarlo
+
+El pedido se cierra por WhatsApp (+593 98 759 1741): confirmamos disponibilidad, precio final
+y datos de envío, y el pago se hace por transferencia bancaria. Los precios publicados son
+referenciales hasta esa confirmación. Ver [/contact.md](https://chiclove-ec.github.io/contact.md).
+
+**Devoluciones:** no se aceptan devoluciones ni cambios por decisión del cliente, por tratarse
+de un producto alimenticio. Si el pedido llega dañado, incompleto o equivocado, se resuelve por
+WhatsApp.
+
+## Enlaces
+
+- [Página del producto](https://chiclove-ec.github.io/sexual-booster-women.html)
+- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
+- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
+
+---
+
+Complemento alimenticio. No sustituye una dieta equilibrada ni un estilo de vida saludable.
+No es un medicamento y no trata ni previene enfermedades.
+
+---
+
+<!-- source: https://chiclove-ec.github.io/sexual-booster-men.md -->
+
+# Sexual Booster Men — Chic&Love Ecuador
+
+> Rendimiento al máximo. Maca y fenogreco para mejorar el rendimiento, la calidad del esperma y la fertilidad — energía estable todo el día.
+
+- **Precio:** $29.99 por frasco de 60 gummies · pack x2 $49.99 · pack x3 $74.99
+- **Disponibilidad:** en stock, envíos a todo Ecuador (gratis desde $49.99)
+- **Objetivo:** Energía íntima
+- **Sabor:** Cereza
+- **Dosis recomendada:** 2 gummies al día después del desayuno
+- **Distintivos:** Sin gluten, Sin lactosa, Vegano
+- **Activos:** Maca, Fenogreco, Zinc, L-arginina
+
+## Beneficios
+
+- Aumenta la libido y el rendimiento sexual.
+- Mejora la calidad del esperma e incrementa la fertilidad.
+- Estabiliza los canales de energía con maca.
+- Ingredientes activos 100% naturales.
+
+## Cómo comprarlo
+
+El pedido se cierra por WhatsApp (+593 98 759 1741): confirmamos disponibilidad, precio final
+y datos de envío, y el pago se hace por transferencia bancaria. Los precios publicados son
+referenciales hasta esa confirmación. Ver [/contact.md](https://chiclove-ec.github.io/contact.md).
+
+**Devoluciones:** no se aceptan devoluciones ni cambios por decisión del cliente, por tratarse
+de un producto alimenticio. Si el pedido llega dañado, incompleto o equivocado, se resuelve por
+WhatsApp.
+
+## Enlaces
+
+- [Página del producto](https://chiclove-ec.github.io/sexual-booster-men.html)
+- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
+- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
+
+---
+
+Complemento alimenticio. No sustituye una dieta equilibrada ni un estilo de vida saludable.
+No es un medicamento y no trata ni previene enfermedades.
+
+---
+
+<!-- source: https://chiclove-ec.github.io/anti-stress.md -->
+
+# Anti-Stress Gummies — Chic&Love Ecuador
+
+> Serenidad para días intensos. Ashwagandha, melisa y ginseng que regulan el cortisol para aliviar el estrés y la ansiedad, y ayudarte a fluir con el cambio.
+
+- **Precio:** $29.99 por frasco de 60 gummies · pack x2 $49.99 · pack x3 $74.99
+- **Disponibilidad:** en stock, envíos a todo Ecuador (gratis desde $49.99)
+- **Objetivo:** Calma y enfoque
+- **Sabor:** Naranja
+- **Dosis recomendada:** 2 gummies al día después de la cena
+- **Distintivos:** Sin gluten, Sin lactosa, Vegano
+- **Activos:** Ashwagandha, Melisa, Ginseng
+
+## Beneficios
+
+- Alivia estados de estrés y ansiedad.
+- Favorece la relajación y la calma mental.
+- Ayuda a adaptarte a situaciones de estrés o de cambio.
+- La ashwagandha, planta adaptógena, regula los niveles de cortisol.
+
+## Cómo comprarlo
+
+El pedido se cierra por WhatsApp (+593 98 759 1741): confirmamos disponibilidad, precio final
+y datos de envío, y el pago se hace por transferencia bancaria. Los precios publicados son
+referenciales hasta esa confirmación. Ver [/contact.md](https://chiclove-ec.github.io/contact.md).
+
+**Devoluciones:** no se aceptan devoluciones ni cambios por decisión del cliente, por tratarse
+de un producto alimenticio. Si el pedido llega dañado, incompleto o equivocado, se resuelve por
+WhatsApp.
+
+## Enlaces
+
+- [Página del producto](https://chiclove-ec.github.io/anti-stress.html)
+- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
+- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
+
+---
+
+Complemento alimenticio. No sustituye una dieta equilibrada ni un estilo de vida saludable.
+No es un medicamento y no trata ni previene enfermedades.
+
+---
+
+<!-- source: https://chiclove-ec.github.io/about.md -->
+
+# Información de la empresa — Chic&Love Ecuador
+
+> Datos verificables de Chic&Love Ecuador: qué vendemos, dónde estamos, cómo se compra y
+> quién nos respalda. Versión markdown de https://chiclove-ec.github.io/about.html
+
+## Qué es Chic&Love Ecuador
+
+Chic&Love Ecuador es la tienda oficial en Ecuador de **Chic&Love**, una marca de complementos
+alimenticios en formato gummy (vitaminas masticables). Vendemos directamente al consumidor final
+una colección de **siete fórmulas**, cada una con un objetivo concreto: cabello y uñas, piel,
+digestión y balance, sueño reparador, energía íntima para mujeres, energía íntima para hombres,
+y calma y enfoque.
+
+Las fórmulas se desarrollan en **España** junto a un fabricante europeo de complementos
+alimenticios, con activos naturales como biotina, colágeno, coenzima Q10, melatonina, maca,
+ashwagandha y vinagre de manzana. Los productos son **sin gluten y sin lactosa**, y la mayoría
+son aptos para dietas veganas; cada ficha de producto indica sus propios distintivos.
+
+En Ecuador la marca llega de la mano de **Laboratorios Lira**, laboratorio 100 % ecuatoriano
+fundado en 1977 y distribuidor oficial de Chic&Love en el país.
+
+## Datos de la empresa
+
+- **Nombre comercial:** Chic&Love Ecuador
+- **Actividad:** venta directa de complementos alimenticios en gummies
+- **Ubicación:** José Vinueza E8-152, La Morita, Tumbaco — Quito, Pichincha, Ecuador
+- **Área de servicio:** todo el territorio de Ecuador
+- **Canal de atención:** WhatsApp +593 98 759 1741 e Instagram @chicloveec
+- **Moneda y pago:** dólar estadounidense (USD), transferencia bancaria
+- **Idioma de atención:** español (es-EC)
+- **Sitio oficial:** https://chiclove-ec.github.io/
+
+## Cómo se compra
+
+El sitio no procesa pagos ni pide datos personales. El carrito arma el pedido en el navegador de
+la persona y el botón «Finalizar pedido» abre una conversación de WhatsApp con el detalle ya
+redactado. A partir de ahí, alguien del equipo confirma disponibilidad, precio final, forma de
+envío y datos de la transferencia.
+
+- Precio por frasco de 60 gummies: $29.99, con packs de dos ($49.99) y tres frascos ($74.99).
+- Envíos a todo Ecuador, gratis desde $49.99.
+- Pago por transferencia bancaria, confirmado por WhatsApp antes del despacho.
+- Los precios publicados son referenciales hasta esa confirmación.
+- Sin devoluciones ni cambios por decisión del cliente; los pedidos dañados, incompletos o
+  equivocados se resuelven por WhatsApp. Detalle en
+  [/contact.md](https://chiclove-ec.github.io/contact.md).
+
+## Qué no hacemos
+
+- No vendemos medicamentos: son complementos alimenticios y no sustituyen una dieta equilibrada
+  ni un estilo de vida saludable.
+- No prometemos resultados médicos ni tratamos enfermedades. Ante dudas de salud, embarazo,
+  lactancia o medicación, hay que consultar a un profesional.
+- No recogemos correos ni pedimos datos personales en el sitio. La analítica de uso es opcional:
+  solo se carga con consentimiento y no incluye nombres, teléfonos ni el contenido del carrito
+  (ver [/privacy.md](https://chiclove-ec.github.io/privacy.md)).
+- No hay pasarela de pago en el sitio: ninguna página pide datos de tarjeta.
+
+## Enlaces
+
+- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
+- [Instrucciones para agentes](https://chiclove-ec.github.io/agents.md)
+- [Contenido completo del sitio en markdown](https://chiclove-ec.github.io/llms-full.txt)
+- [Contacto y atención al cliente](https://chiclove-ec.github.io/contact.md)
+- [Política de privacidad](https://chiclove-ec.github.io/privacy.md)
+- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
+- [Nuestra historia](https://chiclove-ec.github.io/nosotros.md)
+- [Versión HTML de esta página](https://chiclove-ec.github.io/about.html)
+
+Última revisión: 27 de agosto de 2026.
+
+---
+
+<!-- source: https://chiclove-ec.github.io/contact.md -->
+
+# Contacto y atención al cliente — Chic&Love Ecuador
+
+> Cómo contactar a Chic&Love Ecuador: WhatsApp +593 98 759 1741, Instagram @chicloveec y
+> ubicación en Quito. Atención en español para todo el país.
+> Versión markdown de https://chiclove-ec.github.io/contact.html
+
+## Canales oficiales
+
+Estos son los únicos canales de contacto de la marca en Ecuador. Si alguien escribe desde otro
+número o cuenta diciendo representar a Chic&Love, conviene verificarlo aquí antes de transferir
+dinero.
+
+- **WhatsApp:** +593 98 759 1741 — https://wa.me/593987591741
+- **Instagram:** @chicloveec — https://www.instagram.com/chicloveec
+- **Ubicación:** José Vinueza E8-152, La Morita, Tumbaco — Quito, Pichincha, Ecuador
+- **Cobertura:** envíos a todo Ecuador, atención en español
+- **Reporte de seguridad:** https://chiclove-ec.github.io/.well-known/security.txt
+
+Respondemos los mensajes en horario laboral de Ecuador (GMT-5). No hay tienda física de atención
+al público: la venta y el seguimiento se hacen por WhatsApp.
+
+## Qué canal usar según el caso
+
+- **Hacer un pedido:** armar el carrito en la tienda y pulsar «Finalizar pedido»; se abre WhatsApp
+  con el detalle escrito. También se puede escribir directamente y el equipo lo arma.
+- **Elegir producto:** indicar el objetivo (caída del cabello, piel, sueño, digestión, energía o
+  estrés) y el equipo recomienda fórmula y dosis.
+- **Estado de un envío:** escribir por WhatsApp con el nombre con el que se hizo el pedido.
+- **Pedido incompleto o dañado:** escribir por WhatsApp con una foto del paquete.
+- **Devoluciones:** no se aceptan devoluciones ni cambios por decisión del cliente (ver abajo).
+- **Mayoristas, spas y farmacias:** escribir por WhatsApp indicando negocio y ciudad.
+- **Privacidad y datos:** ver la [política de privacidad](https://chiclove-ec.github.io/privacy.md)
+  y escribir por el mismo canal.
+
+## Cómo termina un pedido
+
+El sitio no cobra ni guarda datos personales: el carrito vive en el navegador y el pedido se
+cierra por WhatsApp. En esa conversación se confirma disponibilidad y precio final, se coordina la
+dirección de envío y se envían los datos para la **transferencia bancaria**. El despacho se hace
+una vez confirmado el pago.
+
+- $29.99 por frasco de 60 gummies; packs de dos ($49.99) y tres frascos ($74.99).
+- Envíos a todo Ecuador, gratis desde $49.99.
+- Los precios del sitio son referenciales y se confirman por WhatsApp antes de cobrar.
+
+## Devoluciones
+
+**No se aceptan devoluciones ni cambios por decisión del cliente.** Las gummies son un
+complemento alimenticio de consumo: una vez que el frasco sale de nuestras manos no se puede
+verificar su conservación ni volver a venderlo, así que la venta es final.
+
+Si el pedido llega **dañado, incompleto o con un producto distinto** al pedido, se resuelve por
+WhatsApp con una foto del paquete: reponemos el producto o corregimos el envío, sin coste para
+la persona. Ante dudas entre dos fórmulas, mejor preguntar antes de comprar.
+
+## Enlaces
+
+- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
+- [Información de la empresa](https://chiclove-ec.github.io/about.md)
+- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
+- [Versión HTML de esta página](https://chiclove-ec.github.io/contact.html)
+
+Última revisión: 27 de agosto de 2026.
+
+---
+
+<!-- source: https://chiclove-ec.github.io/privacy.md -->
+
+# Política de privacidad — Chic&Love Ecuador
+
+> Analítica opcional y consentimiento controlado. El carrito vive en el navegador y solo tratamos
+> los datos que la persona envía por WhatsApp para gestionar su pedido.
+> Versión markdown de https://chiclove-ec.github.io/privacy.html
+
+## Responsable del tratamiento
+
+Chic&Love Ecuador, con dirección en José Vinueza E8-152, La Morita, Tumbaco (Quito, Pichincha,
+Ecuador), es responsable del tratamiento de los datos descritos en esta política. El canal para
+cualquier consulta sobre privacidad es el WhatsApp de atención al cliente: +593 98 759 1741.
+
+## Qué datos tratamos
+
+### Al navegar el sitio
+
+Si la persona acepta, usamos Google Analytics 4 y, cuando esté habilitado, Microsoft Clarity para
+conocer visitas, páginas consultadas, productos vistos, clics y navegación general. La analítica es
+opcional y solo se activa después del consentimiento; si se rechaza, esas herramientas no cargan.
+No enviamos nombres, teléfonos, mensajes de WhatsApp ni el contenido del carrito. El proveedor de
+alojamiento puede registrar peticiones técnicas en sus propios registros.
+
+### Al usar el carrito
+
+Los productos añadidos se guardan en el **almacenamiento local del navegador** (`localStorage`),
+en el dispositivo de la persona. No se envían a ningún servidor, no los podemos leer y desaparecen
+al vaciar el carrito o borrar los datos del sitio.
+
+### Al escribir por WhatsApp
+
+El botón «Finalizar pedido» abre WhatsApp con el detalle del pedido ya redactado; el mensaje se
+envía solo si la persona lo envía. A partir de ahí tratamos los datos compartidos —nombre, número
+de teléfono, dirección de envío y contenido del pedido— con la única finalidad de gestionar la
+venta, coordinar el despacho y dar seguimiento. La conversación ocurre dentro de WhatsApp y se
+rige además por las políticas de su proveedor.
+
+## Con quién compartimos datos
+
+- **Empresa de transporte:** nombre, teléfono y dirección, para poder entregar el pedido.
+- **Entidad bancaria:** los datos propios de la transferencia que realiza la persona.
+- No vendemos, alquilamos ni cedemos datos con fines publicitarios, y no hacemos perfilado ni
+  decisiones automatizadas.
+
+Conservamos la información del pedido el tiempo necesario para atenderlo y para cumplir las
+obligaciones legales y contables aplicables en Ecuador.
+
+## Derechos de las personas
+
+De acuerdo con la Ley Orgánica de Protección de Datos Personales del Ecuador, se puede solicitar
+acceso, rectificación, eliminación, oposición, portabilidad y suspensión del tratamiento. Basta
+escribir por WhatsApp indicando la solicitud y el nombre con el que se hizo el pedido; atendemos
+las solicitudes en los plazos previstos por la ley. Si la respuesta no resulta satisfactoria, se
+puede acudir a la autoridad de protección de datos personales.
+
+## Menores de edad
+
+Los productos son complementos alimenticios dirigidos a personas adultas. No vendemos de forma
+intencionada a menores de edad ni tratamos sus datos; si detectamos un pedido en esas condiciones,
+lo cancelamos.
+
+## Seguridad y reporte de vulnerabilidades
+
+El sitio se sirve por HTTPS y aplica una política de seguridad de contenido que limita los scripts
+y conexiones a los proveedores de analítica habilitados. Los canales para reportar vulnerabilidades están publicados en
+https://chiclove-ec.github.io/.well-known/security.txt
+
+## Cambios en esta política
+
+Publicaremos cualquier cambio en esta misma dirección, actualizando la fecha de revisión. Si el
+cambio afecta a datos ya compartidos, lo comunicaremos por el mismo canal por el que la persona
+escribió.
+
+## Enlaces
+
+- [Contacto y atención al cliente](https://chiclove-ec.github.io/contact.md)
+- [Información de la empresa](https://chiclove-ec.github.io/about.md)
+- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
+- [Versión HTML de esta página](https://chiclove-ec.github.io/privacy.html)
+
+Última revisión: 1 de septiembre de 2026.
+
+---
+
+<!-- source: https://chiclove-ec.github.io/nosotros.md -->
+
+# Nuestra historia — Chic&Love Ecuador
+
+> El origen de Chic&Love, su filosofía de wellness y el respaldo de Laboratorios Lira en Ecuador.
+> Versión markdown de https://chiclove-ec.github.io/nosotros.html
+
+## Filosofía
+
+Chic&Love nació con una idea simple: cuidarse tiene que ser fácil, rico y constante. Por eso las
+vitaminas vienen en formato gummy, con fórmulas de calidad europea —biotina, colágeno, melatonina,
+maca, ashwagandha— en el formato más disfrutable que existe.
+
+- **Fórmulas con propósito:** siete productos, siete objetivos claros. Nada de multivitamínicos
+  genéricos.
+- **Pensado para Ecuador:** atención personalizada por WhatsApp, envíos a todo el país y pago por
+  transferencia.
+- **Inclusivo por diseño:** sin gluten, sin lactosa, con opciones veganas y sin crueldad animal.
+
+## Cómo empezó
+
+La fundadora, tras ser diagnosticada con alopecia androgénica, no encontró soluciones realmente
+efectivas en el mercado y decidió crear la suya. De esa búsqueda nació **Hair & Nails**, la primera
+fórmula. Hoy Chic&Love es una colección de gummies con propósito para cabello, piel, sueño,
+digestión, energía y calma.
+
+Todas se desarrollan en **España**, junto a un fabricante europeo de referencia, con activos
+naturales y altos estándares de calidad.
+
+## Respaldo en Ecuador
+
+Chic&Love llega a Ecuador de la mano de **Laboratorios Lira**, un laboratorio 100 % ecuatoriano
+fundado en **1977**, con casi cinco décadas cuidando la salud del país. Líder en productos
+farmacéuticos, cosméticos y de cuidado personal, trabaja bajo su filosofía «Calidad que cura» y con
+certificación en buenas prácticas de manufactura (BPM, BPA y BPD). Es el **distribuidor oficial y
+exclusivo de Chic&Love en Ecuador**.
+
+## Enlaces
+
+- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
+- [Información de la empresa](https://chiclove-ec.github.io/about.md)
+- [Contacto](https://chiclove-ec.github.io/contact.md)
+- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
+- [Versión HTML de esta página](https://chiclove-ec.github.io/nosotros.html)
+
+---
+
+Complemento alimenticio. No sustituye una dieta equilibrada ni un estilo de vida saludable.

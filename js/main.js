@@ -148,6 +148,20 @@ function cartCount(items) {
   return items.reduce(function (sum, it) { return sum + it.qty; }, 0);
 }
 
+function analyticsCartItems(items) {
+  return items.map(function (it) {
+    var product = clFindProduct(it.id);
+    return {
+      item_id: it.id,
+      item_name: product.name,
+      item_category: product.goalLabel,
+      item_variant: it.variant,
+      price: itemPrice(it),
+      quantity: it.qty
+    };
+  });
+}
+
 function cartAdd(id, variant, qty) {
   var p = clFindProduct(id);
   if (!p) return;
@@ -159,6 +173,24 @@ function cartAdd(id, variant, qty) {
   else items.push({ id: id, variant: variant, qty: qty });
   cartSave(items);
   renderCart();
+  if (window.clAnalytics) {
+    window.clAnalytics.track("add_to_cart", {
+      item_id: id,
+      item_name: p.name,
+      item_variant: variant,
+      quantity: qty,
+      value: itemTotal({ id: id, variant: variant, qty: qty }),
+      currency: "USD",
+      items: [{
+        item_id: id,
+        item_name: p.name,
+        item_category: p.goalLabel,
+        item_variant: variant,
+        price: itemPrice({ id: id, variant: variant, qty: 1 }),
+        quantity: qty
+      }]
+    });
+  }
   var cartBadge = document.getElementById("cart-count");
   if (cartBadge) { cartBadge.classList.remove("bump"); void cartBadge.offsetWidth; cartBadge.classList.add("bump"); }
   openCart();
@@ -175,8 +207,26 @@ function cartSetQty(id, variant, qty) {
 }
 
 function cartRemove(id, variant) {
+  var removed = cartLoad().find(function (x) { return x.id === id && x.variant === variant; });
   cartSave(cartLoad().filter(function (x) { return !(x.id === id && x.variant === variant); }));
   renderCart();
+  if (removed && window.clAnalytics) {
+    window.clAnalytics.track("remove_from_cart", {
+      item_id: id,
+      item_name: clFindProduct(id).name,
+      item_variant: variant,
+      quantity: removed.qty,
+      currency: "USD",
+      items: [{
+        item_id: id,
+        item_name: clFindProduct(id).name,
+        item_category: clFindProduct(id).goalLabel,
+        item_variant: variant,
+        price: itemPrice({ id: id, variant: variant, qty: 1 }),
+        quantity: removed.qty
+      }]
+    });
+  }
 }
 
 function whatsappItemDetails(it) {
@@ -244,7 +294,15 @@ function checkoutWhatsApp() {
     return;
   }
   var checkoutWindow = window.open(url, "_blank", "noopener,noreferrer");
-  if (checkoutWindow) checkoutWindow.opener = null;
+  if (checkoutWindow) {
+    checkoutWindow.opener = null;
+    if (window.clAnalytics) window.clAnalytics.track("begin_checkout", {
+      items_count: items.length,
+      value: cartTotal(items),
+      currency: "USD",
+      items: analyticsCartItems(items)
+    });
+  }
 }
 
 /* ---------- drawer del carrito (chrome inyectado) ---------- */
@@ -325,6 +383,14 @@ function openCart() {
   document.body.classList.add("ui-locked");
   var trigger = document.getElementById("cart-open");
   if (trigger) trigger.setAttribute("aria-expanded", "true");
+  if (window.clAnalytics) {
+    var items = cartLoad();
+    window.clAnalytics.track("view_cart", {
+      value: cartTotal(items),
+      currency: "USD",
+      items: analyticsCartItems(items)
+    });
+  }
   document.getElementById("cart-close").focus();
 }
 
@@ -442,6 +508,9 @@ function productCard(p, revealDelay) {
   card.appendChild(makeEl("span", "pcard-tag", p.goalLabel));
   var imageLink = makeEl("a", "pcard-img");
   imageLink.href = productUrl;
+  imageLink.setAttribute("data-analytics-item", p.id);
+  imageLink.setAttribute("data-analytics-item-name", p.name);
+  imageLink.setAttribute("data-analytics-item-category", p.goalLabel);
   imageLink.setAttribute("aria-label", "Ver " + p.name);
   var image = makeEl("img");
   image.className = "lazy-media";
@@ -466,6 +535,9 @@ function productCard(p, revealDelay) {
   var heading = makeEl(document.body.classList.contains("page-store") ? "h2" : "h3");
   var nameLink = makeEl("a", "", p.name);
   nameLink.href = productUrl;
+  nameLink.setAttribute("data-analytics-item", p.id);
+  nameLink.setAttribute("data-analytics-item-name", p.name);
+  nameLink.setAttribute("data-analytics-item-category", p.goalLabel);
   heading.appendChild(nameLink);
   body.appendChild(heading);
   body.appendChild(makeEl("p", "ptagline", p.tagline));
@@ -520,6 +592,7 @@ function initChips() {
     var b = document.createElement("button");
     b.className = "chip" + (i === 0 ? " on" : "");
     b.textContent = g.label;
+    b.setAttribute("data-analytics-filter", g.id);
     b.setAttribute("aria-pressed", i === 0 ? "true" : "false");
     b.addEventListener("click", function () {
       bar.querySelectorAll(".chip").forEach(function (c) {

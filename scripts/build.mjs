@@ -19,22 +19,43 @@ if (basename(outputDir) !== "dist" || dirname(outputDir) !== projectRoot) {
 const publicFiles = [
   ".well-known/security.txt",
   "404.html",
+  "404.md",
   "googlee70d0e2c8fe95f2c.html",
   "index.html",
+  "index.md",
   "nosotros.html",
+  "nosotros.md",
+  "about.html",
+  "about.md",
+  "contact.html",
+  "contact.md",
+  "privacy.html",
+  "privacy.md",
   "producto.html",
   "hair-nails-forte.html",
+  "hair-nails-forte.md",
   "radiant-skin.html",
+  "radiant-skin.md",
   "vinagre-de-manzana.html",
+  "vinagre-de-manzana.md",
   "sleep-vitamins.html",
+  "sleep-vitamins.md",
   "sexual-booster-women.html",
+  "sexual-booster-women.md",
   "sexual-booster-men.html",
+  "sexual-booster-men.md",
   "anti-stress.html",
+  "anti-stress.md",
+  "llms.txt",
+  "llms-full.txt",
+  "agents.md",
   "robots.txt",
   "sitemap.xml",
   "tienda.html",
+  "tienda.md",
   "css/styles.css",
   "js/frame-guard.js",
+  "js/analytics.js",
   "js/main.js",
   "js/product-page.js",
   "js/products.js",
@@ -134,8 +155,9 @@ for (const entry of publicFiles) {
   const destination = join(outputDir, entry);
   await mkdir(dirname(destination), { recursive: true });
   await cp(await safeSource(entry), destination, {
-    errorOnExist: true,
-    force: false
+    // `dist/` acaba de limpiarse; permitir reemplazo hace el build estable
+    // si el sistema conserva temporalmente una entrada del build anterior.
+    force: true
   });
 }
 
@@ -147,7 +169,22 @@ if (target === "github-pages" || target === "generic") {
   await writeFile(join(outputDir, ".nojekyll"), "", { flag: "wx" });
 }
 
-const forbidden = ["README.md", "vercel.json", "netlify.toml", ".git", "docs", "output", ".agents", ".claude", ".playwright-cli"];
+// functions/ y tests/ son código de despliegue/verificación: Cloudflare compila
+// functions/ desde la raíz del repositorio y nunca deben acabar en el artefacto público.
+const forbidden = [
+  "README.md",
+  "vercel.json",
+  "netlify.toml",
+  ".git",
+  "docs",
+  "output",
+  ".agents",
+  ".claude",
+  ".playwright-cli",
+  "functions",
+  "tests",
+  "scripts"
+];
 for (const entry of forbidden) {
   try {
     await access(join(outputDir, entry));

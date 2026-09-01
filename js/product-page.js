@@ -183,6 +183,21 @@
 
   renderVariants();
   updateBuy();
+  if (window.clAnalytics) {
+    window.clAnalytics.track("view_item", {
+      item_id: product.id,
+      item_name: product.name,
+      price: clSinglePrice(product),
+      currency: "USD",
+      items: [{
+        item_id: product.id,
+        item_name: product.name,
+        item_category: product.goalLabel,
+        price: clSinglePrice(product),
+        quantity: 1
+      }]
+    });
+  }
 
   var sticky = document.getElementById("pd-sticky");
   var buyBox = document.querySelector(".pd-buy");

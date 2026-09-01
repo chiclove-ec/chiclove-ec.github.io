@@ -8,7 +8,12 @@
     "build:github": "node scripts/build.mjs --target=github-pages",
     "build:netlify": "node scripts/build.mjs --target=netlify",
     "build:cloudflare": "node scripts/build.mjs --target=cloudflare",
-    "build:vercel": "node scripts/build.mjs --target=vercel"
+    "build:vercel": "node scripts/build.mjs --target=vercel",
+    "gen": "npm run gen:products && npm run gen:jsonld",
+    "gen:products": "node scripts/gen-products.mjs",
+    "gen:jsonld": "node scripts/gen-jsonld.mjs",
+    "serve": "node scripts/serve.mjs",
+    "test": "node --test --test-concurrency=1 tests/*.test.mjs"
   },
   "engines": {
     "node": ">=20"

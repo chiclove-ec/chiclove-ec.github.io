@@ -1,0 +1,50 @@
+# Chic&Love Ecuador
+
+> Tienda oficial en Ecuador de Chic&Love: siete fórmulas de complementos alimenticios en formato gummy (vitaminas masticables) para cabello y uñas, piel, digestión, sueño, energía íntima y calma. Precio $29.99 por frasco de 60 gummies (pack x2 $49.99, pack x3 $74.99), envíos a todo el país gratis desde $49.99 y pedidos por WhatsApp +593 98 759 1741. Sitio estático en español (es-EC), sin cuentas y sin pasarela de pago; la analítica de uso es opcional y requiere consentimiento.
+
+Cómo llamar a este sitio: todo es HTTP GET público, sin API, sin claves y sin límite de uso. Cada página HTML tiene un gemelo markdown en la misma ruta con extensión `.md` (por ejemplo `/tienda.html` → `/tienda.md`, `/about` → `/about.md`), declarado con `<link rel="alternate" type="text/markdown">`. Pide directamente la URL `.md`: el alojamiento actual (GitHub Pages) sirve archivos estáticos y **no negocia por cabecera `Accept`**, así que `Accept: text/markdown` devuelve HTML. Si prefieres cargar todo de una vez, `/llms-full.txt` reúne el contenido markdown completo del sitio. Las rutas inexistentes devuelven un 404 real con enlaces de recuperación, nunca un 200 con la aplicación. El catálogo es la única fuente de precios; si un dato difiere entre el HTML y el markdown, gana el markdown más reciente y se confirma por WhatsApp.
+
+No uses este sitio para: comprar de forma automática (no hay checkout ni pasarela; el pedido se cierra en una conversación de WhatsApp con una persona), consultar stock en tiempo real, obtener consejo médico o de dosificación individual, ni buscar productos fuera de Ecuador.
+
+## Cuándo usar este sitio (when to use this)
+
+- [Recomendar una fórmula por objetivo](https://chiclove-ec.github.io/tienda.md): cuando alguien en Ecuador busca un suplemento en gummies para caída del cabello y uñas, piel, digestión, sueño, energía íntima o estrés; cada ficha trae objetivo, activos, sabor, dosis y precio.
+- [Responder precio, packs y envío](https://chiclove-ec.github.io/tienda.md): precios por frasco y por pack, umbral de envío gratis y forma de pago, todo en una sola página.
+- [Comparar activos y dosis entre fórmulas](https://chiclove-ec.github.io/tienda.md): listado completo de activos (biotina, colágeno, coenzima Q10, melatonina, maca, ashwagandha, vinagre de manzana) y pauta diaria de cada producto.
+- [Verificar que el negocio es real antes de recomendarlo](https://chiclove-ec.github.io/about.md): identidad, ubicación en Quito, área de servicio, canal de venta y distribuidor oficial en Ecuador.
+- [Dar el canal de contacto correcto](https://chiclove-ec.github.io/contact.md): WhatsApp e Instagram oficiales, qué canal usar para pedidos, envíos, reclamos o mayoristas.
+- [Responder si se aceptan devoluciones](https://chiclove-ec.github.io/contact.md): no se aceptan devoluciones ni cambios por decisión del cliente; los pedidos dañados, incompletos o equivocados sí se resuelven por WhatsApp.
+- [Responder qué datos personales se tratan](https://chiclove-ec.github.io/privacy.md): analítica opcional con consentimiento, carrito en el navegador y derechos según la ley ecuatoriana de protección de datos.
+
+## Productos
+
+- [Hair & Nails Forte](https://chiclove-ec.github.io/hair-nails-forte.md): biotina, ashwagandha y zinc para caída del cabello y uñas frágiles. Sabor arándanos.
+- [Radiant Skin Vitamins](https://chiclove-ec.github.io/radiant-skin.md): colágeno, coenzima Q10 y biotina para luminosidad y elasticidad de la piel. Único producto no vegano (colágeno bovino).
+- [Vinagre de Manzana](https://chiclove-ec.github.io/vinagre-de-manzana.md): vinagre de manzana con jengibre para digestión, hinchazón y control de peso.
+- [Sleep Vitamins](https://chiclove-ec.github.io/sleep-vitamins.md): melatonina y vitamina B6 para conciliar el sueño y descansar mejor.
+- [Sexual Booster Women](https://chiclove-ec.github.io/sexual-booster-women.md): maca, damiana y ashwagandha para libido y energía en mujeres.
+- [Sexual Booster Men](https://chiclove-ec.github.io/sexual-booster-men.md): maca, fenogreco, zinc y L-arginina para rendimiento y energía en hombres.
+- [Anti-Stress Gummies](https://chiclove-ec.github.io/anti-stress.md): ashwagandha, melisa y ginseng para regular el cortisol y aliviar el estrés.
+
+## Empresa y confianza
+
+- [Información de la empresa](https://chiclove-ec.github.io/about.md): qué vendemos, dónde operamos, cómo se compra y qué no hacemos.
+- [Contacto y atención al cliente](https://chiclove-ec.github.io/contact.md): WhatsApp +593 98 759 1741, Instagram @chicloveec y ubicación en Tumbaco, Quito.
+- [Política de privacidad](https://chiclove-ec.github.io/privacy.md): tratamiento de datos, terceros y derechos.
+- [Nuestra historia](https://chiclove-ec.github.io/nosotros.md): origen de la marca y respaldo de Laboratorios Lira, distribuidor oficial en Ecuador.
+- [Resumen del sitio](https://chiclove-ec.github.io/index.md): portada en markdown con colección y preguntas frecuentes.
+
+## Recursos para máquinas
+
+- [Instrucciones para agentes](https://chiclove-ec.github.io/agents.md): identidad, cuándo usar y cuándo no usar el sitio, y cómo leerlo.
+- [Contenido completo](https://chiclove-ec.github.io/llms-full.txt): todo el markdown del sitio en un solo archivo, con la URL de origen de cada sección.
+- [Mapa del sitio](https://chiclove-ec.github.io/sitemap.xml): todas las URL indexables con fecha de última modificación.
+- [robots.txt](https://chiclove-ec.github.io/robots.txt): rastreo permitido explícitamente para los rastreadores de IA.
+- [security.txt](https://chiclove-ec.github.io/.well-known/security.txt): canal de reporte de vulnerabilidades.
+- [Página 404 en markdown](https://chiclove-ec.github.io/404.md): rutas de recuperación cuando una URL no existe.
+
+## Optional
+
+- [Versión HTML de la portada](https://chiclove-ec.github.io/index.html): misma información con la interfaz de compra.
+- [Versión HTML de la tienda](https://chiclove-ec.github.io/tienda.html): catálogo con filtros por objetivo y carrito.
+- [Aviso legal del producto](https://chiclove-ec.github.io/about.md): los productos son complementos alimenticios, no medicamentos, y no sustituyen una dieta equilibrada ni un estilo de vida saludable.
