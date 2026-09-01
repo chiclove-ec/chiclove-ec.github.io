@@ -1887,6 +1887,8 @@ p, li { text-wrap: pretty; }
 /* ---------- Páginas de documento (Acerca de, Contacto, Privacidad) ---------- */
 .doc { max-width: 760px; margin-inline: auto; }
 .doc + .doc { margin-top: 64px; }
+/* Respiro entre el hero de la página y el primer bloque de texto */
+.about-hero + .section.pt-0 > .wrap > .doc:first-child { margin-top: 34px; }
 .doc h2 { font-size: clamp(26px, 3.4vw, 36px); }
 .doc h3 { font-size: 19px; margin-top: 28px; }
 .doc p { color: var(--muted); margin-top: 14px; }
@@ -1927,6 +1929,7 @@ p, li { text-wrap: pretty; }
 
 @media (max-width: 720px) {
   .doc + .doc { margin-top: 44px; }
+  .about-hero + .section.pt-0 > .wrap > .doc:first-child { margin-top: 22px; }
   .doc h3 { font-size: 17px; }
   .doc p, .doc ul li { font-size: 15px; }
   .doc-facts > div { padding: 16px 18px; }
