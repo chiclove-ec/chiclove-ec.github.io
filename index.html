@@ -26,13 +26,13 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SiteNavigationElement","name":"Tienda","description":"Toda la colección de gummies de vitaminas","url":"https://chiclove-ec.github.io/tienda.html"},{"@type":"SiteNavigationElement","name":"Certificaciones","description":"Certificaciones de calidad que respaldan a Chic&Love","url":"https://chiclove-ec.github.io/index.html#certificaciones"},{"@type":"SiteNavigationElement","name":"Nosotros","description":"Nuestra historia y filosofía","url":"https://chiclove-ec.github.io/nosotros.html"},{"@type":"SiteNavigationElement","name":"Ayuda","description":"Preguntas frecuentes","url":"https://chiclove-ec.github.io/index.html#faq"}]}</script>
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <script src="js/frame-guard.js"></script>
-  <link rel="stylesheet" href="css/styles.css?v=20260723-1">
+  <link rel="stylesheet" href="css/styles.css?v=20260901-4">
 </head>
 <body class="page-home">
   <noscript><p class="no-script-notice">Activa JavaScript para usar la tienda Chic&amp;Love.</p></noscript>
 
   <div class="site-top">
-  <div class="topbar"><span data-free-shipping-banner>Envío gratis en todo Ecuador.</span> <span class="topbar-offer" data-catalog-offer>Consulta nuestros packs.</span></div>
+  <div class="topbar"><span data-free-shipping-banner>Envío gratis en todo Ecuador.</span><span data-vat-note>IVA incluido</span><span class="topbar-offer" data-catalog-offer>Consulta nuestros packs.</span></div>
 
   <header class="header">
     <div class="nav">
@@ -134,6 +134,11 @@
         <div class="trust-item reveal reveal-d2"><div class="t-ico" aria-hidden="true">03</div><div><h3>Paga con transferencia</h3><p>Completa tu pedido mediante transferencia bancaria.</p></div></div>
         <div class="trust-item reveal reveal-d3"><div class="t-ico" aria-hidden="true">04</div><div><h3>Un ritual fácil</h3><p>Nada de pastillas: gummies con sabor real.</p></div></div>
       </div>
+    </section>
+
+    <!-- ============ PROMOCIÓN VIGENTE (la renderiza main.js; se oculta sola al terminar) ============ -->
+    <section class="promo-band-section" data-promo-band hidden>
+      <div class="wrap"></div>
     </section>
 
     <!-- ============ BESTSELLERS ============ -->
@@ -264,6 +269,10 @@
             <div class="faq-body">Sí. Todas nuestras gummies están elaboradas sin gluten ni lactosa, y todas son veganas excepto Radiant Skin, cuyo colágeno proviene del bovino.</div>
           </details>
           <details>
+            <summary>¿Los precios incluyen IVA?</summary>
+            <div class="faq-body" data-vat-faq>Sí, todos los precios incluyen IVA.</div>
+          </details>
+          <details>
             <summary>¿Cómo hago mi pedido?</summary>
             <div class="faq-body">Añade los productos al carrito y finaliza el pedido por WhatsApp. Ahí confirmamos contigo los productos, la dirección y el pago por transferencia.</div>
           </details>
@@ -351,7 +360,7 @@
     </div>
   </footer>
 
-  <script src="js/products.js?v=20260723-5"></script>
-  <script src="js/main.js?v=20260723-5"></script>
+  <script src="js/products.js?v=20260901-1"></script>
+  <script src="js/main.js?v=20260901-4"></script>
 </body>
 </html>

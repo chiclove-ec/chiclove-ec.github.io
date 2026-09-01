@@ -23,13 +23,13 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SiteNavigationElement","name":"Tienda","description":"Toda la colección de gummies de vitaminas","url":"https://chiclove-ec.github.io/tienda.html"},{"@type":"SiteNavigationElement","name":"Certificaciones","description":"Certificaciones de calidad que respaldan a Chic&Love","url":"https://chiclove-ec.github.io/index.html#certificaciones"},{"@type":"SiteNavigationElement","name":"Nosotros","description":"Nuestra historia y filosofía","url":"https://chiclove-ec.github.io/nosotros.html"},{"@type":"SiteNavigationElement","name":"Ayuda","description":"Preguntas frecuentes","url":"https://chiclove-ec.github.io/index.html#faq"}]}</script>
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <script src="js/frame-guard.js"></script>
-  <link rel="stylesheet" href="css/styles.css?v=20260723-1">
+  <link rel="stylesheet" href="css/styles.css?v=20260901-4">
 </head>
 <body class="page-store">
   <noscript><p class="no-script-notice">Activa JavaScript para usar la tienda Chic&amp;Love.</p></noscript>
 
   <div class="site-top">
-  <div class="topbar"><span data-free-shipping-banner>Envío gratis en todo Ecuador.</span> <span class="topbar-offer" data-catalog-offer>Consulta nuestros packs.</span></div>
+  <div class="topbar"><span data-free-shipping-banner>Envío gratis en todo Ecuador.</span><span data-vat-note>IVA incluido</span><span class="topbar-offer" data-catalog-offer>Consulta nuestros packs.</span></div>
 
   <header class="header">
     <div class="nav">
@@ -86,9 +86,13 @@
         <div class="section-head reveal">
           <span class="eyebrow">La colección completa</span>
           <h1>Tu bienestar, pero mucho más irresistible</h1>
-          <p>Elige lo que quieres potenciar hoy. Todas las fórmulas incluyen 60 gummies y llegan a todo Ecuador.</p>
+          <p>Elige lo que quieres potenciar hoy. Todas las fórmulas incluyen 60 gummies, llegan a todo Ecuador y sus precios incluyen IVA.</p>
         </div>
         <div class="chips" data-chips role="group" aria-label="Filtrar por objetivo"></div>
+        <!-- Promoción vigente: la renderiza main.js y se oculta sola al terminar.
+             Va tras los chips para quedar por debajo del panel decorativo del hero,
+             que tiene altura fija y se solapaba con la banda según el ancho. -->
+        <div class="promo-band-slot" data-promo-band hidden></div>
         <p class="sr-only" id="filter-status" role="status" aria-live="polite"></p>
         <div class="products-grid" data-products-grid data-filter="todos"></div>
       </div>
@@ -158,7 +162,7 @@
     </div>
   </footer>
 
-  <script src="js/products.js?v=20260723-5"></script>
-  <script src="js/main.js?v=20260723-5"></script>
+  <script src="js/products.js?v=20260901-1"></script>
+  <script src="js/main.js?v=20260901-4"></script>
 </body>
 </html>

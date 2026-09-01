@@ -17,7 +17,7 @@ const productsSrc = readFileSync(resolve(root, "js/products.js"), "utf8").replac
 const catalog = {};
 new Function(
   "Date",
-  productsSrc + "\nthis.CL_PRODUCTS=CL_PRODUCTS; this.clSinglePrice=clSinglePrice;"
+  productsSrc + "\nthis.CL_PRODUCTS=CL_PRODUCTS; this.clSinglePrice=clSinglePrice; this.clActivePromo=clActivePromo;"
 ).call(catalog, Date);
 
 const template = readFileSync(resolve(root, "producto.html"), "utf8");
@@ -25,12 +25,16 @@ const setMeta = (html, id, value) =>
   html.replace(new RegExp('(<meta [^>]*id="' + id + '"[^>]*content=")[^"]*(")'), "$1" + esc(value) + "$2");
 
 let count = 0;
+const promoted = [];
 for (const p of catalog.CL_PRODUCTS) {
   const url = BASE + p.id + ".html";
   const title = p.name + " — Chic&Love Ecuador";
   const metaDesc = p.desc + " Sabor " + p.flavor.toLowerCase() + ", 60 gummies. Envíos a todo Ecuador.";
   const ogDesc = p.tagline + " " + p.desc;
   const imgAlt = "Frasco de " + p.name;
+  const promo = catalog.clActivePromo(p);
+  const price = catalog.clSinglePrice(p).toFixed(2);
+  if (promo) promoted.push(p.id + " a $" + price + " hasta " + promo.priceValidUntil);
 
   const productLd = {
     "@context": "https://schema.org",
@@ -46,8 +50,14 @@ for (const p of catalog.CL_PRODUCTS) {
       "@type": "Offer",
       url: url,
       priceCurrency: "USD",
-      price: p.price.toFixed(2),
-      priceValidUntil: "2027-07-31",
+      price: price,
+      priceValidUntil: promo ? promo.priceValidUntil : "2027-07-31",
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        priceCurrency: "USD",
+        price: price,
+        valueAddedTaxIncluded: true
+      },
       availability: "https://schema.org/InStock",
       itemCondition: "https://schema.org/NewCondition",
       seller: { "@id": BASE + "#organization" }
@@ -78,3 +88,10 @@ for (const p of catalog.CL_PRODUCTS) {
   count++;
 }
 console.log("Generadas " + count + " páginas de producto: " + catalog.CL_PRODUCTS.map((p) => p.id + ".html").join(", "));
+if (promoted.length) {
+  console.warn(
+    "\nAVISO: hay precio promocional escrito en los datos estructurados (" + promoted.join("; ") + ").\n" +
+    "La web se corrige sola al terminar la promo, pero estos JSON-LD no: vuelve a ejecutar\n" +
+    "`node scripts/gen-products.mjs` y despliega cuando la promo haya cerrado."
+  );
+}

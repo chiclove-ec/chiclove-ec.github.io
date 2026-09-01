@@ -172,6 +172,19 @@ p, li { text-wrap: pretty; }
   overflow: hidden;
 }
 .topbar span { position: relative; z-index: 1; }
+/* Un "|" real entre cada parte; el margen simétrico da el aire a ambos lados. */
+.topbar span + span::before {
+  content: "|";
+  display: inline-block;
+  margin: 0 24px;
+  color: rgba(255,255,255,0.34);
+  font-weight: 400;
+}
+/* Es un separador visual: donde se admite texto alternativo se silencia para el
+   lector de pantalla. En @supports para no perder el "|" si no está soportado. */
+@supports (content: "x" / "y") {
+  .topbar span + span::before { content: "|" / ""; }
+}
 .topbar::before {
   content: "";
   position: absolute;
@@ -506,6 +519,20 @@ p, li { text-wrap: pretty; }
   padding: 5px 11px;
   border-radius: 999px;
 }
+.pcard.is-promo { border-color: color-mix(in srgb, var(--a) 42%, #fff); }
+/* Va enfrentado a .pcard-tag, que conserva su etiqueta de objetivo. */
+.pcard-promo-tag {
+  position: absolute;
+  top: 18px; right: 18px;
+  z-index: 2;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: var(--a-dark);
+  padding: 5px 11px;
+  border-radius: 999px;
+}
 .pcard-img {
   position: relative;
   z-index: 1;
@@ -533,6 +560,8 @@ p, li { text-wrap: pretty; }
 .pcard-price { min-width: 0; }
 .pcard-price-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 9px; }
 .pcard-now-price { font-family: var(--font-display); font-size: 19px; line-height: 1; }
+.pcard-was-price { color: var(--muted); font-family: var(--font-body); font-size: 12.5px; font-weight: 500; text-decoration-thickness: 1px; }
+.pcard-vat { display: block; margin-top: 5px; font-family: var(--font-body); font-size: 11px; font-weight: 600; color: var(--muted); letter-spacing: 0; }
 .pcard-pack-prices { display: flex; flex-wrap: wrap; gap: 3px 15px; margin-top: 9px; }
 .pcard-pack-prices small { font-family: var(--font-body); font-weight: 600; font-size: 11.5px; color: var(--muted); letter-spacing: 0; }
 .pcard-saving { display: inline-flex; width: max-content; max-width: 100%; margin-top: 8px; padding: 4px 8px; border-radius: 999px; background: #edf6ed; color: #267437; font-family: var(--font-body); font-size: 10px; font-weight: 750; letter-spacing: 0.01em; }
@@ -837,6 +866,95 @@ p, li { text-wrap: pretty; }
 .cta-visual { position: absolute; right: 2%; bottom: -8%; width: 44%; height: 145%; display: grid; place-items: end center; }
 .cta-visual img { width: 100%; max-width: 460px; height: auto; max-height: none; filter: drop-shadow(0 30px 44px rgba(0,0,0,0.45)); rotate: 0deg; }
 
+/* ---------- Banda de promoción ---------- */
+/* main.js fija --a / --a-dark con el color del producto en promoción. */
+.promo-band {
+  position: relative;
+  overflow: clip;
+  display: grid;
+  /* Sin padding a la derecha: la imagen sangra hasta el borde de la banda y la
+     esquina redondeada la recorta, así no queda una caja dentro de otra caja. */
+  grid-template-columns: minmax(0, 1fr) clamp(260px, 40%, 480px);
+  align-items: center;
+  gap: 40px;
+  padding: 0;
+  border-radius: var(--r-lg);
+  border: 1px solid color-mix(in srgb, var(--a) 30%, #fff);
+  /* El tinte del acento recorre la banda entera; antes moría en blanco al 58%
+     y dejaba un vacío pálido entre el texto y la imagen. */
+  background:
+    radial-gradient(120% 150% at 100% 50%, color-mix(in srgb, var(--a) 22%, #fff), transparent 62%),
+    linear-gradient(108deg, color-mix(in srgb, var(--a) 30%, #fff), color-mix(in srgb, var(--a) 14%, #fff) 62%, color-mix(in srgb, var(--a) 20%, #fff));
+  box-shadow: var(--shadow-1);
+  color: var(--ink);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s;
+}
+.promo-band:hover { transform: translateY(-3px); box-shadow: var(--shadow-2); }
+/* El aire vive aquí, no en la banda: así la imagen llega hasta los cuatro bordes. */
+.promo-band-copy { position: relative; z-index: 1; padding: 52px 0 52px 56px; }
+.promo-band-head { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; }
+.promo-band-kicker {
+  color: var(--a-dark);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.promo-band-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 13px;
+  border-radius: 999px;
+  background: var(--a-dark);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 750;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+.promo-band h2 { margin-top: 15px; font-size: clamp(32px, 4.2vw, 50px); letter-spacing: -0.03em; }
+.promo-band-prices { margin-top: 14px; display: flex; align-items: baseline; flex-wrap: wrap; gap: 3px 13px; }
+.promo-band-prices strong { font-family: var(--font-display); font-size: 27px; letter-spacing: -0.02em; }
+.promo-band-prices del { color: var(--muted); font-size: 15.5px; font-weight: 500; text-decoration-thickness: 1px; }
+.promo-band-vat { color: var(--muted); font-size: 12.5px; font-weight: 600; }
+.promo-band-actions { margin-top: 26px; display: flex; align-items: center; flex-wrap: wrap; gap: 10px 18px; }
+.promo-band-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 25px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 600;
+  transition: background 0.32s ease;
+}
+.promo-band-deadline { color: var(--muted); font-size: 12.5px; font-weight: 600; }
+.promo-band:hover .promo-band-cta { background: var(--a-dark); }
+/* A sangre y a altura completa: la fila la marca el texto y la imagen la rellena. */
+.promo-band-media { position: relative; align-self: stretch; min-height: 270px; overflow: hidden; }
+.promo-band-media img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.promo-band:hover .promo-band-media img { transform: scale(1.05); }
+/* En la tienda el hueco superior lo da el margen de los chips (42px). */
+.promo-band-slot { margin-bottom: 46px; }
+/* Comparte el fondo de #productos para que la banda no caiga justo sobre el
+   cambio de color: así flota sobre un solo tono y la costura pasa a coincidir
+   con el borde inferior de .trust, que ya es una separación intencional. */
+.promo-band-section { padding: 46px 0 0; background: #f1ede7; }
+/* El aire de abajo lo pone la sección siguiente; con la banda delante se recorta
+   al mismo valor para que no quede flotando en un vacío. Si la promo termina, la
+   sección va [hidden] y #productos recupera su ritmo normal de 112px. */
+.promo-band-section:not([hidden]) + #productos { padding-top: 46px; }
+
 /* ---------- Footer ---------- */
 .footer { background: var(--ink); color: rgba(255,255,255,0.75); margin-top: 96px; }
 .footer-main {
@@ -1007,6 +1125,7 @@ p, li { text-wrap: pretty; }
 .cart-foot { border-top: 1px solid var(--line); padding: 20px 24px max(26px, calc(16px + env(safe-area-inset-bottom, 0px))); }
 .cart-total { display: flex; justify-content: space-between; font-weight: 700; font-size: 17px; margin-bottom: 6px; }
 .cart-total-ship { margin-left: 6px; font-size: 12px; font-weight: 600; color: var(--muted); }
+.cart-total-vat { display: block; margin-top: 3px; font-family: var(--font-body); font-size: 11.5px; font-weight: 600; color: var(--muted); letter-spacing: 0; }
 .cart-shipping { margin: 12px 0 14px; }
 .cart-shipping p { color: var(--ink-2); font-size: 12px; font-weight: 650; }
 .cart-shipping progress { display: block; width: 100%; height: 7px; margin-top: 8px; border: 0; border-radius: 999px; overflow: hidden; background: #e8e3dd; }
@@ -1099,6 +1218,28 @@ p, li { text-wrap: pretty; }
   background: color-mix(in srgb, var(--a) 12%, #fff);
   color: var(--a-dark);
 }
+/* Nota, no control: texto con punto de acento en vez de píldora sólida,
+   que junto al botón de compra se leería como algo pulsable. */
+.pd-promo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 13px;
+  color: var(--a-dark);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+.pd-promo::before {
+  content: "";
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--a);
+}
+/* `display` de autor gana al [hidden] del navegador: hay que reponerlo. */
+.pd-promo[hidden] { display: none; }
 .pd-buy-label { margin-top: 28px; font-size: 13px; font-weight: 750; letter-spacing: 0.08em; text-transform: uppercase; }
 .pd-variants { margin-top: 10px; display: flex; flex-direction: column; gap: 10px; }
 .variant-opt {
@@ -1120,7 +1261,9 @@ p, li { text-wrap: pretty; }
 .variant-opt.featured { background: linear-gradient(100deg, var(--card), color-mix(in srgb, var(--a-soft) 62%, #fff)); }
 .variant-opt .v-name { font-weight: 700; font-size: 15px; }
 .variant-opt .v-sub { font-size: 12.5px; color: var(--muted); }
+.variant-opt .v-price-box { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
 .variant-opt .v-price { font-family: var(--font-display); font-weight: 700; font-size: 18px; }
+.variant-opt .v-vat { font-family: var(--font-body); font-size: 10.5px; font-weight: 600; color: var(--muted); letter-spacing: 0; white-space: nowrap; }
 .variant-opt .save {
   font-size: 11px;
   font-weight: 700;
@@ -1469,6 +1612,7 @@ p, li { text-wrap: pretty; }
   .pd-sticky .btn { min-height: 44px; padding: 10px 15px; font-size: 12.5px; }
   .pcard:hover { transform: none; }
   .topbar { font-size: 11.5px; letter-spacing: 0.025em; padding: 7px 12px; line-height: 1.35; }
+  .topbar span + span::before { margin: 0 16px; }
   .topbar-offer { display: none; }
   .store-hero { padding-top: 72px; }
   .store-hero::before { inset: 14px 10px auto; height: 385px; border-radius: 28px; }
@@ -1570,9 +1714,14 @@ p, li { text-wrap: pretty; }
   .pcard-img img { max-height: 150px; }
   .pcard-rating, .pcard .ptagline, .pcard-saving, .pcard-pack-prices { display: none; }
   .pcard h2, .pcard h3 { font-size: 15.5px; line-height: 1.08; }
-  .pcard-foot { margin-top: 10px; padding-top: 11px; gap: 6px; }
+  /* Aquí se oculta .ptagline, que en escritorio es el espaciador flexible que
+     empuja el pie hacia abajo. Sin él, un título de dos líneas desalinearía el
+     precio y el botón frente a la tarjeta vecina: margin-top auto lo sustituye. */
+  .pcard-foot { margin-top: auto; padding-top: 11px; gap: 6px; }
   .pcard-price-head { gap: 5px 6px; }
   .pcard-now-price { font-size: 16px; }
+  .pcard-was-price { font-size: 11px; }
+  .pcard-vat { margin-top: 4px; font-size: 9.5px; }
   .pcard .add-btn { min-height: 44px; padding: 9px 13px; font-size: 12px; }
   .center-cta { margin-top: 24px; }
 
@@ -1602,6 +1751,19 @@ p, li { text-wrap: pretty; }
   .faq summary { padding: 18px; font-size: 14px; }
   .faq .faq-body { padding: 0 18px 18px; font-size: 13.5px; }
 
+  .promo-band { padding: 0; grid-template-columns: minmax(0, 1fr) 38%; gap: 16px; border-radius: 28px; }
+  .promo-band-copy { padding: 30px 0 30px 24px; }
+  .promo-band-head { gap: 10px; }
+  .promo-band-badge { padding: 5px 11px; font-size: 12.5px; }
+  .promo-band h2 { margin-top: 11px; font-size: clamp(26px, 7.4vw, 34px); }
+  .promo-band-prices { margin-top: 11px; gap: 2px 10px; }
+  .promo-band-prices strong { font-size: 23px; }
+  .promo-band-actions { margin-top: 20px; gap: 8px 14px; }
+  .promo-band-cta { padding: 11px 19px; font-size: 12.5px; }
+  .promo-band-media { min-height: 196px; }
+  .promo-band-slot { margin-bottom: 36px; }
+  .promo-band-section { padding-top: 28px; }
+  .promo-band-section:not([hidden]) + #productos { padding-top: 28px; }
   .cta-banner { padding: 38px 22px; border-radius: 28px; }
   .cta-banner h2 { font-size: clamp(30px, 9vw, 38px); }
   .cta-banner .btn { margin-top: 22px; }
