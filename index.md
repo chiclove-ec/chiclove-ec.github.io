@@ -1,7 +1,7 @@
 # Chic&Love Ecuador — vitaminas en gummies
 
 > Tienda oficial de Chic&Love en Ecuador: siete fórmulas de complementos alimenticios en
-> formato gummy para cabello y uñas, piel, digestión, sueño, energía íntima y calma. Desde $29.99 el frasco de 60 gummies, pedidos por WhatsApp (+593 98 759 1741) y envíos a todo el país.
+> formato gummy para cabello y uñas, piel, digestión, sueño, energía íntima y calma. Desde $18.00 el frasco de 60 gummies, pedidos por WhatsApp (+593 98 759 1741) y envíos a todo el país.
 
 Las fórmulas se desarrollan en España con activos naturales (biotina, colágeno, coenzima Q10,
 melatonina, maca, ashwagandha, vinagre de manzana) y se distribuyen en Ecuador a través de
@@ -13,7 +13,7 @@ consentimiento.
 ## Colección
 
 - [Hair & Nails Forte](https://chiclove-ec.github.io/hair-nails-forte.md): Cabello más fuerte. Uñas de acero. Cabello y uñas, sabor arándanos, $29.99.
-- [Radiant Skin Vitamins](https://chiclove-ec.github.io/radiant-skin.md): Tu piel, en modo glow. Piel radiante, sabor frutos rojos, $29.99.
+- [Radiant Skin Vitamins](https://chiclove-ec.github.io/radiant-skin.md): Tu piel, en modo glow. Piel radiante, sabor frutos rojos, $18.00.
 - [Vinagre de Manzana](https://chiclove-ec.github.io/vinagre-de-manzana.md): Digestión ligera. Digestión y balance, sabor manzana, $29.99.
 - [Sleep Vitamins](https://chiclove-ec.github.io/sleep-vitamins.md): Duerme profundo. Despierta increíble. Sueño reparador, sabor fresa, $29.99.
 - [Sexual Booster Women](https://chiclove-ec.github.io/sexual-booster-women.md): Enciende tu energía. Energía íntima, sabor cereza, $29.99.

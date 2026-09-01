@@ -105,15 +105,24 @@ function cartLoad() {
     // Revalida, elimina campos inesperados y consolida duplicados manipulados.
     var normalized = [];
     raw.forEach(function (it) {
-      if (!it || !clFindProduct(it.id) ||
+      var product = it && clFindProduct(it.id);
+      if (!product ||
           (it.variant !== "uno" && it.variant !== "pack" && it.variant !== "pack3") ||
           !Number.isInteger(it.qty) || it.qty < 1 || it.qty > 99) return;
+      var variant = it.variant;
+      var qty = it.qty;
+      // Packs guardados antes de que una promo los retirara: se convierten a frascos
+      // sueltos, que al precio promocional salen más baratos que el pack original.
+      if (variant !== "uno" && !clHasPacks(product)) {
+        qty = Math.min(qty * (variant === "pack3" ? 3 : 2), 99);
+        variant = "uno";
+      }
       var found = normalized.find(function (known) {
-        return known.id === it.id && known.variant === it.variant;
+        return known.id === it.id && known.variant === variant;
       });
-      if (found) found.qty = Math.min(found.qty + it.qty, 99);
+      if (found) found.qty = Math.min(found.qty + qty, 99);
       else if (normalized.length < MAX_CART_LINES) {
-        normalized.push({ id: it.id, variant: it.variant, qty: it.qty });
+        normalized.push({ id: it.id, variant: variant, qty: qty });
       }
     });
     if (JSON.stringify(normalized) !== stored) cartSave(normalized);
@@ -245,7 +254,11 @@ function whatsappItemDetails(it) {
     "*" + product.name + "*",
     quantity + " - *" + clMoney(itemTotal(it)) + "*"
   ];
-  if (it.variant === "uno" && it.qty > 1) {
+  // El precio promocional solo afecta al frasco suelto; los packs conservan su tarifa.
+  var promo = it.variant === "uno" ? clActivePromo(product) : null;
+  if (promo) {
+    details.push("Promo −" + clPromoPercent(product) + "% aplicada");
+  } else if (it.variant === "uno" && it.qty > 1) {
     details.push("Descuento por pack aplicado");
   }
   return details;
@@ -269,6 +282,7 @@ function whatsappOrderMessage(items) {
   var orderTotal = cartTotal(items);
   var totalLine = "*TOTAL REFERENCIAL: " + clMoney(orderTotal) + "*";
   if (orderTotal > 0 && orderTotal < CL_FREE_SHIPPING) totalLine += " + envío";
+  totalLine += " (" + CL_VAT_NOTE + ")";
   lines.push(
     totalLine,
     "El precio referencial será verificado por un agente de Chic&Love.",
@@ -332,7 +346,9 @@ function buildCartChrome() {
   cartItems.id = "cart-items";
   var foot = makeEl("div", "cart-foot");
   var total = makeEl("div", "cart-total");
-  total.appendChild(makeEl("span", "", "Total"));
+  var totalLabel = makeEl("span", "", "Total");
+  totalLabel.appendChild(makeEl("small", "cart-total-vat", CL_VAT_NOTE));
+  total.appendChild(totalLabel);
   var totalValue = makeEl("span", "", "$0.00");
   totalValue.id = "cart-total";
   total.appendChild(totalValue);
@@ -347,7 +363,7 @@ function buildCartChrome() {
   shippingProgress.setAttribute("aria-label", "Progreso para obtener envío gratis");
   shipping.append(shippingText, shippingProgress);
   foot.appendChild(shipping);
-  foot.appendChild(makeEl("p", "cart-note", "Total referencial. Confirmamos precio y disponibilidad por WhatsApp"));
+  foot.appendChild(makeEl("p", "cart-note", "Total referencial · Confirmamos precio y disponibilidad por WhatsApp"));
   var checkout = makeEl("button", "btn btn-wa btn-wide");
   checkout.type = "button";
   checkout.id = "cart-checkout";
@@ -437,6 +453,7 @@ function renderCart() {
       var vLabel;
       if (it.variant === "pack3") vLabel = "Pack x3 frascos";
       else if (it.variant === "pack") vLabel = "Pack x2 frascos";
+      else if (!clHasPacks(p)) vLabel = it.qty + (it.qty === 1 ? " frasco, −" : " frascos, −") + clPromoPercent(p) + "% aplicado";
       else if (it.qty === 2) vLabel = "2 frascos, pack x2 aplicado";
       else if (it.qty === 3) vLabel = "3 frascos, pack x3 aplicado";
       else if (it.qty > 3) vLabel = it.qty + " frascos, descuento por packs aplicado";
@@ -505,7 +522,10 @@ function productCard(p, revealDelay) {
   card.style.setProperty("--a-dark", p.accentDark);
   card.style.setProperty("--soft", p.soft);
   var productUrl = encodeURIComponent(p.id) + ".html";
+  var promo = clActivePromo(p);
+  if (promo) card.classList.add("is-promo");
   card.appendChild(makeEl("span", "pcard-tag", p.goalLabel));
+  if (promo) card.appendChild(makeEl("span", "pcard-promo-tag", "−" + clPromoPercent(p) + "%"));
   var imageLink = makeEl("a", "pcard-img");
   imageLink.href = productUrl;
   imageLink.setAttribute("data-analytics-item", p.id);
@@ -546,12 +566,22 @@ function productCard(p, revealDelay) {
   var price = makeEl("div", "pcard-price");
   var priceHead = makeEl("div", "pcard-price-head");
   priceHead.appendChild(makeEl("strong", "pcard-now-price", clMoney(singlePrice)));
+  if (promo) priceHead.appendChild(makeEl("del", "pcard-was-price", clMoney(p.price)));
   price.appendChild(priceHead);
-  var packPrices = makeEl("div", "pcard-pack-prices");
-  packPrices.appendChild(makeEl("small", "", "Pack x2 " + clMoney(p.pricePack)));
-  packPrices.appendChild(makeEl("small", "", "Pack x3 " + clMoney(p.pricePack3)));
-  price.appendChild(packPrices);
-  price.appendChild(makeEl("span", "pcard-saving", "Ahorra hasta " + clMoney(p.price * 3 - p.pricePack3)));
+  price.appendChild(makeEl("small", "pcard-vat", CL_VAT_NOTE));
+  // La tarjeta en promo reutiliza las mismas dos ranuras que las demás (línea
+  // secundaria y píldora de ahorro), para que la rejilla no pierda simetría.
+  var secondLine = makeEl("div", "pcard-pack-prices");
+  if (promo) {
+    secondLine.appendChild(makeEl("small", "", "−" + clPromoPercent(p) + "% en " + promo.monthLabel));
+    price.appendChild(secondLine);
+    price.appendChild(makeEl("span", "pcard-saving", "Ahorras " + clMoney(p.price - singlePrice)));
+  } else {
+    secondLine.appendChild(makeEl("small", "", "Pack x2 " + clMoney(p.pricePack)));
+    secondLine.appendChild(makeEl("small", "", "Pack x3 " + clMoney(p.pricePack3)));
+    price.appendChild(secondLine);
+    price.appendChild(makeEl("span", "pcard-saving", "Ahorra hasta " + clMoney(p.price * 3 - p.pricePack3)));
+  }
   var add = makeEl("button", "add-btn", "Añadir");
   add.type = "button";
   add.setAttribute("aria-label", "Añadir " + p.name + " al carrito");
@@ -560,6 +590,74 @@ function productCard(p, revealDelay) {
   body.appendChild(cardFoot);
   card.appendChild(body);
   return card;
+}
+
+/* ---------- banda de promoción ---------- */
+function promoBand(product, promo) {
+  var band = makeEl("a", "promo-band");
+  band.href = encodeURIComponent(product.id) + ".html";
+  band.style.setProperty("--a", product.accent);
+  band.style.setProperty("--a-dark", product.accentDark);
+  band.setAttribute("aria-label", "Ver " + product.name + " con " + clPromoPercent(product) +
+    "% de descuento, " + clMoney(clSinglePrice(product)) + " en vez de " + clMoney(product.price));
+
+  var copy = makeEl("div", "promo-band-copy");
+  // El descuento vive en la chapa, no en el título: repetirlo en ambos sitios
+  // le quita fuerza justo a la cifra que queremos que se lea primero.
+  var head = makeEl("div", "promo-band-head");
+  head.appendChild(makeEl("span", "promo-band-kicker", "Solo en " + promo.monthLabel));
+  head.appendChild(makeEl("span", "promo-band-badge", "−" + clPromoPercent(product) + "%"));
+  copy.appendChild(head);
+  copy.appendChild(makeEl("h2", "", product.short));
+  var prices = makeEl("p", "promo-band-prices");
+  prices.appendChild(makeEl("strong", "", clMoney(clSinglePrice(product))));
+  prices.appendChild(makeEl("del", "", clMoney(product.price)));
+  prices.appendChild(makeEl("span", "promo-band-vat", CL_VAT_NOTE));
+  copy.appendChild(prices);
+  var actions = makeEl("div", "promo-band-actions");
+  actions.appendChild(makeEl("span", "promo-band-cta", "Ver producto"));
+  actions.appendChild(makeEl("span", "promo-band-deadline", "Hasta el " + promo.endsLabel));
+  copy.appendChild(actions);
+
+  // Imagen editorial de tienda: casi cuadrada, encaja en la banda mucho mejor
+  // que el splash (946×1600), que la estiraría a lo alto.
+  var media = makeEl("div", "promo-band-media");
+  var image = makeEl("img");
+  image.src = product.storeSmall;
+  image.srcset = product.storeSmall + " 640w, " + product.store + " 900w";
+  image.sizes = "(max-width: 720px) 38vw, 360px";
+  image.width = 900;
+  image.height = 988;
+  image.alt = "";
+  // Sin lazy: en la tienda la banda queda sobre el pliegue y es el foco de la promo.
+  image.decoding = "async";
+  media.appendChild(image);
+
+  band.append(copy, media);
+  return band;
+}
+
+// La banda anuncia un producto concreto: solo tiene sentido mientras ese producto
+// siga en la rejilla, así que desaparece al filtrar por otro objetivo.
+function promoBandFitsFilter(product) {
+  var grid = document.querySelector("[data-products-grid][data-filter]");
+  if (!grid || !product) return true;
+  var filter = grid.getAttribute("data-filter") || "todos";
+  return filter === "todos" || product.goal === filter;
+}
+
+function renderPromoBand() {
+  var mounts = document.querySelectorAll("[data-promo-band]");
+  if (!mounts.length) return;
+  var product = clPromotedProducts()[0] || null;
+  var promo = product ? clActivePromo(product) : null;
+  var show = !!promo && promoBandFitsFilter(product);
+  mounts.forEach(function (mount) {
+    var host = mount.querySelector(".wrap") || mount;
+    host.textContent = "";
+    mount.hidden = !show;
+    if (show) host.appendChild(promoBand(product, promo));
+  });
 }
 
 function renderGrids() {
@@ -603,6 +701,7 @@ function initChips() {
       b.setAttribute("aria-pressed", "true");
       grid.setAttribute("data-filter", g.id);
       renderGrids();
+      renderPromoBand();
     });
     bar.appendChild(b);
   });
@@ -703,6 +802,9 @@ function initBusinessData() {
   var pack3Minimum = clCatalogMinimum("pricePack3");
   var whatsappDisplay = clWhatsAppDisplay();
   var instagramHandle = "@" + CL_INSTAGRAM;
+  var promoted = clPromotedProducts();
+  var featured = promoted[0] || null;
+  var featuredPromo = featured ? clActivePromo(featured) : null;
 
   function activateExternalLink(link, url, label) {
     if (!url) {
@@ -721,8 +823,12 @@ function initBusinessData() {
   document.querySelectorAll("[data-single-start]").forEach(function (el) {
     el.textContent = "Desde " + clMoney(singleMinimum);
   });
+  // Cada dato es una parte independiente de la barra; el separador lo pone el CSS.
   document.querySelectorAll("[data-free-shipping-banner]").forEach(function (el) {
-    el.textContent = "Envío gratis desde " + clMoney(CL_FREE_SHIPPING) + " en todo Ecuador.";
+    el.textContent = "Envío gratis desde " + clMoney(CL_FREE_SHIPPING);
+  });
+  document.querySelectorAll("[data-vat-note]").forEach(function (el) {
+    el.textContent = CL_VAT_NOTE;
   });
   document.querySelectorAll("[data-free-shipping-short]").forEach(function (el) {
     el.textContent = "A todo Ecuador. Gratis desde " + clMoney(CL_FREE_SHIPPING) + ".";
@@ -730,8 +836,14 @@ function initBusinessData() {
   document.querySelectorAll("[data-free-shipping-faq]").forEach(function (el) {
     el.textContent = "Sí, enviamos a todo el país. Los pedidos desde " + clMoney(CL_FREE_SHIPPING) + " tienen envío gratis.";
   });
+  document.querySelectorAll("[data-vat-faq]").forEach(function (el) {
+    el.textContent = "Sí, el precio que ves ya incluye IVA y es el valor final del producto. " +
+      "El envío se calcula aparte y es gratis desde " + clMoney(CL_FREE_SHIPPING) + ".";
+  });
   document.querySelectorAll("[data-catalog-offer]").forEach(function (el) {
-    el.textContent = "Packs x2 por " + clMoney(pack2Minimum) + " y x3 por " + clMoney(pack3Minimum) + ".";
+    el.textContent = featured
+      ? featured.short + " −" + clPromoPercent(featured) + "% en " + featuredPromo.monthLabel
+      : "Packs x2 por " + clMoney(pack2Minimum) + " y x3 por " + clMoney(pack3Minimum) + ".";
   });
 
   var whatsappContactMessage = "Hola Chic&Love, soy ... y quiero más información sobre las gummies.";
@@ -757,6 +869,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initBusinessData();
   buildCartChrome();
   renderCart();
+  renderPromoBand();
   renderGrids();
   initChips();
   observeReveals(document);
@@ -767,8 +880,18 @@ document.addEventListener("DOMContentLoaded", function () {
     var product = clFindProduct(link.getAttribute("data-editorial-product"));
     var price = link.querySelector("[data-editorial-price]");
     if (!product || !price) return;
-    price.textContent = clMoney(product.price);
-    link.setAttribute("aria-label", "Ver " + product.name + " por " + clMoney(product.price));
+    var promo = clActivePromo(product);
+    var currentPrice = clSinglePrice(product);
+    price.textContent = "";
+    if (promo) {
+      price.appendChild(makeEl("del", "", clMoney(product.price)));
+      price.appendChild(makeEl("span", "", clMoney(currentPrice)));
+      price.appendChild(makeEl("em", "", "−" + clPromoPercent(product) + "%"));
+      link.setAttribute("aria-label", "Ver " + product.name + " por " + clMoney(currentPrice) + ", precio normal " + clMoney(product.price));
+    } else {
+      price.textContent = clMoney(currentPrice);
+      link.setAttribute("aria-label", "Ver " + product.name + " por " + clMoney(currentPrice));
+    }
   });
 
   var header = document.querySelector(".header");

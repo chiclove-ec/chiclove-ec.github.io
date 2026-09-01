@@ -159,14 +159,34 @@ HTML, JavaScript, el repositorio ni `js/analytics.js`.
 Todo el catálogo está en `js/products.js`. `CL_PRODUCT_PRICING` controla el
 precio por frasco, el pack x2 y el pack x3 para todos los productos. `CL_PRODUCTS`
 contiene nombres, beneficios, activos, colores e imágenes.
-El mismo archivo concentra `CL_WHATSAPP`, `CL_INSTAGRAM` y `CL_FREE_SHIPPING`.
+El mismo archivo concentra `CL_WHATSAPP`, `CL_INSTAGRAM`, `CL_FREE_SHIPPING` y
+`CL_VAT_NOTE` / `CL_VAT_SENTENCE` (el aviso de IVA incluido).
 Los HTML no repiten esos valores.
 Los cambios se reflejan automáticamente en portada, tienda, tarjetas, detalle,
 carrito, enlaces de contacto y pedido de WhatsApp.
 
 Los gemelos markdown y los datos estructurados sí llevan los valores escritos, porque los lee
-un agente sin JavaScript: tras editar el catálogo ejecuta `npm run gen` y `npm test`
+un agente sin JavaScript: tras editar el catálogo o abrir una promoción ejecuta `npm run gen` y `npm test`
 (hay pruebas que fallan si un precio publicado ya no está en el catálogo).
+
+## Promociones temporales
+
+`CL_PROMOS` en `js/products.js` guarda las promociones por producto, indexadas por
+id. Cada entrada define el precio promocional, la ventana (`start` / `end`, en hora
+de Ecuador) y los textos que se muestran. `singleOnly: true` retira los packs
+mientras dure: a precio promocional costarían más que comprar frascos sueltos, y
+los packs que ya estuvieran guardados en un carrito se convierten a frascos.
+
+La promoción **entra y sale sola** en las fechas indicadas: no hay que desplegar
+nada para que termine. La única excepción son los datos estructurados de las
+páginas de producto, que son estáticos:
+
+```bash
+node scripts/gen-products.mjs   # avisa si escribió un precio promocional en el JSON-LD
+```
+
+Reejecútalo y despliega cuando la promo haya cerrado, para que el precio que ve
+Google vuelva al de catálogo.
 
 ## Build seguro
 

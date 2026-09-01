@@ -2,7 +2,7 @@
 
 > Cabello más fuerte. Uñas de acero. La fórmula forte con biotina, ashwagandha y extracto de semilla de calabaza que frena la caída y acelera el crecimiento desde la raíz.
 
-- **Precio:** $29.99 por frasco de 60 gummies · pack x2 $49.99 · pack x3 $74.99
+- **Precio:** $29.99 · pack x2 $49.99 · pack x3 $74.99, frasco de 60 gummies
 - **Disponibilidad:** en stock, envíos a todo Ecuador (gratis desde $49.99)
 - **Objetivo:** Cabello y uñas
 - **Sabor:** Arándanos

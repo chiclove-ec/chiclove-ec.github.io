@@ -5,10 +5,28 @@
 const CL_WHATSAPP = "593987591741"; // formato internacional sin espacios
 const CL_INSTAGRAM = "chicloveec";
 const CL_FREE_SHIPPING = 49.99;
+const CL_VAT_NOTE = "IVA incluido";
 const CL_PRODUCT_PRICING = Object.freeze({
   price: 29.99,
   pricePack: 49.99,
   pricePack3: 74.99
+});
+
+/* Promociones temporales por producto. La ventana se evalúa en hora de Ecuador
+   (UTC-5), así entra y sale a la vez para todo el mundo sin importar el reloj del
+   visitante; al cerrarse, el sitio vuelve solo al precio de catálogo.
+   `singleOnly` retira los packs mientras dure: al precio promocional dejarían de
+   ahorrar frente a comprar frascos sueltos. */
+const CL_PROMOS = Object.freeze({
+  "radiant-skin": Object.freeze({
+    monthLabel: "septiembre",
+    endsLabel: "30 de septiembre",
+    price: 18.00,
+    singleOnly: true,
+    start: Date.parse("2026-09-01T00:00:00-05:00"),
+    end: Date.parse("2026-10-01T00:00:00-05:00"),
+    priceValidUntil: "2026-09-30"
+  })
 });
 
 const CL_PRODUCTS = [
@@ -256,8 +274,8 @@ function clCatalogMinimum(field) {
   return Math.min.apply(null, CL_PRODUCTS.map(function (product) { return product[field]; }));
 }
 
-function clCurrentSingleMinimum() {
-  return Math.min.apply(null, CL_PRODUCTS.map(function (product) { return clSinglePrice(product); }));
+function clCurrentSingleMinimum(now) {
+  return Math.min.apply(null, CL_PRODUCTS.map(function (product) { return clSinglePrice(product, now); }));
 }
 
 function clWhatsAppDisplay() {
@@ -276,13 +294,39 @@ function clInstagramUrl() {
   return "https://www.instagram.com/" + encodeURIComponent(CL_INSTAGRAM);
 }
 
-function clSinglePrice(product) {
-  return product.price;
+function clActivePromo(product, now) {
+  var promo = product && CL_PROMOS[product.id];
+  if (!promo) return null;
+  var timestamp = now instanceof Date ? now.getTime() : (typeof now === "number" ? now : Date.now());
+  return timestamp >= promo.start && timestamp < promo.end ? promo : null;
 }
 
-function clBestSingleBundle(product, quantity) {
+function clSinglePrice(product, now) {
+  var promo = clActivePromo(product, now);
+  return promo ? promo.price : product.price;
+}
+
+// Porcentaje mostrado: se deriva de los precios reales para que nunca los contradiga.
+function clPromoPercent(product, now) {
+  var promo = clActivePromo(product, now);
+  return promo ? Math.round((1 - promo.price / product.price) * 100) : 0;
+}
+
+function clHasPacks(product, now) {
+  var promo = clActivePromo(product, now);
+  return !promo || !promo.singleOnly;
+}
+
+function clPromotedProducts(now) {
+  return CL_PRODUCTS.filter(function (product) { return clActivePromo(product, now); });
+}
+
+function clBestSingleBundle(product, quantity, now) {
   var qty = Math.min(Math.max(parseInt(quantity, 10) || 0, 0), 99);
-  var singleCents = Math.round(clSinglePrice(product) * 100);
+  var singleCents = Math.round(clSinglePrice(product, now) * 100);
+  if (!clHasPacks(product, now)) {
+    return { total: (singleCents * qty) / 100, savings: 0, singles: qty, packs2: 0, packs3: 0 };
+  }
   var pack2Cents = Math.round(product.pricePack * 100);
   var pack3Cents = Math.round(product.pricePack3 * 100);
   var best = null;

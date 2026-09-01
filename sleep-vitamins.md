@@ -2,7 +2,7 @@
 
 > Duerme profundo. Despierta increíble. Melatonina + vitamina B6 para conciliar el sueño rápido y disfrutar un descanso reparador que regenera piel y cabello mientras duermes.
 
-- **Precio:** $29.99 por frasco de 60 gummies · pack x2 $49.99 · pack x3 $74.99
+- **Precio:** $29.99 · pack x2 $49.99 · pack x3 $74.99, frasco de 60 gummies
 - **Disponibilidad:** en stock, envíos a todo Ecuador (gratis desde $49.99)
 - **Objetivo:** Sueño reparador
 - **Sabor:** Fresa

@@ -2,7 +2,7 @@
 
 > Tu piel, en modo glow. Colágeno, coenzima Q10 y biotina en una gummy que ilumina, hidrata y devuelve la elasticidad a tu piel desde adentro.
 
-- **Precio:** $29.99 por frasco de 60 gummies · pack x2 $49.99 · pack x3 $74.99
+- **Precio:** $18.00 (promoción hasta el 30 de septiembre, antes $29.99; los packs no se ofrecen mientras dure), frasco de 60 gummies
 - **Disponibilidad:** en stock, envíos a todo Ecuador (gratis desde $49.99)
 - **Objetivo:** Piel radiante
 - **Sabor:** Frutos rojos

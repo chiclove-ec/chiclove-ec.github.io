@@ -20,11 +20,24 @@ const BASE = "https://chiclove-ec.github.io/";
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 const catalog = loadCatalog();
-const { clMoney, clSinglePrice } = catalog;
+const { clMoney, clSinglePrice, clActivePromo, clHasPacks } = catalog;
 
 const template = readFileSync(resolve(root, "producto.html"), "utf8");
 const setMeta = (html, id, value) =>
   html.replace(new RegExp('(<meta [^>]*id="' + id + '"[^>]*content=")[^"]*(")'), "$1" + esc(value) + "$2");
+
+// Durante una promo de solo frasco el sitio retira los packs (al precio promocional
+// ya no ahorran). Los gemelos markdown no pueden seguir anunciándolos: contradirían
+// lo que realmente se puede comprar.
+function priceDetail(p) {
+  if (clHasPacks(p)) {
+    return clMoney(clSinglePrice(p)) + " · pack x2 " + clMoney(p.pricePack) +
+      " · pack x3 " + clMoney(p.pricePack3);
+  }
+  const promo = clActivePromo(p);
+  return clMoney(clSinglePrice(p)) + " (promoción hasta el " + promo.endsLabel +
+    ", antes " + clMoney(p.price) + "; los packs no se ofrecen mientras dure)";
+}
 
 // Gemelo markdown que se sirve en /<id>.md y por `Accept: text/markdown`.
 function productMarkdown(p, url) {
@@ -34,8 +47,7 @@ function productMarkdown(p, url) {
     "",
     "> " + p.tagline + " " + p.desc,
     "",
-    "- **Precio:** " + clMoney(clSinglePrice(p)) + " por frasco de 60 gummies · pack x2 " +
-      clMoney(p.pricePack) + " · pack x3 " + clMoney(p.pricePack3),
+    "- **Precio:** " + priceDetail(p) + ", frasco de 60 gummies",
     "- **Disponibilidad:** en stock, envíos a todo Ecuador (gratis desde " +
       clMoney(catalog.CL_FREE_SHIPPING) + ")",
     "- **Objetivo:** " + p.goalLabel,
@@ -152,8 +164,7 @@ function storeMarkdown() {
       p.tagline + " " + p.desc,
       "",
       "- **Objetivo:** " + p.goalLabel,
-      "- **Precio:** " + clMoney(clSinglePrice(p)) + " · pack x2 " + clMoney(p.pricePack) +
-        " · pack x3 " + clMoney(p.pricePack3),
+      "- **Precio:** " + priceDetail(p),
       "- **Sabor:** " + p.flavor,
       "- **Dosis:** " + p.dose,
       "- **Distintivos:** " + p.badges.join(", "),
@@ -278,12 +289,16 @@ function fullTextBundle() {
 }
 
 let count = 0;
+const promoted = [];
 for (const p of catalog.CL_PRODUCTS) {
   const url = BASE + p.id + ".html";
   const title = p.name + " — Chic&Love Ecuador";
   const metaDesc = p.desc + " Sabor " + p.flavor.toLowerCase() + ", 60 gummies. Envíos a todo Ecuador.";
   const ogDesc = p.tagline + " " + p.desc;
   const imgAlt = "Frasco de " + p.name;
+  const promo = catalog.clActivePromo(p);
+  const price = catalog.clSinglePrice(p).toFixed(2);
+  if (promo) promoted.push(p.id + " a $" + price + " hasta " + promo.priceValidUntil);
 
   const productLd = {
     "@context": "https://schema.org",
@@ -299,8 +314,14 @@ for (const p of catalog.CL_PRODUCTS) {
       "@type": "Offer",
       url: url,
       priceCurrency: "USD",
-      price: p.price.toFixed(2),
-      priceValidUntil: "2027-07-31",
+      price: price,
+      priceValidUntil: promo ? promo.priceValidUntil : "2027-07-31",
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        priceCurrency: "USD",
+        price: price,
+        valueAddedTaxIncluded: true
+      },
       availability: "https://schema.org/InStock",
       itemCondition: "https://schema.org/NewCondition",
       areaServed: { "@type": "Country", name: "Ecuador" },
@@ -367,3 +388,10 @@ console.log(
     catalog.CL_PRODUCTS.map((p) => p.id).join(", ") +
     "\nGenerados index.md, tienda.md, agents.md y llms-full.txt"
 );
+if (promoted.length) {
+  console.warn(
+    "\nAVISO: hay precio promocional escrito en los datos estructurados (" + promoted.join("; ") + ").\n" +
+    "La web se corrige sola al terminar la promo, pero estos JSON-LD y markdown no: vuelve a\n" +
+    "ejecutar `node scripts/gen-products.mjs` y despliega cuando la promo haya cerrado."
+  );
+}

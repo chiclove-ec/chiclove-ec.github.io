@@ -24,7 +24,7 @@ Cabello más fuerte. Uñas de acero. La fórmula forte con biotina, ashwagandha 
 Tu piel, en modo glow. Colágeno, coenzima Q10 y biotina en una gummy que ilumina, hidrata y devuelve la elasticidad a tu piel desde adentro.
 
 - **Objetivo:** Piel radiante
-- **Precio:** $29.99 · pack x2 $49.99 · pack x3 $74.99
+- **Precio:** $18.00 (promoción hasta el 30 de septiembre, antes $29.99; los packs no se ofrecen mientras dure)
 - **Sabor:** Frutos rojos
 - **Dosis:** 2 gummies al día
 - **Distintivos:** Sin gluten, Sin lactosa

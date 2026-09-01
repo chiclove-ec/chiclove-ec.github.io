@@ -11,7 +11,7 @@
 # Chic&Love Ecuador — vitaminas en gummies
 
 > Tienda oficial de Chic&Love en Ecuador: siete fórmulas de complementos alimenticios en
-> formato gummy para cabello y uñas, piel, digestión, sueño, energía íntima y calma. Desde $29.99 el frasco de 60 gummies, pedidos por WhatsApp (+593 98 759 1741) y envíos a todo el país.
+> formato gummy para cabello y uñas, piel, digestión, sueño, energía íntima y calma. Desde $18.00 el frasco de 60 gummies, pedidos por WhatsApp (+593 98 759 1741) y envíos a todo el país.
 
 Las fórmulas se desarrollan en España con activos naturales (biotina, colágeno, coenzima Q10,
 melatonina, maca, ashwagandha, vinagre de manzana) y se distribuyen en Ecuador a través de
@@ -23,7 +23,7 @@ consentimiento.
 ## Colección
 
 - [Hair & Nails Forte](https://chiclove-ec.github.io/hair-nails-forte.md): Cabello más fuerte. Uñas de acero. Cabello y uñas, sabor arándanos, $29.99.
-- [Radiant Skin Vitamins](https://chiclove-ec.github.io/radiant-skin.md): Tu piel, en modo glow. Piel radiante, sabor frutos rojos, $29.99.
+- [Radiant Skin Vitamins](https://chiclove-ec.github.io/radiant-skin.md): Tu piel, en modo glow. Piel radiante, sabor frutos rojos, $18.00.
 - [Vinagre de Manzana](https://chiclove-ec.github.io/vinagre-de-manzana.md): Digestión ligera. Digestión y balance, sabor manzana, $29.99.
 - [Sleep Vitamins](https://chiclove-ec.github.io/sleep-vitamins.md): Duerme profundo. Despierta increíble. Sueño reparador, sabor fresa, $29.99.
 - [Sexual Booster Women](https://chiclove-ec.github.io/sexual-booster-women.md): Enciende tu energía. Energía íntima, sabor cereza, $29.99.
@@ -89,7 +89,7 @@ Cabello más fuerte. Uñas de acero. La fórmula forte con biotina, ashwagandha 
 Tu piel, en modo glow. Colágeno, coenzima Q10 y biotina en una gummy que ilumina, hidrata y devuelve la elasticidad a tu piel desde adentro.
 
 - **Objetivo:** Piel radiante
-- **Precio:** $29.99 · pack x2 $49.99 · pack x3 $74.99
+- **Precio:** $18.00 (promoción hasta el 30 de septiembre, antes $29.99; los packs no se ofrecen mientras dure)
 - **Sabor:** Frutos rojos
 - **Dosis:** 2 gummies al día
 - **Distintivos:** Sin gluten, Sin lactosa
@@ -174,7 +174,7 @@ Complemento alimenticio. No sustituye una dieta equilibrada ni un estilo de vida
 
 > Cabello más fuerte. Uñas de acero. La fórmula forte con biotina, ashwagandha y extracto de semilla de calabaza que frena la caída y acelera el crecimiento desde la raíz.
 
-- **Precio:** $29.99 por frasco de 60 gummies · pack x2 $49.99 · pack x3 $74.99
+- **Precio:** $29.99 · pack x2 $49.99 · pack x3 $74.99, frasco de 60 gummies
 - **Disponibilidad:** en stock, envíos a todo Ecuador (gratis desde $49.99)
 - **Objetivo:** Cabello y uñas
 - **Sabor:** Arándanos
@@ -218,7 +218,7 @@ No es un medicamento y no trata ni previene enfermedades.
 
 > Tu piel, en modo glow. Colágeno, coenzima Q10 y biotina en una gummy que ilumina, hidrata y devuelve la elasticidad a tu piel desde adentro.
 
-- **Precio:** $29.99 por frasco de 60 gummies · pack x2 $49.99 · pack x3 $74.99
+- **Precio:** $18.00 (promoción hasta el 30 de septiembre, antes $29.99; los packs no se ofrecen mientras dure), frasco de 60 gummies
 - **Disponibilidad:** en stock, envíos a todo Ecuador (gratis desde $49.99)
 - **Objetivo:** Piel radiante
 - **Sabor:** Frutos rojos
@@ -262,7 +262,7 @@ No es un medicamento y no trata ni previene enfermedades.
 
 > Digestión ligera. Vinagre de manzana con extracto de jengibre: glucosa estable, digestión y control de peso — sin el sabor ácido del vinagre.
 
-- **Precio:** $29.99 por frasco de 60 gummies · pack x2 $49.99 · pack x3 $74.99
+- **Precio:** $29.99 · pack x2 $49.99 · pack x3 $74.99, frasco de 60 gummies
 - **Disponibilidad:** en stock, envíos a todo Ecuador (gratis desde $49.99)
 - **Objetivo:** Digestión y balance
 - **Sabor:** Manzana
@@ -306,7 +306,7 @@ No es un medicamento y no trata ni previene enfermedades.
 
 > Duerme profundo. Despierta increíble. Melatonina + vitamina B6 para conciliar el sueño rápido y disfrutar un descanso reparador que regenera piel y cabello mientras duermes.
 
-- **Precio:** $29.99 por frasco de 60 gummies · pack x2 $49.99 · pack x3 $74.99
+- **Precio:** $29.99 · pack x2 $49.99 · pack x3 $74.99, frasco de 60 gummies
 - **Disponibilidad:** en stock, envíos a todo Ecuador (gratis desde $49.99)
 - **Objetivo:** Sueño reparador
 - **Sabor:** Fresa
@@ -350,7 +350,7 @@ No es un medicamento y no trata ni previene enfermedades.
 
 > Enciende tu energía. Maca y damiana 100% naturales que estabilizan tus canales de energía, estimulan la libido y reducen el estrés.
 
-- **Precio:** $29.99 por frasco de 60 gummies · pack x2 $49.99 · pack x3 $74.99
+- **Precio:** $29.99 · pack x2 $49.99 · pack x3 $74.99, frasco de 60 gummies
 - **Disponibilidad:** en stock, envíos a todo Ecuador (gratis desde $49.99)
 - **Objetivo:** Energía íntima
 - **Sabor:** Cereza
@@ -394,7 +394,7 @@ No es un medicamento y no trata ni previene enfermedades.
 
 > Rendimiento al máximo. Maca y fenogreco para mejorar el rendimiento, la calidad del esperma y la fertilidad — energía estable todo el día.
 
-- **Precio:** $29.99 por frasco de 60 gummies · pack x2 $49.99 · pack x3 $74.99
+- **Precio:** $29.99 · pack x2 $49.99 · pack x3 $74.99, frasco de 60 gummies
 - **Disponibilidad:** en stock, envíos a todo Ecuador (gratis desde $49.99)
 - **Objetivo:** Energía íntima
 - **Sabor:** Cereza
@@ -438,7 +438,7 @@ No es un medicamento y no trata ni previene enfermedades.
 
 > Serenidad para días intensos. Ashwagandha, melisa y ginseng que regulan el cortisol para aliviar el estrés y la ansiedad, y ayudarte a fluir con el cambio.
 
-- **Precio:** $29.99 por frasco de 60 gummies · pack x2 $49.99 · pack x3 $74.99
+- **Precio:** $29.99 · pack x2 $49.99 · pack x3 $74.99, frasco de 60 gummies
 - **Disponibilidad:** en stock, envíos a todo Ecuador (gratis desde $49.99)
 - **Objetivo:** Calma y enfoque
 - **Sabor:** Naranja

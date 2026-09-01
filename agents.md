@@ -10,7 +10,7 @@
 - **Qué vende:** siete fórmulas de vitaminas en gummies para cabello y uñas, piel,
   digestión, sueño, energía íntima y calma.
 - **Dónde opera:** todo Ecuador, desde Tumbaco (Quito, Pichincha). Atención en español.
-- **Precio:** desde $29.99 el frasco de 60 gummies; envío gratis desde $49.99.
+- **Precio:** desde $18.00 el frasco de 60 gummies; envío gratis desde $49.99.
 - **Devoluciones:** no se aceptan por decisión del cliente (producto alimenticio); los
   pedidos dañados, incompletos o equivocados se resuelven por WhatsApp.
 - **Contacto humano:** WhatsApp +593 98 759 1741.
