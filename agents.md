@@ -9,10 +9,10 @@
 - **Nombre:** Chic&Love Ecuador (también «Chic & Love», «Chic and Love Ecuador»).
 - **Qué vende:** siete fórmulas de vitaminas en gummies para cabello y uñas, piel,
   digestión, sueño, energía íntima y calma.
-- **Dónde opera:** todo Ecuador, desde Tumbaco (Quito, Pichincha). Atención en español.
-- **Precio:** desde $18.00 el frasco de 60 gummies; envío gratis desde $49.99.
-- **Devoluciones:** no se aceptan por decisión del cliente (producto alimenticio); los
-  pedidos dañados, incompletos o equivocados se resuelven por WhatsApp.
+- **Dónde opera:** todo Ecuador, desde Quito, Pichincha. Atención en español.
+- **Precio:** desde $18.00 el frasco de 60 gummies; envío gratis en compras desde $49,99. IVA incluido.
+- **Devoluciones:** puedes solicitar una devolución o cambio dentro de los 15 días posteriores
+  a recibir tu pedido, si el frasco sigue cerrado y con el sello intacto.
 - **Contacto humano:** WhatsApp +593 98 759 1741.
 
 ## Cuándo usar este sitio (when to use this)
@@ -49,12 +49,12 @@
 
 - La fuente única de precios y fichas es el catálogo del sitio; los markdown se generan
   desde él. Si un dato difiere entre HTML y markdown, gana el markdown.
-- Los precios publicados son referenciales: se confirman por WhatsApp antes de cobrar.
+- Los precios publicados incluyen IVA y son los vigentes en la tienda.
 - Al citar, enlaza a la URL canónica en HTML (por ejemplo https://chiclove-ec.github.io/tienda.html).
 
 ## Mapa rápido
 
 - [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
-- [Portada](https://chiclove-ec.github.io/index.md) · [Catálogo](https://chiclove-ec.github.io/tienda.md)
-- [Empresa](https://chiclove-ec.github.io/about.md) · [Contacto](https://chiclove-ec.github.io/contact.md) · [Privacidad](https://chiclove-ec.github.io/privacy.md) · [Historia](https://chiclove-ec.github.io/nosotros.md)
-- [Mapa del sitio](https://chiclove-ec.github.io/sitemap.xml) · [robots.txt](https://chiclove-ec.github.io/robots.txt)
+- [Portada](https://chiclove-ec.github.io/index.md), [Catálogo](https://chiclove-ec.github.io/tienda.md)
+- [Empresa](https://chiclove-ec.github.io/about.md), [Contacto](https://chiclove-ec.github.io/contact.md), [Privacidad](https://chiclove-ec.github.io/privacy.md), [Términos](https://chiclove-ec.github.io/terms.md), [Historia](https://chiclove-ec.github.io/nosotros.md)
+- [Mapa del sitio](https://chiclove-ec.github.io/sitemap.xml), [robots.txt](https://chiclove-ec.github.io/robots.txt)

@@ -23,27 +23,32 @@ fundado en 1977 y distribuidor oficial de Chic&Love en el país.
 
 - **Nombre comercial:** Chic&Love Ecuador
 - **Actividad:** venta directa de complementos alimenticios en gummies
-- **Ubicación:** José Vinueza E8-152, La Morita, Tumbaco — Quito, Pichincha, Ecuador
+- **Distribuido en Ecuador por:** LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A.
+  (Laboratorios Lira S.A.)
+- **RUC:** 1790336352001
+- **Dirección:** José Vinueza E8-152 y Av. Interoceánica, Quito, Pichincha, Ecuador
 - **Área de servicio:** todo el territorio de Ecuador
-- **Canal de atención:** WhatsApp +593 98 759 1741 e Instagram @chicloveec
+- **Canal de atención:** WhatsApp Chic&Love +593 98 759 1741 e Instagram @chicloveec
+- **Correo:** [ventas@laboratorioslira.com](mailto:ventas@laboratorioslira.com)
+- **Teléfonos:** +593 2 237 9285 / +593 2 237 6425
 - **Moneda y pago:** dólar estadounidense (USD), transferencia bancaria
 - **Idioma de atención:** español (es-EC)
 - **Sitio oficial:** https://chiclove-ec.github.io/
 
 ## Cómo se compra
 
-El sitio no procesa pagos ni pide datos personales. El carrito arma el pedido en el navegador de
-la persona y el botón «Finalizar pedido» abre una conversación de WhatsApp con el detalle ya
-redactado. A partir de ahí, alguien del equipo confirma disponibilidad, precio final, forma de
-envío y datos de la transferencia.
+El carrito se prepara directamente en el navegador. Al pulsar «Finalizar pedido», la compra
+continúa en WhatsApp con el detalle listo para enviar. Allí confirmamos disponibilidad, dirección
+de entrega y datos para la transferencia. La web no procesa pagos con tarjeta.
 
 - Precio por frasco de 60 gummies: $29.99, con packs de dos ($49.99) y tres frascos ($74.99).
-- Envíos a todo Ecuador, gratis desde $49.99.
+- Envíos a todo Ecuador. Envío gratis en compras desde $49,99. IVA incluido.
 - Pago por transferencia bancaria, confirmado por WhatsApp antes del despacho.
-- Los precios publicados son referenciales hasta esa confirmación.
-- Sin devoluciones ni cambios por decisión del cliente; los pedidos dañados, incompletos o
-  equivocados se resuelven por WhatsApp. Detalle en
-  [/contact.md](https://chiclove-ec.github.io/contact.md).
+- Los precios publicados incluyen IVA y son los vigentes en la tienda. Antes de confirmar el
+  pedido se puede revisar el total de la compra.
+- Devolución o cambio dentro de los 15 días posteriores a recibir el pedido, con el frasco
+  cerrado y su sello intacto. Detalle en
+  [/terms.md](https://chiclove-ec.github.io/terms.md).
 
 ## Qué no hacemos
 
@@ -63,8 +68,9 @@ envío y datos de la transferencia.
 - [Contenido completo del sitio en markdown](https://chiclove-ec.github.io/llms-full.txt)
 - [Contacto y atención al cliente](https://chiclove-ec.github.io/contact.md)
 - [Política de privacidad](https://chiclove-ec.github.io/privacy.md)
+- [Términos de compra](https://chiclove-ec.github.io/terms.md)
 - [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
 - [Nuestra historia](https://chiclove-ec.github.io/nosotros.md)
 - [Versión HTML de esta página](https://chiclove-ec.github.io/about.html)
 
-Última revisión: 27 de agosto de 2026.
+Última revisión: 7 de septiembre de 2026.

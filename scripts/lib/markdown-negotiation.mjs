@@ -20,6 +20,7 @@ export const MARKDOWN_TWINS = Object.freeze({
   "/about.html": "/about.md",
   "/contact.html": "/contact.md",
   "/privacy.html": "/privacy.md",
+  "/terms.html": "/terms.md",
   "/hair-nails-forte.html": "/hair-nails-forte.md",
   "/radiant-skin.html": "/radiant-skin.md",
   "/vinagre-de-manzana.html": "/vinagre-de-manzana.md",

@@ -280,12 +280,12 @@ function whatsappOrderMessage(items) {
   });
 
   var orderTotal = cartTotal(items);
-  var totalLine = "*TOTAL REFERENCIAL: " + clMoney(orderTotal) + "*";
+  var totalLine = "*TOTAL: " + clMoney(orderTotal) + "*";
   if (orderTotal > 0 && orderTotal < CL_FREE_SHIPPING) totalLine += " + envío";
   totalLine += " (" + CL_VAT_NOTE + ")";
   lines.push(
     totalLine,
-    "El precio referencial será verificado por un agente de Chic&Love.",
+    "Los precios publicados incluyen IVA. Confirmaremos disponibilidad, dirección de entrega y datos para la transferencia.",
     "",
     "",
     "*DATOS DE ENTREGA*",
@@ -363,13 +363,22 @@ function buildCartChrome() {
   shippingProgress.setAttribute("aria-label", "Progreso para obtener envío gratis");
   shipping.append(shippingText, shippingProgress);
   foot.appendChild(shipping);
-  foot.appendChild(makeEl("p", "cart-note", "Total referencial · Confirmamos precio y disponibilidad por WhatsApp"));
+  foot.appendChild(makeEl("p", "cart-note", "Los precios incluyen IVA. Antes de confirmar podrás revisar el total de tu compra."));
   var checkout = makeEl("button", "btn btn-wa btn-wide");
   checkout.type = "button";
   checkout.id = "cart-checkout";
   checkout.appendChild(makeSvg("M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1a13 13 0 0 1-5.7-5 6.6 6.6 0 0 1-1.3-3.4c0-1.6.9-2.4 1.2-2.7.3-.3.7-.4.9-.4h.6c.2 0 .5-.1.7.5l1 2.3c0 .2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.1.3.7 1.1 1.5 1.9 1 .9 1.9 1.2 2.2 1.4.3.1.5.1.7-.1l.8-1c.2-.3.4-.2.7-.1l2.2 1c.3.2.5.3.6.4 0 .2 0 .7-.2 1.2Z"));
   checkout.appendChild(document.createTextNode("Finalizar pedido por WhatsApp"));
   foot.appendChild(checkout);
+  var terms = makeEl("p", "cart-note cart-terms");
+  terms.append(
+    document.createTextNode("Al finalizar tu pedido aceptas nuestros "),
+    Object.assign(makeEl("a", "", "Términos de compra"), { href: "terms.html" }),
+    document.createTextNode(". Consulta cómo tratamos tus datos en nuestra "),
+    Object.assign(makeEl("a", "", "Política de privacidad"), { href: "privacy.html" }),
+    document.createTextNode(".")
+  );
+  foot.appendChild(terms);
   drawer.append(head, cartItems, foot);
 
   var toastEl = document.createElement("div");
@@ -511,7 +520,7 @@ function renderCart() {
   if (shippingText) {
     if (total >= CL_FREE_SHIPPING) shippingText.textContent = "Tu pedido incluye envío gratis";
     else if (total > 0) shippingText.textContent = "Te faltan " + clMoney(CL_FREE_SHIPPING - total) + " para el envío gratis";
-    else shippingText.textContent = "Envío gratis en pedidos desde " + clMoney(CL_FREE_SHIPPING);
+    else shippingText.textContent = "Envío gratis en compras desde " + clFreeShippingLabel() + ". IVA incluido.";
   }
 }
 
@@ -823,22 +832,22 @@ function initBusinessData() {
   document.querySelectorAll("[data-single-start]").forEach(function (el) {
     el.textContent = "Desde " + clMoney(singleMinimum);
   });
-  // Cada dato es una parte independiente de la barra; el separador lo pone el CSS.
+  // La franja superior mantiene el formato compacto de la marca y toma el umbral
+  // desde CL_FREE_SHIPPING para que el valor nunca se desincronice del carrito.
   document.querySelectorAll("[data-free-shipping-banner]").forEach(function (el) {
-    el.textContent = "Envío gratis desde " + clMoney(CL_FREE_SHIPPING);
+    el.textContent = "Envío gratis desde " + clFreeShippingLabel().replace(",", ".");
   });
   document.querySelectorAll("[data-vat-note]").forEach(function (el) {
-    el.textContent = CL_VAT_NOTE;
+    el.textContent = el.closest(".topbar") ? "IVA incluido" : CL_VAT_NOTE;
   });
   document.querySelectorAll("[data-free-shipping-short]").forEach(function (el) {
-    el.textContent = "A todo Ecuador. Gratis desde " + clMoney(CL_FREE_SHIPPING) + ".";
+    el.textContent = "Envío gratis en compras desde " + clFreeShippingLabel() + ". IVA incluido.";
   });
   document.querySelectorAll("[data-free-shipping-faq]").forEach(function (el) {
-    el.textContent = "Sí, enviamos a todo el país. Los pedidos desde " + clMoney(CL_FREE_SHIPPING) + " tienen envío gratis.";
+    el.textContent = "Sí, enviamos a todo el país. Envío gratis en compras desde " + clFreeShippingLabel() + ". IVA incluido.";
   });
   document.querySelectorAll("[data-vat-faq]").forEach(function (el) {
-    el.textContent = "Sí, el precio que ves ya incluye IVA y es el valor final del producto. " +
-      "El envío se calcula aparte y es gratis desde " + clMoney(CL_FREE_SHIPPING) + ".";
+    el.textContent = "Los precios publicados incluyen IVA y son los vigentes en la tienda. Antes de confirmar tu pedido podrás revisar el total de tu compra.";
   });
   document.querySelectorAll("[data-catalog-offer]").forEach(function (el) {
     el.textContent = featured

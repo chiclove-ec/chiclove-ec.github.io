@@ -57,7 +57,7 @@ test("el FAQPage de la portada coincide con las preguntas visibles", () => {
     // Dos respuestas las completa main.js desde el catálogo: se comparan ya resueltas.
     if (attrs.includes("data-free-shipping-faq")) {
       assert.ok(
-        node.acceptedAnswer.text.includes(catalog.clMoney(catalog.CL_FREE_SHIPPING)),
+        node.acceptedAnswer.text.includes(catalog.clFreeShippingLabel()),
         "la respuesta de envíos no publica el umbral vigente"
       );
       return;
@@ -129,24 +129,38 @@ test("cada página de producto publica oferta, envío y vendedor", () => {
     assert.equal(returns.applicableCountry, "EC", `${product.id}: país de la política`);
     assert.equal(
       returns.returnPolicyCategory,
-      "https://schema.org/MerchantReturnNotPermitted",
-      `${product.id}: la política publicada debe ser «sin devoluciones»`
+      "https://schema.org/MerchantReturnFiniteReturnWindow",
+      `${product.id}: la política publicada debe ser la ventana de devolución`
     );
-    assert.equal(returns.merchantReturnLink, BASE + "contact.html", `${product.id}: enlace`);
+    assert.equal(
+      returns.merchantReturnDays,
+      catalog.CL_LEGAL.returnDays,
+      `${product.id}: los días de devolución deben salir del catálogo`
+    );
+    assert.equal(returns.merchantReturnLink, BASE + "terms.html", `${product.id}: enlace`);
   }
 });
 
 test("la política de devoluciones se dice en texto allí donde se busca", () => {
-  const noReturns = /(no (se )?acept(amos|an) devoluciones|sin devoluciones)/i;
-  for (const file of ["contact.html", "contact.md", "about.html", "about.md", "index.html", "tienda.md"]) {
-    assert.match(read(file), noReturns, `${file} no declara la política de devoluciones`);
+  // La ventana de 15 días es el compromiso comercial: si desaparece de alguna página,
+  // el sitio vuelve a contradecirse sobre lo que puede hacer quien ya compró.
+  const window = new RegExp("(devolución|devoluciones|cambio).{0,120}" + catalog.CL_LEGAL.returnDays + " días", "is");
+  const files = [
+    "contact.html", "contact.md", "about.html", "about.md", "index.html",
+    "tienda.md", "terms.html", "terms.md",
+    ...catalog.CL_PRODUCTS.map((p) => p.id + ".md")
+  ];
+  for (const file of files) {
+    assert.match(read(file), window, `${file} no declara la ventana de devolución`);
   }
   // La excepción por pedido dañado no puede perderse: es lo que evita dejar sin salida.
-  for (const file of ["contact.html", "contact.md"]) {
+  for (const file of ["contact.html", "contact.md", "terms.html", "terms.md"]) {
     assert.match(read(file), /dañado, incompleto o/i, `${file} no explica la excepción`);
   }
-  for (const product of catalog.CL_PRODUCTS) {
-    assert.match(read(product.id + ".md"), noReturns, `${product.id}.md: sin política`);
+  // Y nada puede seguir diciendo lo contrario.
+  const denied = /(no (se )?acept(amos|an) devoluciones|sin devoluciones|venta (es )?final)/i;
+  for (const file of [...files, "llms.txt", "llms-full.txt", "agents.md", "privacy.html", "privacy.md"]) {
+    assert.ok(!denied.test(read(file)), `${file} sigue negando las devoluciones`);
   }
 });
 

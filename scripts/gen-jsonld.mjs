@@ -12,7 +12,7 @@ import { loadCatalog, projectRoot as root } from "./lib/catalog.mjs";
 
 const BASE = "https://chiclove-ec.github.io/";
 const catalog = loadCatalog();
-const { clMoney, clSinglePrice } = catalog;
+const { clSinglePrice, clFreeShippingLabel } = catalog;
 
 const plainText = (html) =>
   html
@@ -49,9 +49,9 @@ const questions = [
   // main.js completa estas dos respuestas desde el catálogo; aquí se dejan resueltas.
   if (attrs.includes("data-free-shipping-faq")) {
     text =
-      "Sí, enviamos a todo el país. Los pedidos desde " +
-      clMoney(catalog.CL_FREE_SHIPPING) +
-      " tienen envío gratis.";
+      "Sí, enviamos a todo el país. Envío gratis en compras desde " +
+      clFreeShippingLabel() +
+      ". IVA incluido.";
   } else if (text.includes("escríbenos al o por Instagram a")) {
     text = text
       .replace("escríbenos al o", "escríbenos al " + catalog.clWhatsAppDisplay() + " o")

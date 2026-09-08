@@ -18,7 +18,10 @@ export function loadCatalog() {
       "\nthis.CL_PRODUCTS=CL_PRODUCTS; this.CL_FREE_SHIPPING=CL_FREE_SHIPPING;" +
       "\nthis.CL_INSTAGRAM=CL_INSTAGRAM; this.CL_WHATSAPP=CL_WHATSAPP;" +
       "\nthis.clSinglePrice=clSinglePrice; this.clWhatsAppDisplay=clWhatsAppDisplay;" +
-      "\nthis.clMoney=clMoney; this.clActivePromo=clActivePromo; this.clHasPacks=clHasPacks;"
+      "\nthis.clMoney=clMoney; this.clActivePromo=clActivePromo; this.clHasPacks=clHasPacks;" +
+      "\nthis.clFreeShippingLabel=clFreeShippingLabel; this.clPromoPercent=clPromoPercent;" +
+      "\nthis.clBestSingleBundle=clBestSingleBundle; this.CL_VAT_NOTE=CL_VAT_NOTE;" +
+      "\nthis.CL_LEGAL=CL_LEGAL; this.clFooterLegal=clFooterLegal;"
   ).call(catalog, Date);
   return catalog;
 }

@@ -6,6 +6,27 @@ const CL_WHATSAPP = "593987591741"; // formato internacional sin espacios
 const CL_INSTAGRAM = "chicloveec";
 const CL_FREE_SHIPPING = 49.99;
 const CL_VAT_NOTE = "IVA incluido";
+
+/* Datos del distribuidor en Ecuador. Fuente única para pie, páginas legales,
+   datos estructurados y gemelos markdown. */
+const CL_LEGAL = Object.freeze({
+  brand: "Chic&Love Ecuador",
+  company: "LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A.",
+  companyShort: "Laboratorios Lira S.A.",
+  ruc: "1790336352001",
+  address: "José Vinueza E8-152 y Av. Interoceánica, Quito, Pichincha, Ecuador",
+  streetAddress: "José Vinueza E8-152 y Av. Interoceánica",
+  locality: "Quito",
+  region: "Pichincha",
+  email: "ventas@laboratorioslira.com",
+  phones: Object.freeze(["+593 2 237 9285", "+593 2 237 6425"]),
+  returnDays: 15
+});
+
+function clFooterLegal() {
+  return CL_LEGAL.brand + ". Distribuido por " + CL_LEGAL.companyShort +
+    ". RUC " + CL_LEGAL.ruc + ". " + CL_LEGAL.locality + ", Ecuador.";
+}
 const CL_PRODUCT_PRICING = Object.freeze({
   price: 29.99,
   pricePack: 49.99,
@@ -59,7 +80,7 @@ const CL_PRODUCTS = [
       "El grupo de vitaminas B aumenta el flujo de sangre al cuero cabelludo para un pelo fuerte y brillante."
     ],
     actives: ["Biotina", "Vitamina B12", "Ácido fólico", "Vitamina A", "Vitamina D", "Ashwagandha", "Zinc"],
-    dose: "2 gummies al día después de la comida",
+    dose: "2 gummies al día después de la comida.",
     reviews: 214
   },
   {
@@ -91,7 +112,7 @@ const CL_PRODUCTS = [
       "Piel perfecta: hidratación y firmeza desde el interior."
     ],
     actives: ["Colágeno", "Coenzima Q10", "Biotina", "Vitamina C", "Vitamina E"],
-    dose: "2 gummies al día",
+    dose: "2 gummies al día después de la comida.",
     reviews: 189
   },
   {
@@ -123,7 +144,7 @@ const CL_PRODUCTS = [
       "Contribuye al control de peso y ayuda a absorber minerales y vitaminas."
     ],
     actives: ["Vinagre de manzana", "Extracto de jengibre"],
-    dose: "2 gummies al día después de la comida",
+    dose: "2 gummies en ayunas, o 1 gummy después de la comida.",
     reviews: 176
   },
   {
@@ -155,7 +176,7 @@ const CL_PRODUCTS = [
       "Melatonina + B6: regenera las defensas de piel y pelo contra el estrés oxidativo."
     ],
     actives: ["Melatonina", "Vitamina B6"],
-    dose: "1–3 gummies al día antes de dormir",
+    dose: "1–3 gummies al día antes de dormir según tu patrón de sueño.",
     reviews: 241
   },
   {
@@ -187,7 +208,7 @@ const CL_PRODUCTS = [
       "Maca y damiana: ingredientes activos 100% naturales."
     ],
     actives: ["Maca", "Damiana", "Ashwagandha"],
-    dose: "2 gummies al día después del desayuno",
+    dose: "2 gummies al día después del desayuno.",
     reviews: 132
   },
   {
@@ -219,7 +240,7 @@ const CL_PRODUCTS = [
       "Ingredientes activos 100% naturales."
     ],
     actives: ["Maca", "Fenogreco", "Zinc", "L-arginina"],
-    dose: "2 gummies al día después del desayuno",
+    dose: "2 gummies al día después del desayuno.",
     reviews: 118
   },
   {
@@ -251,7 +272,7 @@ const CL_PRODUCTS = [
       "La ashwagandha, planta adaptógena, regula los niveles de cortisol."
     ],
     actives: ["Ashwagandha", "Melisa", "Ginseng"],
-    dose: "2 gummies al día después de la cena",
+    dose: "2 gummies al día durante períodos altos de estrés y/o ansiedad.",
     reviews: 167
   }
 ];
@@ -359,4 +380,8 @@ function clBestSingleBundle(product, quantity, now) {
 
 function clMoney(n) {
   return "$" + n.toFixed(2);
+}
+
+function clFreeShippingLabel() {
+  return "$" + CL_FREE_SHIPPING.toFixed(2).replace(".", ",");
 }

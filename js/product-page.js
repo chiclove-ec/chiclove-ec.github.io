@@ -64,7 +64,10 @@
     badges.appendChild(s);
   });
 
+  // Las listas llegan ya rellenas desde el HTML generado: hay que vaciarlas antes de
+  // volver a pintarlas o cada entrada saldría duplicada.
   var benefits = document.getElementById("pd-benefits");
+  benefits.textContent = "";
   product.benefits.forEach(function (b) {
     var li = document.createElement("li");
     li.textContent = b;
@@ -72,6 +75,7 @@
   });
 
   var actives = document.getElementById("pd-actives");
+  actives.textContent = "";
   product.actives.forEach(function (a) {
     var s = document.createElement("span");
     s.textContent = a;

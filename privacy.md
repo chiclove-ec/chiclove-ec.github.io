@@ -1,14 +1,15 @@
 # Política de privacidad — Chic&Love Ecuador
 
-> Analítica opcional y consentimiento controlado. El carrito vive en el navegador y solo tratamos
-> los datos que la persona envía por WhatsApp para gestionar su pedido.
+> Tu privacidad importa. La analítica de esta web es opcional y solo se activa si tú la aceptas.
+> Puedes cambiar tu elección cuando quieras. El carrito vive en el navegador y solo tratamos los
+> datos que la persona envía por WhatsApp para gestionar su pedido.
 > Versión markdown de https://chiclove-ec.github.io/privacy.html
 
 ## Responsable del tratamiento
 
-Chic&Love Ecuador, con dirección en José Vinueza E8-152, La Morita, Tumbaco (Quito, Pichincha,
-Ecuador), es responsable del tratamiento de los datos descritos en esta política. El canal para
-cualquier consulta sobre privacidad es el WhatsApp de atención al cliente: +593 98 759 1741.
+LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A. (Laboratorios Lira S.A.),
+RUC 1790336352001, con domicilio en José Vinueza E8-152 y Av. Interoceánica, Quito, Pichincha,
+Ecuador. Puedes contactarnos en [ventas@laboratorioslira.com](mailto:ventas@laboratorioslira.com) o por WhatsApp al +593 98 759 1741.
 
 ## Qué datos tratamos
 
@@ -74,7 +75,8 @@ escribió.
 
 - [Contacto y atención al cliente](https://chiclove-ec.github.io/contact.md)
 - [Información de la empresa](https://chiclove-ec.github.io/about.md)
+- [Términos de compra](https://chiclove-ec.github.io/terms.md)
 - [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
 - [Versión HTML de esta página](https://chiclove-ec.github.io/privacy.html)
 
-Última revisión: 1 de septiembre de 2026.
+Última revisión: 7 de septiembre de 2026.

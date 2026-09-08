@@ -28,7 +28,7 @@ function visibleText(html) {
 
 const htmlPages = Object.keys(MARKDOWN_TWINS).map((path) => path.slice(1));
 const markdownFiles = Object.values(MARKDOWN_TWINS).map((path) => path.slice(1));
-const TRUST_ANCHORS = ["about", "contact", "privacy"];
+const TRUST_ANCHORS = ["about", "contact", "privacy", "terms"];
 
 /* ---------- Gemelos markdown ---------- */
 
@@ -133,6 +133,7 @@ test("llms-full.txt reúne el markdown de todo el sitio", () => {
     "about.md",
     "contact.md",
     "privacy.md",
+    "terms.md",
     "nosotros.md",
     ...catalog.CL_PRODUCTS.map((p) => p.id + ".md")
   ];
@@ -203,7 +204,7 @@ test("la política de privacidad describe la analítica y el consentimiento", ()
 
 /* ---------- Páginas de confianza ---------- */
 
-test("about, contact y privacy superan los 500 caracteres de contenido", () => {
+test("las páginas de confianza superan los 500 caracteres de contenido", () => {
   for (const anchor of TRUST_ANCHORS) {
     const text = visibleText(read(anchor + ".html"));
     assert.ok(
@@ -320,16 +321,20 @@ test("los precios publicados coinciden con el catálogo", () => {
 });
 
 test("el teléfono y el usuario de Instagram coinciden con el catálogo", () => {
-  const phone = catalog.clWhatsAppDisplay();
+  // Además del WhatsApp de la marca, las páginas legales publican las fijas del
+  // distribuidor: cualquier otro número sería un canal que no controlamos.
+  const strip = (value) => value.replaceAll(" ", "");
+  const known = new Set(
+    [catalog.clWhatsAppDisplay(), ...catalog.CL_LEGAL.phones].map(strip)
+  );
   const handle = "@" + catalog.CL_INSTAGRAM;
-  for (const file of ["llms.txt", "agents.md", "about.md", "contact.md", "privacy.md", "contact.html"]) {
+  for (const file of ["llms.txt", "agents.md", "about.md", "contact.md", "privacy.md", "terms.md", "contact.html", "terms.html"]) {
     const body = read(file);
     // Se compara sin espacios: el JSON-LD usa E.164 y el texto el formato legible.
     for (const [found] of body.matchAll(/\+593(?: ?\d){9}/g)) {
-      assert.equal(
-        found.replaceAll(" ", ""),
-        phone.replaceAll(" ", ""),
-        `${file} publica un teléfono distinto al del catálogo`
+      assert.ok(
+        known.has(strip(found)),
+        `${file} publica ${found}, que no es un teléfono del catálogo`
       );
     }
     for (const [found] of body.matchAll(/@chiclove[a-z]*/g)) {

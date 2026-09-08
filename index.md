@@ -24,17 +24,18 @@ consentimiento.
 
 - **¿Cómo hago un pedido?** Se arma el carrito en la tienda y se finaliza por WhatsApp, donde
   se confirman productos, dirección y pago por transferencia.
-- **¿Hacen envíos a todo Ecuador?** Sí, a todo el país; gratis desde $49.99.
+- **¿Hacen envíos a todo Ecuador?** Sí, a todo el país. Envío gratis en compras desde $49,99. IVA incluido.
 - **¿Cuánto dura un frasco?** Cada frasco trae 60 gummies; con 2 al día dura alrededor de un mes.
 - **¿Hay opciones veganas y sin gluten?** Todas son sin gluten y sin lactosa, y todas son
   veganas excepto Radiant Skin, cuyo colágeno es de origen bovino.
-- **¿Cuándo se notan los resultados?** Con uso diario y constante, habitualmente entre la
-  cuarta y la octava semana.
+- **¿Cuándo se notan los resultados?** Cada fórmula es diferente. Los resultados pueden variar
+  según la persona, la constancia y el estilo de vida. Sigue siempre la recomendación de uso
+  de tu producto.
 - **¿Se pueden combinar fórmulas?** Sí; ante medicación o condiciones médicas, consultar antes
   con un profesional de la salud.
-- **¿Se aceptan devoluciones?** No. Por tratarse de un producto alimenticio no se aceptan
-  devoluciones ni cambios por decisión del cliente; los pedidos dañados, incompletos o
-  equivocados se resuelven por WhatsApp.
+- **¿Se aceptan devoluciones?** Puedes solicitar una devolución o cambio dentro de los 15 días
+  posteriores a recibir tu pedido, con el frasco cerrado y el sello intacto. Si recibes un
+  producto dañado, incompleto o diferente al que pediste, escríbenos por WhatsApp.
 
 ## Páginas
 
@@ -42,6 +43,7 @@ consentimiento.
 - [Información de la empresa](https://chiclove-ec.github.io/about.md)
 - [Contacto y atención al cliente](https://chiclove-ec.github.io/contact.md)
 - [Política de privacidad](https://chiclove-ec.github.io/privacy.md)
+- [Términos de compra](https://chiclove-ec.github.io/terms.md)
 - [Nuestra historia](https://chiclove-ec.github.io/nosotros.md)
 - [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
 

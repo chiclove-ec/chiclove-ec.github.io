@@ -31,6 +31,8 @@ const publicFiles = [
   "contact.md",
   "privacy.html",
   "privacy.md",
+  "terms.html",
+  "terms.md",
   "producto.html",
   "hair-nails-forte.html",
   "hair-nails-forte.md",

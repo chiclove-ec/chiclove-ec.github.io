@@ -11,7 +11,7 @@ Sitio estático (HTML/CSS/JS vanilla, con build de despliegue sin dependencias) 
 | `tienda.html` | Catálogo completo con filtros por objetivo |
 | `producto.html?id=<slug>` | Detalle de producto (renderizado por JS desde el catálogo) |
 | `nosotros.html` | Historia y filosofía de la marca |
-| `about.html` · `contact.html` · `privacy.html` | Páginas de confianza: identidad de la empresa, atención al cliente y privacidad (`/about`, `/contact`, `/privacy`) |
+| `about.html`, `contact.html`, `privacy.html`, `terms.html` | Páginas de confianza: identidad de la empresa, atención al cliente, privacidad y condiciones de venta (`/about`, `/contact`, `/privacy`, `/terms`) |
 | `llms.txt` | Índice del sitio para agentes, con cuándo usarlo (formato llmstxt.org) |
 | `agents.md` | Instrucciones para agentes: identidad, límites y cómo leer el sitio (generado) |
 | `llms-full.txt` | Todo el markdown del sitio en un archivo (generado) |
@@ -23,7 +23,7 @@ Sitio estático (HTML/CSS/JS vanilla, con build de despliegue sin dependencias) 
 | `css/styles.css` | Todos los estilos |
 | `assets/img/` | Imágenes optimizadas de producto con fondo transparente |
 | `functions/_middleware.js` | Negociación `Accept: text/markdown` (solo Cloudflare Pages) |
-| `scripts/gen-products.mjs` · `scripts/gen-jsonld.mjs` | Generadores desde el catálogo y el FAQ visible (`npm run gen`) |
+| `scripts/gen-products.mjs`, `scripts/gen-jsonld.mjs` | Generadores desde el catálogo y el FAQ visible (`npm run gen`) |
 | `scripts/lib/` | Lógica compartida: catálogo, negociación de contenido y servidor estático |
 | `tests/` | Suite de `node:test` (`npm test`) |
 
@@ -74,10 +74,11 @@ analítica mientras `js/analytics.js` esté incluido** en las páginas.
   `AboutPage`/`ContactPage` en las páginas de confianza. Van estáticos en el HTML (la CSP
   impide inyectarlos por JS) y `npm test` falla si dejan de coincidir con el catálogo o con el
   texto visible de la página.
-- **Política de devoluciones** — no se aceptan devoluciones ni cambios por decisión del cliente
-  (producto alimenticio); los pedidos dañados, incompletos o equivocados se resuelven por
-  WhatsApp. Está en `/contact#devoluciones`, en el FAQ de la portada, en `/about`, en los
-  markdown y como `MerchantReturnNotPermitted` en cada oferta.
+- **Política de devoluciones** — devolución o cambio dentro de los 15 días posteriores a recibir
+  el pedido, con el frasco cerrado y su sello intacto; los pedidos dañados, incompletos o
+  equivocados se resuelven por WhatsApp. Está en `/terms`, `/contact#devoluciones`, en el FAQ de
+  la portada, en `/about`, en los markdown y como `MerchantReturnFiniteReturnWindow`
+  (`merchantReturnDays: 15`) en cada oferta.
 
 Todo lo derivado se regenera con **`npm run gen`**: `gen:products` escribe las páginas de
 producto, sus `.md`, `index.md`, `tienda.md`, `agents.md` y `llms-full.txt` desde el catálogo;
@@ -251,6 +252,6 @@ texto plano) y `llms.txt` ya avisa de cómo pedirlo.
 - El sitio no recoge correos ni pide datos personales en sus formularios; la analítica es opcional
   y solo se carga después del consentimiento. El pedido se entrega directamente a WhatsApp solo
   cuando la persona pulsa el botón de checkout.
-- Los precios y el total enviados por el navegador son referenciales: al no existir
-  backend, la persona que atienda WhatsApp debe confirmar catálogo, precio y
-  disponibilidad antes de cobrar o despachar.
+- Los precios publicados incluyen IVA y son los vigentes en la tienda. Al no existir backend,
+  la persona que atienda WhatsApp confirma disponibilidad, dirección de entrega y datos de la
+  transferencia antes de despachar.

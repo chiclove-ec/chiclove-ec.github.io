@@ -20,19 +20,67 @@ const BASE = "https://chiclove-ec.github.io/";
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 const catalog = loadCatalog();
-const { clMoney, clSinglePrice, clActivePromo, clHasPacks } = catalog;
+const { clMoney, clSinglePrice, clActivePromo, clHasPacks, clFreeShippingLabel, clPromoPercent } = catalog;
 
 const template = readFileSync(resolve(root, "producto.html"), "utf8");
 const setMeta = (html, id, value) =>
   html.replace(new RegExp('(<meta [^>]*id="' + id + '"[^>]*content=")[^"]*(")'), "$1" + esc(value) + "$2");
+
+// La plantilla trae el contenido de Hair & Nails Forte; cada ficha debe sobrescribirlo
+// para que el HTML servido ya sea el del producto correcto, sin esperar a JavaScript.
+// `replaceInner` cambia lo que hay entre la etiqueta con ese id y su cierre; ninguno de
+// los contenedores afectados anida otra etiqueta del mismo nombre, así que basta con
+// buscar el primer cierre.
+function replaceInner(html, id, inner) {
+  const pattern = new RegExp('(<([a-z0-9]+)\\b[^>]*\\bid="' + id + '"[^>]*>)[\\s\\S]*?(</\\2>)');
+  if (!pattern.test(html)) throw new Error("No se encontró el elemento #" + id + " en la plantilla");
+  return html.replace(pattern, (match, open, tag, close) => open + inner + close);
+}
+
+const setText = (html, id, value) => replaceInner(html, id, esc(value));
+
+// Espeja el marcado que product-page.js genera para las variantes, de modo que el
+// precio (y la promo) ya se lean en el HTML servido y no cambien al hidratar.
+function variantsMarkup(p) {
+  const singlePrice = clSinglePrice(p);
+  const promo = clActivePromo(p);
+  const variants = [
+    {
+      name: "1 frasco",
+      sub: promo
+        ? "Antes " + clMoney(p.price) + ", ahorras " + clMoney(p.price - singlePrice)
+        : "60 gummies para 1 mes",
+      price: singlePrice,
+      badge: promo ? "−" + clPromoPercent(p) + "%" : ""
+    }
+  ];
+  if (clHasPacks(p)) {
+    variants.push(
+      { name: "Pack x2 frascos", sub: "Antes " + clMoney(p.price * 2), price: p.pricePack, badge: "Ahorra " + clMoney(p.price * 2 - p.pricePack) },
+      { name: "Pack x3 frascos", sub: "Antes " + clMoney(p.price * 3), price: p.pricePack3, badge: "Ahorra " + clMoney(p.price * 3 - p.pricePack3) }
+    );
+  }
+  return variants
+    .map((v, index) => {
+      const selected = index === 0;
+      return '<button type="button" class="variant-opt' + (selected ? " on" : " featured") +
+        '" role="radio" aria-checked="' + (selected ? "true" : "false") + '" tabindex="' +
+        (selected ? "0" : "-1") + '"><span><span class="v-name">' + esc(v.name) +
+        (v.badge ? '<span class="save">' + esc(v.badge) + "</span>" : "") +
+        '</span><br><span class="v-sub">' + esc(v.sub) + '</span></span>' +
+        '<span class="v-price-box"><span class="v-price">' + esc(clMoney(v.price)) +
+        '</span><span class="v-vat">' + esc(catalog.CL_VAT_NOTE) + "</span></span></button>";
+    })
+    .join("");
+}
 
 // Durante una promo de solo frasco el sitio retira los packs (al precio promocional
 // ya no ahorran). Los gemelos markdown no pueden seguir anunciándolos: contradirían
 // lo que realmente se puede comprar.
 function priceDetail(p) {
   if (clHasPacks(p)) {
-    return clMoney(clSinglePrice(p)) + " · pack x2 " + clMoney(p.pricePack) +
-      " · pack x3 " + clMoney(p.pricePack3);
+    return clMoney(clSinglePrice(p)) + ", pack x2 " + clMoney(p.pricePack) +
+      ", pack x3 " + clMoney(p.pricePack3);
   }
   const promo = clActivePromo(p);
   return clMoney(clSinglePrice(p)) + " (promoción hasta el " + promo.endsLabel +
@@ -48,8 +96,8 @@ function productMarkdown(p, url) {
     "> " + p.tagline + " " + p.desc,
     "",
     "- **Precio:** " + priceDetail(p) + ", frasco de 60 gummies",
-    "- **Disponibilidad:** en stock, envíos a todo Ecuador (gratis desde " +
-      clMoney(catalog.CL_FREE_SHIPPING) + ")",
+    "- **Disponibilidad:** en stock, envíos a todo Ecuador. Envío gratis en compras desde " +
+      clFreeShippingLabel() + ". IVA incluido.",
     "- **Objetivo:** " + p.goalLabel,
     "- **Sabor:** " + p.flavor,
     "- **Dosis recomendada:** " + p.dose,
@@ -62,13 +110,17 @@ function productMarkdown(p, url) {
     "",
     "## Cómo comprarlo",
     "",
-    "El pedido se cierra por WhatsApp (" + whatsapp + "): confirmamos disponibilidad, precio final",
-    "y datos de envío, y el pago se hace por transferencia bancaria. Los precios publicados son",
-    "referenciales hasta esa confirmación. Ver [/contact.md](" + BASE + "contact.md).",
+    "Tu carrito se prepara directamente en tu navegador. Cuando pulsas «Finalizar pedido»,",
+    "continúas en WhatsApp con el detalle de tu compra listo para enviar. Allí confirmamos",
+    "disponibilidad, dirección de entrega y datos para la transferencia. La web no procesa pagos",
+    "con tarjeta. Los precios publicados incluyen IVA y son los vigentes en la tienda. Antes de",
+    "confirmar tu pedido podrás revisar el total de tu compra. Ver [/contact.md](" + BASE + "contact.md).",
     "",
-    "**Devoluciones:** no se aceptan devoluciones ni cambios por decisión del cliente, por tratarse",
-    "de un producto alimenticio. Si el pedido llega dañado, incompleto o equivocado, se resuelve por",
-    "WhatsApp.",
+    "**Devoluciones y cambios:** puedes solicitarlos dentro de los 15 días posteriores a recibir",
+    "tu pedido, siempre que el producto esté en el mismo estado en que lo recibiste. Por seguridad",
+    "e higiene, el frasco debe permanecer cerrado y con su sello intacto. Si recibes un producto",
+    "dañado, incompleto o diferente al que pediste, escríbenos por WhatsApp y nos encargaremos de",
+    "solucionarlo.",
     "",
     "## Enlaces",
     "",
@@ -114,18 +166,19 @@ function homeMarkdown() {
     "",
     "- **¿Cómo hago un pedido?** Se arma el carrito en la tienda y se finaliza por WhatsApp, donde",
     "  se confirman productos, dirección y pago por transferencia.",
-    "- **¿Hacen envíos a todo Ecuador?** Sí, a todo el país; gratis desde " +
-      clMoney(catalog.CL_FREE_SHIPPING) + ".",
+    "- **¿Hacen envíos a todo Ecuador?** Sí, a todo el país. Envío gratis en compras desde " +
+      clFreeShippingLabel() + ". IVA incluido.",
     "- **¿Cuánto dura un frasco?** Cada frasco trae 60 gummies; con 2 al día dura alrededor de un mes.",
     "- **¿Hay opciones veganas y sin gluten?** Todas son sin gluten y sin lactosa, y todas son",
     "  veganas excepto Radiant Skin, cuyo colágeno es de origen bovino.",
-    "- **¿Cuándo se notan los resultados?** Con uso diario y constante, habitualmente entre la",
-    "  cuarta y la octava semana.",
+    "- **¿Cuándo se notan los resultados?** Cada fórmula es diferente. Los resultados pueden variar",
+    "  según la persona, la constancia y el estilo de vida. Sigue siempre la recomendación de uso",
+    "  de tu producto.",
     "- **¿Se pueden combinar fórmulas?** Sí; ante medicación o condiciones médicas, consultar antes",
     "  con un profesional de la salud.",
-    "- **¿Se aceptan devoluciones?** No. Por tratarse de un producto alimenticio no se aceptan",
-    "  devoluciones ni cambios por decisión del cliente; los pedidos dañados, incompletos o",
-    "  equivocados se resuelven por WhatsApp.",
+    "- **¿Se aceptan devoluciones?** Puedes solicitar una devolución o cambio dentro de los 15 días",
+    "  posteriores a recibir tu pedido, con el frasco cerrado y el sello intacto. Si recibes un",
+    "  producto dañado, incompleto o diferente al que pediste, escríbenos por WhatsApp.",
     "",
     "## Páginas",
     "",
@@ -133,6 +186,7 @@ function homeMarkdown() {
     "- [Información de la empresa](" + BASE + "about.md)",
     "- [Contacto y atención al cliente](" + BASE + "contact.md)",
     "- [Política de privacidad](" + BASE + "privacy.md)",
+    "- [Términos de compra](" + BASE + "terms.md)",
     "- [Nuestra historia](" + BASE + "nosotros.md)",
     "- [Índice para agentes](" + BASE + "llms.txt)",
     "",
@@ -151,12 +205,14 @@ function storeMarkdown() {
     "",
     "> Las siete fórmulas de Chic&Love disponibles en Ecuador, con precio, objetivo, sabor, dosis",
     "> y activos. Precio por frasco de 60 gummies: " + clMoney(clSinglePrice(first)) +
-      " · pack x2 " + clMoney(first.pricePack) + " · pack x3 " + clMoney(first.pricePack3) +
-      ". Envío gratis desde " + clMoney(catalog.CL_FREE_SHIPPING) + ".",
+      ", pack x2 " + clMoney(first.pricePack) + ", pack x3 " + clMoney(first.pricePack3) +
+      ". Envío gratis en compras desde " + clFreeShippingLabel() + ". IVA incluido.",
     "",
     "Los pedidos se cierran por WhatsApp (" + catalog.clWhatsAppDisplay() + ") con pago por",
-    "transferencia bancaria. Los precios publicados son referenciales hasta esa confirmación.",
-    "No se aceptan devoluciones ni cambios por decisión del cliente: es un producto alimenticio.",
+    "transferencia bancaria. Los precios publicados incluyen IVA y son los vigentes en la tienda.",
+    "Antes de confirmar tu pedido podrás revisar el total de tu compra.",
+    "Puedes solicitar una devolución o cambio dentro de los 15 días posteriores a recibir tu pedido,",
+    "siempre que el frasco esté cerrado y conserve su sello intacto.",
     "",
     ...catalog.CL_PRODUCTS.flatMap((p) => [
       "## " + p.name,
@@ -169,7 +225,7 @@ function storeMarkdown() {
       "- **Dosis:** " + p.dose,
       "- **Distintivos:** " + p.badges.join(", "),
       "- **Activos:** " + p.actives.join(", "),
-      "- **Ficha completa:** [" + p.id + ".md](" + BASE + p.id + ".md) · " +
+      "- **Ficha completa:** [" + p.id + ".md](" + BASE + p.id + ".md), " +
         "[versión HTML](" + BASE + p.id + ".html)",
       ""
     ]),
@@ -177,6 +233,7 @@ function storeMarkdown() {
     "",
     "- [Inicio](" + BASE + "index.md)",
     "- [Contacto](" + BASE + "contact.md)",
+    "- [Términos de compra](" + BASE + "terms.md)",
     "- [Índice para agentes](" + BASE + "llms.txt)",
     "",
     "---",
@@ -202,11 +259,11 @@ function agentsMarkdown() {
     "- **Nombre:** Chic&Love Ecuador (también «Chic & Love», «Chic and Love Ecuador»).",
     "- **Qué vende:** siete fórmulas de vitaminas en gummies para cabello y uñas, piel,",
     "  digestión, sueño, energía íntima y calma.",
-    "- **Dónde opera:** todo Ecuador, desde Tumbaco (Quito, Pichincha). Atención en español.",
-    "- **Precio:** desde " + cheapest + " el frasco de 60 gummies; envío gratis desde " +
-      clMoney(catalog.CL_FREE_SHIPPING) + ".",
-    "- **Devoluciones:** no se aceptan por decisión del cliente (producto alimenticio); los",
-    "  pedidos dañados, incompletos o equivocados se resuelven por WhatsApp.",
+    "- **Dónde opera:** todo Ecuador, desde Quito, Pichincha. Atención en español.",
+    "- **Precio:** desde " + cheapest + " el frasco de 60 gummies; envío gratis en compras desde " +
+      clFreeShippingLabel() + ". IVA incluido.",
+    "- **Devoluciones:** puedes solicitar una devolución o cambio dentro de los 15 días posteriores",
+    "  a recibir tu pedido, si el frasco sigue cerrado y con el sello intacto.",
     "- **Contacto humano:** WhatsApp " + catalog.clWhatsAppDisplay() + ".",
     "",
     "## Cuándo usar este sitio (when to use this)",
@@ -243,16 +300,16 @@ function agentsMarkdown() {
     "",
     "- La fuente única de precios y fichas es el catálogo del sitio; los markdown se generan",
     "  desde él. Si un dato difiere entre HTML y markdown, gana el markdown.",
-    "- Los precios publicados son referenciales: se confirman por WhatsApp antes de cobrar.",
+    "- Los precios publicados incluyen IVA y son los vigentes en la tienda.",
     "- Al citar, enlaza a la URL canónica en HTML (por ejemplo " + BASE + "tienda.html).",
     "",
     "## Mapa rápido",
     "",
     "- [Índice para agentes](" + BASE + "llms.txt)",
-    "- [Portada](" + BASE + "index.md) · [Catálogo](" + BASE + "tienda.md)",
-    "- [Empresa](" + BASE + "about.md) · [Contacto](" + BASE + "contact.md) · " +
-      "[Privacidad](" + BASE + "privacy.md) · [Historia](" + BASE + "nosotros.md)",
-    "- [Mapa del sitio](" + BASE + "sitemap.xml) · [robots.txt](" + BASE + "robots.txt)",
+    "- [Portada](" + BASE + "index.md), [Catálogo](" + BASE + "tienda.md)",
+    "- [Empresa](" + BASE + "about.md), [Contacto](" + BASE + "contact.md), " +
+      "[Privacidad](" + BASE + "privacy.md), [Términos](" + BASE + "terms.md), [Historia](" + BASE + "nosotros.md)",
+    "- [Mapa del sitio](" + BASE + "sitemap.xml), [robots.txt](" + BASE + "robots.txt)",
     ""
   ].join("\n");
 }
@@ -266,6 +323,7 @@ function fullTextBundle() {
     "about.md",
     "contact.md",
     "privacy.md",
+    "terms.md",
     "nosotros.md"
   ];
   const header = [
@@ -337,14 +395,27 @@ for (const p of catalog.CL_PRODUCTS) {
           minPrice: catalog.CL_FREE_SHIPPING.toFixed(2)
         }
       },
-      // Producto alimenticio: no se aceptan devoluciones por decisión del cliente.
+      // Devolución o cambio dentro de los 15 días posteriores a recibir el pedido,
+      // con el frasco cerrado y el sello intacto (ver /terms.html).
       hasMerchantReturnPolicy: {
         "@type": "MerchantReturnPolicy",
         applicableCountry: "EC",
-        returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
-        merchantReturnLink: BASE + "contact.html"
+        returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+        merchantReturnDays: catalog.CL_LEGAL.returnDays,
+        returnMethod: "https://schema.org/ReturnByMail",
+        merchantReturnLink: BASE + "terms.html"
       }
     }
+  };
+
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: BASE },
+      { "@type": "ListItem", position: 2, name: "Tienda", item: BASE + "tienda.html" },
+      { "@type": "ListItem", position: 3, name: p.name, item: url }
+    ]
   };
 
   let html = template;
@@ -371,7 +442,53 @@ for (const p of catalog.CL_PRODUCTS) {
   );
   html = html.replace('<body class="page-product">', '<body class="page-product" data-product-id="' + p.id + '">');
   const favAnchor = '  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">';
-  html = html.replace(favAnchor, '  <script type="application/ld+json">' + JSON.stringify(productLd) + "</script>\n" + favAnchor);
+  html = html.replace(
+    favAnchor,
+    '  <script type="application/ld+json">' + JSON.stringify(productLd) + "</script>\n" +
+      '  <script type="application/ld+json">' + JSON.stringify(breadcrumbLd) + "</script>\n" +
+      favAnchor
+  );
+
+  /* ---------- Contenido visible de la ficha ---------- */
+  html = setText(html, "pd-crumb", p.name);
+  html = setText(html, "pd-goal", p.goalLabel);
+  html = setText(html, "pd-name", p.name);
+  html = setText(html, "pd-tagline", p.tagline);
+  html = setText(html, "pd-desc", p.desc);
+  html = setText(html, "pd-flavor", "Sabor " + p.flavor.toLowerCase());
+  html = setText(html, "pd-dose", p.dose);
+  html = replaceInner(html, "pd-badges", p.badges.map((b) => "<span>" + esc(b) + "</span>").join(""));
+  html = replaceInner(html, "pd-benefits", p.benefits.map((b) => "<li>" + esc(b) + "</li>").join(""));
+  html = replaceInner(html, "pd-actives", p.actives.map((a) => "<span>" + esc(a) + "</span>").join(""));
+  html = replaceInner(html, "pd-variants", variantsMarkup(p));
+
+  // Durante una promo de solo frasco no hay nada que elegir: la etiqueta lo dice.
+  const singleVariant = !clHasPacks(p);
+  html = html.replace(
+    /(<p class="pd-buy-label">)[\s\S]*?(<\/p>)/,
+    "$1" + (singleVariant ? "Tu presentación" : "Elige tu presentación") + "$2"
+  );
+
+  // La nota de promo va oculta en la plantilla; solo se muestra si la promo está viva.
+  html = promo
+    ? replaceInner(
+        html.replace('<p class="pd-promo" id="pd-promo" hidden>', '<p class="pd-promo" id="pd-promo">'),
+        "pd-promo",
+        esc("Promo hasta el " + promo.endsLabel)
+      )
+    : html;
+
+  // Precio de compra y barra fija: el mismo total que calcula product-page.js con
+  // la variante inicial (1 frasco) y cantidad 1.
+  const startingTotal = clMoney(catalog.clBestSingleBundle(p, 1).total);
+  html = setText(html, "pd-add-price", startingTotal);
+  html = setText(html, "pd-sticky-price", startingTotal);
+  html = setText(html, "pd-sticky-name", p.short);
+  html = setText(html, "pd-sticky-variant", "1 frasco");
+  html = html.replace(
+    /<img id="pd-sticky-img"[^>]*>/,
+    '<img id="pd-sticky-img" src="' + p.bottle + '" alt="' + esc(p.name) + '" width="463" height="900">'
+  );
 
   writeFileSync(resolve(root, p.id + ".html"), html);
   writeFileSync(resolve(root, p.id + ".md"), productMarkdown(p, url));
