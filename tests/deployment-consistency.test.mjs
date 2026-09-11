@@ -13,8 +13,17 @@ import { projectRoot } from "../scripts/lib/catalog.mjs";
 const read = (file) => readFileSync(resolve(projectRoot, file), "utf8");
 const exists = (file) => existsSync(resolve(projectRoot, file));
 
+// Solo el array `publicFiles` de scripts/build.mjs: el archivo declara además una
+// lista `forbidden` con el mismo sangrado, y mezclarlas daría por publicado lo privado.
 const publicFiles = new Set(
-  [...read("scripts/build.mjs").matchAll(/^\s{2}"([^"]+)",?$/gm)].map(([, entry]) => entry)
+  (() => {
+    const source = read("scripts/build.mjs");
+    const start = source.indexOf("const publicFiles = [");
+    assert.notEqual(start, -1, "scripts/build.mjs ya no declara `const publicFiles = [`");
+    const end = source.indexOf("\n];", start);
+    assert.notEqual(end, -1, "no se encontró el cierre del array publicFiles");
+    return [...source.slice(start, end).matchAll(/"([^"]+)"/g)].map(([, entry]) => entry);
+  })()
 );
 const htmlPages = [...publicFiles].filter(
   // La página de verificación de Search Console es un testigo de 54 bytes sin <head> propio.
