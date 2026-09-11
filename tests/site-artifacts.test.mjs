@@ -6,9 +6,11 @@ import { resolve } from "node:path";
 import { test } from "node:test";
 
 import { loadCatalog, projectRoot } from "../scripts/lib/catalog.mjs";
+import { loadSiteConfig } from "../scripts/lib/site-config.mjs";
 import { MARKDOWN_TWINS } from "../scripts/lib/markdown-negotiation.mjs";
 
-const BASE = "https://chiclove-ec.github.io/";
+const BASE = loadSiteConfig().base;
+const escapeRe = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const read = (file) => readFileSync(resolve(projectRoot, file), "utf8");
 const exists = (file) => existsSync(resolve(projectRoot, file));
 const catalog = loadCatalog();
@@ -96,7 +98,8 @@ test("llms.txt explica cuándo usar el sitio y cómo llamarlo", () => {
 });
 
 test("los enlaces internos de llms.txt apuntan a archivos publicados", () => {
-  const links = [...read("llms.txt").matchAll(/\]\((https:\/\/chiclove-ec\.github\.io\/[^)]*)\)/g)];
+  const pattern = new RegExp("\\]\\((" + escapeRe(BASE) + "[^)]*)\\)", "g");
+  const links = [...read("llms.txt").matchAll(pattern)];
   assert.ok(links.length >= 15, "llms.txt debe indexar el sitio");
   for (const [, url] of links) {
     const path = url.slice(BASE.length) || "index.html";
@@ -157,7 +160,7 @@ test("robots.txt permite a los rastreadores de IA y señala los recursos", () =>
       `robots.txt no permite explícitamente a ${bot}`
     );
   }
-  assert.match(body, /^Sitemap: https:\/\/chiclove-ec\.github\.io\/sitemap\.xml$/m);
+  assert.match(body, new RegExp("^Sitemap: " + escapeRe(BASE) + "sitemap\\.xml$", "m"));
   assert.ok(body.includes("llms.txt"), "robots.txt no señala llms.txt");
   assert.ok(!/^Disallow: \/$/m.test(body), "robots.txt bloquea el sitio");
 });

@@ -13,6 +13,7 @@ output/
 # --- Configuración local de proveedores de hosting ---
 .netlify/
 .vercel/
+.wrangler/
 
 # --- Herramientas de agentes: se versionan las skills compartidas del repo ---
 .agents/

@@ -4,6 +4,7 @@ import { strict as assert } from "node:assert";
 import { test } from "node:test";
 
 import { onRequest } from "../functions/_middleware.js";
+import { loadSiteConfig } from "../scripts/lib/site-config.mjs";
 
 const assets = {
   fetch: async (url) =>
@@ -15,7 +16,7 @@ const assets = {
 
 const call = (path, accept, { nextStatus = 200, method = "GET" } = {}) =>
   onRequest({
-    request: new Request("https://chiclove-ec.github.io" + path, {
+    request: new Request(loadSiteConfig().canonicalOrigin + path, {
       method,
       headers: accept ? { accept } : {}
     }),

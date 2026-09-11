@@ -66,7 +66,9 @@ propio y `dist/` (el único artefacto publicable) se arma copiando por lista bla
 | `scripts/analytics_report.py` | Informe semanal de GA4 por correo (sin dependencias) |
 | `tests/` | Suite de `node:test` (`npm test`) |
 | `.github/workflows/` | CI, despliegue a GitHub Pages e informe semanal |
-| `_headers`, `vercel.json`, `netlify.toml` | Cabeceras y build por proveedor de hosting |
+| `site.config.json` | **El dominio del sitio y el proyecto de Cloudflare — fuente única** |
+| `_headers`, `vercel.json`, `netlify.toml`, `wrangler.toml` | Cabeceras y configuración por proveedor de hosting |
+| `scripts/lib/site-config.mjs`, `scripts/set-origin.mjs` | Carga del dominio y mudanza permanente a otro |
 | `.editorconfig`, `.gitattributes`, `.nvmrc` | Convenciones de formato, finales de línea y versión de Node |
 | `CONTRIBUTING.md`, `CLAUDE.md` | Flujo de trabajo del repositorio, para personas y para agentes |
 | `SECURITY.md`, `LICENSE` | Política de reporte de vulnerabilidades y licencia propietaria |
@@ -111,6 +113,7 @@ que `security.txt` no haya caducado.
 |---|---|---|
 | `ci.yml` | En cada pull request, y como paso previo del despliegue | `npm test`, `npm run build:github` y comprueba que `npm run gen` no deje diferencias |
 | `deploy-pages.yml` | Al empujar a `main` | Llama a `ci.yml` y **solo publica si pasa**; sube a GitHub Pages el `dist/` de la lista blanca |
+| `deploy-cloudflare.yml` | Al empujar a `main` | Igual, hacia Cloudflare Pages. **Se salta solo** mientras no existan sus secretos (ver *Despliegue automático*) |
 | `weekly-analytics-report.yml` | Lunes 09:00 (Ecuador) | Envía por correo el informe de GA4 |
 
 Las acciones están ancladas por SHA y Dependabot propone sus actualizaciones una vez al mes
@@ -170,9 +173,12 @@ negociando.
 | Netlify | sí | no sin una edge function equivalente |
 | Vercel | sí | no: `has.value` usa RE2, sin lookahead para los valores q |
 
-`functions/_middleware.js` y `scripts/lib/markdown-negotiation.mjs` están escritos y probados
-para el día que haga falta: sirven para Cloudflare Pages, y también si se mantiene GitHub
-Pages como origen detrás de un dominio propio proxeado por Cloudflare. Hoy no se despliegan.
+`functions/_middleware.js` y `scripts/lib/markdown-negotiation.mjs` están escritos y probados,
+y el despliegue a Cloudflare Pages ya está armado en `deploy-cloudflare.yml`: en cuanto se
+active, la negociación empieza a funcionar sin tocar código. Ver *Despliegue automático*.
+
+El middleware construye sus enlaces de recuperación a partir del origen de la propia
+petición, así que sigue siendo correcto en cualquier dominio o preview.
 
 ## Cómo funciona la compra
 
@@ -269,38 +275,154 @@ npm run build
 
 El contenido de `dist/` es el único artefacto que se debe publicar.
 
-## Deploy
+## El dominio del sitio
 
-- **Vercel:** importa el repositorio. `vercel.json` ejecuta el build seguro, publica
-  `dist/` y configura las cabeceras HTTP.
-- **Netlify:** importa el repositorio. `netlify.toml` ejecuta el build, publica `dist/`
-  y el `_headers` copiado al artefacto aplica las cabeceras.
-- **Cloudflare Pages:** usa `npm run build:cloudflare` como comando y `dist` como
-  directorio de salida. `functions/` se queda en la raíz del repositorio (no en `dist/`):
-  Cloudflare lo compila aparte y ahí vive la negociación `Accept: text/markdown`.
-- **GitHub Pages:** en *Settings → Pages → Build and deployment → Source* selecciona
-  **GitHub Actions**. El workflow `.github/workflows/deploy-pages.yml` publica solo
-  el artefacto permitido. La publicación directa desde la rama expone archivos
-  auxiliares y no debe mantenerse activa.
+El sitio publica URLs absolutas donde no caben las relativas: `rel="canonical"`,
+`og:url`, los JSON-LD, `sitemap.xml`, `robots.txt` y los gemelos markdown. Todas
+salen de **un solo sitio**, [`site.config.json`](site.config.json):
 
-GitHub Pages no permite definir todas las cabeceras HTTP. El sitio incluye un guard
-anti-frame para mitigar clickjacking allí, pero Vercel, Netlify o Cloudflare Pages son
-preferibles para producción porque sí aplican CSP `frame-ancestors`, `nosniff`,
-Permissions-Policy y aislamiento entre orígenes.
-
-Después de desplegar, comprueba que `/README.md`, `/vercel.json`, `/_headers`,
-`/docs/` y `/output/` respondan 404, que `/ruta-inexistente` responda 404 con enlaces de
-recuperación, que `/about`, `/contact`, `/privacy`, `/llms.txt`, `/agents.md`,
-`/llms-full.txt` y `/tienda.md` respondan 200 y que la portada entregue las cabeceras
-previstas:
-
-```bash
-curl -s -o /dev/null -w "%{http_code}\n" https://chiclove-ec.github.io/ruta-inexistente  # 404
-curl -sI https://chiclove-ec.github.io/tienda.md | grep -i content-type                  # text/markdown
+```json
+{
+  "canonicalOrigin": "https://chiclove-ec.github.io",
+  "sourceOrigin": "https://chiclove-ec.github.io",
+  "cloudflare": { "projectName": "chiclove-ec", "productionBranch": "main" }
+}
 ```
 
-Si `.md` no saliera como `text/markdown`, los agentes siguen leyéndolo igual (el contenido es
-texto plano) y `llms.txt` ya avisa de cómo pedirlo.
+| Campo | Qué significa |
+|---|---|
+| `canonicalOrigin` | El dominio **oficial**: el que acaba en el artefacto publicado y el que ve Google. Es lo único que hay que tocar para mudar el sitio |
+| `sourceOrigin` | El dominio escrito **literalmente** en los archivos del repositorio. El build lo sustituye por `canonicalOrigin` al copiar a `dist/` |
+| `cloudflare.projectName` | El proyecto de Cloudflare Pages. `wrangler.toml` debe coincidir (hay una prueba) |
+
+Mientras los dos orígenes coincidan, la reescritura no hace nada. El código
+(generadores, pruebas, middleware) **nunca** escribe el dominio a mano: lo lee de
+aquí, y una prueba falla si alguien lo vuelve a incrustar.
+
+### Cambiar de dominio
+
+Cambia `canonicalOrigin` y despliega. Nada más:
+
+```json
+{ "canonicalOrigin": "https://chiclove.ec", "sourceOrigin": "https://chiclove-ec.github.io", ... }
+```
+
+A partir de ese commit **todos** los hosts publican el sitio declarando el
+dominio nuevo — GitHub Pages incluido. Eso es exactamente lo que Google necesita
+para consolidar la mudanza: el sitio viejo sigue respondiendo, pero dice que la
+dirección buena es la nueva.
+
+Para probarlo sin tocar el repositorio:
+
+```bash
+npm run build -- --origin=https://chiclove.ec   # o SITE_ORIGIN=... npm run build
+```
+
+El build **falla** si tras reescribir queda algún archivo nombrando el dominio
+anterior: una sola canónica olvidada mandaría a Google al sitio equivocado.
+
+Cuando la mudanza sea definitiva y no quieras seguir arrastrando la reescritura,
+reescribe también las fuentes:
+
+```bash
+npm run set-origin https://chiclove.ec -- --dry-run   # qué cambiaría
+npm run set-origin https://chiclove.ec                # hacerlo
+npm run gen && npm run check                          # regenerar y comprobar
+```
+
+Deja `sourceOrigin` y `canonicalOrigin` iguales otra vez. Ojo con dos cosas que
+el script ya resuelve: el dominio aparece también **como host suelto** en texto
+visible (la ficha de empresa de `/about`, el mensaje del 404), y las URLs de
+`github.com` **no** se mudan — el repositorio se llama `chiclove-ec.github.io`
+y seguirá llamándose así.
+
+Después del cambio quedan dos pasos fuera del repositorio: apuntar el DNS y, en
+Google Search Console, dar de alta la propiedad nueva y usar **Cambio de
+dirección** desde la anterior.
+
+## Despliegue automático
+
+Cada push a `main` dispara los dos destinos. Ambos pasan por CI primero y
+**ninguno publica si la suite falla**.
+
+| Destino | Workflow | Estado |
+|---|---|---|
+| GitHub Pages | `deploy-pages.yml` | **En producción.** Publica siempre |
+| Cloudflare Pages | `deploy-cloudflare.yml` | **Armado y en espera.** Se salta solo mientras no existan los secretos |
+
+### Activar Cloudflare Pages
+
+El workflow ya está escrito y probado; no hace falta tocar código. Cuando llegue
+el momento:
+
+1. **Crea el proyecto** de Pages con el nombre de `cloudflare.projectName`
+   (hoy `chiclove-ec`), **sin** conectarlo a Git: lo despliega el workflow.
+2. **Añade los secretos** en *Settings → Secrets and variables → Actions*:
+
+   | Secreto | Contenido |
+   |---|---|
+   | `CLOUDFLARE_API_TOKEN` | Token con permiso *Cloudflare Pages: Edit* |
+   | `CLOUDFLARE_ACCOUNT_ID` | Id de la cuenta de Cloudflare |
+
+3. **Añade el dominio propio** en el panel de Pages (*Custom domains*) y apunta
+   el DNS.
+4. **Haz oficial el dominio**: cambia `canonicalOrigin` en `site.config.json`
+   (ver arriba).
+
+Desde el primer push con secretos, cada cambio en `main` se publica solo. Sin
+secretos el workflow deja una nota en el registro y termina en verde, así que no
+ensucia el historial mientras GitHub Pages sigue sirviendo.
+
+### Por qué Cloudflare es el destino final
+
+GitHub Pages sirve estáticos y **no deja definir cabeceras HTTP ni ejecutar
+código en el borde**. Cloudflare Pages sí, y eso desbloquea dos cosas que el
+repositorio ya tiene escritas y probadas:
+
+- **`_headers`** aplica de verdad la CSP, HSTS, `X-Frame-Options`,
+  `Permissions-Policy` y el aislamiento entre orígenes. En Pages solo existe la
+  CSP por `<meta>` más el guard anti-frame.
+- **`functions/_middleware.js`** responde a `Accept: text/markdown` con `Vary`,
+  `406` y valores q, como pide acceptmarkdown.com. Vive en `functions/` en la
+  raíz del repositorio, **no** dentro de `dist/`: Cloudflare lo compila aparte y
+  el build lo mantiene fuera del artefacto público a propósito.
+
+## Otros destinos y comprobación posterior
+
+Además de los dos automáticos, el build tiene objetivo propio para los demás
+proveedores; todos publican el mismo `dist/`:
+
+| Proveedor | Cómo | Cabeceras HTTP | Negociación `Accept` |
+|---|---|---|---|
+| **GitHub Pages** *(en producción)* | *Settings → Pages → Source → GitHub Actions*. La publicación directa desde la rama expone archivos auxiliares y no debe activarse | Solo la CSP por `<meta>` + guard anti-frame | No |
+| **Cloudflare Pages** *(destino final)* | `npm run build:cloudflare`, salida `dist` | `_headers`, completas | **Sí**, `functions/_middleware.js` |
+| **Netlify** | Importa el repositorio; `netlify.toml` hace el resto | `_headers`, completas | No sin una edge function equivalente |
+| **Vercel** | Importa el repositorio; `vercel.json` hace el resto | En `vercel.json`, completas | No: `has.value` usa RE2, sin lookahead para los valores q |
+
+### Comprobar un despliegue
+
+Sustituye el dominio por el que acabes de publicar:
+
+```bash
+SITE=https://chiclove-ec.github.io
+
+# Lo público responde 200
+for p in / /tienda.html /about /contact /privacy /llms.txt /agents.md /llms-full.txt /tienda.md; do
+  printf "%-16s %s\n" "$p" "$(curl -s -o /dev/null -w '%{http_code}' "$SITE$p")"
+done
+
+# Lo privado y lo inexistente responden 404
+for p in /README.md /site.config.json /wrangler.toml /package.json /docs/ /ruta-inexistente; do
+  printf "%-20s %s\n" "$p" "$(curl -s -o /dev/null -w '%{http_code}' "$SITE$p")"
+done
+
+# El dominio declarado es el que toca
+curl -s "$SITE/" | grep -o 'rel="canonical" href="[^"]*"'
+curl -sI "$SITE/tienda.md" | grep -i content-type      # text/markdown
+```
+
+Si `.md` no saliera como `text/markdown`, los agentes siguen leyéndolo igual (el
+contenido es texto plano) y `llms.txt` ya avisa de cómo pedirlo.
 
 ## Seguridad
 

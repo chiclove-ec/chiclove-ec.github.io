@@ -1,0 +1,110 @@
+name: Deploy public site to Cloudflare Pages
+
+# Queda armado desde ya, pero NO hace nada hasta que existan los secretos
+# CLOUDFLARE_API_TOKEN y CLOUDFLARE_ACCOUNT_ID. Mientras tanto GitHub Pages
+# sigue siendo el sitio en producción y este workflow se salta solo.
+#
+# Para activarlo (una vez):
+#   1. Crea el proyecto de Pages con el nombre de `cloudflare.projectName`
+#      en site.config.json (hoy: chiclove-ec), sin conectarlo a Git: lo
+#      despliega este workflow.
+#   2. Settings → Secrets and variables → Actions:
+#        CLOUDFLARE_API_TOKEN    token con permiso "Cloudflare Pages: Edit"
+#        CLOUDFLARE_ACCOUNT_ID   id de la cuenta
+#   3. En el panel de Pages, añade el dominio propio (Custom domains).
+#   4. Cuando ese dominio sea el oficial, cambia `canonicalOrigin` en
+#      site.config.json: a partir de ahí todos los hosts publican declarándolo.
+#
+# Ver la sección "Cambiar de dominio" del README.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-pages
+  cancel-in-progress: false
+
+jobs:
+  # `secrets` no está disponible en el `if` de un job, así que se comprueba aquí.
+  guard:
+    name: ¿Está configurado Cloudflare?
+    runs-on: ubuntu-24.04
+    outputs:
+      configured: ${{ steps.check.outputs.configured }}
+    steps:
+      - id: check
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -n "$CLOUDFLARE_API_TOKEN" ] && [ -n "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+            echo "Cloudflare configurado: se desplegará."
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Cloudflare Pages aún no está configurado (faltan los secretos). Se omite el despliegue; GitHub Pages sigue sirviendo el sitio."
+          fi
+
+  ci:
+    name: CI
+    needs: guard
+    if: needs.guard.outputs.configured == 'true'
+    uses: ./.github/workflows/ci.yml
+    permissions:
+      contents: read
+
+  deploy:
+    name: Publicar en Cloudflare Pages
+    needs: [guard, ci]
+    if: needs.guard.outputs.configured == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    environment:
+      name: cloudflare-pages
+      url: ${{ steps.deploy.outputs.deployment-url }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+
+      - name: Build allowlisted public artifact
+        run: npm run build:cloudflare
+
+      - name: Leer el nombre del proyecto de site.config.json
+        id: project
+        run: |
+          name="$(node -p "require('./site.config.json').cloudflare.projectName")"
+          echo "name=$name" >> "$GITHUB_OUTPUT"
+          echo "Proyecto de Pages: $name"
+
+      # `functions/` se queda en la raíz del repositorio, no en dist/: wrangler lo
+      # compila desde el directorio de trabajo y ahí vive la negociación de markdown.
+      - name: Deploy to Cloudflare Pages
+        id: deploy
+        uses: cloudflare/wrangler-action@ebbaa1584979971c8614a24965b4405ff95890e0 # v4.0.0
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: >-
+            pages deploy dist
+            --project-name=${{ steps.project.outputs.name }}
+            --branch=${{ github.ref_name }}
+
+      - name: Resumen
+        run: |
+          echo "### Cloudflare Pages" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Proyecto: \`${{ steps.project.outputs.name }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Despliegue: ${{ steps.deploy.outputs.deployment-url }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Dominio declarado: \`$(node -p "require('./site.config.json').canonicalOrigin")\`" >> "$GITHUB_STEP_SUMMARY"

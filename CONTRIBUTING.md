@@ -35,6 +35,36 @@ Si editas el catálogo o el FAQ visible de la portada, ejecuta `npm run gen` y
    página), añádelo a la lista blanca de `scripts/build.mjs`. Hay una prueba que
    falla si una página referencia algo que el build no copia.
 
+## El dominio
+
+El dominio del sitio **no se escribe a mano**. Vive en `site.config.json` y el
+código lo lee con `loadSiteConfig()`; hay una prueba que falla si vuelve a
+aparecer incrustado en `scripts/`, `tests/` o `functions/`.
+
+En el **contenido** (canónicas, JSON-LD, markdown) sí está escrito literalmente:
+eso es `sourceOrigin`, y el build lo sustituye por `canonicalOrigin` al copiar a
+`dist/`. Para mudar el sitio de dominio basta con cambiar `canonicalOrigin`.
+
+Detalles que hay que tener presentes y que las pruebas ya vigilan:
+
+- El dominio aparece también **como host suelto** en texto visible (la ficha de
+  empresa de `/about`, el mensaje del 404), no solo como `https://…`.
+- Las URLs de **`github.com` no se mudan**: el repositorio se llama
+  `chiclove-ec.github.io` y seguirá llamándose así aunque el sitio cambie de
+  dominio. `rewriteOrigin` las aparta a propósito.
+
+El procedimiento completo está en la sección *El dominio del sitio* del README.
+
+## Despliegue automático
+
+Cada push a `main` publica en GitHub Pages y, en cuanto se configure, también en
+Cloudflare Pages. Los dos workflows llaman antes a `ci.yml` y **no publican si la
+suite falla**. `deploy-cloudflare.yml` se salta solo mientras no existan sus
+secretos, así que hoy no ensucia el historial.
+
+Si añades un archivo de configuración de hosting, recuerda mantenerlo fuera del
+artefacto: va a la lista `forbidden` de `scripts/build.mjs` y a `.vercelignore`.
+
 ## Convenciones
 
 - **Sin dependencias.** Ni de runtime ni de build ni de test. Si algo necesita
@@ -57,12 +87,6 @@ indicadas. La excepción son los datos estructurados de las fichas, que son
 estáticos: cuando la promo cierre, vuelve a ejecutar `npm run gen` y despliega
 para que el precio que ve Google regrese al de catálogo. El generador avisa por
 consola mientras haya un precio promocional escrito en el JSON-LD.
-
-## Despliegue
-
-Empujar a `main` lo publica: `deploy-pages.yml` ejecuta CI y, solo si pasa, sube
-a GitHub Pages el `dist/` construido por lista blanca. No hay que publicar nada
-a mano ni activar la publicación directa desde la rama.
 
 ## Seguridad
 

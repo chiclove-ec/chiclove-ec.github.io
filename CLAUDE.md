@@ -14,6 +14,9 @@ npm run gen     # regenera todo lo derivado del catálogo (idempotente)
 npm run check   # build:github + suite completa — lo que ejecuta CI
 npm test        # solo la suite
 npm run serve   # sirve dist/ en :8765 con el comportamiento de producción
+
+npm run build -- --origin=https://otro.dominio   # build de prueba en otro dominio
+npm run set-origin https://otro.dominio          # mudanza permanente (ver README)
 ```
 
 ## Reglas que no se pueden romper
@@ -32,11 +35,28 @@ npm run serve   # sirve dist/ en :8765 con el comportamiento de producción
    token `?v=AAAAMMDD-N` en **todas** las páginas a la vez.
 6. **Lista blanca del build.** Un archivo nuevo que deba publicarse va en
    `scripts/build.mjs`, o no llegará a producción.
-7. **`googlee70d0e2c8fe95f2c.html` no se borra** ni sale del build: es la
+7. **El dominio no se escribe a mano en el código.** Está en `site.config.json`;
+   léelo con `loadSiteConfig()` (`scripts/lib/site-config.mjs`). En el contenido
+   sí está literal: es `sourceOrigin`, y el build lo reescribe a
+   `canonicalOrigin` al copiar a `dist/`. Para mudar el sitio de dominio, cambia
+   `canonicalOrigin` y ya. Dos trampas que las pruebas cubren: el dominio
+   aparece también como **host suelto** en texto visible (`/about`, el 404), y
+   las URLs de **github.com no se mudan** (el repo se llama igual que el dominio
+   de Pages).
+8. **`googlee70d0e2c8fe95f2c.html` no se borra** ni sale del build: es la
    verificación de Google Search Console.
-8. **Nada de emojis dentro de URLs de `wa.me`**: WhatsApp los convierte en `U+FFFD`.
-9. **Nunca** escribas credenciales en el repositorio; los secretos del informe
+9. **Nada de emojis dentro de URLs de `wa.me`**: WhatsApp los convierte en `U+FFFD`.
+10. **Nunca** escribas credenciales en el repositorio; los secretos del informe
    semanal viven en los *Actions secrets* de GitHub.
+
+## Despliegue
+
+Push a `main` → CI → publica. GitHub Pages está en producción
+(`deploy-pages.yml`); Cloudflare Pages está armado y en espera
+(`deploy-cloudflare.yml`), y se salta solo hasta que existan los secretos
+`CLOUDFLARE_API_TOKEN` y `CLOUDFLARE_ACCOUNT_ID`. Cloudflare es el destino final
+porque aplica `_headers` de verdad y ejecuta `functions/_middleware.js`
+(negociación `Accept: text/markdown`), cosas que GitHub Pages no permite.
 
 ## Gotchas verificados
 

@@ -1,6 +1,15 @@
-import { access, cp, mkdir, realpath, rm, writeFile } from "node:fs/promises";
-import { basename, dirname, isAbsolute, join, relative, resolve } from "node:path";
+import { access, cp, mkdir, readFile, realpath, rm, writeFile } from "node:fs/promises";
+import { basename, dirname, extname, isAbsolute, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+
+import {
+  assertOrigin,
+  loadSiteConfig,
+  originTraces,
+  rewriteOrigin,
+  TEXT_EXTENSIONS,
+  withoutGitHubUrls
+} from "./lib/site-config.mjs";
 
 const scriptDir = dirname(fileURLToPath(import.meta.url));
 const projectRoot = resolve(scriptDir, "..");
@@ -12,6 +21,15 @@ const validTargets = new Set(["generic", "github-pages", "netlify", "cloudflare"
 if (!validTargets.has(target)) {
   throw new Error(`Target de despliegue no válido: ${target}`);
 }
+
+// El dominio publicado sale de site.config.json. `--origin=` (o SITE_ORIGIN) lo
+// sobrescribe para un build puntual —una preview, una prueba— sin tocar el repo.
+const siteConfig = loadSiteConfig();
+const originArg = process.argv.find((arg) => arg.startsWith("--origin="));
+const requestedOrigin = originArg ? originArg.slice("--origin=".length) : process.env.SITE_ORIGIN;
+const publishOrigin = requestedOrigin
+  ? assertOrigin(requestedOrigin, originArg ? "--origin" : "SITE_ORIGIN")
+  : siteConfig.canonicalOrigin;
 if (basename(outputDir) !== "dist" || dirname(outputDir) !== projectRoot) {
   throw new Error("Ruta de salida insegura; se canceló el build.");
 }
@@ -153,14 +171,42 @@ async function safeSource(entry) {
 await rm(outputDir, { recursive: true, force: true });
 await mkdir(outputDir, { recursive: true });
 
+let rewritten = 0;
 for (const entry of publicFiles) {
   const destination = join(outputDir, entry);
+  const source = await safeSource(entry);
   await mkdir(dirname(destination), { recursive: true });
-  await cp(await safeSource(entry), destination, {
+
+  if (TEXT_EXTENSIONS.has(extname(entry))) {
+    const original = await readFile(source, "utf8");
+    const published = rewriteOrigin(original, {
+      from: siteConfig.sourceOrigin,
+      to: publishOrigin
+    });
+    if (published !== original) rewritten += 1;
+    await writeFile(destination, published);
+    continue;
+  }
+
+  await cp(source, destination, {
     // `dist/` acaba de limpiarse; permitir reemplazo hace el build estable
     // si el sistema conserva temporalmente una entrada del build anterior.
     force: true
   });
+}
+
+// Si se publicó en otro dominio, ningún archivo puede seguir nombrando el viejo:
+// una sola canónica olvidada manda a Google al sitio equivocado.
+if (publishOrigin !== siteConfig.sourceOrigin) {
+  for (const entry of publicFiles) {
+    if (!TEXT_EXTENSIONS.has(extname(entry))) continue;
+    const published = withoutGitHubUrls(await readFile(join(outputDir, entry), "utf8"));
+    for (const trace of originTraces(siteConfig.sourceOrigin)) {
+      if (published.includes(trace)) {
+        throw new Error(`${entry} conserva "${trace}" tras la reescritura del dominio`);
+      }
+    }
+  }
 }
 
 if (target === "netlify" || target === "cloudflare" || target === "generic") {
@@ -177,6 +223,9 @@ const forbidden = [
   "README.md",
   "vercel.json",
   "netlify.toml",
+  "wrangler.toml",
+  ".wrangler",
+  "site.config.json",
   ".git",
   "docs",
   "output",
@@ -196,4 +245,8 @@ for (const entry of forbidden) {
   }
 }
 
-console.log(`Build seguro para ${target}: ${outputDir}`);
+const originNote =
+  publishOrigin === siteConfig.sourceOrigin
+    ? ""
+    : ` (reescrito desde ${siteConfig.sourceOrigin} en ${rewritten} archivos)`;
+console.log(`Build seguro para ${target} en ${publishOrigin}${originNote}: ${outputDir}`);

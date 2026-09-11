@@ -7,8 +7,9 @@ import { resolve } from "node:path";
 import { test } from "node:test";
 
 import { loadCatalog, projectRoot } from "../scripts/lib/catalog.mjs";
+import { loadSiteConfig } from "../scripts/lib/site-config.mjs";
 
-const BASE = "https://chiclove-ec.github.io/";
+const BASE = loadSiteConfig().base;
 const catalog = loadCatalog();
 const read = (file) => readFileSync(resolve(projectRoot, file), "utf8");
 

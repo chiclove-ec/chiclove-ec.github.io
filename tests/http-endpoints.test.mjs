@@ -128,7 +128,20 @@ describe("endpoints publicados", () => {
   });
 
   test("el artefacto no publica archivos privados", async () => {
-    for (const path of ["/README.md", "/vercel.json", "/scripts/build.mjs", "/docs/"]) {
+    const privados = [
+      "/README.md",
+      "/CLAUDE.md",
+      "/CONTRIBUTING.md",
+      "/LICENSE",
+      "/vercel.json",
+      "/wrangler.toml",
+      "/site.config.json",
+      "/package.json",
+      "/scripts/build.mjs",
+      "/functions/_middleware.js",
+      "/docs/"
+    ];
+    for (const path of privados) {
       const response = await get(path, "text/html");
       assert.equal(response.status, 404, `${path} no debería publicarse`);
     }

@@ -5,6 +5,7 @@
 .github/
 .playwright-cli/
 .netlify/
+.wrangler/
 docs/
 output/
 dist/
@@ -21,3 +22,4 @@ README.md
 SECURITY.md
 _headers
 netlify.toml
+wrangler.toml

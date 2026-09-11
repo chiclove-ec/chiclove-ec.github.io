@@ -10,16 +10,20 @@ import {
   prefersMarkdown
 } from "../scripts/lib/markdown-negotiation.mjs";
 
-const NOT_ACCEPTABLE_BODY = [
-  "# 406 Not Acceptable",
-  "",
-  "Este recurso solo existe como `text/html` y `text/markdown`.",
-  "Repite la petición con `Accept: text/markdown` o `Accept: text/html`.",
-  "",
-  "- Índice para agentes: https://chiclove-ec.github.io/llms.txt",
-  "- Mapa del sitio: https://chiclove-ec.github.io/sitemap.xml",
-  ""
-].join("\n");
+// Los enlaces de recuperación salen del origen de la propia petición: así el
+// mensaje sigue siendo correcto en cualquier dominio o preview, sin configurar nada.
+function notAcceptableBody(origin) {
+  return [
+    "# 406 Not Acceptable",
+    "",
+    "Este recurso solo existe como `text/html` y `text/markdown`.",
+    "Repite la petición con `Accept: text/markdown` o `Accept: text/html`.",
+    "",
+    "- Índice para agentes: " + origin + "/llms.txt",
+    "- Mapa del sitio: " + origin + "/sitemap.xml",
+    ""
+  ].join("\n");
+}
 
 function withNegotiationHeaders(headers, markdownPath) {
   const merged = new Headers(headers);
@@ -55,7 +59,7 @@ export async function onRequest(context) {
   }
 
   if (plan.kind === "notAcceptable") {
-    return new Response(NOT_ACCEPTABLE_BODY, {
+    return new Response(notAcceptableBody(new URL(request.url).origin), {
       status: 406,
       headers: withNegotiationHeaders(
         { "Content-Type": "text/plain; charset=utf-8" },

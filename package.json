@@ -2,7 +2,7 @@
   "name": "chiclove-ecuador",
   "version": "1.0.0",
   "private": true,
-  "description": "Sitio estático de Chic&Love Ecuador: catálogo de gummies de vitaminas, checkout por WhatsApp y capa de contenido para agentes.",
+  "description": "Sitio est\u00e1tico de Chic&Love Ecuador: cat\u00e1logo de gummies de vitaminas, checkout por WhatsApp y capa de contenido para agentes.",
   "homepage": "https://chiclove-ec.github.io",
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "gen": "npm run gen:products && npm run gen:jsonld",
     "gen:products": "node scripts/gen-products.mjs",
     "gen:jsonld": "node scripts/gen-jsonld.mjs",
+    "set-origin": "node scripts/set-origin.mjs",
     "serve": "node scripts/serve.mjs",
     "test": "node --test --test-concurrency=1 tests/*.test.mjs",
     "check": "npm run build:github && npm test"

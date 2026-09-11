@@ -15,8 +15,10 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 import { loadCatalog, projectRoot as root } from "./lib/catalog.mjs";
+import { loadSiteConfig } from "./lib/site-config.mjs";
 
-const BASE = "https://chiclove-ec.github.io/";
+// El dominio sale de site.config.json; el build lo reescribe si se publica en otro.
+const BASE = loadSiteConfig().base;
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 const catalog = loadCatalog();
@@ -252,7 +254,7 @@ function agentsMarkdown() {
     "",
     "> Tienda oficial en Ecuador de Chic&Love: complementos alimenticios en formato gummy.",
     "> Este archivo dice para qué sirve el sitio, cómo leerlo y qué no esperar de él.",
-    "> Índice completo en https://chiclove-ec.github.io/llms.txt",
+    "> Índice completo en " + BASE + "llms.txt",
     "",
     "## Identidad",
     "",
@@ -329,7 +331,7 @@ function fullTextBundle() {
   const header = [
     "# Chic&Love Ecuador — contenido completo",
     "",
-    "> Todo el contenido en markdown del sitio https://chiclove-ec.github.io/ en un solo",
+    "> Todo el contenido en markdown del sitio " + BASE + " en un solo",
     "> archivo. Cada sección conserva su URL de origen. Índice: " + BASE + "llms.txt",
     "> Instrucciones para agentes: " + BASE + "agents.md",
     ""

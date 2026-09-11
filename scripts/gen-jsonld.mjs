@@ -10,8 +10,10 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 import { loadCatalog, projectRoot as root } from "./lib/catalog.mjs";
+import { loadSiteConfig } from "./lib/site-config.mjs";
 
-const BASE = "https://chiclove-ec.github.io/";
+// El dominio sale de site.config.json; el build lo reescribe si se publica en otro.
+const BASE = loadSiteConfig().base;
 const catalog = loadCatalog();
 const { clSinglePrice, clFreeShippingLabel } = catalog;
 
