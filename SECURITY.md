@@ -18,6 +18,7 @@ El canal estándar y legible por máquina está en
 [`/.well-known/security.txt`](.well-known/security.txt):
 
 - WhatsApp: <https://wa.me/593987591741>
+- Correo: <ventas@laboratorioslira.com>
 - Instagram: <https://www.instagram.com/chicloveec>
 
 Alternativamente, abre un
@@ -36,6 +37,24 @@ Respondemos en español o en inglés. No ofrecemos recompensas económicas.
   el README, sección *Deploy*.
 - Reportes generados por escáneres automáticos sin un impacto demostrado.
 - Ingeniería social, phishing o denegación de servicio.
+
+## Controles activos en este repositorio
+
+El repositorio es **público** y sus workflows manejan credenciales (SMTP del
+informe semanal, cuenta de servicio de GA4, token de Cloudflare). Por eso:
+
+| Control | Estado |
+|---|---|
+| Escaneo de secretos y *push protection* | **Activado.** GitHub bloquea un push que contenga una credencial reconocible, antes de que llegue al historial |
+| Alertas y actualizaciones de seguridad de Dependabot | **Activado**, además de las actualizaciones mensuales de `dependabot.yml` |
+| Permisos por defecto de Actions | `contents: read`; los workflows elevan permisos solo en el job que publica |
+| Acciones de terceros | Ancladas por SHA de commit, nunca por etiqueta. `npm test` falla si aparece una sin anclar |
+| Credenciales en workflows | Solo por `env` desde *secrets*; nunca se interpolan en un script ni se imprimen |
+| `pull_request_target` | No se usa: un fork no puede ejecutar código con acceso a los secretos |
+| Dependencias | Ninguna. No hay `node_modules` ni paquetes de Python que comprometer |
+
+Los secretos se configuran en *Settings → Secrets and variables → Actions* y
+**nunca** se escriben en HTML, JavaScript ni en el repositorio.
 
 ## Cómo se protege el sitio
 

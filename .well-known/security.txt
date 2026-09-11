@@ -1,4 +1,8 @@
+# Chic&Love Ecuador — canal de reporte de vulnerabilidades (RFC 9116).
+# El dominio de Canonical lo reescribe el build desde site.config.json.
 Contact: https://wa.me/593987591741
 Contact: https://www.instagram.com/chicloveec
+Contact: mailto:ventas@laboratorioslira.com
 Expires: 2027-07-19T00:00:00.000Z
-Preferred-Languages: es
+Preferred-Languages: es, en
+Canonical: https://chiclove-ec.github.io/.well-known/security.txt

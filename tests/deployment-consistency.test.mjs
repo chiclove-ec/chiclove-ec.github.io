@@ -9,6 +9,7 @@ import { resolve } from "node:path";
 import { test } from "node:test";
 
 import { projectRoot } from "../scripts/lib/catalog.mjs";
+import { loadSiteConfig } from "../scripts/lib/site-config.mjs";
 import { loadPublicFiles } from "./public-files.mjs";
 
 const read = (file) => readFileSync(resolve(projectRoot, file), "utf8");
@@ -210,4 +211,15 @@ test("security.txt sigue vigente y declara un canal de contacto", () => {
   );
 
   assert.match(source, /^Contact:\s*\S+/m, "security.txt no declara Contact");
+
+  // Canonical evita que el archivo sirva de aval si alguien lo replica en otro
+  // dominio. Se reescribe con el resto del sitio, así que debe salir del origen
+  // declarado y no de un dominio escrito a mano.
+  const canonical = source.match(/^Canonical:\s*(\S+)$/m);
+  assert.ok(canonical, "security.txt no declara Canonical (RFC 9116)");
+  assert.equal(
+    canonical[1],
+    loadSiteConfig().canonicalOrigin + "/.well-known/security.txt",
+    "Canonical no apunta al dominio declarado en site.config.json"
+  );
 });

@@ -81,12 +81,26 @@ jobs:
       - name: Build allowlisted public artifact
         run: npm run build:cloudflare
 
-      - name: Leer el nombre del proyecto de site.config.json
+      # Se lee a través de loadSiteConfig(), que valida el nombre del proyecto
+      # (`^[a-z0-9][a-z0-9-]*$`) y la rama. Así lo que acaba en la línea de
+      # comandos de wrangler no puede contener metacaracteres de shell ni saltos
+      # de línea que falsifiquen salidas de paso.
+      - name: Leer la configuración del sitio
         id: project
         run: |
-          name="$(node -p "require('./site.config.json').cloudflare.projectName")"
-          echo "name=$name" >> "$GITHUB_OUTPUT"
-          echo "Proyecto de Pages: $name"
+          node --input-type=module -e '
+            import { appendFileSync } from "node:fs";
+            import { loadSiteConfig } from "./scripts/lib/site-config.mjs";
+            const { cloudflare, canonicalOrigin } = loadSiteConfig();
+            if (!/^[a-z0-9][a-z0-9-]*$/.test(cloudflare.productionBranch.replace(/[/_.]/g, "-"))) {
+              throw new Error("productionBranch no es un nombre de rama admisible");
+            }
+            appendFileSync(process.env.GITHUB_OUTPUT,
+              `name=${cloudflare.projectName}\n` +
+              `branch=${cloudflare.productionBranch}\n` +
+              `origin=${canonicalOrigin}\n`);
+            console.log(`Proyecto ${cloudflare.projectName} · rama ${cloudflare.productionBranch} · dominio ${canonicalOrigin}`);
+          '
 
       # `functions/` se queda en la raíz del repositorio, no en dist/: wrangler lo
       # compila desde el directorio de trabajo y ahí vive la negociación de markdown.
@@ -99,12 +113,20 @@ jobs:
           command: >-
             pages deploy dist
             --project-name=${{ steps.project.outputs.name }}
-            --branch=${{ github.ref_name }}
+            --branch=${{ steps.project.outputs.branch }}
 
+      # Los valores van por `env` y se citan en el shell: nunca se interpolan
+      # directamente en el script, que es como se cuelan inyecciones.
       - name: Resumen
+        env:
+          PROJECT: ${{ steps.project.outputs.name }}
+          ORIGIN: ${{ steps.project.outputs.origin }}
+          DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
         run: |
-          echo "### Cloudflare Pages" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "- Proyecto: \`${{ steps.project.outputs.name }}\`" >> "$GITHUB_STEP_SUMMARY"
-          echo "- Despliegue: ${{ steps.deploy.outputs.deployment-url }}" >> "$GITHUB_STEP_SUMMARY"
-          echo "- Dominio declarado: \`$(node -p "require('./site.config.json').canonicalOrigin")\`" >> "$GITHUB_STEP_SUMMARY"
+          {
+            echo "### Cloudflare Pages"
+            echo ""
+            echo "- Proyecto: \`${PROJECT}\`"
+            echo "- Despliegue: ${DEPLOYMENT_URL}"
+            echo "- Dominio declarado: \`${ORIGIN}\`"
+          } >> "$GITHUB_STEP_SUMMARY"
