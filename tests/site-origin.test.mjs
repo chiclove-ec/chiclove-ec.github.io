@@ -14,6 +14,7 @@ import { projectRoot } from "../scripts/lib/catalog.mjs";
 import { loadPublicFiles } from "./public-files.mjs";
 import {
   assertOrigin,
+  isTextArtifact,
   loadSiteConfig,
   originTraces,
   rewriteOrigin,
@@ -169,6 +170,29 @@ test("un origen inválido detiene el build", () => {
         stdio: "pipe"
       }),
     /origin/i
+  );
+});
+
+test("_headers también entra en la reescritura del dominio", () => {
+  // No tiene extensión, así que `extname()` no lo reconoce como texto. Se quedó
+  // fuera de la reescritura en su día: es justo el archivo del proveedor que
+  // servirá el dominio oficial, y una cabecera con URL apuntaría al viejo.
+  assert.ok(isTextArtifact("_headers"), "_headers debe tratarse como texto");
+  assert.ok(isTextArtifact("index.html"));
+  assert.ok(!isTextArtifact("assets/img/logo-dark.png"));
+});
+
+test("_headers se publica solo donde el proveedor lo aplica", () => {
+  const build = read("scripts/build.mjs");
+  assert.match(
+    build,
+    /artifacts\.push\("_headers"\)/,
+    "_headers debe publicarse por la misma vía que el resto del artefacto"
+  );
+  assert.doesNotMatch(
+    build,
+    /cp\(await safeSource\("_headers"\)/,
+    "_headers ya no debe copiarse por fuera de la reescritura"
   );
 });
 

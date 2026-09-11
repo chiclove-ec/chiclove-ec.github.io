@@ -11,12 +11,19 @@ Sitio estático con build por lista blanca. Superficie: navegador.
 
 ```bash
 npm run gen     # no debe dejar diferencias en git
-npm run check   # build:github + 73 pruebas de node:test
+npm run check   # build:github + la suite completa de node:test
 ```
 
 Cubre CSP idéntica en las tres copias, referencias internas, lista blanca del
 build, cache-busting, datos estructurados contra el catálogo, gemelos markdown,
-negociación de contenido, sitemap y `security.txt`.
+negociación de contenido, sitemap, `security.txt`, la configuración del dominio
+y su reescritura en el build.
+
+Para probar un dominio distinto sin tocar el repositorio:
+
+```bash
+npm run build -- --origin=https://otro.dominio && npm run serve
+```
 
 ## Lanzar el sitio como producción
 

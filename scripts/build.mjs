@@ -1,13 +1,13 @@
 import { access, cp, mkdir, readFile, realpath, rm, writeFile } from "node:fs/promises";
-import { basename, dirname, extname, isAbsolute, join, relative, resolve } from "node:path";
+import { basename, dirname, isAbsolute, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import {
   assertOrigin,
+  isTextArtifact,
   loadSiteConfig,
   originTraces,
   rewriteOrigin,
-  TEXT_EXTENSIONS,
   withoutGitHubUrls
 } from "./lib/site-config.mjs";
 
@@ -22,6 +22,10 @@ if (!validTargets.has(target)) {
   throw new Error(`Target de despliegue no válido: ${target}`);
 }
 
+if (basename(outputDir) !== "dist" || dirname(outputDir) !== projectRoot) {
+  throw new Error("Ruta de salida insegura; se canceló el build.");
+}
+
 // El dominio publicado sale de site.config.json. `--origin=` (o SITE_ORIGIN) lo
 // sobrescribe para un build puntual —una preview, una prueba— sin tocar el repo.
 const siteConfig = loadSiteConfig();
@@ -30,9 +34,6 @@ const requestedOrigin = originArg ? originArg.slice("--origin=".length) : proces
 const publishOrigin = requestedOrigin
   ? assertOrigin(requestedOrigin, originArg ? "--origin" : "SITE_ORIGIN")
   : siteConfig.canonicalOrigin;
-if (basename(outputDir) !== "dist" || dirname(outputDir) !== projectRoot) {
-  throw new Error("Ruta de salida insegura; se canceló el build.");
-}
 
 const publicFiles = [
   ".well-known/security.txt",
@@ -171,13 +172,20 @@ async function safeSource(entry) {
 await rm(outputDir, { recursive: true, force: true });
 await mkdir(outputDir, { recursive: true });
 
+// `_headers` se publica solo donde el proveedor lo aplica, pero se trata igual
+// que el resto: también se le reescribe el origen y también se verifica.
+const artifacts = [...publicFiles];
+if (target === "netlify" || target === "cloudflare" || target === "generic") {
+  artifacts.push("_headers");
+}
+
 let rewritten = 0;
-for (const entry of publicFiles) {
+for (const entry of artifacts) {
   const destination = join(outputDir, entry);
   const source = await safeSource(entry);
   await mkdir(dirname(destination), { recursive: true });
 
-  if (TEXT_EXTENSIONS.has(extname(entry))) {
+  if (isTextArtifact(entry)) {
     const original = await readFile(source, "utf8");
     const published = rewriteOrigin(original, {
       from: siteConfig.sourceOrigin,
@@ -198,8 +206,8 @@ for (const entry of publicFiles) {
 // Si se publicó en otro dominio, ningún archivo puede seguir nombrando el viejo:
 // una sola canónica olvidada manda a Google al sitio equivocado.
 if (publishOrigin !== siteConfig.sourceOrigin) {
-  for (const entry of publicFiles) {
-    if (!TEXT_EXTENSIONS.has(extname(entry))) continue;
+  for (const entry of artifacts) {
+    if (!isTextArtifact(entry)) continue;
     const published = withoutGitHubUrls(await readFile(join(outputDir, entry), "utf8"));
     for (const trace of originTraces(siteConfig.sourceOrigin)) {
       if (published.includes(trace)) {
@@ -207,10 +215,6 @@ if (publishOrigin !== siteConfig.sourceOrigin) {
       }
     }
   }
-}
-
-if (target === "netlify" || target === "cloudflare" || target === "generic") {
-  await cp(await safeSource("_headers"), join(outputDir, "_headers"));
 }
 
 if (target === "github-pages" || target === "generic") {

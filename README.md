@@ -42,7 +42,7 @@ propio y `dist/` (el único artefacto publicable) se arma copiando por lista bla
 | `js/frame-guard.js` | Guard anti-frame para hosts sin cabeceras configurables |
 | `css/styles.css` | Todos los estilos |
 | `assets/img/` | Imágenes optimizadas de producto con fondo transparente |
-| `functions/_middleware.js` | Negociación `Accept: text/markdown` (solo Cloudflare Pages; hoy no desplegado) |
+| `functions/_middleware.js` | Negociación `Accept: text/markdown` (solo Cloudflare Pages; se activa con `deploy-cloudflare.yml`) |
 
 ### Contenido para máquinas
 
@@ -65,7 +65,7 @@ propio y `dist/` (el único artefacto publicable) se arma copiando por lista bla
 | `scripts/serve.mjs`, `scripts/lib/` | Servidor local fiel a producción y lógica compartida (catálogo, negociación) |
 | `scripts/analytics_report.py` | Informe semanal de GA4 por correo (sin dependencias) |
 | `tests/` | Suite de `node:test` (`npm test`) |
-| `.github/workflows/` | CI, despliegue a GitHub Pages e informe semanal |
+| `.github/workflows/` | CI, despliegue a GitHub Pages y a Cloudflare Pages, e informe semanal |
 | `site.config.json` | **El dominio del sitio y el proyecto de Cloudflare — fuente única** |
 | `_headers`, `vercel.json`, `netlify.toml`, `wrangler.toml` | Cabeceras y configuración por proveedor de hosting |
 | `scripts/lib/site-config.mjs`, `scripts/set-origin.mjs` | Carga del dominio y mudanza permanente a otro |
@@ -106,6 +106,12 @@ sea idéntica en `_headers`, `vercel.json` y el `<meta>` de cada página, que to
 interna exista **y** esté en la lista blanca del build, que la lista blanca no arrastre
 archivos borrados, que el token `?v=` de cache-busting sea el mismo en todas las páginas y
 que `security.txt` no haya caducado.
+
+`tests/site-origin.test.mjs` cuida el dominio: que `site.config.json` sea válido, que el
+código no lo incruste, que nada publicado nombre un dominio ajeno, que la reescritura mueva
+tanto `https://dominio` como el host suelto **sin** tocar las URLs del repositorio en GitHub,
+que el build reescriba el artefacto entero, que `wrangler.toml` cuadre con la configuración y
+que toda acción de GitHub esté anclada a un SHA.
 
 ## Integración continua
 

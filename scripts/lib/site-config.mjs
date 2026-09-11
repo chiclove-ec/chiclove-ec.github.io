@@ -20,7 +20,7 @@
 // falta arrastrar la reescritura, `npm run set-origin <url>` reescribe también
 // las fuentes y deja los dos valores iguales otra vez.
 import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { basename, extname, resolve } from "node:path";
 
 import { projectRoot } from "./catalog.mjs";
 
@@ -141,3 +141,11 @@ export const TEXT_EXTENSIONS = new Set([
   ".css",
   ".svg"
 ]);
+
+/** Artefactos de texto sin extensión: `extname()` no los reconoce. */
+const TEXT_FILENAMES = new Set(["_headers"]);
+
+/** ¿Se reescribe el origen en este archivo del artefacto? */
+export function isTextArtifact(entry) {
+  return TEXT_EXTENSIONS.has(extname(entry)) || TEXT_FILENAMES.has(basename(entry));
+}
