@@ -1,4 +1,4 @@
-// Los datos estructurados van estáticos en el HTML (la CSP con Trusted Types impide
+// Los datos estructurados van estáticos en el HTML (buscadores y agentes los leen sin
 // inyectarlos por JS), así que las pruebas son la única defensa contra que se
 // desincronicen del catálogo o del contenido visible de la página.
 import { strict as assert } from "node:assert";

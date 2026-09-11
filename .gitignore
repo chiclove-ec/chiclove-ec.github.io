@@ -1,10 +1,29 @@
+# --- Sistema operativo ---
 .DS_Store
-.playwright-cli/
-.agents/
-.claude/
-docs/
-output/
+Thumbs.db
+
+# --- Dependencias y artefactos de build ---
+node_modules/
 dist/
+
+# --- Informes y capturas locales (no forman parte del sitio) ---
+output/
+.playwright-cli/
+
+# --- Configuración local de proveedores de hosting ---
 .netlify/
 .vercel/
+
+# --- Herramientas de agentes: se versionan las skills compartidas del repo ---
+.agents/
+.claude/*
+!.claude/launch.json
+!.claude/skills/
+.claude/settings.local.json
+
+# --- Ruido ---
 *.log
+npm-debug.log*
+.env
+.env.*
+!.env.example

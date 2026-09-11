@@ -1,13 +1,23 @@
+# Vercel construye con `npm run build:vercel` y publica dist/. Todo lo que no
+# alimenta ese build se queda fuera del paquete que se sube.
 .agents/
 .claude/
 .github/
 .playwright-cli/
+.netlify/
 docs/
 output/
 dist/
 .DS_Store
+.editorconfig
+.gitattributes
 .gitignore
 .nojekyll
+.nvmrc
+CLAUDE.md
+CONTRIBUTING.md
+LICENSE
 README.md
+SECURITY.md
 _headers
 netlify.toml

@@ -1,31 +1,76 @@
 # Chic&Love Ecuador — Sitio web
 
-Sitio estático (HTML/CSS/JS vanilla, con build de despliegue sin dependencias) para la marca de gomitas de vitaminas
-**Chic&Love Ecuador**. Diseño minimalista/futurista inspirado en lusetabeauty.com.
+[![CI](https://github.com/chiclove-ec/chiclove-ec.github.io/actions/workflows/ci.yml/badge.svg)](https://github.com/chiclove-ec/chiclove-ec.github.io/actions/workflows/ci.yml)
+[![Deploy](https://github.com/chiclove-ec/chiclove-ec.github.io/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/chiclove-ec/chiclove-ec.github.io/actions/workflows/deploy-pages.yml)
+
+Sitio estático (HTML/CSS/JS vanilla, sin dependencias de runtime ni de build) para la marca de
+gummies de vitaminas **Chic&Love Ecuador** — <https://chiclove-ec.github.io>.
+Diseño minimalista/futurista inspirado en lusetabeauty.com.
+
+Sin backend: el catálogo vive en un archivo, el carrito en `localStorage` y el pedido se
+entrega por WhatsApp. Todo lo derivado (fichas de producto, markdown, datos estructurados)
+se **genera** desde ese catálogo, y la suite de pruebas falla si alguna copia se desvía.
+
+> **Empezar:** `npm run gen && npm run check` deja el repositorio regenerado, probado y
+> con el artefacto público en `dist/`. No hace falta `npm install`: no hay dependencias.
 
 ## Estructura
+
+El sitio se sirve desde la raíz del repositorio: cada página vive en un archivo
+propio y `dist/` (el único artefacto publicable) se arma copiando por lista blanca.
+
+### Páginas
 
 | Archivo | Qué es |
 |---|---|
 | `index.html` | Landing: hero, bestsellers, beneficios, ritual, testimonios y FAQ |
 | `tienda.html` | Catálogo completo con filtros por objetivo |
-| `producto.html?id=<slug>` | Detalle de producto (renderizado por JS desde el catálogo) |
+| `<slug>.html` | **Página canónica de cada producto** (`hair-nails-forte`, `radiant-skin`, `vinagre-de-manzana`, `sleep-vitamins`, `sexual-booster-women`, `sexual-booster-men`, `anti-stress`), generada desde el catálogo con `Product` JSON-LD |
+| `producto.html?id=<slug>` | Página heredada: sigue funcionando y canonicaliza a la URL nueva. Es además la **plantilla** de la que `gen-products.mjs` deriva las fichas |
 | `nosotros.html` | Historia y filosofía de la marca |
 | `about.html`, `contact.html`, `privacy.html`, `terms.html` | Páginas de confianza: identidad de la empresa, atención al cliente, privacidad y condiciones de venta (`/about`, `/contact`, `/privacy`, `/terms`) |
+| `404.html` | 404 real con rutas de recuperación para personas y agentes |
+
+### Código
+
+| Archivo | Qué es |
+|---|---|
+| `js/products.js` | **Catálogo: nombres, precios, textos, colores — edita aquí** |
+| `js/main.js` | Navegación, carrito (localStorage) y checkout por WhatsApp |
+| `js/product-page.js` | Render de la página de producto |
+| `js/analytics.js` | Consentimiento y eventos de analítica (GA4) |
+| `js/frame-guard.js` | Guard anti-frame para hosts sin cabeceras configurables |
+| `css/styles.css` | Todos los estilos |
+| `assets/img/` | Imágenes optimizadas de producto con fondo transparente |
+| `functions/_middleware.js` | Negociación `Accept: text/markdown` (solo Cloudflare Pages; hoy no desplegado) |
+
+### Contenido para máquinas
+
+| Archivo | Qué es |
+|---|---|
 | `llms.txt` | Índice del sitio para agentes, con cuándo usarlo (formato llmstxt.org) |
 | `agents.md` | Instrucciones para agentes: identidad, límites y cómo leer el sitio (generado) |
 | `llms-full.txt` | Todo el markdown del sitio en un archivo (generado) |
 | `*.md` | Gemelo markdown de cada página, incluido `404.md` |
-| `js/products.js` | **Catálogo: nombres, precios, textos, colores — edita aquí** |
-| `js/main.js` | Navegación, carrito (localStorage) y checkout por WhatsApp |
-| `js/product-page.js` | Render de la página de producto |
-| `js/analytics.js` | Consentimiento y eventos de analítica (GA4/Clarity, al completar sus IDs) |
-| `css/styles.css` | Todos los estilos |
-| `assets/img/` | Imágenes optimizadas de producto con fondo transparente |
-| `functions/_middleware.js` | Negociación `Accept: text/markdown` (solo Cloudflare Pages) |
+| `robots.txt`, `sitemap.xml` | Rastreo y páginas indexables |
+| `.well-known/security.txt` | Canal de reporte de vulnerabilidades (RFC 9116) |
+| `googlee70d0e2c8fe95f2c.html` | Testigo de verificación de Google Search Console. **No borrar ni sacar del build** |
+
+### Herramientas y configuración
+
+| Archivo | Qué es |
+|---|---|
+| `scripts/build.mjs` | Build por lista blanca hacia `dist/`, por proveedor |
 | `scripts/gen-products.mjs`, `scripts/gen-jsonld.mjs` | Generadores desde el catálogo y el FAQ visible (`npm run gen`) |
-| `scripts/lib/` | Lógica compartida: catálogo, negociación de contenido y servidor estático |
+| `scripts/serve.mjs`, `scripts/lib/` | Servidor local fiel a producción y lógica compartida (catálogo, negociación) |
+| `scripts/analytics_report.py` | Informe semanal de GA4 por correo (sin dependencias) |
 | `tests/` | Suite de `node:test` (`npm test`) |
+| `.github/workflows/` | CI, despliegue a GitHub Pages e informe semanal |
+| `_headers`, `vercel.json`, `netlify.toml` | Cabeceras y build por proveedor de hosting |
+| `.editorconfig`, `.gitattributes`, `.nvmrc` | Convenciones de formato, finales de línea y versión de Node |
+| `CONTRIBUTING.md`, `CLAUDE.md` | Flujo de trabajo del repositorio, para personas y para agentes |
+| `SECURITY.md`, `LICENSE` | Política de reporte de vulnerabilidades y licencia propietaria |
+| `docs/` | Documentación de contexto; hoy, el diseño original del sitio (histórico) |
 
 ## Cómo verlo
 
@@ -53,6 +98,29 @@ de estado y tipos de contenido de cada endpoint publicado.
 Dos pruebas cuidan que el sitio no se contradiga a sí mismo: los datos estructurados deben
 coincidir con el texto visible y con el catálogo, y **ningún texto puede afirmar que no hay
 analítica mientras `js/analytics.js` esté incluido** en las páginas.
+
+`tests/deployment-consistency.test.mjs` cuida lo que se escribe más de una vez: que la CSP
+sea idéntica en `_headers`, `vercel.json` y el `<meta>` de cada página, que toda referencia
+interna exista **y** esté en la lista blanca del build, que la lista blanca no arrastre
+archivos borrados, que el token `?v=` de cache-busting sea el mismo en todas las páginas y
+que `security.txt` no haya caducado.
+
+## Integración continua
+
+| Workflow | Cuándo | Qué hace |
+|---|---|---|
+| `ci.yml` | En cada pull request, y como paso previo del despliegue | `npm test`, `npm run build:github` y comprueba que `npm run gen` no deje diferencias |
+| `deploy-pages.yml` | Al empujar a `main` | Llama a `ci.yml` y **solo publica si pasa**; sube a GitHub Pages el `dist/` de la lista blanca |
+| `weekly-analytics-report.yml` | Lunes 09:00 (Ecuador) | Envía por correo el informe de GA4 |
+
+Las acciones están ancladas por SHA y Dependabot propone sus actualizaciones una vez al mes
+(`.github/dependabot.yml`). El proyecto no tiene dependencias de npm ni de Python.
+
+Antes de empujar, el atajo local equivalente es:
+
+```bash
+npm run gen && npm run check   # regenera, construye dist/ y ejecuta la suite
+```
 
 ## Contenido para agentes
 
@@ -236,8 +304,11 @@ texto plano) y `llms.txt` ya avisa de cómo pedirlo.
 
 ## Seguridad
 
-- CSP cerrada por defecto, sin scripts/estilos inline, sin conexiones de terceros y
-  con Trusted Types para bloquear sinks de DOM XSS.
+- CSP cerrada por defecto (`default-src 'none'`), sin `unsafe-inline` ni `unsafe-eval`,
+  con `object-src`/`base-uri`/`form-action`/`frame-ancestors` en `'none'`. Los únicos
+  orígenes de terceros permitidos son los de Google Analytics y Clarity, y solo se
+  contactan tras el consentimiento. `npm test` comprueba que la misma CSP esté escrita
+  en `_headers`, en `vercel.json` y en el `<meta>` de cada página.
 - Cabeceras HTTP para CSP, clickjacking, MIME sniffing, referrer, permisos del
   navegador, HTTPS e aislamiento entre orígenes (`_headers` y `vercel.json`).
 - Guard visual anti-frame como defensa adicional en hosts sin cabeceras configurables.

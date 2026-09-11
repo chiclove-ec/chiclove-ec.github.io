@@ -1,0 +1,48 @@
+name: CI
+
+# En `main` no se dispara sola: la lanza deploy-pages.yml antes de publicar,
+# de modo que un fallo de CI impide el despliegue en lugar de correr en paralelo.
+on:
+  pull_request:
+  workflow_call:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Pruebas, build y coherencia de lo generado
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+
+      - name: Suite de pruebas
+        run: npm test
+
+      - name: El build seguro produce el artefacto público
+        run: npm run build:github
+
+      - name: Lo generado está al día con el catálogo
+        # `npm run gen` es idempotente: si deja diferencias, alguien tocó
+        # js/products.js o el FAQ de la portada sin regenerar.
+        run: |
+          npm run gen
+          if ! git diff --quiet; then
+            echo "::error::Hay archivos generados desincronizados. Ejecuta 'npm run gen' y súbelos."
+            git --no-pager diff --stat
+            exit 1
+          fi
+          echo "Todo lo derivado coincide con el catálogo."

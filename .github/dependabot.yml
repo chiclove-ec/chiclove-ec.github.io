@@ -1,0 +1,13 @@
+version: 2
+
+updates:
+  # El proyecto no tiene dependencias de npm ni de Python a propósito.
+  # Lo único con versiones que mantener son las GitHub Actions, ancladas por SHA.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: "ci"
+    labels:
+      - dependencies

@@ -3,7 +3,8 @@
 //   - ItemList en index.html     ← desde el catálogo
 //   - CollectionPage en tienda.html ← desde el catálogo
 //
-// Van estáticos en el HTML porque la CSP con Trusted Types impide inyectarlos por JS.
+// Van estáticos en el HTML para que buscadores y agentes los lean sin ejecutar JavaScript
+// (y porque la CSP no admite scripts inline generados en tiempo de ejecución).
 // Reejecutar tras tocar js/products.js o el FAQ de la portada:  npm run gen
 import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
