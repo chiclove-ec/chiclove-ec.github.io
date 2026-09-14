@@ -24,6 +24,10 @@ on:
 
 permissions:
   contents: read
+  # Permite que Wrangler enlace el despliegue directo con el commit de GitHub.
+  # Así el repositorio recibe el estado y la URL de Pages igual que con una
+  # integración Git nativa, sin conectar Pages al repo ni afectar GitHub Pages.
+  deployments: write
 
 concurrency:
   group: cloudflare-pages
@@ -110,6 +114,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           command: >-
             pages deploy dist
             --project-name=${{ steps.project.outputs.name }}
