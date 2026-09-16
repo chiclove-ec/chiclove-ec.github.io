@@ -6,6 +6,7 @@ import { resolve } from "node:path";
 import { test } from "node:test";
 
 import { loadCatalog, projectRoot } from "../scripts/lib/catalog.mjs";
+import { renderProductCard } from "../scripts/lib/product-card.mjs";
 import { loadSiteConfig } from "../scripts/lib/site-config.mjs";
 import { MARKDOWN_TWINS } from "../scripts/lib/markdown-negotiation.mjs";
 import { loadPublicFiles } from "./public-files.mjs";
@@ -21,6 +22,23 @@ function initialCards(file) {
     .map((match) => match[0])
     .filter((card) => /\bpcard\b/i.test(card));
 }
+
+test("el serializador publica una tarjeta de tienda completa y segura", () => {
+  const product = catalog.CL_PRODUCTS[0];
+  const card = renderProductCard(product, {
+    page: "store",
+    headingLevel: 2,
+    baseUrl: BASE
+  });
+
+  assert.match(card, new RegExp('data-product-id="' + escapeRegExp(product.id) + '"'));
+  assert.match(card, new RegExp('href="' + escapeRegExp(BASE + product.id + ".html") + '"'));
+  assert.ok(card.includes(escapeHtml(product.name)), "nombre");
+  assert.ok(card.includes(product.flavor), "sabor");
+  assert.match(card, /60 gummies/i, "cantidad");
+  assert.doesNotMatch(card, /\bstyle\s*=/i, "no style inline");
+  assert.doesNotMatch(card, /<script\b/i, "no script inline");
+});
 
 test("la portada y la tienda publican una tarjeta inicial completa por producto", () => {
   for (const page of ["index.html", "tienda.html"]) {

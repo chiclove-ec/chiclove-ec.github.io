@@ -15,6 +15,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 import { loadCatalog, projectRoot as root } from "./lib/catalog.mjs";
+import { renderProductGrid } from "./lib/product-card.mjs";
 import { loadSiteConfig } from "./lib/site-config.mjs";
 
 // El dominio sale de site.config.json; el build lo reescribe si se publica en otro.
@@ -25,6 +26,8 @@ const catalog = loadCatalog();
 const { clMoney, clSinglePrice, clActivePromo, clHasPacks, clFreeShippingLabel, clPromoPercent } = catalog;
 
 const template = readFileSync(resolve(root, "producto.html"), "utf8");
+const homeTemplate = readFileSync(resolve(root, "index.html"), "utf8");
+const storeTemplate = readFileSync(resolve(root, "tienda.html"), "utf8");
 const setMeta = (html, id, value) =>
   html.replace(new RegExp('(<meta [^>]*id="' + id + '"[^>]*content=")[^"]*(")'), "$1" + esc(value) + "$2");
 
@@ -37,6 +40,37 @@ function replaceInner(html, id, inner) {
   const pattern = new RegExp('(<([a-z0-9]+)\\b[^>]*\\bid="' + id + '"[^>]*>)[\\s\\S]*?(</\\2>)');
   if (!pattern.test(html)) throw new Error("No se encontró el elemento #" + id + " en la plantilla");
   return html.replace(pattern, (match, open, tag, close) => open + inner + close);
+}
+
+function replaceGrid(html, pattern, products, options) {
+  return html.replace(pattern, (match, open, close) => open + "\n" + renderProductGrid(products, options) + "\n" + close);
+}
+
+function renderHomeGrid(html) {
+  return replaceGrid(
+    html,
+    /(<div class="products-grid" data-products-grid data-limit="7">)[\s\S]*?(<\/div>\n        <div class="center-cta)/,
+    catalog.CL_PRODUCTS,
+    { page: "home", headingLevel: 3, baseUrl: BASE, limit: 7 }
+  );
+}
+
+function renderStoreGrid(html) {
+  return replaceGrid(
+    html,
+    /(<div class="products-grid" data-products-grid data-filter="todos">)[\s\S]*?(<\/div>\n      <\/div>\n    <\/section>)/,
+    catalog.CL_PRODUCTS,
+    { page: "store", headingLevel: 2, baseUrl: BASE, filter: "todos" }
+  );
+}
+
+function renderRelatedGrid(html, product) {
+  return replaceGrid(
+    html,
+    /(<div class="products-grid" id="related-grid" data-products-grid data-limit="3" data-exclude="[^"]*">)[\s\S]*?(<\/div>\n      <\/div>\n    <\/section>)/,
+    catalog.CL_PRODUCTS,
+    { page: "product", headingLevel: 3, baseUrl: BASE, exclude: product.id, limit: 3 }
+  );
 }
 
 const setText = (html, id, value) => replaceInner(html, id, esc(value));
@@ -443,6 +477,10 @@ for (const p of catalog.CL_PRODUCTS) {
       '" width="1080" height="1350" decoding="async" fetchpriority="high">'
   );
   html = html.replace('<body class="page-product">', '<body class="page-product" data-product-id="' + p.id + '">');
+  html = html.replace(
+    'id="related-grid" data-products-grid data-limit="3"',
+    'id="related-grid" data-products-grid data-limit="3" data-exclude="' + esc(p.id) + '"'
+  );
   const favAnchor = '  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">';
   html = html.replace(
     favAnchor,
@@ -491,12 +529,15 @@ for (const p of catalog.CL_PRODUCTS) {
     /<img id="pd-sticky-img"[^>]*>/,
     '<img id="pd-sticky-img" src="' + p.bottle + '" alt="' + esc(p.name) + '" width="463" height="900">'
   );
+  html = renderRelatedGrid(html, p);
 
   writeFileSync(resolve(root, p.id + ".html"), html);
   writeFileSync(resolve(root, p.id + ".md"), productMarkdown(p, url));
   count++;
 }
 
+writeFileSync(resolve(root, "index.html"), renderHomeGrid(homeTemplate));
+writeFileSync(resolve(root, "tienda.html"), renderStoreGrid(storeTemplate));
 writeFileSync(resolve(root, "index.md"), homeMarkdown());
 writeFileSync(resolve(root, "tienda.md"), storeMarkdown());
 writeFileSync(resolve(root, "agents.md"), agentsMarkdown());

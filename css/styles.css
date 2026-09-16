@@ -509,6 +509,13 @@ p, li { text-wrap: pretty; }
   transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s;
   overflow: hidden;
 }
+[data-product-id="hair-nails-forte"] { --a: #8C6FC9; --a-dark: #6A4FA8; --soft: #F1EBFB; }
+[data-product-id="radiant-skin"] { --a: #E88998; --a-dark: #B44F64; --soft: #FBEBEE; }
+[data-product-id="vinagre-de-manzana"] { --a: #35B34A; --a-dark: #1D712D; --soft: #E9F7EC; }
+[data-product-id="sleep-vitamins"] { --a: #4FA8D8; --a-dark: #256A92; --soft: #E8F4FB; }
+[data-product-id="sexual-booster-women"] { --a: #B3538F; --a-dark: #8C3A6E; --soft: #F7EAF2; }
+[data-product-id="sexual-booster-men"] { --a: #2E7FC2; --a-dark: #1F5C90; --soft: #E8F1FA; }
+[data-product-id="anti-stress"] { --a: #2B4FC7; --a-dark: #1D3894; --soft: #E9EDFA; }
 .pcard:hover { transform: translateY(-8px); box-shadow: 0 30px 68px -32px rgba(17,17,18,0.3); }
 .pcard::before {
   content: "";

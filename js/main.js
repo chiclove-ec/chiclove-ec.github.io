@@ -527,9 +527,7 @@ function renderCart() {
 /* ---------- tarjetas de producto ---------- */
 function productCard(p, revealDelay) {
   var card = makeEl("article", "pcard reveal" + (revealDelay ? " reveal-d" + revealDelay : ""));
-  card.style.setProperty("--a", p.accent);
-  card.style.setProperty("--a-dark", p.accentDark);
-  card.style.setProperty("--soft", p.soft);
+  card.setAttribute("data-product-id", p.id);
   var productUrl = encodeURIComponent(p.id) + ".html";
   var promo = clActivePromo(p);
   if (promo) card.classList.add("is-promo");
