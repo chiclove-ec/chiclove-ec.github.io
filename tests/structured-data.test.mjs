@@ -167,11 +167,38 @@ test("la política de devoluciones se dice en texto allí donde se busca", () =>
 
 test("la Organization declara alias de marca, contacto y ubicación", () => {
   const org = byType("index.html", "Organization");
+  assert.equal(org.legalName, catalog.CL_LEGAL.company, "razón social");
+  assert.equal(org.taxID, catalog.CL_LEGAL.ruc, "RUC");
   assert.ok(org.alternateName.includes("Chic&Love"), "faltan alias de marca");
   assert.ok(org.alternateName.length >= 3, "pocos alias para desambiguar la marca");
   assert.ok(org.sameAs.includes("https://www.instagram.com/" + catalog.CL_INSTAGRAM));
+  assert.equal(org.areaServed.name, "Ecuador");
   assert.equal(org.address.addressCountry, "EC");
+  assert.equal(org.address.streetAddress, catalog.CL_LEGAL.streetAddress);
+  assert.equal(org.address.addressLocality, catalog.CL_LEGAL.locality);
+  assert.equal(org.address.addressRegion, catalog.CL_LEGAL.region);
+  assert.equal(org.currenciesAccepted, "USD");
+  assert.equal(org.paymentAccepted, "Transferencia bancaria");
   assert.match(org.contactPoint.url, new RegExp("wa\\.me/" + catalog.CL_WHATSAPP));
+  assert.ok(org.hasOfferCatalog, "falta hasOfferCatalog");
+  assert.equal(org.hasOfferCatalog.itemListElement.length, catalog.CL_PRODUCTS.length);
+});
+
+test("cada Product publica identidad, imagen, precio, envío y devoluciones", () => {
+  for (const product of catalog.CL_PRODUCTS) {
+    const node = byType(product.id + ".html", "Product");
+    assert.equal(node.category, product.goalLabel, `${product.id}: categoría`);
+    assert.equal(node.brand.name, "Chic&Love", `${product.id}: marca`);
+    assert.equal(node.sku, product.id, `${product.id}: SKU`);
+    assert.ok([].concat(node.image).length > 0, `${product.id}: imagen`);
+
+    const offer = node.offers;
+    assert.equal(offer.priceSpecification["@type"], "UnitPriceSpecification", `${product.id}: priceSpecification`);
+    assert.equal(offer.priceSpecification.priceCurrency, "USD", `${product.id}: moneda del precio`);
+    assert.equal(offer.priceSpecification.valueAddedTaxIncluded, true, `${product.id}: IVA`);
+    assert.equal(offer.shippingDetails["@type"], "OfferShippingDetails", `${product.id}: shippingDetails`);
+    assert.ok(offer.hasMerchantReturnPolicy, `${product.id}: política de devoluciones`);
+  }
 });
 
 test("la navegación estructurada incluye las páginas de confianza", () => {

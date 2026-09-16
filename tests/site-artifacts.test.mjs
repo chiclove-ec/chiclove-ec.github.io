@@ -289,6 +289,7 @@ test("la lista blanca del build publica todos los artefactos nuevos", () => {
     "agents.md",
     "llms.txt",
     "llms-full.txt",
+    "ai.txt",
     "robots.txt",
     "sitemap.xml"
   ];
