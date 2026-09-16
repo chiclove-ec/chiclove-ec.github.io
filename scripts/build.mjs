@@ -70,6 +70,7 @@ const publicFiles = [
   "llms.txt",
   "llms-full.txt",
   "agents.md",
+  "ai.txt",
   "robots.txt",
   "sitemap.xml",
   "tienda.html",

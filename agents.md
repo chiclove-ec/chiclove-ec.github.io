@@ -55,6 +55,7 @@
 ## Mapa rápido
 
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
+- [Perfil del sitio para agentes](https://chiclove-ec.com/ai.txt)
 - [Portada](https://chiclove-ec.com/index.md), [Catálogo](https://chiclove-ec.com/tienda.md)
 - [Empresa](https://chiclove-ec.com/about.md), [Contacto](https://chiclove-ec.com/contact.md), [Privacidad](https://chiclove-ec.com/privacy.md), [Términos](https://chiclove-ec.com/terms.md), [Historia](https://chiclove-ec.com/nosotros.md)
 - [Mapa del sitio](https://chiclove-ec.com/sitemap.xml), [robots.txt](https://chiclove-ec.com/robots.txt)

@@ -4,6 +4,7 @@
 //   - /index.md    resumen del sitio en markdown
 //   - /tienda.md   catálogo completo en markdown
 //   - /agents.md   instrucciones para agentes
+//   - /ai.txt      perfil estático del sitio para agentes
 //   - /llms-full.txt  todo el contenido markdown del sitio en un solo archivo
 //
 // Cada página de producto lleva su <head> propio (title, description, canonical, alternate
@@ -345,10 +346,34 @@ function agentsMarkdown() {
     "## Mapa rápido",
     "",
     "- [Índice para agentes](" + BASE + "llms.txt)",
+    "- [Perfil del sitio para agentes](" + BASE + "ai.txt)",
     "- [Portada](" + BASE + "index.md), [Catálogo](" + BASE + "tienda.md)",
     "- [Empresa](" + BASE + "about.md), [Contacto](" + BASE + "contact.md), " +
       "[Privacidad](" + BASE + "privacy.md), [Términos](" + BASE + "terms.md), [Historia](" + BASE + "nosotros.md)",
     "- [Mapa del sitio](" + BASE + "sitemap.xml), [robots.txt](" + BASE + "robots.txt)",
+    ""
+  ].join("\n");
+}
+
+// Perfil estático e informativo del sitio (/ai.txt). No declara un estándar ni una API;
+// solo resume capacidades, límites y fuentes públicas a partir de los datos canónicos.
+function aiProfile() {
+  return [
+    "# Chic&Love Ecuador",
+    "Site profile: official Ecuador storefront for Chic&Love gummies.",
+    "Language: es-EC",
+    "Region: Ecuador",
+    "Canonical: " + BASE,
+    "Machine-readable index: " + BASE + "llms.txt",
+    "Full content: " + BASE + "llms-full.txt",
+    "Markdown pages: use the .md twin of each HTML URL.",
+    "Human ordering channel: WhatsApp " + catalog.clWhatsAppDisplay(),
+    "Company: " + catalog.CL_LEGAL.company,
+    "RUC: " + catalog.CL_LEGAL.ruc,
+    "Use for: product discovery, catalog comparison, prices, shipping and company information in Ecuador.",
+    "Do not use for: automated checkout, live stock, medical diagnosis or purchases outside Ecuador.",
+    "This is an informational site profile, not an official AI standard or API.",
+    "Last reviewed: " + CONTENT_MODIFIED,
     ""
   ].join("\n");
 }
@@ -371,6 +396,7 @@ function fullTextBundle() {
     "> Todo el contenido en markdown del sitio " + BASE + " en un solo",
     "> archivo. Cada sección conserva su URL de origen. Índice: " + BASE + "llms.txt",
     "> Instrucciones para agentes: " + BASE + "agents.md",
+    "> Perfil del sitio: " + BASE + "ai.txt",
     ""
   ].join("\n");
 
@@ -588,13 +614,14 @@ writeFileSync(resolve(root, "tienda.html"), renderStoreGrid(storeTemplate));
 writeFileSync(resolve(root, "index.md"), homeMarkdown());
 writeFileSync(resolve(root, "tienda.md"), storeMarkdown());
 writeFileSync(resolve(root, "agents.md"), agentsMarkdown());
+writeFileSync(resolve(root, "ai.txt"), aiProfile());
 writeFileSync(resolve(root, "llms-full.txt"), fullTextBundle());
 writeFileSync(resolve(root, "sitemap.xml"), sitemapXml());
 
 console.log(
   "Generadas " + count + " páginas de producto (.html + .md): " +
     catalog.CL_PRODUCTS.map((p) => p.id).join(", ") +
-    "\nGenerados index.md, tienda.md, agents.md y llms-full.txt"
+    "\nGenerados index.md, tienda.md, agents.md, ai.txt y llms-full.txt"
 );
 if (promoted.length) {
   console.warn(

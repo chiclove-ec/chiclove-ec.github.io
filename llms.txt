@@ -38,6 +38,7 @@ No uses este sitio para: comprar de forma automática (no hay checkout ni pasare
 ## Recursos para máquinas
 
 - [Instrucciones para agentes](https://chiclove-ec.com/agents.md): identidad, cuándo usar y cuándo no usar el sitio, y cómo leerlo.
+- [Perfil del sitio para agentes](https://chiclove-ec.com/ai.txt): perfil estático de capacidades, fuentes y límites.
 - [Contenido completo](https://chiclove-ec.com/llms-full.txt): todo el markdown del sitio en un solo archivo, con la URL de origen de cada sección.
 - [Mapa del sitio](https://chiclove-ec.com/sitemap.xml): todas las URL indexables con fecha de última modificación.
 - [robots.txt](https://chiclove-ec.com/robots.txt): rastreo permitido explícitamente para los rastreadores de IA.

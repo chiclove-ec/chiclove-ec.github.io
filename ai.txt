@@ -1,0 +1,15 @@
+# Chic&Love Ecuador
+Site profile: official Ecuador storefront for Chic&Love gummies.
+Language: es-EC
+Region: Ecuador
+Canonical: https://chiclove-ec.com/
+Machine-readable index: https://chiclove-ec.com/llms.txt
+Full content: https://chiclove-ec.com/llms-full.txt
+Markdown pages: use the .md twin of each HTML URL.
+Human ordering channel: WhatsApp +593 98 759 1741
+Company: LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A.
+RUC: 1790336352001
+Use for: product discovery, catalog comparison, prices, shipping and company information in Ecuador.
+Do not use for: automated checkout, live stock, medical diagnosis or purchases outside Ecuador.
+This is an informational site profile, not an official AI standard or API.
+Last reviewed: 2026-09-16

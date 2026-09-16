@@ -43,6 +43,7 @@ describe("endpoints publicados", () => {
     const expected = {
       "/llms.txt": /text\/plain/,
       "/llms-full.txt": /text\/plain/,
+      "/ai.txt": /text\/plain/,
       "/agents.md": /text\/markdown/,
       "/sitemap.xml": /xml/,
       "/robots.txt": /text\/plain/,
@@ -106,7 +107,7 @@ describe("endpoints publicados", () => {
     const response = await get("/esta-ruta-no-existe", "text/html");
     assert.equal(response.status, 404);
     const body = await response.text();
-    for (const target of ["/llms.txt", "/sitemap.xml", "/tienda.html"]) {
+    for (const target of ["/llms.txt", "/ai.txt", "/sitemap.xml", "/tienda.html"]) {
       assert.ok(body.includes(`href="${target}"`), `el 404 no enlaza ${target}`);
     }
   });

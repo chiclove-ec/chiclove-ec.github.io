@@ -2,6 +2,7 @@
 # Índice para agentes: https://chiclove-ec.com/llms.txt
 # Instrucciones para agentes: https://chiclove-ec.com/agents.md
 # Contenido completo en markdown: https://chiclove-ec.com/llms-full.txt
+# Perfil estático para agentes: https://chiclove-ec.com/ai.txt
 # Cada página HTML tiene un gemelo markdown en la misma ruta con extensión .md
 
 User-agent: *

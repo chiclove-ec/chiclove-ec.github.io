@@ -3,6 +3,7 @@
 > Todo el contenido en markdown del sitio https://chiclove-ec.com/ en un solo
 > archivo. Cada sección conserva su URL de origen. Índice: https://chiclove-ec.com/llms.txt
 > Instrucciones para agentes: https://chiclove-ec.com/agents.md
+> Perfil del sitio: https://chiclove-ec.com/ai.txt
 
 ---
 

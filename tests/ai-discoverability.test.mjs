@@ -87,3 +87,31 @@ test("ai.txt existe y está publicado por la lista blanca del build", () => {
   assert.ok(existsSync(resolve(projectRoot, "ai.txt")), "falta ai.txt");
   assert.ok(loadPublicFiles().has("ai.txt"), "ai.txt no está en la lista blanca del build");
 });
+
+test("ai.txt contiene un perfil estático trazable y explícitamente limitado", () => {
+  const profile = read("ai.txt");
+  const { contentModified } = loadSiteConfig();
+  const { CL_LEGAL } = catalog;
+
+  assert.match(profile, /^# Chic&Love Ecuador$/m);
+  assert.match(profile, /^Site profile: official Ecuador storefront for Chic&Love gummies\.$/m);
+  assert.match(profile, /^Language: es-EC$/m);
+  assert.match(profile, /^Region: Ecuador$/m);
+  assert.match(profile, new RegExp("^Canonical: " + escapeRegExp(BASE) + "$", "m"));
+  assert.match(profile, new RegExp("^Machine-readable index: " + escapeRegExp(BASE + "llms.txt") + "$", "m"));
+  assert.match(profile, new RegExp("^Full content: " + escapeRegExp(BASE + "llms-full.txt") + "$", "m"));
+  assert.match(profile, /^Markdown pages: use the \.md twin of each HTML URL\.$/m);
+  assert.match(profile, new RegExp("^Human ordering channel: WhatsApp " + escapeRegExp(catalog.clWhatsAppDisplay()) + "$", "m"));
+  assert.match(profile, new RegExp("^Company: " + escapeRegExp(CL_LEGAL.company) + "$", "m"));
+  assert.match(profile, new RegExp("^RUC: " + escapeRegExp(CL_LEGAL.ruc) + "$", "m"));
+  assert.match(profile, /^Use for: product discovery, catalog comparison, prices, shipping and company information in Ecuador\.$/m);
+  assert.match(profile, /^Do not use for: automated checkout, live stock, medical diagnosis or purchases outside Ecuador\.$/m);
+  assert.match(profile, new RegExp("^Last reviewed: " + escapeRegExp(contentModified) + "$", "m"));
+  assert.match(profile, /not an official AI standard or API/i);
+});
+
+test("llms.txt y agents.md enlazan el perfil ai.txt", () => {
+  for (const file of ["llms.txt", "agents.md"]) {
+    assert.ok(read(file).includes(BASE + "ai.txt"), `${file} no enlaza ai.txt`);
+  }
+});
