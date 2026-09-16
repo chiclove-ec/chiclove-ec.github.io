@@ -119,7 +119,7 @@ que toda acción de GitHub esté anclada a un SHA.
 |---|---|---|
 | `ci.yml` | En cada pull request, y como paso previo del despliegue | `npm test`, `npm run build:github` y comprueba que `npm run gen` no deje diferencias |
 | `deploy-pages.yml` | Al empujar a `main` | Llama a `ci.yml` y **solo publica si pasa**; sube a GitHub Pages el `dist/` de la lista blanca |
-| `deploy-cloudflare.yml` | Al empujar a `main` | Igual, hacia Cloudflare Pages. **Se salta solo** mientras no existan sus secretos (ver *Despliegue automático*) |
+| `deploy-cloudflare.yml` | Al empujar a `main` | Alternativa **dormida**: Cloudflare publica hoy por su integración Git, no por este workflow. Se salta solo mientras no existan sus secretos (ver *Despliegue automático*) |
 | `weekly-analytics-report.yml` | Lunes 09:00 (Ecuador) | Envía por correo el informe de GA4 |
 
 Las acciones están ancladas por SHA y Dependabot propone sus actualizaciones una vez al mes
@@ -351,33 +351,37 @@ dirección** desde la anterior.
 Cada push a `main` dispara los dos destinos. Ambos pasan por CI primero y
 **ninguno publica si la suite falla**.
 
-| Destino | Workflow | Estado |
+| Destino | Mecanismo | Estado |
 |---|---|---|
 | GitHub Pages | `deploy-pages.yml` | **En producción.** Publica siempre |
-| Cloudflare Pages | `deploy-cloudflare.yml` | **Armado y en espera.** Se salta solo mientras no existan los secretos |
+| Cloudflare Pages | Integración Git nativa de Cloudflare | **En producción.** Construye y publica en cada push a `main` |
 
-### Activar Cloudflare Pages
+### Cómo está montado Cloudflare Pages
 
-El workflow ya está escrito y probado; no hace falta tocar código. Cuando llegue
-el momento:
+Cloudflare no despliega por GitHub Actions, sino por su **integración Git nativa**:
+la GitHub App *Cloudflare Workers and Pages* está instalada en la organización con
+acceso **solo** a este repositorio, y cada push a `main` dispara un build en
+Cloudflare.
 
-1. **Crea el proyecto** de Pages con el nombre de `cloudflare.projectName`
-   (hoy `chiclove-ec`), **sin** conectarlo a Git: lo despliega el workflow.
-2. **Añade los secretos** en *Settings → Secrets and variables → Actions*:
+| Ajuste | Valor |
+|---|---|
+| Proyecto | `chiclove-ec` (el de `cloudflare.projectName`; `wrangler.toml` debe coincidir) |
+| Repositorio | `chiclove-ec/chiclove-ec.github.io`, rama de producción `main` |
+| Framework preset | *None* |
+| Comando de build | `npm test && npm run build:cloudflare` |
+| Directorio de salida | `dist` |
+| Directorio raíz | `/` — ahí vive `functions/`, que Cloudflare compila aparte |
+| Node | el de `.nvmrc` |
 
-   | Secreto | Contenido |
-   |---|---|
-   | `CLOUDFLARE_API_TOKEN` | Token con permiso *Cloudflare Pages: Edit* |
-   | `CLOUDFLARE_ACCOUNT_ID` | Id de la cuenta de Cloudflare |
+La suite va **dentro** del comando de build a propósito: si `npm test` falla, el
+build falla y Cloudflare no publica. Es el mismo portero que `ci.yml` pone delante
+de GitHub Pages.
 
-3. **Añade el dominio propio** en el panel de Pages (*Custom domains*) y apunta
-   el DNS.
-4. **Haz oficial el dominio**: cambia `canonicalOrigin` en `site.config.json`
-   (ver arriba).
-
-Desde el primer push con secretos, cada cambio en `main` se publica solo. Sin
-secretos el workflow deja una nota en el registro y termina en verde, así que no
-ensucia el historial mientras GitHub Pages sigue sirviendo.
+`deploy-cloudflare.yml` sigue en el repositorio como alternativa por si algún día
+conviene publicar desde Actions (despliegue directo con Wrangler). Mientras no
+existan los secretos `CLOUDFLARE_API_TOKEN` y `CLOUDFLARE_ACCOUNT_ID` se salta
+solo y no estorba. **No añadas esos secretos sin desconectar antes la integración
+Git**, o cada push publicaría dos veces.
 
 ### Por qué Cloudflare es el destino final
 

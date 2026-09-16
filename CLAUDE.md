@@ -51,12 +51,22 @@ npm run set-origin https://otro.dominio          # mudanza permanente (ver READM
 
 ## Despliegue
 
-Push a `main` → CI → publica. GitHub Pages está en producción
-(`deploy-pages.yml`); Cloudflare Pages está armado y en espera
-(`deploy-cloudflare.yml`), y se salta solo hasta que existan los secretos
-`CLOUDFLARE_API_TOKEN` y `CLOUDFLARE_ACCOUNT_ID`. Cloudflare es el destino final
-porque aplica `_headers` de verdad y ejecuta `functions/_middleware.js`
-(negociación `Accept: text/markdown`), cosas que GitHub Pages no permite.
+Push a `main` publica en **los dos destinos a la vez**:
+
+- **GitHub Pages** — `deploy-pages.yml`, con `ci.yml` como portero.
+- **Cloudflare Pages** — **integración Git nativa** (no Actions): proyecto
+  `chiclove-ec`, build `npm test && npm run build:cloudflare`, salida `dist`,
+  raíz `/`. La suite va dentro del comando de build, así que un test rojo impide
+  publicar.
+
+Cloudflare es el destino final porque aplica `_headers` de verdad y ejecuta
+`functions/_middleware.js` (negociación `Accept: text/markdown`), cosas que
+GitHub Pages no permite.
+
+`deploy-cloudflare.yml` sigue en el repositorio pero **dormido**: se salta solo
+mientras no existan `CLOUDFLARE_API_TOKEN` y `CLOUDFLARE_ACCOUNT_ID`. No añadas
+esos secretos sin desconectar antes la integración Git, o cada push publicaría
+dos veces.
 
 ## Gotchas verificados
 
