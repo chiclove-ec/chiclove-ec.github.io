@@ -30,7 +30,7 @@ export function renderProductCard(product, { page = "home", headingLevel = 3, ba
     : '<div class="pcard-pack-prices"><small>Pack x2 ' + escapeHtml(catalog.clMoney(product.pricePack)) + '</small><small>Pack x3 ' + escapeHtml(catalog.clMoney(product.pricePack3)) + '</small></div>' +
       '<span class="pcard-saving">Ahorra hasta ' + escapeHtml(catalog.clMoney(product.price * 3 - product.pricePack3)) + "</span>";
 
-  return '<article class="pcard reveal' + (promo ? " is-promo" : "") + '" data-product-id="' + escapeHtml(product.id) + '">' +
+  return '<article class="pcard' + (promo ? " is-promo" : "") + '" data-product-id="' + escapeHtml(product.id) + '">' +
     '<span class="pcard-tag">' + escapeHtml(product.goalLabel) + "</span>" +
     (promo ? '<span class="pcard-promo-tag">−' + escapeHtml(catalog.clPromoPercent(product)) + "%</span>" : "") +
     '<a class="pcard-img" href="' + escapeHtml(url) + '" aria-label="Ver ' + escapeHtml(product.name) + '">' +

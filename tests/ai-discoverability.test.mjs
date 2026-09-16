@@ -36,6 +36,7 @@ test("el serializador publica una tarjeta de tienda completa y segura", () => {
   assert.ok(card.includes(escapeHtml(product.name)), "nombre");
   assert.ok(card.includes(product.flavor), "sabor");
   assert.match(card, /60 gummies/i, "cantidad");
+  assert.doesNotMatch(card, /\breveal\b/i, "visible sin JavaScript");
   assert.doesNotMatch(card, /\bstyle\s*=/i, "no style inline");
   assert.doesNotMatch(card, /<script\b/i, "no script inline");
 });
@@ -59,6 +60,7 @@ test("la portada y la tienda publican una tarjeta inicial completa por producto"
       assert.match(card, /60 gummies/i, `${page}/${product.id}: cantidad`);
       assert.ok(card.includes(catalog.clMoney(catalog.clSinglePrice(product))), `${page}/${product.id}: precio`);
       assert.match(card, /IVA incluido/i, `${page}/${product.id}: IVA`);
+      assert.doesNotMatch(card, /\breveal\b/i, `${page}/${product.id}: visible sin JavaScript`);
       assert.doesNotMatch(card, /\bstyle\s*=/i, `${page}/${product.id}: no style inline`);
       assert.doesNotMatch(card, /<script\b/i, `${page}/${product.id}: no script inline`);
     });
