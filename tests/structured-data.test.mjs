@@ -32,6 +32,10 @@ const plainText = (html) =>
     .replace(/\s+/g, " ")
     .trim();
 
+const primaryTypes = new Set(["Product", "CollectionPage", "FAQPage", "WebPage", "AboutPage", "ContactPage"]);
+const nodesOfType = (file, types) =>
+  jsonLd(file).filter((node) => [].concat(node["@type"]).some((type) => types.has(type)));
+
 test("todo el JSON-LD publicado es válido", () => {
   const pages = ["index.html", "tienda.html", "nosotros.html", "about.html", "contact.html", "privacy.html", ...catalog.CL_PRODUCTS.map((p) => p.id + ".html")];
   for (const page of pages) {
@@ -209,5 +213,53 @@ test("la navegación estructurada incluye las páginas de confianza", () => {
     const urls = nav.map((node) => node.url);
     assert.ok(urls.includes(BASE + "contact.html"), `${page}: falta Contacto`);
     assert.ok(urls.includes(BASE + "about.html"), `${page}: falta Información de la empresa`);
+  }
+});
+
+test("las entidades editoriales usan la fecha configurada y los mismos IDs", () => {
+  const { contentModified } = loadSiteConfig();
+  const organizationId = BASE + "#organization";
+  const websiteId = BASE + "#website";
+  const pages = [
+    "index.html",
+    "tienda.html",
+    "nosotros.html",
+    "about.html",
+    "contact.html",
+    "privacy.html",
+    "terms.html",
+    ...catalog.CL_PRODUCTS.map((product) => product.id + ".html")
+  ];
+
+  for (const page of pages) {
+    for (const node of nodesOfType(page, primaryTypes)) {
+      assert.equal(node.dateModified, contentModified, `${page}: fecha desincronizada en ${node["@type"]}`);
+      if (["Product", "FAQPage", "CollectionPage", "WebPage", "AboutPage", "ContactPage"].includes(node["@type"])) {
+        assert.equal(node.isPartOf?.["@id"], websiteId, `${page}: isPartOf`);
+        assert.equal(node.about?.["@id"], organizationId, `${page}: about`);
+      }
+      if (node["@type"] !== "Product") {
+        assert.equal(node.publisher?.["@id"], organizationId, `${page}: publisher`);
+      }
+    }
+  }
+
+  const org = byType("index.html", "Organization");
+  const website = byType("index.html", "WebSite");
+  assert.equal(org["@id"], organizationId);
+  assert.equal(website["@id"], websiteId);
+  assert.equal(website.publisher?.["@id"], organizationId);
+  assert.equal(website.dateModified, contentModified);
+  assert.ok(!jsonLd("index.html").some((node) => "aggregateRating" in node));
+});
+
+test("el sitemap usa la fecha configurada exclusivamente en URLs indexables", () => {
+  const { contentModified } = loadSiteConfig();
+  const sitemap = read("sitemap.xml");
+  const urls = [...sitemap.matchAll(/<url>([\s\S]*?)<\/url>/g)].map(([, entry]) => entry);
+  assert.ok(urls.length > 0, "sitemap vacío");
+  for (const entry of urls) {
+    assert.match(entry, new RegExp("<lastmod>" + contentModified + "</lastmod>"));
+    assert.doesNotMatch(entry, /(?:\.md|404\.html|producto\.html)/);
   }
 });

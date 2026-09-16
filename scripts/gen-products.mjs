@@ -19,7 +19,10 @@ import { renderProductGrid } from "./lib/product-card.mjs";
 import { loadSiteConfig } from "./lib/site-config.mjs";
 
 // El dominio sale de site.config.json; el build lo reescribe si se publica en otro.
-const BASE = loadSiteConfig().base;
+const siteConfig = loadSiteConfig();
+const BASE = siteConfig.base;
+const CONTENT_MODIFIED = siteConfig.contentModified;
+const INDEXABLE_ROBOTS = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 const catalog = loadCatalog();
@@ -404,6 +407,10 @@ for (const p of catalog.CL_PRODUCTS) {
     brand: { "@type": "Brand", name: "Chic&Love" },
     category: p.goalLabel,
     url: url,
+    dateModified: CONTENT_MODIFIED,
+    isPartOf: { "@id": BASE + "#website" },
+    about: { "@id": BASE + "#organization" },
+    publisher: { "@id": BASE + "#organization" },
     offers: {
       "@type": "Offer",
       url: url,
@@ -447,6 +454,10 @@ for (const p of catalog.CL_PRODUCTS) {
   const breadcrumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    isPartOf: { "@id": BASE + "#website" },
+    about: { "@id": BASE + "#organization" },
+    publisher: { "@id": BASE + "#organization" },
+    dateModified: CONTENT_MODIFIED,
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Inicio", item: BASE },
       { "@type": "ListItem", position: 2, name: "Tienda", item: BASE + "tienda.html" },
@@ -455,6 +466,10 @@ for (const p of catalog.CL_PRODUCTS) {
   };
 
   let html = template;
+  html = html.replace(
+    '<meta name="robots" content="noindex">',
+    '<meta name="robots" content="' + INDEXABLE_ROBOTS + '">'
+  );
   html = html.replace(/<title>[\s\S]*?<\/title>/, "<title>" + esc(title) + "</title>");
   html = setMeta(html, "pd-description", metaDesc);
   const canonicalTag = '<link rel="canonical" id="pd-canonical" href="' + url + '">';
@@ -536,12 +551,45 @@ for (const p of catalog.CL_PRODUCTS) {
   count++;
 }
 
+function sitemapXml() {
+  const pages = [
+    { path: "", image: "assets/img/cover-lifestyle.webp" },
+    { path: "tienda.html" },
+    { path: "nosotros.html" },
+    { path: "about.html" },
+    { path: "contact.html" },
+    { path: "privacy.html" },
+    { path: "terms.html" },
+    ...catalog.CL_PRODUCTS.map((product) => ({
+      path: product.id + ".html",
+      image: product.hero,
+      title: product.name
+    }))
+  ];
+  const url = ({ path, image, title }) => {
+    const imageXml = image
+      ? "<image:image><image:loc>" + BASE + image + "</image:loc>" +
+        (title ? "<image:title>" + esc(title) + "</image:title>" : "") +
+        "</image:image>"
+      : "";
+    return "  <url><loc>" + BASE + path + "</loc><lastmod>" + CONTENT_MODIFIED + "</lastmod>" + imageXml + "</url>";
+  };
+  return [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">',
+    ...pages.map(url),
+    "</urlset>",
+    ""
+  ].join("\n");
+}
+
 writeFileSync(resolve(root, "index.html"), renderHomeGrid(homeTemplate));
 writeFileSync(resolve(root, "tienda.html"), renderStoreGrid(storeTemplate));
 writeFileSync(resolve(root, "index.md"), homeMarkdown());
 writeFileSync(resolve(root, "tienda.md"), storeMarkdown());
 writeFileSync(resolve(root, "agents.md"), agentsMarkdown());
 writeFileSync(resolve(root, "llms-full.txt"), fullTextBundle());
+writeFileSync(resolve(root, "sitemap.xml"), sitemapXml());
 
 console.log(
   "Generadas " + count + " páginas de producto (.html + .md): " +

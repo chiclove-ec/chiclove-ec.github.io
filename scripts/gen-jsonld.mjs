@@ -13,7 +13,9 @@ import { loadCatalog, projectRoot as root } from "./lib/catalog.mjs";
 import { loadSiteConfig } from "./lib/site-config.mjs";
 
 // El dominio sale de site.config.json; el build lo reescribe si se publica en otro.
-const BASE = loadSiteConfig().base;
+const siteConfig = loadSiteConfig();
+const BASE = siteConfig.base;
+const CONTENT_MODIFIED = siteConfig.contentModified;
 const catalog = loadCatalog();
 const { clSinglePrice, clFreeShippingLabel } = catalog;
 
@@ -118,6 +120,22 @@ itemList.itemListElement = listItems((product) => [
   BASE + product.store,
   BASE + product.splash
 ]);
+itemList.isPartOf = { "@id": BASE + "#website" };
+itemList.about = { "@id": BASE + "#organization" };
+itemList.dateModified = CONTENT_MODIFIED;
+
+const organization = graph["@graph"].find((node) => [].concat(node["@type"]).includes("Organization"));
+const website = graph["@graph"].find((node) => node["@type"] === "WebSite");
+if (!organization || !website) throw new Error("El grafo de la portada no declara Organization y WebSite");
+organization.dateModified = CONTENT_MODIFIED;
+organization.hasOfferCatalog = {
+  "@type": "OfferCatalog",
+  name: "Colección Chic&Love Ecuador",
+  itemListElement: listItems((product) => BASE + product.store)
+};
+organization.knowsAbout = [...new Set(catalog.CL_PRODUCTS.flatMap((product) => [product.goalLabel, ...product.actives]))]
+  .map((name) => ({ "@type": "Thing", name }));
+website.dateModified = CONTENT_MODIFIED;
 indexHtml = indexHtml.replace(
   graphMatch[0],
   '<script type="application/ld+json">' + JSON.stringify(graph) + "</script>"
@@ -133,8 +151,10 @@ const storeHtml = upsertJsonLd(readFileSync(storePath, "utf8"), "CollectionPage"
   url: BASE + "tienda.html",
   name: "Tienda Chic&Love Ecuador — colección completa",
   inLanguage: "es-EC",
+  dateModified: CONTENT_MODIFIED,
   isPartOf: { "@id": BASE + "#website" },
   about: { "@id": BASE + "#organization" },
+  publisher: { "@id": BASE + "#organization" },
   mainEntity: {
     "@type": "ItemList",
     name: "Colección Chic&Love",
@@ -143,6 +163,64 @@ const storeHtml = upsertJsonLd(readFileSync(storePath, "utf8"), "CollectionPage"
   }
 });
 writeFileSync(storePath, storeHtml);
+
+const editorialPages = {
+  "index.html": { type: "WebPage", id: BASE, name: "Chic&Love Ecuador" },
+  "nosotros.html": { type: "WebPage", id: BASE + "nosotros.html", name: "Nosotros — Chic&Love Ecuador" }
+};
+
+for (const [file, page] of Object.entries(editorialPages)) {
+  const path = resolve(root, file);
+  const html = readFileSync(path, "utf8");
+  writeFileSync(path, upsertJsonLd(html, page.type, {
+    "@context": "https://schema.org",
+    "@type": page.type,
+    "@id": page.id,
+    url: page.id,
+    name: page.name,
+    inLanguage: "es-EC",
+    dateModified: CONTENT_MODIFIED,
+    isPartOf: { "@id": BASE + "#website" },
+    about: { "@id": BASE + "#organization" },
+    publisher: { "@id": BASE + "#organization" }
+  }));
+}
+
+const connectedTypes = new Set(["Product", "CollectionPage", "FAQPage", "WebPage", "AboutPage", "ContactPage"]);
+const allIndexablePages = [
+  "index.html", "tienda.html", "nosotros.html", "about.html", "contact.html", "privacy.html", "terms.html",
+  ...catalog.CL_PRODUCTS.map((product) => product.id + ".html")
+];
+
+for (const file of allIndexablePages) {
+  const path = resolve(root, file);
+  const html = readFileSync(path, "utf8");
+  const rewritten = html.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g, (block, json) => {
+    const data = JSON.parse(json);
+    const nodes = data["@graph"] ?? [data];
+    for (const node of nodes) {
+      const types = [].concat(node["@type"]);
+      if (types.includes("BreadcrumbList")) {
+        node.isPartOf = { "@id": BASE + "#website" };
+        node.about = { "@id": BASE + "#organization" };
+        node.publisher = { "@id": BASE + "#organization" };
+        node.dateModified = CONTENT_MODIFIED;
+      }
+      if (types.some((type) => connectedTypes.has(type))) {
+        node.dateModified = CONTENT_MODIFIED;
+        node.isPartOf = { "@id": BASE + "#website" };
+        node.about = { "@id": BASE + "#organization" };
+        node.publisher = { "@id": BASE + "#organization" };
+      }
+      if (types.includes("WebSite")) {
+        node.dateModified = CONTENT_MODIFIED;
+        node.publisher = { "@id": BASE + "#organization" };
+      }
+    }
+    return '<script type="application/ld+json">' + JSON.stringify(data) + "</script>";
+  });
+  writeFileSync(path, rewritten);
+}
 
 console.log(
   "index.html: FAQPage con " + questions.length + " preguntas e ItemList con " +

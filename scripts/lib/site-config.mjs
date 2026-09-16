@@ -49,6 +49,18 @@ export function assertOrigin(value, field) {
   return value;
 }
 
+/** Una fecha de contenido pública debe ser una fecha ISO real, sin hora. */
+export function assertContentModified(value) {
+  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+    throw new Error(`${CONFIG_FILE}: "contentModified" debe ser una fecha ISO YYYY-MM-DD`);
+  }
+  const date = new Date(value + "T00:00:00Z");
+  if (Number.isNaN(date.getTime()) || date.toISOString().slice(0, 10) !== value) {
+    throw new Error(`${CONFIG_FILE}: "contentModified" no es una fecha válida: ${value}`);
+  }
+  return value;
+}
+
 export function loadSiteConfig() {
   const raw = readFileSync(resolve(projectRoot, CONFIG_FILE), "utf8");
   let config;
@@ -60,6 +72,7 @@ export function loadSiteConfig() {
 
   const canonicalOrigin = assertOrigin(config.canonicalOrigin, "canonicalOrigin");
   const sourceOrigin = assertOrigin(config.sourceOrigin, "sourceOrigin");
+  const contentModified = assertContentModified(config.contentModified);
 
   const cloudflare = config.cloudflare ?? {};
   if (typeof cloudflare.projectName !== "string" || !/^[a-z0-9][a-z0-9-]*$/.test(cloudflare.projectName)) {
@@ -69,6 +82,7 @@ export function loadSiteConfig() {
   return {
     canonicalOrigin,
     sourceOrigin,
+    contentModified,
     cloudflare: {
       projectName: cloudflare.projectName,
       productionBranch: cloudflare.productionBranch ?? "main"

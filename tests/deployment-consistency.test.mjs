@@ -9,7 +9,7 @@ import { resolve } from "node:path";
 import { test } from "node:test";
 
 import { projectRoot } from "../scripts/lib/catalog.mjs";
-import { loadSiteConfig } from "../scripts/lib/site-config.mjs";
+import { assertContentModified, loadSiteConfig } from "../scripts/lib/site-config.mjs";
 import { loadPublicFiles } from "./public-files.mjs";
 
 const read = (file) => readFileSync(resolve(projectRoot, file), "utf8");
@@ -20,6 +20,42 @@ const htmlPages = [...publicFiles].filter(
   // La página de verificación de Search Console es un testigo de 54 bytes sin <head> propio.
   (file) => file.endsWith(".html") && !file.startsWith("google")
 );
+
+const INDEXABLE_ROBOTS = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
+const indexablePages = htmlPages.filter((file) => !["404.html", "producto.html"].includes(file));
+
+test("contentModified es una fecha ISO de calendario", () => {
+  assert.equal(assertContentModified("2026-09-16"), "2026-09-16");
+  for (const invalid of ["", "2026-9-16", "2026-02-29", "16-09-2026", "2026-09-16T00:00:00Z"]) {
+    assert.throws(() => assertContentModified(invalid), /contentModified/);
+  }
+  assert.match(loadSiteConfig().contentModified, /^\d{4}-\d{2}-\d{2}$/);
+});
+
+test("toda página indexable declara metadatos regionales completos", () => {
+  const origin = loadSiteConfig().canonicalOrigin;
+  for (const page of indexablePages) {
+    const html = read(page);
+    const expectedUrl = page === "index.html" ? origin + "/" : origin + "/" + page;
+    const markdown = page.replace(/\.html$/, ".md");
+    assert.match(html, /<html lang="es-EC">/, `${page} no declara es-EC`);
+    assert.match(html, /<meta name="author" content="Chic&amp;Love Ecuador">/, `${page} no declara autor`);
+    assert.match(html, new RegExp('<meta name="robots" content="' + INDEXABLE_ROBOTS + '">'), `${page} no declara robots`);
+    assert.match(html, /<meta property="og:locale" content="es_EC">/, `${page} no declara og:locale`);
+    assert.match(html, new RegExp('<meta property="og:url"[^>]*content="' + expectedUrl.replace(/[.]/g, "\\.") + '">'), `${page} no declara og:url`);
+    assert.match(html, /<meta name="twitter:card" content="summary_large_image">/, `${page} no declara twitter:card`);
+    assert.match(html, new RegExp('<link rel="canonical"[^>]*href="' + expectedUrl.replace(/[.]/g, "\\.") + '">'), `${page} no declara canonical`);
+    assert.match(html, new RegExp('<link rel="alternate" type="text/markdown" href="' + origin + "/" + markdown.replace(/[.]/g, "\\.") + '"'), `${page} no declara su gemelo Markdown`);
+  }
+});
+
+test("las páginas de recuperación y plantilla permanecen fuera del índice", () => {
+  for (const page of ["404.html", "producto.html"]) {
+    const html = read(page);
+    assert.match(html, /<meta name="robots" content="noindex">/);
+    assert.doesNotMatch(html, new RegExp(INDEXABLE_ROBOTS));
+  }
+});
 
 /* ---------- Cabeceras de seguridad en las tres copias ---------- */
 
