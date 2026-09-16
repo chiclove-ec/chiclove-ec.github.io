@@ -4,6 +4,7 @@
 > archivo. Cada sección conserva su URL de origen. Índice: https://chiclove-ec.com/llms.txt
 > Instrucciones para agentes: https://chiclove-ec.com/agents.md
 > Perfil del sitio: https://chiclove-ec.com/ai.txt
+> Catálogo en JSON (los mismos datos, tipados): https://chiclove-ec.com/catalog.json
 
 ---
 
@@ -174,6 +175,360 @@ Complemento alimenticio. No sustituye una dieta equilibrada ni un estilo de vida
 
 ---
 
+<!-- source: https://chiclove-ec.com/guia-de-eleccion.md -->
+
+# Qué gummy de Chic&Love elegir — guía por objetivo
+
+> Guía de decisión para las 7 fórmulas de Chic&Love en Ecuador: qué pregunta responde cada una, cuándo elegirla y en qué se diferencian. Pensada para responder «¿cuál me sirve para X?» sin abrir las siete fichas.
+
+Todas las fórmulas son complementos alimenticios en gummies, sin gluten y sin lactosa, en frascos de 60 gummies, con envíos a todo Ecuador y pedido por WhatsApp (+593 98 759 1741). Los precios incluyen IVA.
+
+Esta guía orienta por objetivo: no es consejo médico ni sustituye la valoración de un
+profesional de la salud, y los productos no tratan ni previenen enfermedades.
+
+## Elige por objetivo
+
+### ¿Qué tomo para la caída del cabello o las uñas quebradizas?
+
+**Elige esta familia si:** Notas más pelo del normal en el cepillo, el cabello quebradizo, o uñas que se parten y crecen despacio.
+
+- **[Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte.md)** — Cabello más fuerte. Uñas de acero. Activos: Biotina, Vitamina B12, Ácido fólico, Vitamina A, Vitamina D, Ashwagandha, Zinc. Pauta: 2 gummies al día después de la comida. Sabor arándanos, $29.99 el frasco.
+
+Se busca también como: caída del cabello, cabello quebradizo, uñas frágiles, crecimiento del cabello, biotina.
+
+### ¿Qué tomo para la piel apagada o con pérdida de firmeza?
+
+**Elige esta familia si:** Buscas luminosidad, hidratación y elasticidad trabajadas desde dentro, no solo con cosmética.
+
+- **[Radiant Skin Vitamins](https://chiclove-ec.com/radiant-skin.md)** — Tu piel, en modo glow. Activos: Colágeno, Coenzima Q10, Biotina, Vitamina C, Vitamina E. Pauta: 2 gummies al día después de la comida. Sabor frutos rojos, $18.00 el frasco.
+
+Se busca también como: piel apagada, elasticidad, colágeno bebible, glow, antiedad.
+
+### ¿Qué tomo para la hinchazón o la digestión pesada?
+
+**Elige esta familia si:** Te sientes hinchada o hinchado después de comer, o quieres acompañar un plan de control de peso.
+
+- **[Vinagre de Manzana](https://chiclove-ec.com/vinagre-de-manzana.md)** — Digestión ligera. Activos: Vinagre de manzana, Extracto de jengibre. Pauta: 2 gummies en ayunas, o 1 gummy después de la comida. Sabor manzana, $29.99 el frasco.
+
+Se busca también como: hinchazón, digestión pesada, control de peso, vinagre de manzana, apetito.
+
+### ¿Qué tomo para dormir mejor?
+
+**Elige esta familia si:** Tardas en conciliar el sueño o te despiertas sin sensación de descanso.
+
+- **[Sleep Vitamins](https://chiclove-ec.com/sleep-vitamins.md)** — Duerme profundo. Despierta increíble. Activos: Melatonina, Vitamina B6. Pauta: 1–3 gummies al día antes de dormir según tu patrón de sueño. Sabor fresa, $29.99 el frasco.
+
+Se busca también como: insomnio ocasional, conciliar el sueño, descanso, melatonina, jet lag.
+
+### ¿Qué tomo para la libido y la energía íntima?
+
+**Elige esta familia si:** Buscas apoyo de la libido y de la energía. Hay una fórmula para mujeres y otra para hombres: no son intercambiables.
+
+- **[Sexual Booster Women](https://chiclove-ec.com/sexual-booster-women.md)** — Mujeres adultas. Enciende tu energía. Activos: Maca, Damiana, Ashwagandha. Pauta: 2 gummies al día después del desayuno. Sabor cereza, $29.99 el frasco.
+- **[Sexual Booster Men](https://chiclove-ec.com/sexual-booster-men.md)** — Hombres adultos. Rendimiento al máximo. Activos: Maca, Fenogreco, Zinc, L-arginina. Pauta: 2 gummies al día después del desayuno. Sabor cereza, $29.99 el frasco.
+
+Se busca también como: libido, energía íntima, deseo, maca, vitalidad.
+
+### ¿Qué tomo para el estrés o la ansiedad del día a día?
+
+**Elige esta familia si:** Atraviesas una temporada de estrés alto o de tensión sostenida y quieres acompañarla.
+
+- **[Anti-Stress Gummies](https://chiclove-ec.com/anti-stress.md)** — Serenidad para días intensos. Activos: Ashwagandha, Melisa, Ginseng. Pauta: 2 gummies al día durante períodos altos de estrés y/o ansiedad. Sabor naranja, $29.99 el frasco.
+
+Se busca también como: estrés, ansiedad leve, cortisol, ashwagandha, concentración.
+
+## Tabla comparativa
+
+| Fórmula | Objetivo | Activos | Sabor | Pauta diaria | Vegano | Precio por frasco |
+| --- | --- | --- | --- | --- | --- | --- |
+| [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte.md) | Cabello y uñas | Biotina, Vitamina B12, Ácido fólico, Vitamina A, Vitamina D, Ashwagandha, Zinc | Arándanos | 2 gummies al día después de la comida | Sí | $29.99 |
+| [Radiant Skin Vitamins](https://chiclove-ec.com/radiant-skin.md) | Piel radiante | Colágeno, Coenzima Q10, Biotina, Vitamina C, Vitamina E | Frutos rojos | 2 gummies al día después de la comida | No (colágeno bovino) | $18.00 |
+| [Vinagre de Manzana](https://chiclove-ec.com/vinagre-de-manzana.md) | Digestión y balance | Vinagre de manzana, Extracto de jengibre | Manzana | 2 gummies en ayunas, o 1 gummy después de la comida | Sí | $29.99 |
+| [Sleep Vitamins](https://chiclove-ec.com/sleep-vitamins.md) | Sueño reparador | Melatonina, Vitamina B6 | Fresa | 1–3 gummies al día antes de dormir según tu patrón de sueño | Sí | $29.99 |
+| [Sexual Booster Women](https://chiclove-ec.com/sexual-booster-women.md) | Energía íntima | Maca, Damiana, Ashwagandha | Cereza | 2 gummies al día después del desayuno | Sí | $29.99 |
+| [Sexual Booster Men](https://chiclove-ec.com/sexual-booster-men.md) | Energía íntima | Maca, Fenogreco, Zinc, L-arginina | Cereza | 2 gummies al día después del desayuno | Sí | $29.99 |
+| [Anti-Stress Gummies](https://chiclove-ec.com/anti-stress.md) | Calma y enfoque | Ashwagandha, Melisa, Ginseng | Naranja | 2 gummies al día durante períodos altos de estrés y/o ansiedad | Sí | $29.99 |
+
+Packs (los mismos para todas las fórmulas que los ofrecen): pack x2 $49.99, pack x3 $74.99. Envío gratis en compras desde $49,99.
+
+## Cómo se combinan
+
+- Se pueden tomar varias fórmulas a la vez; lo habitual es repartirlas en el día, por
+  ejemplo una de día y Sleep Vitamins antes de dormir.
+- Sexual Booster Women y Sexual Booster Men comparten objetivo y están formuladas para
+  públicos distintos: se elige una, no las dos.
+- Ante medicación, embarazo, lactancia o una condición médica, consultar antes con un
+  profesional de la salud. Este sitio no da consejo médico ni dosificación individual.
+
+## Lo que esta guía no puede decidir
+
+- No hay stock en tiempo real: la disponibilidad se confirma por WhatsApp.
+- No hay compra automática: no existe checkout ni pasarela de pago en la web.
+- No hay envíos fuera de Ecuador.
+
+## Enlaces
+
+- [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Glosario de activos](https://chiclove-ec.com/ingredientes.md)
+- [Catálogo en JSON](https://chiclove-ec.com/catalog.json)
+- [Contacto](https://chiclove-ec.com/contact.md)
+- [Índice para agentes](https://chiclove-ec.com/llms.txt)
+
+---
+
+Complemento alimenticio. No sustituye una dieta equilibrada ni un estilo de vida saludable.
+No es un medicamento y no trata ni previene enfermedades.
+
+---
+
+<!-- source: https://chiclove-ec.com/ingredientes.md -->
+
+# Activos de Chic&Love Ecuador — qué es cada ingrediente
+
+> Glosario de los 21 activos que aparecen en las 7 fórmulas de Chic&Love en Ecuador: qué es cada uno, con qué se asocia, cómo se llama también y en qué productos está. Cada entrada enlaza su entidad en Wikidata y en Wikipedia para que no haya ambigüedad sobre la especie o la molécula.
+
+Este glosario es informativo y describe los activos, no promete resultados: las
+afirmaciones comerciales de cada fórmula están en su ficha. No es consejo médico ni una
+pauta de dosificación individual; la dosis de cada producto está en su ficha y no debe
+superarse. Índice del sitio para agentes: [/llms.txt](https://chiclove-ec.com/llms.txt).
+
+## Índice
+
+- [Biotina](#biotina): Vitamina hidrosoluble del grupo B.
+- [Vitamina B12](#vitamina-b12): Vitamina hidrosoluble del grupo B.
+- [Ácido fólico](#acido-folico): Forma sintética del folato, vitamina del grupo B.
+- [Vitamina A](#vitamina-a): Vitamina liposoluble.
+- [Vitamina D](#vitamina-d): Vitamina liposoluble.
+- [Ashwagandha](#ashwagandha): Raíz de la medicina ayurvédica, clasificada como adaptógeno.
+- [Zinc](#zinc): Mineral esencial.
+- [Colágeno](#colageno): Proteína estructural mayoritaria de la piel y el tejido conectivo. El de esta fórmula es de origen bovino, y es la única excepción vegana del catálogo.
+- [Coenzima Q10](#coenzima-q10): Molécula presente en las mitocondrias de las células.
+- [Vitamina C](#vitamina-c): Vitamina hidrosoluble.
+- [Vitamina E](#vitamina-e): Vitamina liposoluble.
+- [Vinagre de manzana](#vinagre-de-manzana): Vinagre de la fermentación del zumo de manzana; su componente principal es el ácido acético.
+- [Extracto de jengibre](#extracto-de-jengibre): Extracto del rizoma del jengibre.
+- [Melatonina](#melatonina): Hormona que el cuerpo produce al anochecer y que regula el ciclo de sueño y vigilia.
+- [Vitamina B6](#vitamina-b6): Vitamina hidrosoluble del grupo B.
+- [Maca](#maca): Raíz andina cultivada en la puna de Perú y Bolivia.
+- [Damiana](#damiana): Arbusto de Centroamérica y el Caribe.
+- [Fenogreco](#fenogreco): Semilla usada como especia y como planta medicinal.
+- [L-arginina](#l-arginina): Aminoácido semiesencial.
+- [Melisa](#melisa): Planta aromática de la familia de la menta.
+- [Ginseng](#ginseng): Raíz de la medicina tradicional de Asia oriental, clasificada como adaptógeno.
+
+## Biotina
+
+- **Qué es:** Vitamina hidrosoluble del grupo B.
+- **Tipo:** vitamina
+- **También se llama:** Vitamina B7, Vitamina B8, Biotin
+- **Con qué se asocia:** Se asocia al mantenimiento normal del cabello, la piel y las mucosas.
+- **Está en:** [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte.md), [Radiant Skin Vitamins](https://chiclove-ec.com/radiant-skin.md)
+- **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q181354), [Wikipedia (es)](https://es.wikipedia.org/wiki/Biotina)
+
+## Vitamina B12
+
+- **Qué es:** Vitamina hidrosoluble del grupo B.
+- **Tipo:** vitamina
+- **También se llama:** Cobalamina
+- **Con qué se asocia:** Interviene en la formación normal de glóbulos rojos y en el metabolismo energético.
+- **Está en:** [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte.md)
+- **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q187706), [Wikipedia (es)](https://es.wikipedia.org/wiki/Vitamina_B12)
+
+## Ácido fólico
+
+- **Qué es:** Forma sintética del folato, vitamina del grupo B.
+- **Tipo:** vitamina
+- **También se llama:** Vitamina B9, Folato
+- **Con qué se asocia:** Participa en la división celular y en la síntesis de aminoácidos.
+- **Está en:** [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte.md)
+- **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q127060), [Wikipedia (es)](https://es.wikipedia.org/wiki/%C3%81cido_f%C3%B3lico)
+
+## Vitamina A
+
+- **Qué es:** Vitamina liposoluble.
+- **Tipo:** vitamina
+- **También se llama:** Retinol
+- **Con qué se asocia:** Contribuye al mantenimiento normal de la piel y de la visión.
+- **Está en:** [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte.md)
+- **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q18225), [Wikipedia (es)](https://es.wikipedia.org/wiki/Vitamina_A)
+
+## Vitamina D
+
+- **Qué es:** Vitamina liposoluble.
+- **Tipo:** vitamina
+- **También se llama:** Colecalciferol, Vitamina D3
+- **Con qué se asocia:** Participa en la absorción del calcio y en el funcionamiento del sistema inmunitario.
+- **Está en:** [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte.md)
+- **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q175621), [Wikipedia (es)](https://es.wikipedia.org/wiki/Vitamina_D)
+
+## Ashwagandha
+
+- **Qué es:** Raíz de la medicina ayurvédica, clasificada como adaptógeno.
+- **Tipo:** extracto botánico
+- **También se llama:** Withania somnifera, Ginseng indio, Bufera
+- **Con qué se asocia:** Se emplea tradicionalmente para acompañar periodos de estrés.
+- **Está en:** [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte.md), [Sexual Booster Women](https://chiclove-ec.com/sexual-booster-women.md), [Anti-Stress Gummies](https://chiclove-ec.com/anti-stress.md)
+- **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q852660), [Wikipedia (es)](https://es.wikipedia.org/wiki/Withania_somnifera)
+
+## Zinc
+
+- **Qué es:** Mineral esencial.
+- **Tipo:** mineral
+- **También se llama:** Cinc
+- **Con qué se asocia:** Contribuye al mantenimiento normal del cabello, las uñas y la piel, y a la fertilidad normal.
+- **Está en:** [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte.md), [Sexual Booster Men](https://chiclove-ec.com/sexual-booster-men.md)
+- **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q758), [Wikipedia (es)](https://es.wikipedia.org/wiki/Zinc)
+
+## Colágeno
+
+- **Qué es:** Proteína estructural mayoritaria de la piel y el tejido conectivo. El de esta fórmula es de origen bovino, y es la única excepción vegana del catálogo.
+- **Tipo:** proteína
+- **También se llama:** Collagen
+- **Con qué se asocia:** Se toma como aporte proteico asociado a la firmeza y la elasticidad de la piel.
+- **Está en:** [Radiant Skin Vitamins](https://chiclove-ec.com/radiant-skin.md)
+- **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q26868), [Wikipedia (es)](https://es.wikipedia.org/wiki/Col%C3%A1geno)
+
+## Coenzima Q10
+
+- **Qué es:** Molécula presente en las mitocondrias de las células.
+- **Tipo:** cofactor
+- **También se llama:** Ubiquinona, CoQ10
+- **Con qué se asocia:** Participa en la producción de energía celular y actúa como antioxidante.
+- **Está en:** [Radiant Skin Vitamins](https://chiclove-ec.com/radiant-skin.md)
+- **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q321285), [Wikipedia (es)](https://es.wikipedia.org/wiki/Coenzima_Q10)
+
+## Vitamina C
+
+- **Qué es:** Vitamina hidrosoluble.
+- **Tipo:** vitamina
+- **También se llama:** Ácido ascórbico
+- **Con qué se asocia:** Contribuye a la formación normal de colágeno y protege las células del daño oxidativo.
+- **Está en:** [Radiant Skin Vitamins](https://chiclove-ec.com/radiant-skin.md)
+- **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q199678), [Wikipedia (es)](https://es.wikipedia.org/wiki/Vitamina_C)
+
+## Vitamina E
+
+- **Qué es:** Vitamina liposoluble.
+- **Tipo:** vitamina
+- **También se llama:** Tocoferol
+- **Con qué se asocia:** Protege las células frente al daño oxidativo.
+- **Está en:** [Radiant Skin Vitamins](https://chiclove-ec.com/radiant-skin.md)
+- **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q141180), [Wikipedia (es)](https://es.wikipedia.org/wiki/Vitamina_E)
+
+## Vinagre de manzana
+
+- **Qué es:** Vinagre de la fermentación del zumo de manzana; su componente principal es el ácido acético.
+- **Tipo:** fermentado
+- **También se llama:** Vinagre de sidra de manzana, Apple cider vinegar, ACV
+- **Con qué se asocia:** Se toma tradicionalmente como acompañamiento de la digestión y del control del apetito.
+- **Está en:** [Vinagre de Manzana](https://chiclove-ec.com/vinagre-de-manzana.md)
+- **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q618322), [Wikipedia (es)](https://es.wikipedia.org/wiki/Vinagre_de_sidra_de_manzana)
+
+## Extracto de jengibre
+
+- **Qué es:** Extracto del rizoma del jengibre.
+- **Tipo:** extracto botánico
+- **También se llama:** Zingiber officinale, Jengibre
+- **Con qué se asocia:** Se usa tradicionalmente para el bienestar digestivo.
+- **Está en:** [Vinagre de Manzana](https://chiclove-ec.com/vinagre-de-manzana.md)
+- **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q35625), [Wikipedia (es)](https://es.wikipedia.org/wiki/Zingiber_officinale)
+
+## Melatonina
+
+- **Qué es:** Hormona que el cuerpo produce al anochecer y que regula el ciclo de sueño y vigilia.
+- **Tipo:** hormona
+- **También se llama:** N-acetil-5-metoxitriptamina
+- **Con qué se asocia:** Se asocia a reducir el tiempo necesario para conciliar el sueño.
+- **Está en:** [Sleep Vitamins](https://chiclove-ec.com/sleep-vitamins.md)
+- **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q180912), [Wikipedia (es)](https://es.wikipedia.org/wiki/Melatonina)
+
+## Vitamina B6
+
+- **Qué es:** Vitamina hidrosoluble del grupo B.
+- **Tipo:** vitamina
+- **También se llama:** Piridoxina
+- **Con qué se asocia:** Participa en el metabolismo de las proteínas y en el funcionamiento normal del sistema nervioso.
+- **Está en:** [Sleep Vitamins](https://chiclove-ec.com/sleep-vitamins.md)
+- **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q205130), [Wikipedia (es)](https://es.wikipedia.org/wiki/Vitamina_B6)
+
+## Maca
+
+- **Qué es:** Raíz andina cultivada en la puna de Perú y Bolivia.
+- **Tipo:** extracto botánico
+- **También se llama:** Lepidium meyenii, Maca andina
+- **Con qué se asocia:** Se emplea tradicionalmente como apoyo de la energía y de la libido.
+- **Está en:** [Sexual Booster Women](https://chiclove-ec.com/sexual-booster-women.md), [Sexual Booster Men](https://chiclove-ec.com/sexual-booster-men.md)
+- **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q795158), [Wikipedia (es)](https://es.wikipedia.org/wiki/Lepidium_meyenii)
+
+## Damiana
+
+- **Qué es:** Arbusto de Centroamérica y el Caribe.
+- **Tipo:** extracto botánico
+- **También se llama:** Turnera diffusa
+- **Con qué se asocia:** Se usa tradicionalmente como tónico asociado a la libido.
+- **Está en:** [Sexual Booster Women](https://chiclove-ec.com/sexual-booster-women.md)
+- **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q16238103), [Wikipedia (es)](https://es.wikipedia.org/wiki/Damiana)
+
+## Fenogreco
+
+- **Qué es:** Semilla usada como especia y como planta medicinal.
+- **Tipo:** extracto botánico
+- **También se llama:** Trigonella foenum-graecum, Alholva
+- **Con qué se asocia:** Se emplea tradicionalmente como apoyo de la vitalidad masculina.
+- **Está en:** [Sexual Booster Men](https://chiclove-ec.com/sexual-booster-men.md)
+- **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q133205), [Wikipedia (es)](https://es.wikipedia.org/wiki/Trigonella_foenum-graecum)
+
+## L-arginina
+
+- **Qué es:** Aminoácido semiesencial.
+- **Tipo:** aminoácido
+- **También se llama:** Arginina
+- **Con qué se asocia:** Es precursor del óxido nítrico, implicado en el flujo sanguíneo.
+- **Está en:** [Sexual Booster Men](https://chiclove-ec.com/sexual-booster-men.md)
+- **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q173670), [Wikipedia (es)](https://es.wikipedia.org/wiki/Arginina)
+
+## Melisa
+
+- **Qué es:** Planta aromática de la familia de la menta.
+- **Tipo:** extracto botánico
+- **También se llama:** Melissa officinalis, Toronjil, Hierba limón
+- **Con qué se asocia:** Se usa tradicionalmente para favorecer la calma.
+- **Está en:** [Anti-Stress Gummies](https://chiclove-ec.com/anti-stress.md)
+- **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q148396), [Wikipedia (es)](https://es.wikipedia.org/wiki/Melissa_officinalis)
+
+## Ginseng
+
+- **Qué es:** Raíz de la medicina tradicional de Asia oriental, clasificada como adaptógeno.
+- **Tipo:** extracto botánico
+- **También se llama:** Panax ginseng, Ginseng coreano
+- **Con qué se asocia:** Se emplea tradicionalmente como apoyo de la energía y de la concentración.
+- **Está en:** [Anti-Stress Gummies](https://chiclove-ec.com/anti-stress.md)
+- **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q182881), [Wikipedia (es)](https://es.wikipedia.org/wiki/Panax_ginseng)
+
+## Qué activo lleva cada fórmula
+
+- **[Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte.md)** (Cabello y uñas): Biotina, Vitamina B12, Ácido fólico, Vitamina A, Vitamina D, Ashwagandha, Zinc. 2 gummies al día después de la comida.
+- **[Radiant Skin Vitamins](https://chiclove-ec.com/radiant-skin.md)** (Piel radiante): Colágeno, Coenzima Q10, Biotina, Vitamina C, Vitamina E. 2 gummies al día después de la comida.
+- **[Vinagre de Manzana](https://chiclove-ec.com/vinagre-de-manzana.md)** (Digestión y balance): Vinagre de manzana, Extracto de jengibre. 2 gummies en ayunas, o 1 gummy después de la comida.
+- **[Sleep Vitamins](https://chiclove-ec.com/sleep-vitamins.md)** (Sueño reparador): Melatonina, Vitamina B6. 1–3 gummies al día antes de dormir según tu patrón de sueño.
+- **[Sexual Booster Women](https://chiclove-ec.com/sexual-booster-women.md)** (Energía íntima): Maca, Damiana, Ashwagandha. 2 gummies al día después del desayuno.
+- **[Sexual Booster Men](https://chiclove-ec.com/sexual-booster-men.md)** (Energía íntima): Maca, Fenogreco, Zinc, L-arginina. 2 gummies al día después del desayuno.
+- **[Anti-Stress Gummies](https://chiclove-ec.com/anti-stress.md)** (Calma y enfoque): Ashwagandha, Melisa, Ginseng. 2 gummies al día durante períodos altos de estrés y/o ansiedad.
+
+## Enlaces
+
+- [Guía de elección por objetivo](https://chiclove-ec.com/guia-de-eleccion.md)
+- [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Catálogo en JSON](https://chiclove-ec.com/catalog.json)
+- [Índice para agentes](https://chiclove-ec.com/llms.txt)
+
+---
+
+Complemento alimenticio. No sustituye una dieta equilibrada ni un estilo de vida saludable.
+No es un medicamento y no trata ni previene enfermedades.
+
+---
+
 <!-- source: https://chiclove-ec.com/hair-nails-forte.md -->
 
 # Hair & Nails Forte — Chic&Love Ecuador
@@ -209,10 +564,57 @@ e higiene, el frasco debe permanecer cerrado y con su sello intacto. Si recibes 
 dañado, incompleto o diferente al que pediste, escríbenos por WhatsApp y nos encargaremos de
 solucionarlo.
 
+## Preguntas frecuentes sobre Hair & Nails Forte
+
+**¿Para qué sirve Hair & Nails Forte?**  
+Es la fórmula de Chic&Love para cabello y uñas. Previene y frena la caída, acelera el crecimiento y engrosa la fibra capilar.
+
+**¿Cómo se toma?**  
+2 gummies al día después de la comida. Cada frasco trae 60 gummies de sabor arándanos.
+
+**¿Cuánto dura un frasco?**  
+Con la pauta recomendada, unos 30 días.
+
+**¿Cuánto cuesta y cuánto vale el envío?**  
+1 frasco $29.99, pack x2 (2 frascos) $49.99, pack x3 (3 frascos) $74.99. IVA incluido. Envíos a todo Ecuador, gratis en compras desde $49,99.
+
+**¿Es vegano? ¿Tiene gluten o lactosa?**  
+Sin gluten, sin lactosa y apto para veganos.
+
+**¿Qué activos lleva y qué es cada uno?**
+
+- **Biotina** (vitamina): Vitamina hidrosoluble del grupo B. Se asocia al mantenimiento normal del cabello, la piel y las mucosas.
+- **Vitamina B12** (vitamina): Vitamina hidrosoluble del grupo B. Interviene en la formación normal de glóbulos rojos y en el metabolismo energético.
+- **Ácido fólico** (vitamina): Forma sintética del folato, vitamina del grupo B. Participa en la división celular y en la síntesis de aminoácidos.
+- **Vitamina A** (vitamina): Vitamina liposoluble. Contribuye al mantenimiento normal de la piel y de la visión.
+- **Vitamina D** (vitamina): Vitamina liposoluble. Participa en la absorción del calcio y en el funcionamiento del sistema inmunitario.
+- **Ashwagandha** (extracto botánico): Raíz de la medicina ayurvédica, clasificada como adaptógeno. Se emplea tradicionalmente para acompañar periodos de estrés.
+- **Zinc** (mineral): Mineral esencial. Contribuye al mantenimiento normal del cabello, las uñas y la piel, y a la fertilidad normal.
+
+Ficha de cada activo, con su entidad en Wikidata: [/ingredientes.md](https://chiclove-ec.com/ingredientes.md).
+
+**¿Cuándo se notan los resultados?**  
+Depende de la persona, la constancia y el estilo de vida; no hay un plazo garantizado. Lo que sí se recomienda es mantener la pauta a diario y no superarla.
+
+**¿Se puede combinar con otras fórmulas de Chic&Love?**  
+Sí, muchas se combinan sin problema: por ejemplo Hair & Nails durante el día y Sleep por la noche. Si tomas medicación o tienes una condición médica, consúltalo antes con un profesional de la salud.
+
+**¿Tiene contraindicaciones?**  
+Es un complemento alimenticio, no un medicamento: no trata ni previene enfermedades. No superar la dosis diaria recomendada. Consultar con un profesional de la salud en caso de embarazo, lactancia, medicación o condición médica previa. Este sitio no da consejo médico ni dosificación individual.
+
+**¿Cómo lo pido?**  
+El carrito se arma en el navegador y el pedido se cierra por WhatsApp (+593 98 759 1741), donde se confirma disponibilidad, dirección y el pago por transferencia. La web no procesa pagos con tarjeta ni tiene checkout automático.
+
+**¿Puedo devolverlo si no me sirve?**  
+Sí, dentro de los 15 días posteriores a recibir el pedido, con el frasco cerrado y el sello intacto. Condiciones completas en [/terms.md](https://chiclove-ec.com/terms.md).
+
 ## Enlaces
 
 - [Página del producto](https://chiclove-ec.com/hair-nails-forte)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Guía de elección por objetivo](https://chiclove-ec.com/guia-de-eleccion.md)
+- [Glosario de activos](https://chiclove-ec.com/ingredientes.md)
+- [Catálogo en JSON](https://chiclove-ec.com/catalog.json)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
 ---
@@ -257,10 +659,55 @@ e higiene, el frasco debe permanecer cerrado y con su sello intacto. Si recibes 
 dañado, incompleto o diferente al que pediste, escríbenos por WhatsApp y nos encargaremos de
 solucionarlo.
 
+## Preguntas frecuentes sobre Radiant Skin Vitamins
+
+**¿Para qué sirve Radiant Skin Vitamins?**  
+Es la fórmula de Chic&Love para piel radiante. Potencia la luminosidad y vitalidad de la piel.
+
+**¿Cómo se toma?**  
+2 gummies al día después de la comida. Cada frasco trae 60 gummies de sabor frutos rojos.
+
+**¿Cuánto dura un frasco?**  
+Con la pauta recomendada, unos 30 días.
+
+**¿Cuánto cuesta y cuánto vale el envío?**  
+1 frasco $18.00 (los packs no se ofrecen durante la promoción). IVA incluido. Envíos a todo Ecuador, gratis en compras desde $49,99.
+
+**¿Es vegano? ¿Tiene gluten o lactosa?**  
+Sin gluten y sin lactosa. No es apto para veganos: el colágeno de esta fórmula es de origen bovino. Es el único producto no vegano del catálogo.
+
+**¿Qué activos lleva y qué es cada uno?**
+
+- **Colágeno** (proteína): Proteína estructural mayoritaria de la piel y el tejido conectivo. El de esta fórmula es de origen bovino, y es la única excepción vegana del catálogo. Se toma como aporte proteico asociado a la firmeza y la elasticidad de la piel.
+- **Coenzima Q10** (cofactor): Molécula presente en las mitocondrias de las células. Participa en la producción de energía celular y actúa como antioxidante.
+- **Biotina** (vitamina): Vitamina hidrosoluble del grupo B. Se asocia al mantenimiento normal del cabello, la piel y las mucosas.
+- **Vitamina C** (vitamina): Vitamina hidrosoluble. Contribuye a la formación normal de colágeno y protege las células del daño oxidativo.
+- **Vitamina E** (vitamina): Vitamina liposoluble. Protege las células frente al daño oxidativo.
+
+Ficha de cada activo, con su entidad en Wikidata: [/ingredientes.md](https://chiclove-ec.com/ingredientes.md).
+
+**¿Cuándo se notan los resultados?**  
+Depende de la persona, la constancia y el estilo de vida; no hay un plazo garantizado. Lo que sí se recomienda es mantener la pauta a diario y no superarla.
+
+**¿Se puede combinar con otras fórmulas de Chic&Love?**  
+Sí, muchas se combinan sin problema: por ejemplo Radiant Skin durante el día y Sleep por la noche. Si tomas medicación o tienes una condición médica, consúltalo antes con un profesional de la salud.
+
+**¿Tiene contraindicaciones?**  
+Es un complemento alimenticio, no un medicamento: no trata ni previene enfermedades. No superar la dosis diaria recomendada. Consultar con un profesional de la salud en caso de embarazo, lactancia, medicación o condición médica previa. Este sitio no da consejo médico ni dosificación individual.
+
+**¿Cómo lo pido?**  
+El carrito se arma en el navegador y el pedido se cierra por WhatsApp (+593 98 759 1741), donde se confirma disponibilidad, dirección y el pago por transferencia. La web no procesa pagos con tarjeta ni tiene checkout automático.
+
+**¿Puedo devolverlo si no me sirve?**  
+Sí, dentro de los 15 días posteriores a recibir el pedido, con el frasco cerrado y el sello intacto. Condiciones completas en [/terms.md](https://chiclove-ec.com/terms.md).
+
 ## Enlaces
 
 - [Página del producto](https://chiclove-ec.com/radiant-skin)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Guía de elección por objetivo](https://chiclove-ec.com/guia-de-eleccion.md)
+- [Glosario de activos](https://chiclove-ec.com/ingredientes.md)
+- [Catálogo en JSON](https://chiclove-ec.com/catalog.json)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
 ---
@@ -305,10 +752,52 @@ e higiene, el frasco debe permanecer cerrado y con su sello intacto. Si recibes 
 dañado, incompleto o diferente al que pediste, escríbenos por WhatsApp y nos encargaremos de
 solucionarlo.
 
+## Preguntas frecuentes sobre Vinagre de Manzana
+
+**¿Para qué sirve Vinagre de Manzana?**  
+Es la fórmula de Chic&Love para digestión y balance. Ayuda a mantener estables los niveles de glucosa en sangre y facilita la digestión.
+
+**¿Cómo se toma?**  
+2 gummies en ayunas, o 1 gummy después de la comida. Cada frasco trae 60 gummies de sabor manzana.
+
+**¿Cuánto dura un frasco?**  
+Con la pauta recomendada, entre 30 y 60 días, según la cantidad que tomes.
+
+**¿Cuánto cuesta y cuánto vale el envío?**  
+1 frasco $29.99, pack x2 (2 frascos) $49.99, pack x3 (3 frascos) $74.99. IVA incluido. Envíos a todo Ecuador, gratis en compras desde $49,99.
+
+**¿Es vegano? ¿Tiene gluten o lactosa?**  
+Sin gluten, sin lactosa y apto para veganos.
+
+**¿Qué activos lleva y qué es cada uno?**
+
+- **Vinagre de manzana** (fermentado): Vinagre de la fermentación del zumo de manzana; su componente principal es el ácido acético. Se toma tradicionalmente como acompañamiento de la digestión y del control del apetito.
+- **Extracto de jengibre** (extracto botánico): Extracto del rizoma del jengibre. Se usa tradicionalmente para el bienestar digestivo.
+
+Ficha de cada activo, con su entidad en Wikidata: [/ingredientes.md](https://chiclove-ec.com/ingredientes.md).
+
+**¿Cuándo se notan los resultados?**  
+Depende de la persona, la constancia y el estilo de vida; no hay un plazo garantizado. Lo que sí se recomienda es mantener la pauta a diario y no superarla.
+
+**¿Se puede combinar con otras fórmulas de Chic&Love?**  
+Sí, muchas se combinan sin problema: por ejemplo Vinagre durante el día y Sleep por la noche. Si tomas medicación o tienes una condición médica, consúltalo antes con un profesional de la salud.
+
+**¿Tiene contraindicaciones?**  
+Es un complemento alimenticio, no un medicamento: no trata ni previene enfermedades. No superar la dosis diaria recomendada. Consultar con un profesional de la salud en caso de embarazo, lactancia, medicación o condición médica previa. Este sitio no da consejo médico ni dosificación individual.
+
+**¿Cómo lo pido?**  
+El carrito se arma en el navegador y el pedido se cierra por WhatsApp (+593 98 759 1741), donde se confirma disponibilidad, dirección y el pago por transferencia. La web no procesa pagos con tarjeta ni tiene checkout automático.
+
+**¿Puedo devolverlo si no me sirve?**  
+Sí, dentro de los 15 días posteriores a recibir el pedido, con el frasco cerrado y el sello intacto. Condiciones completas en [/terms.md](https://chiclove-ec.com/terms.md).
+
 ## Enlaces
 
 - [Página del producto](https://chiclove-ec.com/vinagre-de-manzana)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Guía de elección por objetivo](https://chiclove-ec.com/guia-de-eleccion.md)
+- [Glosario de activos](https://chiclove-ec.com/ingredientes.md)
+- [Catálogo en JSON](https://chiclove-ec.com/catalog.json)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
 ---
@@ -353,10 +842,52 @@ e higiene, el frasco debe permanecer cerrado y con su sello intacto. Si recibes 
 dañado, incompleto o diferente al que pediste, escríbenos por WhatsApp y nos encargaremos de
 solucionarlo.
 
+## Preguntas frecuentes sobre Sleep Vitamins
+
+**¿Para qué sirve Sleep Vitamins?**  
+Es la fórmula de Chic&Love para sueño reparador. Ayuda a conciliar el sueño de manera rápida.
+
+**¿Cómo se toma?**  
+1–3 gummies al día antes de dormir según tu patrón de sueño. Cada frasco trae 60 gummies de sabor fresa.
+
+**¿Cuánto dura un frasco?**  
+Con la pauta recomendada, entre 20 y 60 días, según la cantidad que tomes.
+
+**¿Cuánto cuesta y cuánto vale el envío?**  
+1 frasco $29.99, pack x2 (2 frascos) $49.99, pack x3 (3 frascos) $74.99. IVA incluido. Envíos a todo Ecuador, gratis en compras desde $49,99.
+
+**¿Es vegano? ¿Tiene gluten o lactosa?**  
+Sin gluten, sin lactosa y apto para veganos.
+
+**¿Qué activos lleva y qué es cada uno?**
+
+- **Melatonina** (hormona): Hormona que el cuerpo produce al anochecer y que regula el ciclo de sueño y vigilia. Se asocia a reducir el tiempo necesario para conciliar el sueño.
+- **Vitamina B6** (vitamina): Vitamina hidrosoluble del grupo B. Participa en el metabolismo de las proteínas y en el funcionamiento normal del sistema nervioso.
+
+Ficha de cada activo, con su entidad en Wikidata: [/ingredientes.md](https://chiclove-ec.com/ingredientes.md).
+
+**¿Cuándo se notan los resultados?**  
+Depende de la persona, la constancia y el estilo de vida; no hay un plazo garantizado. Lo que sí se recomienda es mantener la pauta a diario y no superarla.
+
+**¿Se puede combinar con otras fórmulas de Chic&Love?**  
+Sí, muchas se combinan sin problema: por ejemplo Hair & Nails durante el día y Sleep por la noche. Si tomas medicación o tienes una condición médica, consúltalo antes con un profesional de la salud.
+
+**¿Tiene contraindicaciones?**  
+Es un complemento alimenticio, no un medicamento: no trata ni previene enfermedades. No superar la dosis diaria recomendada. Consultar con un profesional de la salud en caso de embarazo, lactancia, medicación o condición médica previa. Este sitio no da consejo médico ni dosificación individual.
+
+**¿Cómo lo pido?**  
+El carrito se arma en el navegador y el pedido se cierra por WhatsApp (+593 98 759 1741), donde se confirma disponibilidad, dirección y el pago por transferencia. La web no procesa pagos con tarjeta ni tiene checkout automático.
+
+**¿Puedo devolverlo si no me sirve?**  
+Sí, dentro de los 15 días posteriores a recibir el pedido, con el frasco cerrado y el sello intacto. Condiciones completas en [/terms.md](https://chiclove-ec.com/terms.md).
+
 ## Enlaces
 
 - [Página del producto](https://chiclove-ec.com/sleep-vitamins)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Guía de elección por objetivo](https://chiclove-ec.com/guia-de-eleccion.md)
+- [Glosario de activos](https://chiclove-ec.com/ingredientes.md)
+- [Catálogo en JSON](https://chiclove-ec.com/catalog.json)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
 ---
@@ -401,10 +932,53 @@ e higiene, el frasco debe permanecer cerrado y con su sello intacto. Si recibes 
 dañado, incompleto o diferente al que pediste, escríbenos por WhatsApp y nos encargaremos de
 solucionarlo.
 
+## Preguntas frecuentes sobre Sexual Booster Women
+
+**¿Para qué sirve Sexual Booster Women?**  
+Es la fórmula de Chic&Love para energía íntima. Aumenta la libido y potencia el bienestar sexual.
+
+**¿Cómo se toma?**  
+2 gummies al día después del desayuno. Cada frasco trae 60 gummies de sabor cereza.
+
+**¿Cuánto dura un frasco?**  
+Con la pauta recomendada, unos 30 días.
+
+**¿Cuánto cuesta y cuánto vale el envío?**  
+1 frasco $29.99, pack x2 (2 frascos) $49.99, pack x3 (3 frascos) $74.99. IVA incluido. Envíos a todo Ecuador, gratis en compras desde $49,99.
+
+**¿Es vegano? ¿Tiene gluten o lactosa?**  
+Sin gluten, sin lactosa y apto para veganos.
+
+**¿Qué activos lleva y qué es cada uno?**
+
+- **Maca** (extracto botánico): Raíz andina cultivada en la puna de Perú y Bolivia. Se emplea tradicionalmente como apoyo de la energía y de la libido.
+- **Damiana** (extracto botánico): Arbusto de Centroamérica y el Caribe. Se usa tradicionalmente como tónico asociado a la libido.
+- **Ashwagandha** (extracto botánico): Raíz de la medicina ayurvédica, clasificada como adaptógeno. Se emplea tradicionalmente para acompañar periodos de estrés.
+
+Ficha de cada activo, con su entidad en Wikidata: [/ingredientes.md](https://chiclove-ec.com/ingredientes.md).
+
+**¿Cuándo se notan los resultados?**  
+Depende de la persona, la constancia y el estilo de vida; no hay un plazo garantizado. Lo que sí se recomienda es mantener la pauta a diario y no superarla.
+
+**¿Se puede combinar con otras fórmulas de Chic&Love?**  
+Sí, muchas se combinan sin problema: por ejemplo Booster Her durante el día y Sleep por la noche. Ojo con Sexual Booster Men: comparte objetivo con esta fórmula y están pensadas para públicos distintos, no para tomarse juntas. Si tomas medicación o tienes una condición médica, consúltalo antes con un profesional de la salud.
+
+**¿Tiene contraindicaciones?**  
+Es un complemento alimenticio, no un medicamento: no trata ni previene enfermedades. No superar la dosis diaria recomendada. Consultar con un profesional de la salud en caso de embarazo, lactancia, medicación o condición médica previa. Este sitio no da consejo médico ni dosificación individual.
+
+**¿Cómo lo pido?**  
+El carrito se arma en el navegador y el pedido se cierra por WhatsApp (+593 98 759 1741), donde se confirma disponibilidad, dirección y el pago por transferencia. La web no procesa pagos con tarjeta ni tiene checkout automático.
+
+**¿Puedo devolverlo si no me sirve?**  
+Sí, dentro de los 15 días posteriores a recibir el pedido, con el frasco cerrado y el sello intacto. Condiciones completas en [/terms.md](https://chiclove-ec.com/terms.md).
+
 ## Enlaces
 
 - [Página del producto](https://chiclove-ec.com/sexual-booster-women)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Guía de elección por objetivo](https://chiclove-ec.com/guia-de-eleccion.md)
+- [Glosario de activos](https://chiclove-ec.com/ingredientes.md)
+- [Catálogo en JSON](https://chiclove-ec.com/catalog.json)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
 ---
@@ -449,10 +1023,54 @@ e higiene, el frasco debe permanecer cerrado y con su sello intacto. Si recibes 
 dañado, incompleto o diferente al que pediste, escríbenos por WhatsApp y nos encargaremos de
 solucionarlo.
 
+## Preguntas frecuentes sobre Sexual Booster Men
+
+**¿Para qué sirve Sexual Booster Men?**  
+Es la fórmula de Chic&Love para energía íntima. Aumenta la libido y el rendimiento sexual.
+
+**¿Cómo se toma?**  
+2 gummies al día después del desayuno. Cada frasco trae 60 gummies de sabor cereza.
+
+**¿Cuánto dura un frasco?**  
+Con la pauta recomendada, unos 30 días.
+
+**¿Cuánto cuesta y cuánto vale el envío?**  
+1 frasco $29.99, pack x2 (2 frascos) $49.99, pack x3 (3 frascos) $74.99. IVA incluido. Envíos a todo Ecuador, gratis en compras desde $49,99.
+
+**¿Es vegano? ¿Tiene gluten o lactosa?**  
+Sin gluten, sin lactosa y apto para veganos.
+
+**¿Qué activos lleva y qué es cada uno?**
+
+- **Maca** (extracto botánico): Raíz andina cultivada en la puna de Perú y Bolivia. Se emplea tradicionalmente como apoyo de la energía y de la libido.
+- **Fenogreco** (extracto botánico): Semilla usada como especia y como planta medicinal. Se emplea tradicionalmente como apoyo de la vitalidad masculina.
+- **Zinc** (mineral): Mineral esencial. Contribuye al mantenimiento normal del cabello, las uñas y la piel, y a la fertilidad normal.
+- **L-arginina** (aminoácido): Aminoácido semiesencial. Es precursor del óxido nítrico, implicado en el flujo sanguíneo.
+
+Ficha de cada activo, con su entidad en Wikidata: [/ingredientes.md](https://chiclove-ec.com/ingredientes.md).
+
+**¿Cuándo se notan los resultados?**  
+Depende de la persona, la constancia y el estilo de vida; no hay un plazo garantizado. Lo que sí se recomienda es mantener la pauta a diario y no superarla.
+
+**¿Se puede combinar con otras fórmulas de Chic&Love?**  
+Sí, muchas se combinan sin problema: por ejemplo Booster Him durante el día y Sleep por la noche. Ojo con Sexual Booster Women: comparte objetivo con esta fórmula y están pensadas para públicos distintos, no para tomarse juntas. Si tomas medicación o tienes una condición médica, consúltalo antes con un profesional de la salud.
+
+**¿Tiene contraindicaciones?**  
+Es un complemento alimenticio, no un medicamento: no trata ni previene enfermedades. No superar la dosis diaria recomendada. Consultar con un profesional de la salud en caso de embarazo, lactancia, medicación o condición médica previa. Este sitio no da consejo médico ni dosificación individual.
+
+**¿Cómo lo pido?**  
+El carrito se arma en el navegador y el pedido se cierra por WhatsApp (+593 98 759 1741), donde se confirma disponibilidad, dirección y el pago por transferencia. La web no procesa pagos con tarjeta ni tiene checkout automático.
+
+**¿Puedo devolverlo si no me sirve?**  
+Sí, dentro de los 15 días posteriores a recibir el pedido, con el frasco cerrado y el sello intacto. Condiciones completas en [/terms.md](https://chiclove-ec.com/terms.md).
+
 ## Enlaces
 
 - [Página del producto](https://chiclove-ec.com/sexual-booster-men)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Guía de elección por objetivo](https://chiclove-ec.com/guia-de-eleccion.md)
+- [Glosario de activos](https://chiclove-ec.com/ingredientes.md)
+- [Catálogo en JSON](https://chiclove-ec.com/catalog.json)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
 ---
@@ -497,10 +1115,53 @@ e higiene, el frasco debe permanecer cerrado y con su sello intacto. Si recibes 
 dañado, incompleto o diferente al que pediste, escríbenos por WhatsApp y nos encargaremos de
 solucionarlo.
 
+## Preguntas frecuentes sobre Anti-Stress Gummies
+
+**¿Para qué sirve Anti-Stress Gummies?**  
+Es la fórmula de Chic&Love para calma y enfoque. Alivia estados de estrés y ansiedad.
+
+**¿Cómo se toma?**  
+2 gummies al día durante períodos altos de estrés y/o ansiedad. Cada frasco trae 60 gummies de sabor naranja.
+
+**¿Cuánto dura un frasco?**  
+Con la pauta recomendada, unos 30 días.
+
+**¿Cuánto cuesta y cuánto vale el envío?**  
+1 frasco $29.99, pack x2 (2 frascos) $49.99, pack x3 (3 frascos) $74.99. IVA incluido. Envíos a todo Ecuador, gratis en compras desde $49,99.
+
+**¿Es vegano? ¿Tiene gluten o lactosa?**  
+Sin gluten, sin lactosa y apto para veganos.
+
+**¿Qué activos lleva y qué es cada uno?**
+
+- **Ashwagandha** (extracto botánico): Raíz de la medicina ayurvédica, clasificada como adaptógeno. Se emplea tradicionalmente para acompañar periodos de estrés.
+- **Melisa** (extracto botánico): Planta aromática de la familia de la menta. Se usa tradicionalmente para favorecer la calma.
+- **Ginseng** (extracto botánico): Raíz de la medicina tradicional de Asia oriental, clasificada como adaptógeno. Se emplea tradicionalmente como apoyo de la energía y de la concentración.
+
+Ficha de cada activo, con su entidad en Wikidata: [/ingredientes.md](https://chiclove-ec.com/ingredientes.md).
+
+**¿Cuándo se notan los resultados?**  
+Depende de la persona, la constancia y el estilo de vida; no hay un plazo garantizado. Lo que sí se recomienda es mantener la pauta a diario y no superarla.
+
+**¿Se puede combinar con otras fórmulas de Chic&Love?**  
+Sí, muchas se combinan sin problema: por ejemplo Anti-Stress durante el día y Sleep por la noche. Si tomas medicación o tienes una condición médica, consúltalo antes con un profesional de la salud.
+
+**¿Tiene contraindicaciones?**  
+Es un complemento alimenticio, no un medicamento: no trata ni previene enfermedades. No superar la dosis diaria recomendada. Consultar con un profesional de la salud en caso de embarazo, lactancia, medicación o condición médica previa. Este sitio no da consejo médico ni dosificación individual.
+
+**¿Cómo lo pido?**  
+El carrito se arma en el navegador y el pedido se cierra por WhatsApp (+593 98 759 1741), donde se confirma disponibilidad, dirección y el pago por transferencia. La web no procesa pagos con tarjeta ni tiene checkout automático.
+
+**¿Puedo devolverlo si no me sirve?**  
+Sí, dentro de los 15 días posteriores a recibir el pedido, con el frasco cerrado y el sello intacto. Condiciones completas en [/terms.md](https://chiclove-ec.com/terms.md).
+
 ## Enlaces
 
 - [Página del producto](https://chiclove-ec.com/anti-stress)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Guía de elección por objetivo](https://chiclove-ec.com/guia-de-eleccion.md)
+- [Glosario de activos](https://chiclove-ec.com/ingredientes.md)
+- [Catálogo en JSON](https://chiclove-ec.com/catalog.json)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
 ---

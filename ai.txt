@@ -5,6 +5,9 @@ Region: Ecuador
 Canonical: https://chiclove-ec.com/
 Machine-readable index: https://chiclove-ec.com/llms.txt
 Full content: https://chiclove-ec.com/llms-full.txt
+Structured catalog (JSON): https://chiclove-ec.com/catalog.json
+Ingredient glossary: https://chiclove-ec.com/ingredientes.md
+Product choice guide: https://chiclove-ec.com/guia-de-eleccion.md
 Markdown pages: use the .md twin of each HTML URL.
 Human ordering channel: WhatsApp +593 98 759 1741
 Company: LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A.

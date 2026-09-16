@@ -31,10 +31,55 @@ e higiene, el frasco debe permanecer cerrado y con su sello intacto. Si recibes 
 dañado, incompleto o diferente al que pediste, escríbenos por WhatsApp y nos encargaremos de
 solucionarlo.
 
+## Preguntas frecuentes sobre Radiant Skin Vitamins
+
+**¿Para qué sirve Radiant Skin Vitamins?**  
+Es la fórmula de Chic&Love para piel radiante. Potencia la luminosidad y vitalidad de la piel.
+
+**¿Cómo se toma?**  
+2 gummies al día después de la comida. Cada frasco trae 60 gummies de sabor frutos rojos.
+
+**¿Cuánto dura un frasco?**  
+Con la pauta recomendada, unos 30 días.
+
+**¿Cuánto cuesta y cuánto vale el envío?**  
+1 frasco $18.00 (los packs no se ofrecen durante la promoción). IVA incluido. Envíos a todo Ecuador, gratis en compras desde $49,99.
+
+**¿Es vegano? ¿Tiene gluten o lactosa?**  
+Sin gluten y sin lactosa. No es apto para veganos: el colágeno de esta fórmula es de origen bovino. Es el único producto no vegano del catálogo.
+
+**¿Qué activos lleva y qué es cada uno?**
+
+- **Colágeno** (proteína): Proteína estructural mayoritaria de la piel y el tejido conectivo. El de esta fórmula es de origen bovino, y es la única excepción vegana del catálogo. Se toma como aporte proteico asociado a la firmeza y la elasticidad de la piel.
+- **Coenzima Q10** (cofactor): Molécula presente en las mitocondrias de las células. Participa en la producción de energía celular y actúa como antioxidante.
+- **Biotina** (vitamina): Vitamina hidrosoluble del grupo B. Se asocia al mantenimiento normal del cabello, la piel y las mucosas.
+- **Vitamina C** (vitamina): Vitamina hidrosoluble. Contribuye a la formación normal de colágeno y protege las células del daño oxidativo.
+- **Vitamina E** (vitamina): Vitamina liposoluble. Protege las células frente al daño oxidativo.
+
+Ficha de cada activo, con su entidad en Wikidata: [/ingredientes.md](https://chiclove-ec.com/ingredientes.md).
+
+**¿Cuándo se notan los resultados?**  
+Depende de la persona, la constancia y el estilo de vida; no hay un plazo garantizado. Lo que sí se recomienda es mantener la pauta a diario y no superarla.
+
+**¿Se puede combinar con otras fórmulas de Chic&Love?**  
+Sí, muchas se combinan sin problema: por ejemplo Radiant Skin durante el día y Sleep por la noche. Si tomas medicación o tienes una condición médica, consúltalo antes con un profesional de la salud.
+
+**¿Tiene contraindicaciones?**  
+Es un complemento alimenticio, no un medicamento: no trata ni previene enfermedades. No superar la dosis diaria recomendada. Consultar con un profesional de la salud en caso de embarazo, lactancia, medicación o condición médica previa. Este sitio no da consejo médico ni dosificación individual.
+
+**¿Cómo lo pido?**  
+El carrito se arma en el navegador y el pedido se cierra por WhatsApp (+593 98 759 1741), donde se confirma disponibilidad, dirección y el pago por transferencia. La web no procesa pagos con tarjeta ni tiene checkout automático.
+
+**¿Puedo devolverlo si no me sirve?**  
+Sí, dentro de los 15 días posteriores a recibir el pedido, con el frasco cerrado y el sello intacto. Condiciones completas en [/terms.md](https://chiclove-ec.com/terms.md).
+
 ## Enlaces
 
 - [Página del producto](https://chiclove-ec.com/radiant-skin)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Guía de elección por objetivo](https://chiclove-ec.com/guia-de-eleccion.md)
+- [Glosario de activos](https://chiclove-ec.com/ingredientes.md)
+- [Catálogo en JSON](https://chiclove-ec.com/catalog.json)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
 ---

@@ -1,0 +1,982 @@
+{
+  "name": "Chic&Love Ecuador",
+  "description": "Catálogo completo de Chic&Love Ecuador en JSON: complementos alimenticios en formato gummy, con precio, pauta, activos y datos de la empresa. Documento estático, público y sin autenticación. No es una API: no hay stock en tiempo real ni compra automática.",
+  "canonicalUrl": "https://chiclove-ec.com/",
+  "language": "es-EC",
+  "country": "EC",
+  "countryName": "Ecuador",
+  "lastModified": "2026-09-16",
+  "documentation": "https://chiclove-ec.com/agents.md",
+  "index": "https://chiclove-ec.com/llms.txt",
+  "fullText": "https://chiclove-ec.com/llms-full.txt",
+  "brand": {
+    "name": "Chic&Love",
+    "storefront": "Chic&Love Ecuador",
+    "alternateNames": [
+      "Chic & Love",
+      "Chic and Love Ecuador",
+      "Chic&Love EC"
+    ],
+    "slogan": "Tu dosis diaria de amor propio"
+  },
+  "company": {
+    "legalName": "LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A.",
+    "shortName": "Laboratorios Lira S.A.",
+    "role": "Distribuidor oficial en Ecuador",
+    "taxId": {
+      "type": "RUC",
+      "value": "1790336352001"
+    },
+    "address": {
+      "streetAddress": "José Vinueza E8-152 y Av. Interoceánica",
+      "locality": "Quito",
+      "region": "Pichincha",
+      "country": "EC"
+    },
+    "email": "ventas@laboratorioslira.com",
+    "landlines": [
+      "+593 2 237 9285",
+      "+593 2 237 6425"
+    ]
+  },
+  "contact": {
+    "whatsapp": {
+      "number": "+593 98 759 1741",
+      "url": "https://wa.me/593987591741"
+    },
+    "instagram": {
+      "handle": "@chicloveec",
+      "url": "https://www.instagram.com/chicloveec"
+    },
+    "email": "ventas@laboratorioslira.com",
+    "languages": [
+      "es"
+    ]
+  },
+  "commerce": {
+    "currency": "USD",
+    "vatIncluded": true,
+    "pricesInclude": "IVA",
+    "servingsPerBottle": 60,
+    "freeShippingFrom": 49.99,
+    "shipsTo": [
+      "EC"
+    ],
+    "shipsToDescription": "Todo Ecuador",
+    "paymentMethods": [
+      "Transferencia bancaria"
+    ],
+    "onlinePayment": false,
+    "automatedCheckout": false,
+    "orderingFlow": "El carrito se arma en el navegador y el pedido se cierra en una conversación de WhatsApp con una persona, que confirma disponibilidad, dirección y pago.",
+    "returns": {
+      "days": 15,
+      "conditions": "Frasco cerrado y con el sello intacto. Los pedidos dañados, incompletos o equivocados se resuelven por WhatsApp.",
+      "url": "https://chiclove-ec.com/terms"
+    }
+  },
+  "goals": [
+    {
+      "id": "cabello",
+      "label": "Cabello y uñas",
+      "answers": "¿Qué tomo para la caída del cabello o las uñas quebradizas?",
+      "chooseIf": "Notas más pelo del normal en el cepillo, el cabello quebradizo, o uñas que se parten y crecen despacio.",
+      "keywords": [
+        "caída del cabello",
+        "cabello quebradizo",
+        "uñas frágiles",
+        "crecimiento del cabello",
+        "biotina"
+      ],
+      "products": [
+        "hair-nails-forte"
+      ]
+    },
+    {
+      "id": "piel",
+      "label": "Piel radiante",
+      "answers": "¿Qué tomo para la piel apagada o con pérdida de firmeza?",
+      "chooseIf": "Buscas luminosidad, hidratación y elasticidad trabajadas desde dentro, no solo con cosmética.",
+      "keywords": [
+        "piel apagada",
+        "elasticidad",
+        "colágeno bebible",
+        "glow",
+        "antiedad"
+      ],
+      "products": [
+        "radiant-skin"
+      ]
+    },
+    {
+      "id": "digestion",
+      "label": "Digestión y balance",
+      "answers": "¿Qué tomo para la hinchazón o la digestión pesada?",
+      "chooseIf": "Te sientes hinchada o hinchado después de comer, o quieres acompañar un plan de control de peso.",
+      "keywords": [
+        "hinchazón",
+        "digestión pesada",
+        "control de peso",
+        "vinagre de manzana",
+        "apetito"
+      ],
+      "products": [
+        "vinagre-de-manzana"
+      ]
+    },
+    {
+      "id": "sueno",
+      "label": "Sueño reparador",
+      "answers": "¿Qué tomo para dormir mejor?",
+      "chooseIf": "Tardas en conciliar el sueño o te despiertas sin sensación de descanso.",
+      "keywords": [
+        "insomnio ocasional",
+        "conciliar el sueño",
+        "descanso",
+        "melatonina",
+        "jet lag"
+      ],
+      "products": [
+        "sleep-vitamins"
+      ]
+    },
+    {
+      "id": "energia",
+      "label": "Energía íntima",
+      "answers": "¿Qué tomo para la libido y la energía íntima?",
+      "chooseIf": "Buscas apoyo de la libido y de la energía. Hay una fórmula para mujeres y otra para hombres: no son intercambiables.",
+      "keywords": [
+        "libido",
+        "energía íntima",
+        "deseo",
+        "maca",
+        "vitalidad"
+      ],
+      "products": [
+        "sexual-booster-women",
+        "sexual-booster-men"
+      ]
+    },
+    {
+      "id": "calma",
+      "label": "Calma y enfoque",
+      "answers": "¿Qué tomo para el estrés o la ansiedad del día a día?",
+      "chooseIf": "Atraviesas una temporada de estrés alto o de tensión sostenida y quieres acompañarla.",
+      "keywords": [
+        "estrés",
+        "ansiedad leve",
+        "cortisol",
+        "ashwagandha",
+        "concentración"
+      ],
+      "products": [
+        "anti-stress"
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": "hair-nails-forte",
+      "sku": "hair-nails-forte",
+      "name": "Hair & Nails Forte",
+      "shortName": "Hair & Nails",
+      "tagline": "Cabello más fuerte. Uñas de acero.",
+      "description": "La fórmula forte con biotina, ashwagandha y extracto de semilla de calabaza que frena la caída y acelera el crecimiento desde la raíz.",
+      "url": "https://chiclove-ec.com/hair-nails-forte",
+      "markdownUrl": "https://chiclove-ec.com/hair-nails-forte.md",
+      "goal": "cabello",
+      "goalLabel": "Cabello y uñas",
+      "flavor": "Arándanos",
+      "servings": 60,
+      "dose": "2 gummies al día después de la comida.",
+      "gummiesPerDay": 2,
+      "bottleLastsDays": 30,
+      "badges": [
+        "Sin gluten",
+        "Sin lactosa",
+        "Vegano"
+      ],
+      "vegan": true,
+      "glutenFree": true,
+      "lactoseFree": true,
+      "audience": {
+        "label": "Adultos",
+        "gender": "any",
+        "minAge": 18
+      },
+      "actives": [
+        {
+          "name": "Biotina",
+          "kind": "vitamina",
+          "alsoKnownAs": [
+            "Vitamina B7",
+            "Vitamina B8",
+            "Biotin"
+          ],
+          "what": "Vitamina hidrosoluble del grupo B.",
+          "associatedWith": "Se asocia al mantenimiento normal del cabello, la piel y las mucosas.",
+          "wikidata": "https://www.wikidata.org/wiki/Q181354",
+          "wikipedia": "https://es.wikipedia.org/wiki/Biotina"
+        },
+        {
+          "name": "Vitamina B12",
+          "kind": "vitamina",
+          "alsoKnownAs": [
+            "Cobalamina"
+          ],
+          "what": "Vitamina hidrosoluble del grupo B.",
+          "associatedWith": "Interviene en la formación normal de glóbulos rojos y en el metabolismo energético.",
+          "wikidata": "https://www.wikidata.org/wiki/Q187706",
+          "wikipedia": "https://es.wikipedia.org/wiki/Vitamina_B12"
+        },
+        {
+          "name": "Ácido fólico",
+          "kind": "vitamina",
+          "alsoKnownAs": [
+            "Vitamina B9",
+            "Folato"
+          ],
+          "what": "Forma sintética del folato, vitamina del grupo B.",
+          "associatedWith": "Participa en la división celular y en la síntesis de aminoácidos.",
+          "wikidata": "https://www.wikidata.org/wiki/Q127060",
+          "wikipedia": "https://es.wikipedia.org/wiki/%C3%81cido_f%C3%B3lico"
+        },
+        {
+          "name": "Vitamina A",
+          "kind": "vitamina",
+          "alsoKnownAs": [
+            "Retinol"
+          ],
+          "what": "Vitamina liposoluble.",
+          "associatedWith": "Contribuye al mantenimiento normal de la piel y de la visión.",
+          "wikidata": "https://www.wikidata.org/wiki/Q18225",
+          "wikipedia": "https://es.wikipedia.org/wiki/Vitamina_A"
+        },
+        {
+          "name": "Vitamina D",
+          "kind": "vitamina",
+          "alsoKnownAs": [
+            "Colecalciferol",
+            "Vitamina D3"
+          ],
+          "what": "Vitamina liposoluble.",
+          "associatedWith": "Participa en la absorción del calcio y en el funcionamiento del sistema inmunitario.",
+          "wikidata": "https://www.wikidata.org/wiki/Q175621",
+          "wikipedia": "https://es.wikipedia.org/wiki/Vitamina_D"
+        },
+        {
+          "name": "Ashwagandha",
+          "kind": "extracto botánico",
+          "alsoKnownAs": [
+            "Withania somnifera",
+            "Ginseng indio",
+            "Bufera"
+          ],
+          "what": "Raíz de la medicina ayurvédica, clasificada como adaptógeno.",
+          "associatedWith": "Se emplea tradicionalmente para acompañar periodos de estrés.",
+          "wikidata": "https://www.wikidata.org/wiki/Q852660",
+          "wikipedia": "https://es.wikipedia.org/wiki/Withania_somnifera"
+        },
+        {
+          "name": "Zinc",
+          "kind": "mineral",
+          "alsoKnownAs": [
+            "Cinc"
+          ],
+          "what": "Mineral esencial.",
+          "associatedWith": "Contribuye al mantenimiento normal del cabello, las uñas y la piel, y a la fertilidad normal.",
+          "wikidata": "https://www.wikidata.org/wiki/Q758",
+          "wikipedia": "https://es.wikipedia.org/wiki/Zinc"
+        }
+      ],
+      "benefits": [
+        "Previene y frena la caída, acelera el crecimiento y engrosa la fibra capilar.",
+        "Activa la microcirculación del cuero cabelludo: más nutrientes a los folículos pilosos.",
+        "Crecimiento y fuerza visibles en cabello y uñas.",
+        "El grupo de vitaminas B aumenta el flujo de sangre al cuero cabelludo para un pelo fuerte y brillante."
+      ],
+      "availability": "InStock",
+      "pricing": {
+        "currency": "USD",
+        "vatIncluded": true,
+        "offers": [
+          {
+            "units": 1,
+            "price": 29.99,
+            "label": "1 frasco"
+          },
+          {
+            "units": 2,
+            "price": 49.99,
+            "label": "Pack x2"
+          },
+          {
+            "units": 3,
+            "price": 74.99,
+            "label": "Pack x3"
+          }
+        ],
+        "promotion": null
+      },
+      "images": [
+        "https://chiclove-ec.com/assets/img/hero-hair-nails.webp",
+        "https://chiclove-ec.com/assets/img/store-hair-nails.webp",
+        "https://chiclove-ec.com/assets/img/splash-hair-nails.webp"
+      ]
+    },
+    {
+      "id": "radiant-skin",
+      "sku": "radiant-skin",
+      "name": "Radiant Skin Vitamins",
+      "shortName": "Radiant Skin",
+      "tagline": "Tu piel, en modo glow.",
+      "description": "Colágeno, coenzima Q10 y biotina en una gummy que ilumina, hidrata y devuelve la elasticidad a tu piel desde adentro.",
+      "url": "https://chiclove-ec.com/radiant-skin",
+      "markdownUrl": "https://chiclove-ec.com/radiant-skin.md",
+      "goal": "piel",
+      "goalLabel": "Piel radiante",
+      "flavor": "Frutos rojos",
+      "servings": 60,
+      "dose": "2 gummies al día después de la comida.",
+      "gummiesPerDay": 2,
+      "bottleLastsDays": 30,
+      "badges": [
+        "Sin gluten",
+        "Sin lactosa"
+      ],
+      "vegan": false,
+      "glutenFree": true,
+      "lactoseFree": true,
+      "audience": {
+        "label": "Adultos",
+        "gender": "any",
+        "minAge": 18
+      },
+      "actives": [
+        {
+          "name": "Colágeno",
+          "kind": "proteína",
+          "alsoKnownAs": [
+            "Collagen"
+          ],
+          "what": "Proteína estructural mayoritaria de la piel y el tejido conectivo. El de esta fórmula es de origen bovino, y es la única excepción vegana del catálogo.",
+          "associatedWith": "Se toma como aporte proteico asociado a la firmeza y la elasticidad de la piel.",
+          "wikidata": "https://www.wikidata.org/wiki/Q26868",
+          "wikipedia": "https://es.wikipedia.org/wiki/Col%C3%A1geno"
+        },
+        {
+          "name": "Coenzima Q10",
+          "kind": "cofactor",
+          "alsoKnownAs": [
+            "Ubiquinona",
+            "CoQ10"
+          ],
+          "what": "Molécula presente en las mitocondrias de las células.",
+          "associatedWith": "Participa en la producción de energía celular y actúa como antioxidante.",
+          "wikidata": "https://www.wikidata.org/wiki/Q321285",
+          "wikipedia": "https://es.wikipedia.org/wiki/Coenzima_Q10"
+        },
+        {
+          "name": "Biotina",
+          "kind": "vitamina",
+          "alsoKnownAs": [
+            "Vitamina B7",
+            "Vitamina B8",
+            "Biotin"
+          ],
+          "what": "Vitamina hidrosoluble del grupo B.",
+          "associatedWith": "Se asocia al mantenimiento normal del cabello, la piel y las mucosas.",
+          "wikidata": "https://www.wikidata.org/wiki/Q181354",
+          "wikipedia": "https://es.wikipedia.org/wiki/Biotina"
+        },
+        {
+          "name": "Vitamina C",
+          "kind": "vitamina",
+          "alsoKnownAs": [
+            "Ácido ascórbico"
+          ],
+          "what": "Vitamina hidrosoluble.",
+          "associatedWith": "Contribuye a la formación normal de colágeno y protege las células del daño oxidativo.",
+          "wikidata": "https://www.wikidata.org/wiki/Q199678",
+          "wikipedia": "https://es.wikipedia.org/wiki/Vitamina_C"
+        },
+        {
+          "name": "Vitamina E",
+          "kind": "vitamina",
+          "alsoKnownAs": [
+            "Tocoferol"
+          ],
+          "what": "Vitamina liposoluble.",
+          "associatedWith": "Protege las células frente al daño oxidativo.",
+          "wikidata": "https://www.wikidata.org/wiki/Q141180",
+          "wikipedia": "https://es.wikipedia.org/wiki/Vitamina_E"
+        }
+      ],
+      "benefits": [
+        "Potencia la luminosidad y vitalidad de la piel.",
+        "El colágeno y la coenzima Q10 mejoran la elasticidad y combaten los signos de la edad.",
+        "La biotina fortalece la barrera cutánea y aporta un glow saludable.",
+        "Piel perfecta: hidratación y firmeza desde el interior."
+      ],
+      "availability": "InStock",
+      "pricing": {
+        "currency": "USD",
+        "vatIncluded": true,
+        "offers": [
+          {
+            "units": 1,
+            "price": 18,
+            "label": "1 frasco"
+          }
+        ],
+        "promotion": {
+          "price": 18,
+          "listPrice": 29.99,
+          "percentOff": 40,
+          "endsOn": "2026-09-30",
+          "packsSuspended": true
+        }
+      },
+      "images": [
+        "https://chiclove-ec.com/assets/img/hero-radiant-skin.webp",
+        "https://chiclove-ec.com/assets/img/store-radiant-skin.webp",
+        "https://chiclove-ec.com/assets/img/splash-radiant-skin.webp"
+      ]
+    },
+    {
+      "id": "vinagre-de-manzana",
+      "sku": "vinagre-de-manzana",
+      "name": "Vinagre de Manzana",
+      "shortName": "Vinagre",
+      "tagline": "Digestión ligera.",
+      "description": "Vinagre de manzana con extracto de jengibre: glucosa estable, digestión y control de peso — sin el sabor ácido del vinagre.",
+      "url": "https://chiclove-ec.com/vinagre-de-manzana",
+      "markdownUrl": "https://chiclove-ec.com/vinagre-de-manzana.md",
+      "goal": "digestion",
+      "goalLabel": "Digestión y balance",
+      "flavor": "Manzana",
+      "servings": 60,
+      "dose": "2 gummies en ayunas, o 1 gummy después de la comida.",
+      "gummiesPerDay": [
+        1,
+        2
+      ],
+      "bottleLastsDays": [
+        30,
+        60
+      ],
+      "badges": [
+        "Sin gluten",
+        "Sin lactosa",
+        "Vegano"
+      ],
+      "vegan": true,
+      "glutenFree": true,
+      "lactoseFree": true,
+      "audience": {
+        "label": "Adultos",
+        "gender": "any",
+        "minAge": 18
+      },
+      "actives": [
+        {
+          "name": "Vinagre de manzana",
+          "kind": "fermentado",
+          "alsoKnownAs": [
+            "Vinagre de sidra de manzana",
+            "Apple cider vinegar",
+            "ACV"
+          ],
+          "what": "Vinagre de la fermentación del zumo de manzana; su componente principal es el ácido acético.",
+          "associatedWith": "Se toma tradicionalmente como acompañamiento de la digestión y del control del apetito.",
+          "wikidata": "https://www.wikidata.org/wiki/Q618322",
+          "wikipedia": "https://es.wikipedia.org/wiki/Vinagre_de_sidra_de_manzana"
+        },
+        {
+          "name": "Extracto de jengibre",
+          "kind": "extracto botánico",
+          "alsoKnownAs": [
+            "Zingiber officinale",
+            "Jengibre"
+          ],
+          "what": "Extracto del rizoma del jengibre.",
+          "associatedWith": "Se usa tradicionalmente para el bienestar digestivo.",
+          "wikidata": "https://www.wikidata.org/wiki/Q35625",
+          "wikipedia": "https://es.wikipedia.org/wiki/Zingiber_officinale"
+        }
+      ],
+      "benefits": [
+        "Ayuda a mantener estables los niveles de glucosa en sangre y facilita la digestión.",
+        "Efecto probiótico que favorece la generación de bacterias saludables en el tracto intestinal.",
+        "Regula la digestión y la microbiota, y reduce la hinchazón.",
+        "Contribuye al control de peso y ayuda a absorber minerales y vitaminas."
+      ],
+      "availability": "InStock",
+      "pricing": {
+        "currency": "USD",
+        "vatIncluded": true,
+        "offers": [
+          {
+            "units": 1,
+            "price": 29.99,
+            "label": "1 frasco"
+          },
+          {
+            "units": 2,
+            "price": 49.99,
+            "label": "Pack x2"
+          },
+          {
+            "units": 3,
+            "price": 74.99,
+            "label": "Pack x3"
+          }
+        ],
+        "promotion": null
+      },
+      "images": [
+        "https://chiclove-ec.com/assets/img/hero-acv.webp",
+        "https://chiclove-ec.com/assets/img/store-acv.webp",
+        "https://chiclove-ec.com/assets/img/splash-acv.webp"
+      ]
+    },
+    {
+      "id": "sleep-vitamins",
+      "sku": "sleep-vitamins",
+      "name": "Sleep Vitamins",
+      "shortName": "Sleep",
+      "tagline": "Duerme profundo. Despierta increíble.",
+      "description": "Melatonina + vitamina B6 para conciliar el sueño rápido y disfrutar un descanso reparador que regenera piel y cabello mientras duermes.",
+      "url": "https://chiclove-ec.com/sleep-vitamins",
+      "markdownUrl": "https://chiclove-ec.com/sleep-vitamins.md",
+      "goal": "sueno",
+      "goalLabel": "Sueño reparador",
+      "flavor": "Fresa",
+      "servings": 60,
+      "dose": "1–3 gummies al día antes de dormir según tu patrón de sueño.",
+      "gummiesPerDay": [
+        1,
+        3
+      ],
+      "bottleLastsDays": [
+        20,
+        60
+      ],
+      "badges": [
+        "Sin gluten",
+        "Sin lactosa",
+        "Vegano"
+      ],
+      "vegan": true,
+      "glutenFree": true,
+      "lactoseFree": true,
+      "audience": {
+        "label": "Adultos",
+        "gender": "any",
+        "minAge": 18
+      },
+      "actives": [
+        {
+          "name": "Melatonina",
+          "kind": "hormona",
+          "alsoKnownAs": [
+            "N-acetil-5-metoxitriptamina"
+          ],
+          "what": "Hormona que el cuerpo produce al anochecer y que regula el ciclo de sueño y vigilia.",
+          "associatedWith": "Se asocia a reducir el tiempo necesario para conciliar el sueño.",
+          "wikidata": "https://www.wikidata.org/wiki/Q180912",
+          "wikipedia": "https://es.wikipedia.org/wiki/Melatonina"
+        },
+        {
+          "name": "Vitamina B6",
+          "kind": "vitamina",
+          "alsoKnownAs": [
+            "Piridoxina"
+          ],
+          "what": "Vitamina hidrosoluble del grupo B.",
+          "associatedWith": "Participa en el metabolismo de las proteínas y en el funcionamiento normal del sistema nervioso.",
+          "wikidata": "https://www.wikidata.org/wiki/Q205130",
+          "wikipedia": "https://es.wikipedia.org/wiki/Vitamina_B6"
+        }
+      ],
+      "benefits": [
+        "Ayuda a conciliar el sueño de manera rápida.",
+        "Sueño reparador y profundo, noche tras noche.",
+        "Protege la piel y el cabello del envejecimiento celular.",
+        "Melatonina + B6: regenera las defensas de piel y pelo contra el estrés oxidativo."
+      ],
+      "availability": "InStock",
+      "pricing": {
+        "currency": "USD",
+        "vatIncluded": true,
+        "offers": [
+          {
+            "units": 1,
+            "price": 29.99,
+            "label": "1 frasco"
+          },
+          {
+            "units": 2,
+            "price": 49.99,
+            "label": "Pack x2"
+          },
+          {
+            "units": 3,
+            "price": 74.99,
+            "label": "Pack x3"
+          }
+        ],
+        "promotion": null
+      },
+      "images": [
+        "https://chiclove-ec.com/assets/img/hero-sleep.webp",
+        "https://chiclove-ec.com/assets/img/store-sleep.webp",
+        "https://chiclove-ec.com/assets/img/splash-sleep.webp"
+      ]
+    },
+    {
+      "id": "sexual-booster-women",
+      "sku": "sexual-booster-women",
+      "name": "Sexual Booster Women",
+      "shortName": "Booster Her",
+      "tagline": "Enciende tu energía.",
+      "description": "Maca y damiana 100% naturales que estabilizan tus canales de energía, estimulan la libido y reducen el estrés.",
+      "url": "https://chiclove-ec.com/sexual-booster-women",
+      "markdownUrl": "https://chiclove-ec.com/sexual-booster-women.md",
+      "goal": "energia",
+      "goalLabel": "Energía íntima",
+      "flavor": "Cereza",
+      "servings": 60,
+      "dose": "2 gummies al día después del desayuno.",
+      "gummiesPerDay": 2,
+      "bottleLastsDays": 30,
+      "badges": [
+        "Sin gluten",
+        "Sin lactosa",
+        "Vegano"
+      ],
+      "vegan": true,
+      "glutenFree": true,
+      "lactoseFree": true,
+      "audience": {
+        "label": "Mujeres adultas",
+        "gender": "female",
+        "minAge": 18
+      },
+      "actives": [
+        {
+          "name": "Maca",
+          "kind": "extracto botánico",
+          "alsoKnownAs": [
+            "Lepidium meyenii",
+            "Maca andina"
+          ],
+          "what": "Raíz andina cultivada en la puna de Perú y Bolivia.",
+          "associatedWith": "Se emplea tradicionalmente como apoyo de la energía y de la libido.",
+          "wikidata": "https://www.wikidata.org/wiki/Q795158",
+          "wikipedia": "https://es.wikipedia.org/wiki/Lepidium_meyenii"
+        },
+        {
+          "name": "Damiana",
+          "kind": "extracto botánico",
+          "alsoKnownAs": [
+            "Turnera diffusa"
+          ],
+          "what": "Arbusto de Centroamérica y el Caribe.",
+          "associatedWith": "Se usa tradicionalmente como tónico asociado a la libido.",
+          "wikidata": "https://www.wikidata.org/wiki/Q16238103",
+          "wikipedia": "https://es.wikipedia.org/wiki/Damiana"
+        },
+        {
+          "name": "Ashwagandha",
+          "kind": "extracto botánico",
+          "alsoKnownAs": [
+            "Withania somnifera",
+            "Ginseng indio",
+            "Bufera"
+          ],
+          "what": "Raíz de la medicina ayurvédica, clasificada como adaptógeno.",
+          "associatedWith": "Se emplea tradicionalmente para acompañar periodos de estrés.",
+          "wikidata": "https://www.wikidata.org/wiki/Q852660",
+          "wikipedia": "https://es.wikipedia.org/wiki/Withania_somnifera"
+        }
+      ],
+      "benefits": [
+        "Aumenta la libido y potencia el bienestar sexual.",
+        "Mantiene en condiciones óptimas la ovulación.",
+        "Impulso de energía y menos niveles de estrés.",
+        "Maca y damiana: ingredientes activos 100% naturales."
+      ],
+      "availability": "InStock",
+      "pricing": {
+        "currency": "USD",
+        "vatIncluded": true,
+        "offers": [
+          {
+            "units": 1,
+            "price": 29.99,
+            "label": "1 frasco"
+          },
+          {
+            "units": 2,
+            "price": 49.99,
+            "label": "Pack x2"
+          },
+          {
+            "units": 3,
+            "price": 74.99,
+            "label": "Pack x3"
+          }
+        ],
+        "promotion": null
+      },
+      "images": [
+        "https://chiclove-ec.com/assets/img/hero-sexual-w.webp",
+        "https://chiclove-ec.com/assets/img/store-sexual-w.webp",
+        "https://chiclove-ec.com/assets/img/splash-sexual-w.webp"
+      ]
+    },
+    {
+      "id": "sexual-booster-men",
+      "sku": "sexual-booster-men",
+      "name": "Sexual Booster Men",
+      "shortName": "Booster Him",
+      "tagline": "Rendimiento al máximo.",
+      "description": "Maca y fenogreco para mejorar el rendimiento, la calidad del esperma y la fertilidad — energía estable todo el día.",
+      "url": "https://chiclove-ec.com/sexual-booster-men",
+      "markdownUrl": "https://chiclove-ec.com/sexual-booster-men.md",
+      "goal": "energia",
+      "goalLabel": "Energía íntima",
+      "flavor": "Cereza",
+      "servings": 60,
+      "dose": "2 gummies al día después del desayuno.",
+      "gummiesPerDay": 2,
+      "bottleLastsDays": 30,
+      "badges": [
+        "Sin gluten",
+        "Sin lactosa",
+        "Vegano"
+      ],
+      "vegan": true,
+      "glutenFree": true,
+      "lactoseFree": true,
+      "audience": {
+        "label": "Hombres adultos",
+        "gender": "male",
+        "minAge": 18
+      },
+      "actives": [
+        {
+          "name": "Maca",
+          "kind": "extracto botánico",
+          "alsoKnownAs": [
+            "Lepidium meyenii",
+            "Maca andina"
+          ],
+          "what": "Raíz andina cultivada en la puna de Perú y Bolivia.",
+          "associatedWith": "Se emplea tradicionalmente como apoyo de la energía y de la libido.",
+          "wikidata": "https://www.wikidata.org/wiki/Q795158",
+          "wikipedia": "https://es.wikipedia.org/wiki/Lepidium_meyenii"
+        },
+        {
+          "name": "Fenogreco",
+          "kind": "extracto botánico",
+          "alsoKnownAs": [
+            "Trigonella foenum-graecum",
+            "Alholva"
+          ],
+          "what": "Semilla usada como especia y como planta medicinal.",
+          "associatedWith": "Se emplea tradicionalmente como apoyo de la vitalidad masculina.",
+          "wikidata": "https://www.wikidata.org/wiki/Q133205",
+          "wikipedia": "https://es.wikipedia.org/wiki/Trigonella_foenum-graecum"
+        },
+        {
+          "name": "Zinc",
+          "kind": "mineral",
+          "alsoKnownAs": [
+            "Cinc"
+          ],
+          "what": "Mineral esencial.",
+          "associatedWith": "Contribuye al mantenimiento normal del cabello, las uñas y la piel, y a la fertilidad normal.",
+          "wikidata": "https://www.wikidata.org/wiki/Q758",
+          "wikipedia": "https://es.wikipedia.org/wiki/Zinc"
+        },
+        {
+          "name": "L-arginina",
+          "kind": "aminoácido",
+          "alsoKnownAs": [
+            "Arginina"
+          ],
+          "what": "Aminoácido semiesencial.",
+          "associatedWith": "Es precursor del óxido nítrico, implicado en el flujo sanguíneo.",
+          "wikidata": "https://www.wikidata.org/wiki/Q173670",
+          "wikipedia": "https://es.wikipedia.org/wiki/Arginina"
+        }
+      ],
+      "benefits": [
+        "Aumenta la libido y el rendimiento sexual.",
+        "Mejora la calidad del esperma e incrementa la fertilidad.",
+        "Estabiliza los canales de energía con maca.",
+        "Ingredientes activos 100% naturales."
+      ],
+      "availability": "InStock",
+      "pricing": {
+        "currency": "USD",
+        "vatIncluded": true,
+        "offers": [
+          {
+            "units": 1,
+            "price": 29.99,
+            "label": "1 frasco"
+          },
+          {
+            "units": 2,
+            "price": 49.99,
+            "label": "Pack x2"
+          },
+          {
+            "units": 3,
+            "price": 74.99,
+            "label": "Pack x3"
+          }
+        ],
+        "promotion": null
+      },
+      "images": [
+        "https://chiclove-ec.com/assets/img/hero-sexual-m.webp",
+        "https://chiclove-ec.com/assets/img/store-sexual-m.webp",
+        "https://chiclove-ec.com/assets/img/splash-sexual-m.webp"
+      ]
+    },
+    {
+      "id": "anti-stress",
+      "sku": "anti-stress",
+      "name": "Anti-Stress Gummies",
+      "shortName": "Anti-Stress",
+      "tagline": "Serenidad para días intensos.",
+      "description": "Ashwagandha, melisa y ginseng que regulan el cortisol para aliviar el estrés y la ansiedad, y ayudarte a fluir con el cambio.",
+      "url": "https://chiclove-ec.com/anti-stress",
+      "markdownUrl": "https://chiclove-ec.com/anti-stress.md",
+      "goal": "calma",
+      "goalLabel": "Calma y enfoque",
+      "flavor": "Naranja",
+      "servings": 60,
+      "dose": "2 gummies al día durante períodos altos de estrés y/o ansiedad.",
+      "gummiesPerDay": 2,
+      "bottleLastsDays": 30,
+      "badges": [
+        "Sin gluten",
+        "Sin lactosa",
+        "Vegano"
+      ],
+      "vegan": true,
+      "glutenFree": true,
+      "lactoseFree": true,
+      "audience": {
+        "label": "Adultos",
+        "gender": "any",
+        "minAge": 18
+      },
+      "actives": [
+        {
+          "name": "Ashwagandha",
+          "kind": "extracto botánico",
+          "alsoKnownAs": [
+            "Withania somnifera",
+            "Ginseng indio",
+            "Bufera"
+          ],
+          "what": "Raíz de la medicina ayurvédica, clasificada como adaptógeno.",
+          "associatedWith": "Se emplea tradicionalmente para acompañar periodos de estrés.",
+          "wikidata": "https://www.wikidata.org/wiki/Q852660",
+          "wikipedia": "https://es.wikipedia.org/wiki/Withania_somnifera"
+        },
+        {
+          "name": "Melisa",
+          "kind": "extracto botánico",
+          "alsoKnownAs": [
+            "Melissa officinalis",
+            "Toronjil",
+            "Hierba limón"
+          ],
+          "what": "Planta aromática de la familia de la menta.",
+          "associatedWith": "Se usa tradicionalmente para favorecer la calma.",
+          "wikidata": "https://www.wikidata.org/wiki/Q148396",
+          "wikipedia": "https://es.wikipedia.org/wiki/Melissa_officinalis"
+        },
+        {
+          "name": "Ginseng",
+          "kind": "extracto botánico",
+          "alsoKnownAs": [
+            "Panax ginseng",
+            "Ginseng coreano"
+          ],
+          "what": "Raíz de la medicina tradicional de Asia oriental, clasificada como adaptógeno.",
+          "associatedWith": "Se emplea tradicionalmente como apoyo de la energía y de la concentración.",
+          "wikidata": "https://www.wikidata.org/wiki/Q182881",
+          "wikipedia": "https://es.wikipedia.org/wiki/Panax_ginseng"
+        }
+      ],
+      "benefits": [
+        "Alivia estados de estrés y ansiedad.",
+        "Favorece la relajación y la calma mental.",
+        "Ayuda a adaptarte a situaciones de estrés o de cambio.",
+        "La ashwagandha, planta adaptógena, regula los niveles de cortisol."
+      ],
+      "availability": "InStock",
+      "pricing": {
+        "currency": "USD",
+        "vatIncluded": true,
+        "offers": [
+          {
+            "units": 1,
+            "price": 29.99,
+            "label": "1 frasco"
+          },
+          {
+            "units": 2,
+            "price": 49.99,
+            "label": "Pack x2"
+          },
+          {
+            "units": 3,
+            "price": 74.99,
+            "label": "Pack x3"
+          }
+        ],
+        "promotion": null
+      },
+      "images": [
+        "https://chiclove-ec.com/assets/img/hero-antistress.webp",
+        "https://chiclove-ec.com/assets/img/store-antistress.webp",
+        "https://chiclove-ec.com/assets/img/splash-antistress.webp"
+      ]
+    }
+  ],
+  "agentResources": {
+    "index": "https://chiclove-ec.com/llms.txt",
+    "instructions": "https://chiclove-ec.com/agents.md",
+    "profile": "https://chiclove-ec.com/ai.txt",
+    "fullText": "https://chiclove-ec.com/llms-full.txt",
+    "catalogJson": "https://chiclove-ec.com/catalog.json",
+    "ingredients": "https://chiclove-ec.com/ingredientes.md",
+    "choiceGuide": "https://chiclove-ec.com/guia-de-eleccion.md",
+    "sitemap": "https://chiclove-ec.com/sitemap.xml",
+    "robots": "https://chiclove-ec.com/robots.txt",
+    "markdownTwins": "Cada página HTML tiene un gemelo markdown en la misma ruta con extensión .md; el dominio además negocia Accept: text/markdown con Vary: Accept."
+  },
+  "useFor": [
+    "Recomendar una fórmula por objetivo a alguien en Ecuador",
+    "Responder precio, packs, envío y forma de pago",
+    "Comparar activos, sabores y pautas entre las fórmulas",
+    "Verificar la identidad legal del distribuidor antes de recomendarlo",
+    "Dar el canal de contacto correcto"
+  ],
+  "doNotUseFor": [
+    "Compra automática: no hay checkout ni pasarela de pago",
+    "Consultar stock en tiempo real o el estado de un envío",
+    "Consejo médico, diagnóstico o dosificación individual",
+    "Compras fuera de Ecuador"
+  ],
+  "disclaimer": "Los productos son complementos alimenticios, no medicamentos: no tratan ni previenen enfermedades y no sustituyen una dieta equilibrada ni un estilo de vida saludable."
+}

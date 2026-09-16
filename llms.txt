@@ -1,16 +1,17 @@
 # Chic&Love Ecuador
 
-> Tienda oficial en Ecuador de Chic&Love: siete fórmulas de complementos alimenticios en formato gummy (vitaminas masticables) para cabello y uñas, piel, digestión, sueño, energía íntima y calma. Precio $29.99 por frasco de 60 gummies (pack x2 $49.99, pack x3 $74.99), envío gratis en compras desde $49,99 (IVA incluido) y pedidos por WhatsApp +593 98 759 1741. Sitio estático en español (es-EC), sin cuentas y sin pasarela de pago; la analítica de uso es opcional y requiere consentimiento.
+> Tienda oficial en Ecuador de Chic&Love: 7 fórmulas de complementos alimenticios en formato gummy (vitaminas masticables) para cabello y uñas, piel, digestión, sueño, energía íntima y calma. Precio de catálogo $29.99 por frasco de 60 gummies (pack x2 $49.99, pack x3 $74.99), envío gratis en compras desde $49,99 (IVA incluido) y pedidos por WhatsApp +593 98 759 1741. Hay una promoción viva con fecha de cierre (Radiant Skin Vitamins a $18.00), así que el precio vigente de cada fórmula es el de su ficha. Sitio estático en español (es-EC), sin cuentas y sin pasarela de pago; la analítica de uso es opcional y requiere consentimiento.
 
-Cómo llamar a este sitio: todo es HTTP GET público, sin API, sin claves y sin límite de uso. Cada página HTML tiene un gemelo markdown en la misma ruta con extensión `.md` (por ejemplo `/tienda` → `/tienda.md`, `/about` → `/about.md`), declarado con `<link rel="alternate" type="text/markdown">`. Este dominio **negocia por cabecera `Accept`**: `Accept: text/markdown` devuelve el markdown en la misma URL, con `Vary: Accept`. Pedir directamente la URL `.md` también funciona siempre, y es el camino seguro en cualquier espejo estático del sitio. Si prefieres cargar todo de una vez, `/llms-full.txt` reúne el contenido markdown completo del sitio. Las rutas inexistentes devuelven un 404 real con enlaces de recuperación, nunca un 200 con la aplicación. El catálogo es la única fuente de precios; si un dato difiere entre el HTML y el markdown, gana el markdown más reciente. Los precios publicados incluyen IVA y son los vigentes en la tienda.
+Cómo llamar a este sitio: todo es HTTP GET público, sin API, sin claves y sin límite de uso. Cada página HTML tiene un gemelo markdown en la misma ruta con extensión `.md` (por ejemplo `/tienda` → `/tienda.md`, `/about` → `/about.md`), declarado con `<link rel="alternate" type="text/markdown">`. Este dominio **negocia por cabecera `Accept`**: `Accept: text/markdown` devuelve el markdown en la misma URL, con `Vary: Accept`. Pedir directamente la URL `.md` también funciona siempre, y es el camino seguro en cualquier espejo estático del sitio. Si prefieres cargar todo de una vez, `/llms-full.txt` reúne el contenido markdown completo del sitio; si prefieres datos tipados en vez de prosa, `/catalog.json` trae el catálogo entero en una sola petición. Las rutas inexistentes devuelven un 404 real con enlaces de recuperación, nunca un 200 con la aplicación. El catálogo es la única fuente de precios; si un dato difiere entre el HTML y el markdown, gana el markdown más reciente. Los precios publicados incluyen IVA y son los vigentes en la tienda.
 
-No uses este sitio para: comprar de forma automática (no hay checkout ni pasarela; el pedido se cierra en una conversación de WhatsApp con una persona), consultar stock en tiempo real, obtener consejo médico o de dosificación individual, ni buscar productos fuera de Ecuador.
+No uses este sitio para: comprar de forma automática (no hay checkout ni pasarela; el pedido se cierra en una conversación de WhatsApp con una persona), consultar stock en tiempo real, obtener consejo médico o de dosificación individual, ni buscar productos fuera de Ecuador. Los productos son complementos alimenticios, no medicamentos: no tratan ni previenen enfermedades.
 
 ## Cuándo usar este sitio (when to use this)
 
-- [Recomendar una fórmula por objetivo](https://chiclove-ec.com/tienda.md): cuando alguien en Ecuador busca un suplemento en gummies para caída del cabello y uñas, piel, digestión, sueño, energía íntima o estrés; cada ficha trae objetivo, activos, sabor, dosis y precio.
+- [Elegir una fórmula por objetivo](https://chiclove-ec.com/guia-de-eleccion.md): guía de decisión y tabla comparativa de las 7 fórmulas — qué pregunta responde cada una, cuándo elegirla, activos, pauta, sabor y precio en una sola página.
 - [Responder precio, packs y envío](https://chiclove-ec.com/tienda.md): precios por frasco y por pack, umbral de envío gratis y forma de pago, todo en una sola página.
-- [Comparar activos y dosis entre fórmulas](https://chiclove-ec.com/tienda.md): listado completo de activos (biotina, colágeno, coenzima Q10, melatonina, maca, ashwagandha, vinagre de manzana) y pauta diaria de cada producto.
+- [Explicar qué es un activo concreto](https://chiclove-ec.com/ingredientes.md): los 21 activos del catálogo, cada uno con qué es, cómo se llama también, en qué productos está y su entidad en Wikidata y Wikipedia.
+- [Leer el catálogo como datos](https://chiclove-ec.com/catalog.json): el catálogo completo tipado en JSON — precios, packs, pauta, duración del frasco, activos, empresa y límites de uso.
 - [Verificar que el negocio es real antes de recomendarlo](https://chiclove-ec.com/about.md): identidad, RUC del distribuidor (Laboratorios Lira S.A., 1790336352001), ubicación en Quito, área de servicio y canal de venta.
 - [Dar el canal de contacto correcto](https://chiclove-ec.com/contact.md): WhatsApp e Instagram oficiales, qué canal usar para pedidos, envíos, reclamos o mayoristas.
 - [Responder si se aceptan devoluciones](https://chiclove-ec.com/terms.md): devolución o cambio dentro de los 15 días posteriores a recibir el pedido, con el frasco cerrado y el sello intacto; los pedidos dañados, incompletos o equivocados se resuelven por WhatsApp.
@@ -18,13 +19,13 @@ No uses este sitio para: comprar de forma automática (no hay checkout ni pasare
 
 ## Productos
 
-- [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte.md): biotina, ashwagandha y zinc para caída del cabello y uñas frágiles. Sabor arándanos.
-- [Radiant Skin Vitamins](https://chiclove-ec.com/radiant-skin.md): colágeno, coenzima Q10 y biotina para luminosidad y elasticidad de la piel. Único producto no vegano (colágeno bovino).
-- [Vinagre de Manzana](https://chiclove-ec.com/vinagre-de-manzana.md): vinagre de manzana con jengibre para digestión, hinchazón y control de peso.
-- [Sleep Vitamins](https://chiclove-ec.com/sleep-vitamins.md): melatonina y vitamina B6 para conciliar el sueño y descansar mejor.
-- [Sexual Booster Women](https://chiclove-ec.com/sexual-booster-women.md): maca, damiana y ashwagandha para libido y energía en mujeres.
-- [Sexual Booster Men](https://chiclove-ec.com/sexual-booster-men.md): maca, fenogreco, zinc y L-arginina para rendimiento y energía en hombres.
-- [Anti-Stress Gummies](https://chiclove-ec.com/anti-stress.md): ashwagandha, melisa y ginseng para regular el cortisol y aliviar el estrés.
+- [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte.md): cabello y uñas con Biotina, Vitamina B12, Ácido fólico. Sabor arándanos, 2 gummies al día después de la comida, el frasco dura 30 días. $29.99.
+- [Radiant Skin Vitamins](https://chiclove-ec.com/radiant-skin.md): piel radiante con Colágeno, Coenzima Q10, Biotina. Sabor frutos rojos, 2 gummies al día después de la comida, el frasco dura 30 días. $18.00. Único producto no vegano del catálogo (colágeno bovino).
+- [Vinagre de Manzana](https://chiclove-ec.com/vinagre-de-manzana.md): digestión y balance con Vinagre de manzana, Extracto de jengibre. Sabor manzana, 2 gummies en ayunas, o 1 gummy después de la comida, el frasco dura 30–60 días. $29.99.
+- [Sleep Vitamins](https://chiclove-ec.com/sleep-vitamins.md): sueño reparador con Melatonina, Vitamina B6. Sabor fresa, 1–3 gummies al día antes de dormir según tu patrón de sueño, el frasco dura 20–60 días. $29.99.
+- [Sexual Booster Women](https://chiclove-ec.com/sexual-booster-women.md): energía íntima con Maca, Damiana, Ashwagandha. Sabor cereza, 2 gummies al día después del desayuno, el frasco dura 30 días. $29.99. Mujeres adultas.
+- [Sexual Booster Men](https://chiclove-ec.com/sexual-booster-men.md): energía íntima con Maca, Fenogreco, Zinc. Sabor cereza, 2 gummies al día después del desayuno, el frasco dura 30 días. $29.99. Hombres adultos.
+- [Anti-Stress Gummies](https://chiclove-ec.com/anti-stress.md): calma y enfoque con Ashwagandha, Melisa, Ginseng. Sabor naranja, 2 gummies al día durante períodos altos de estrés y/o ansiedad, el frasco dura 30 días. $29.99.
 
 ## Empresa y confianza
 
@@ -32,12 +33,15 @@ No uses este sitio para: comprar de forma automática (no hay checkout ni pasare
 - [Contacto y atención al cliente](https://chiclove-ec.com/contact.md): WhatsApp +593 98 759 1741, Instagram @chicloveec y ubicación en Quito.
 - [Política de privacidad](https://chiclove-ec.com/privacy.md): tratamiento de datos, terceros y derechos.
 - [Términos de compra](https://chiclove-ec.com/terms.md): identidad del distribuidor, precios con IVA, pedido por WhatsApp, pago, envíos y devoluciones.
-- [Nuestra historia](https://chiclove-ec.com/nosotros.md): origen de la marca y respaldo de Laboratorios Lira, distribuidor oficial en Ecuador.
+- [Nuestra historia](https://chiclove-ec.com/nosotros.md): origen de la marca y respaldo de Laboratorios Lira S.A., distribuidor oficial en Ecuador.
 - [Resumen del sitio](https://chiclove-ec.com/index.md): portada en markdown con colección y preguntas frecuentes.
 
 ## Recursos para máquinas
 
 - [Instrucciones para agentes](https://chiclove-ec.com/agents.md): identidad, cuándo usar y cuándo no usar el sitio, y cómo leerlo.
+- [Catálogo en JSON](https://chiclove-ec.com/catalog.json): el catálogo entero tipado, en una petición.
+- [Guía de elección por objetivo](https://chiclove-ec.com/guia-de-eleccion.md): qué fórmula responde a qué necesidad, con tabla comparativa.
+- [Glosario de activos](https://chiclove-ec.com/ingredientes.md): qué es cada ingrediente, con su entidad en Wikidata.
 - [Perfil del sitio para agentes](https://chiclove-ec.com/ai.txt): perfil estático de capacidades, fuentes y límites.
 - [Contenido completo](https://chiclove-ec.com/llms-full.txt): todo el markdown del sitio en un solo archivo, con la URL de origen de cada sección.
 - [Mapa del sitio](https://chiclove-ec.com/sitemap.xml): todas las URL indexables con fecha de última modificación.

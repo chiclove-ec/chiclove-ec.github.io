@@ -133,8 +133,83 @@ organization.hasOfferCatalog = {
   name: "Colección Chic&Love Ecuador",
   itemListElement: listItems((product) => BASE + product.store)
 };
-organization.knowsAbout = [...new Set(catalog.CL_PRODUCTS.flatMap((product) => [product.goalLabel, ...product.actives]))]
-  .map((name) => ({ "@type": "Thing", name }));
+/* `knowsAbout` con los activos ENLAZADOS a su entidad externa. Un `Thing` con nombre
+   obliga a adivinar que la «melisa» del catálogo es Melissa officinalis; un `DefinedTerm`
+   con su `sameAs` a Wikidata lo resuelve sin ambigüedad. Los identificadores viven en
+   CL_ACTIVES (js/products.js) y están verificados uno a uno. */
+const goalLabels = [...new Set(catalog.CL_PRODUCTS.map((product) => product.goalLabel))];
+const activeNames = [...new Set(catalog.CL_PRODUCTS.flatMap((product) => product.actives))];
+organization.knowsAbout = [
+  ...goalLabels.map((name) => ({ "@type": "Thing", name })),
+  ...activeNames.map((name) => {
+    const info = catalog.clActiveInfo(name);
+    return {
+      "@type": "DefinedTerm",
+      name,
+      alternateName: info.aka,
+      inDefinedTermSet: { "@id": BASE + "ingredientes.md" },
+      sameAs: [info.wikidata, info.wikipedia]
+    };
+  })
+];
+organization.identifier = {
+  "@type": "PropertyValue",
+  propertyID: "RUC",
+  name: "Registro Único de Contribuyentes (Ecuador)",
+  value: catalog.CL_LEGAL.ruc
+};
+
+/* Nodos que describen la capa para agentes como entidades de primera clase:
+   el glosario de activos y el catálogo en JSON. Se hacen upsert por `@id` para que
+   `npm run gen` siga siendo idempotente — CI falla si deja diferencias. */
+const machineNodes = [
+  {
+    "@type": "DefinedTermSet",
+    "@id": BASE + "ingredientes.md",
+    url: BASE + "ingredientes.md",
+    name: "Activos de Chic&Love Ecuador",
+    description:
+      "Glosario de los " + activeNames.length + " activos del catálogo: qué es cada uno, cómo se " +
+      "llama también, en qué fórmulas está y su entidad en Wikidata y Wikipedia.",
+    inLanguage: "es-EC",
+    dateModified: CONTENT_MODIFIED,
+    publisher: { "@id": BASE + "#organization" },
+    hasDefinedTerm: activeNames.map((name) => {
+      const info = catalog.clActiveInfo(name);
+      return {
+        "@type": "DefinedTerm",
+        name,
+        alternateName: info.aka,
+        termCode: info.kind,
+        description: info.what + " " + info.role,
+        sameAs: [info.wikidata, info.wikipedia]
+      };
+    })
+  },
+  {
+    "@type": "DataFeed",
+    "@id": BASE + "catalog.json",
+    url: BASE + "catalog.json",
+    name: "Catálogo Chic&Love Ecuador en JSON",
+    description:
+      "El catálogo completo tipado en una sola petición: precios y packs, pauta diaria, duración " +
+      "del frasco, activos con su identificador de Wikidata, datos de la empresa y límites de " +
+      "uso. Documento estático y público; no es una API y no expone stock en tiempo real.",
+    encodingFormat: "application/json",
+    inLanguage: "es-EC",
+    isAccessibleForFree: true,
+    dateModified: CONTENT_MODIFIED,
+    isPartOf: { "@id": BASE + "#website" },
+    about: { "@id": BASE + "#organization" },
+    publisher: { "@id": BASE + "#organization" }
+  }
+];
+
+for (const node of machineNodes) {
+  const index = graph["@graph"].findIndex((existing) => existing["@id"] === node["@id"]);
+  if (index === -1) graph["@graph"].push(node);
+  else graph["@graph"][index] = node;
+}
 website.dateModified = CONTENT_MODIFIED;
 indexHtml = indexHtml.replace(
   graphMatch[0],

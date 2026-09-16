@@ -234,11 +234,12 @@ test("las entidades editoriales usan la fecha configurada y los mismos IDs", () 
   for (const page of pages) {
     for (const node of nodesOfType(page, primaryTypes)) {
       assert.equal(node.dateModified, contentModified, `${page}: fecha desincronizada en ${node["@type"]}`);
-      if (["Product", "FAQPage", "CollectionPage", "WebPage", "AboutPage", "ContactPage"].includes(node["@type"])) {
+      const types = [].concat(node["@type"]);
+      if (types.some((type) => ["Product", "FAQPage", "CollectionPage", "WebPage", "AboutPage", "ContactPage"].includes(type))) {
         assert.equal(node.isPartOf?.["@id"], websiteId, `${page}: isPartOf`);
         assert.equal(node.about?.["@id"], organizationId, `${page}: about`);
       }
-      if (node["@type"] !== "Product") {
+      if (!types.includes("Product")) {
         assert.equal(node.publisher?.["@id"], organizationId, `${page}: publisher`);
       }
     }

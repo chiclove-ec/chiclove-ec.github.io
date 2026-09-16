@@ -21,7 +21,11 @@ export function loadCatalog() {
       "\nthis.clMoney=clMoney; this.clActivePromo=clActivePromo; this.clHasPacks=clHasPacks;" +
       "\nthis.clFreeShippingLabel=clFreeShippingLabel; this.clPromoPercent=clPromoPercent;" +
       "\nthis.clBestSingleBundle=clBestSingleBundle; this.CL_VAT_NOTE=CL_VAT_NOTE;" +
-      "\nthis.CL_LEGAL=CL_LEGAL; this.clFooterLegal=clFooterLegal;"
+      "\nthis.CL_LEGAL=CL_LEGAL; this.clFooterLegal=clFooterLegal;" +
+      "\nthis.CL_ACTIVES=CL_ACTIVES; this.clActiveInfo=clActiveInfo;" +
+      "\nthis.CL_GOAL_GUIDE=CL_GOAL_GUIDE; this.CL_SERVINGS=CL_SERVINGS;" +
+      "\nthis.CL_GOALS=CL_GOALS; this.CL_PRODUCT_PRICING=CL_PRODUCT_PRICING;" +
+      "\nthis.clBottleDuration=clBottleDuration;"
   ).call(catalog, Date);
   return catalog;
 }

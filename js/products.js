@@ -5,6 +5,7 @@
 const CL_WHATSAPP = "593987591741"; // formato internacional sin espacios
 const CL_INSTAGRAM = "chicloveec";
 const CL_FREE_SHIPPING = 49.99;
+const CL_SERVINGS = 60; // gummies por frasco, igual en todo el catálogo
 const CL_VAT_NOTE = "IVA incluido";
 
 /* Datos del distribuidor en Ecuador. Fuente única para pie, páginas legales,
@@ -53,6 +54,7 @@ const CL_PROMOS = Object.freeze({
 const CL_PRODUCTS = [
   {
     id: "hair-nails-forte",
+    perDay: 2,
     name: "Hair & Nails Forte",
     short: "Hair & Nails",
     tagline: "Cabello más fuerte. Uñas de acero.",
@@ -85,6 +87,7 @@ const CL_PRODUCTS = [
   },
   {
     id: "radiant-skin",
+    perDay: 2,
     name: "Radiant Skin Vitamins",
     short: "Radiant Skin",
     tagline: "Tu piel, en modo glow.",
@@ -117,6 +120,7 @@ const CL_PRODUCTS = [
   },
   {
     id: "vinagre-de-manzana",
+    perDay: [1, 2],
     name: "Vinagre de Manzana",
     short: "Vinagre",
     tagline: "Digestión ligera.",
@@ -149,6 +153,7 @@ const CL_PRODUCTS = [
   },
   {
     id: "sleep-vitamins",
+    perDay: [1, 3],
     name: "Sleep Vitamins",
     short: "Sleep",
     tagline: "Duerme profundo. Despierta increíble.",
@@ -181,6 +186,9 @@ const CL_PRODUCTS = [
   },
   {
     id: "sexual-booster-women",
+    perDay: 2,
+    audience: "female",
+    audienceLabel: "Mujeres adultas",
     name: "Sexual Booster Women",
     short: "Booster Her",
     tagline: "Enciende tu energía.",
@@ -213,6 +221,9 @@ const CL_PRODUCTS = [
   },
   {
     id: "sexual-booster-men",
+    perDay: 2,
+    audience: "male",
+    audienceLabel: "Hombres adultos",
     name: "Sexual Booster Men",
     short: "Booster Him",
     tagline: "Rendimiento al máximo.",
@@ -245,6 +256,7 @@ const CL_PRODUCTS = [
   },
   {
     id: "anti-stress",
+    perDay: 2,
     name: "Anti-Stress Gummies",
     short: "Anti-Stress",
     tagline: "Serenidad para días intensos.",
@@ -277,6 +289,225 @@ const CL_PRODUCTS = [
   }
 ];
 
+/* Glosario de activos. Es la fuente única de la capa semántica del catálogo: de aquí
+   salen /ingredientes.md, el `activeIngredient` de los datos estructurados y los
+   `DefinedTerm` que enlazan cada activo con su entidad en Wikidata y Wikipedia.
+
+   `wikipedia` y `wikidata` son identificadores EXTERNOS verificados uno a uno: sirven
+   para que un modelo desambigüe «maca» o «melisa» sin adivinar. Si se añade un activo
+   nuevo hay que comprobar su URL antes de escribirla — una prueba exige que todo activo
+   del catálogo aparezca aquí, pero ninguna puede comprobar que la URL siga viva.
+
+   Las descripciones son DESCRIPTIVAS a propósito: qué es el activo y con qué se asocia.
+   Las promesas comerciales viven en `benefits` de cada producto, no aquí. */
+const CL_ACTIVES = Object.freeze({
+  "Biotina": Object.freeze({
+    kind: "vitamina",
+    aka: ["Vitamina B7", "Vitamina B8", "Biotin"],
+    what: "Vitamina hidrosoluble del grupo B.",
+    role: "Se asocia al mantenimiento normal del cabello, la piel y las mucosas.",
+    wikipedia: "https://es.wikipedia.org/wiki/Biotina",
+    wikidata: "https://www.wikidata.org/wiki/Q181354"
+  }),
+  "Vitamina B12": Object.freeze({
+    kind: "vitamina",
+    aka: ["Cobalamina"],
+    what: "Vitamina hidrosoluble del grupo B.",
+    role: "Interviene en la formación normal de glóbulos rojos y en el metabolismo energético.",
+    wikipedia: "https://es.wikipedia.org/wiki/Vitamina_B12",
+    wikidata: "https://www.wikidata.org/wiki/Q187706"
+  }),
+  "Ácido fólico": Object.freeze({
+    kind: "vitamina",
+    aka: ["Vitamina B9", "Folato"],
+    what: "Forma sintética del folato, vitamina del grupo B.",
+    role: "Participa en la división celular y en la síntesis de aminoácidos.",
+    wikipedia: "https://es.wikipedia.org/wiki/%C3%81cido_f%C3%B3lico",
+    wikidata: "https://www.wikidata.org/wiki/Q127060"
+  }),
+  "Vitamina A": Object.freeze({
+    kind: "vitamina",
+    aka: ["Retinol"],
+    what: "Vitamina liposoluble.",
+    role: "Contribuye al mantenimiento normal de la piel y de la visión.",
+    wikipedia: "https://es.wikipedia.org/wiki/Vitamina_A",
+    wikidata: "https://www.wikidata.org/wiki/Q18225"
+  }),
+  "Vitamina D": Object.freeze({
+    kind: "vitamina",
+    aka: ["Colecalciferol", "Vitamina D3"],
+    what: "Vitamina liposoluble.",
+    role: "Participa en la absorción del calcio y en el funcionamiento del sistema inmunitario.",
+    wikipedia: "https://es.wikipedia.org/wiki/Vitamina_D",
+    wikidata: "https://www.wikidata.org/wiki/Q175621"
+  }),
+  "Ashwagandha": Object.freeze({
+    kind: "extracto botánico",
+    aka: ["Withania somnifera", "Ginseng indio", "Bufera"],
+    what: "Raíz de la medicina ayurvédica, clasificada como adaptógeno.",
+    role: "Se emplea tradicionalmente para acompañar periodos de estrés.",
+    wikipedia: "https://es.wikipedia.org/wiki/Withania_somnifera",
+    wikidata: "https://www.wikidata.org/wiki/Q852660"
+  }),
+  "Zinc": Object.freeze({
+    kind: "mineral",
+    aka: ["Cinc"],
+    what: "Mineral esencial.",
+    role: "Contribuye al mantenimiento normal del cabello, las uñas y la piel, y a la fertilidad normal.",
+    wikipedia: "https://es.wikipedia.org/wiki/Zinc",
+    wikidata: "https://www.wikidata.org/wiki/Q758"
+  }),
+  "Colágeno": Object.freeze({
+    kind: "proteína",
+    aka: ["Collagen"],
+    what: "Proteína estructural mayoritaria de la piel y el tejido conectivo. El de esta fórmula es de origen bovino, y es la única excepción vegana del catálogo.",
+    role: "Se toma como aporte proteico asociado a la firmeza y la elasticidad de la piel.",
+    wikipedia: "https://es.wikipedia.org/wiki/Col%C3%A1geno",
+    wikidata: "https://www.wikidata.org/wiki/Q26868"
+  }),
+  "Coenzima Q10": Object.freeze({
+    kind: "cofactor",
+    aka: ["Ubiquinona", "CoQ10"],
+    what: "Molécula presente en las mitocondrias de las células.",
+    role: "Participa en la producción de energía celular y actúa como antioxidante.",
+    wikipedia: "https://es.wikipedia.org/wiki/Coenzima_Q10",
+    wikidata: "https://www.wikidata.org/wiki/Q321285"
+  }),
+  "Vitamina C": Object.freeze({
+    kind: "vitamina",
+    aka: ["Ácido ascórbico"],
+    what: "Vitamina hidrosoluble.",
+    role: "Contribuye a la formación normal de colágeno y protege las células del daño oxidativo.",
+    wikipedia: "https://es.wikipedia.org/wiki/Vitamina_C",
+    wikidata: "https://www.wikidata.org/wiki/Q199678"
+  }),
+  "Vitamina E": Object.freeze({
+    kind: "vitamina",
+    aka: ["Tocoferol"],
+    what: "Vitamina liposoluble.",
+    role: "Protege las células frente al daño oxidativo.",
+    wikipedia: "https://es.wikipedia.org/wiki/Vitamina_E",
+    wikidata: "https://www.wikidata.org/wiki/Q141180"
+  }),
+  "Vinagre de manzana": Object.freeze({
+    kind: "fermentado",
+    aka: ["Vinagre de sidra de manzana", "Apple cider vinegar", "ACV"],
+    what: "Vinagre de la fermentación del zumo de manzana; su componente principal es el ácido acético.",
+    role: "Se toma tradicionalmente como acompañamiento de la digestión y del control del apetito.",
+    wikipedia: "https://es.wikipedia.org/wiki/Vinagre_de_sidra_de_manzana",
+    wikidata: "https://www.wikidata.org/wiki/Q618322"
+  }),
+  "Extracto de jengibre": Object.freeze({
+    kind: "extracto botánico",
+    aka: ["Zingiber officinale", "Jengibre"],
+    what: "Extracto del rizoma del jengibre.",
+    role: "Se usa tradicionalmente para el bienestar digestivo.",
+    wikipedia: "https://es.wikipedia.org/wiki/Zingiber_officinale",
+    wikidata: "https://www.wikidata.org/wiki/Q35625"
+  }),
+  "Melatonina": Object.freeze({
+    kind: "hormona",
+    aka: ["N-acetil-5-metoxitriptamina"],
+    what: "Hormona que el cuerpo produce al anochecer y que regula el ciclo de sueño y vigilia.",
+    role: "Se asocia a reducir el tiempo necesario para conciliar el sueño.",
+    wikipedia: "https://es.wikipedia.org/wiki/Melatonina",
+    wikidata: "https://www.wikidata.org/wiki/Q180912"
+  }),
+  "Vitamina B6": Object.freeze({
+    kind: "vitamina",
+    aka: ["Piridoxina"],
+    what: "Vitamina hidrosoluble del grupo B.",
+    role: "Participa en el metabolismo de las proteínas y en el funcionamiento normal del sistema nervioso.",
+    wikipedia: "https://es.wikipedia.org/wiki/Vitamina_B6",
+    wikidata: "https://www.wikidata.org/wiki/Q205130"
+  }),
+  "Maca": Object.freeze({
+    kind: "extracto botánico",
+    aka: ["Lepidium meyenii", "Maca andina"],
+    what: "Raíz andina cultivada en la puna de Perú y Bolivia.",
+    role: "Se emplea tradicionalmente como apoyo de la energía y de la libido.",
+    wikipedia: "https://es.wikipedia.org/wiki/Lepidium_meyenii",
+    wikidata: "https://www.wikidata.org/wiki/Q795158"
+  }),
+  "Damiana": Object.freeze({
+    kind: "extracto botánico",
+    aka: ["Turnera diffusa"],
+    what: "Arbusto de Centroamérica y el Caribe.",
+    role: "Se usa tradicionalmente como tónico asociado a la libido.",
+    wikipedia: "https://es.wikipedia.org/wiki/Damiana",
+    wikidata: "https://www.wikidata.org/wiki/Q16238103"
+  }),
+  "Fenogreco": Object.freeze({
+    kind: "extracto botánico",
+    aka: ["Trigonella foenum-graecum", "Alholva"],
+    what: "Semilla usada como especia y como planta medicinal.",
+    role: "Se emplea tradicionalmente como apoyo de la vitalidad masculina.",
+    wikipedia: "https://es.wikipedia.org/wiki/Trigonella_foenum-graecum",
+    wikidata: "https://www.wikidata.org/wiki/Q133205"
+  }),
+  "L-arginina": Object.freeze({
+    kind: "aminoácido",
+    aka: ["Arginina"],
+    what: "Aminoácido semiesencial.",
+    role: "Es precursor del óxido nítrico, implicado en el flujo sanguíneo.",
+    wikipedia: "https://es.wikipedia.org/wiki/Arginina",
+    wikidata: "https://www.wikidata.org/wiki/Q173670"
+  }),
+  "Melisa": Object.freeze({
+    kind: "extracto botánico",
+    aka: ["Melissa officinalis", "Toronjil", "Hierba limón"],
+    what: "Planta aromática de la familia de la menta.",
+    role: "Se usa tradicionalmente para favorecer la calma.",
+    wikipedia: "https://es.wikipedia.org/wiki/Melissa_officinalis",
+    wikidata: "https://www.wikidata.org/wiki/Q148396"
+  }),
+  "Ginseng": Object.freeze({
+    kind: "extracto botánico",
+    aka: ["Panax ginseng", "Ginseng coreano"],
+    what: "Raíz de la medicina tradicional de Asia oriental, clasificada como adaptógeno.",
+    role: "Se emplea tradicionalmente como apoyo de la energía y de la concentración.",
+    wikipedia: "https://es.wikipedia.org/wiki/Panax_ginseng",
+    wikidata: "https://www.wikidata.org/wiki/Q182881"
+  })
+});
+
+/* Guía de decisión por objetivo: la pregunta que responde cada familia de fórmulas y
+   cuándo elegirla. De aquí sale /guia-de-eleccion.md, que es la página que un agente
+   cita cuando alguien pregunta «¿cuál me sirve para X?». Toda clave debe existir como
+   `goal` de algún producto — hay una prueba que lo exige en los dos sentidos. */
+const CL_GOAL_GUIDE = Object.freeze({
+  cabello: Object.freeze({
+    question: "¿Qué tomo para la caída del cabello o las uñas quebradizas?",
+    chooseIf: "Notas más pelo del normal en el cepillo, el cabello quebradizo, o uñas que se parten y crecen despacio.",
+    keywords: ["caída del cabello", "cabello quebradizo", "uñas frágiles", "crecimiento del cabello", "biotina"]
+  }),
+  piel: Object.freeze({
+    question: "¿Qué tomo para la piel apagada o con pérdida de firmeza?",
+    chooseIf: "Buscas luminosidad, hidratación y elasticidad trabajadas desde dentro, no solo con cosmética.",
+    keywords: ["piel apagada", "elasticidad", "colágeno bebible", "glow", "antiedad"]
+  }),
+  digestion: Object.freeze({
+    question: "¿Qué tomo para la hinchazón o la digestión pesada?",
+    chooseIf: "Te sientes hinchada o hinchado después de comer, o quieres acompañar un plan de control de peso.",
+    keywords: ["hinchazón", "digestión pesada", "control de peso", "vinagre de manzana", "apetito"]
+  }),
+  sueno: Object.freeze({
+    question: "¿Qué tomo para dormir mejor?",
+    chooseIf: "Tardas en conciliar el sueño o te despiertas sin sensación de descanso.",
+    keywords: ["insomnio ocasional", "conciliar el sueño", "descanso", "melatonina", "jet lag"]
+  }),
+  energia: Object.freeze({
+    question: "¿Qué tomo para la libido y la energía íntima?",
+    chooseIf: "Buscas apoyo de la libido y de la energía. Hay una fórmula para mujeres y otra para hombres: no son intercambiables.",
+    keywords: ["libido", "energía íntima", "deseo", "maca", "vitalidad"]
+  }),
+  calma: Object.freeze({
+    question: "¿Qué tomo para el estrés o la ansiedad del día a día?",
+    chooseIf: "Atraviesas una temporada de estrés alto o de tensión sostenida y quieres acompañarla.",
+    keywords: ["estrés", "ansiedad leve", "cortisol", "ashwagandha", "concentración"]
+  })
+});
+
 const CL_GOALS = [
   { id: "todos", label: "Todos" },
   { id: "cabello", label: "Cabello y uñas" },
@@ -286,6 +517,23 @@ const CL_GOALS = [
   { id: "energia", label: "Energía íntima" },
   { id: "calma", label: "Calma" }
 ];
+
+/* Duración del frasco en días, derivada de `perDay` y `CL_SERVINGS`. Devuelve
+   `{ min, max }`: iguales cuando la pauta es fija, distintos cuando es un rango. */
+function clBottleDuration(product) {
+  var perDay = product.perDay;
+  var range = Object.prototype.toString.call(perDay) === "[object Array]" ? perDay : [perDay, perDay];
+  return {
+    min: Math.floor(CL_SERVINGS / Math.max.apply(null, range)),
+    max: Math.floor(CL_SERVINGS / Math.min.apply(null, range))
+  };
+}
+
+function clActiveInfo(name) {
+  var info = CL_ACTIVES[name];
+  if (!info) throw new Error("Activo sin ficha en CL_ACTIVES: " + name);
+  return info;
+}
 
 function clFindProduct(id) {
   return CL_PRODUCTS.find(function (p) { return p.id === id; }) || null;

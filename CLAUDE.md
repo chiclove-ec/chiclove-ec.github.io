@@ -22,11 +22,17 @@ npm run set-origin https://otro.dominio          # mudanza permanente (ver READM
 ## Reglas que no se pueden romper
 
 1. **`js/products.js` es la única fuente de verdad comercial.** Precios, nombres,
-   colores, promociones, WhatsApp y datos legales solo se editan ahí.
+   colores, promociones, WhatsApp y datos legales solo se editan ahí. También vive ahí
+   la capa semántica: `CL_ACTIVES` (ficha de cada activo, con su entidad verificada en
+   Wikidata y Wikipedia), `CL_GOAL_GUIDE` (qué pregunta responde cada objetivo) y el
+   `perDay` de cada fórmula, del que se deriva cuánto dura un frasco.
 2. **Lo derivado no se edita a mano.** Las páginas `<slug>.html`, sus `.md`,
-   `index.md`, `tienda.md`, `agents.md`, `llms-full.txt` y los JSON-LD de portada
+   `index.md`, `tienda.md`, `agents.md`, `llms.txt`, `llms-full.txt`, `ai.txt`,
+   `catalog.json`, `guia-de-eleccion.md`, `ingredientes.md` y los JSON-LD de portada
    y tienda salen de `npm run gen`. Tras tocar el catálogo o el FAQ visible de la
    portada, regenera y sube el resultado: CI falla si hay diferencias.
+   `llms.txt` **era** manual y se había desviado: anunciaba un precio distinto del de
+   `agents.md`. Si vuelve a hacerse a mano, el fallo vuelve.
 3. **Sin `style=` ni `<script>` inline.** La CSP no lleva `unsafe-inline`. Usa las
    clases utilitarias de `css/styles.css` (`.pt-0`, `.center-cta`, `.av-*`).
 4. **La CSP está escrita tres veces** — `_headers`, `vercel.json` y el `<meta>` de
@@ -82,6 +88,30 @@ dos veces.
   `js/frame-guard.js`.
 - La promoción de `CL_PROMOS` entra y sale sola por fecha, pero el JSON-LD es
   estático: al cerrar la promo hay que regenerar y desplegar.
+- **Ningún artefacto publica un precio calculado.** Solo existen los tres del catálogo
+  (frasco, pack x2, pack x3) y el umbral de envío gratis; un precio por unidad derivado
+  (`49.99 / 2`) sería una oferta que nadie puede comprar. Dos pruebas lo exigen, una
+  para los markdown y otra para `catalog.json`.
+- Los identificadores de `CL_ACTIVES` (`wikidata`, `wikipedia`) se comprobaron uno a uno
+  contra la API de Wikipedia. Las pruebas verifican su **forma**, no que sigan vivos: al
+  añadir un activo, comprueba su URL antes de escribirla.
+- Un activo nuevo en un producto **rompe el build** si no tiene ficha en `CL_ACTIVES`:
+  `clActiveInfo()` lanza a propósito, para que el hueco no llegue a producción.
+
+## Capa para agentes
+
+Lo que un modelo lee del sitio, de menos a más grano: `robots.txt` (rastreo permitido
+explícitamente, **CCBot incluido** — es Common Crawl, la vía a los datos de
+entrenamiento), `llms.txt` (índice), `agents.md` (instrucciones y límites), `ai.txt`
+(perfil), `llms-full.txt` (todo el markdown junto), `catalog.json` (los mismos datos
+tipados, en una petición), `guia-de-eleccion.md` (qué fórmula para qué necesidad) e
+`ingredientes.md` (qué es cada activo, con su entidad externa). En los datos
+estructurados, cada ficha es `["Product","DietarySupplement"]` y lleva su propio
+`DefinedTermSet` de activos enlazados a Wikidata.
+
+`catalog.json` y los dos markdown nuevos **no tienen gemelo HTML**: son artefactos solo
+para máquinas y no aparecen en el sitemap ni en la navegación. Es deliberado — añaden
+legibilidad sin tocar el sitio visible.
 
 ## Verificación end-to-end
 

@@ -48,9 +48,12 @@ propio y `dist/` (el único artefacto publicable) se arma copiando por lista bla
 
 | Archivo | Qué es |
 |---|---|
-| `llms.txt` | Índice del sitio para agentes, con cuándo usarlo (formato llmstxt.org) |
+| `llms.txt` | Índice del sitio para agentes, con cuándo usarlo (formato llmstxt.org, generado) |
 | `agents.md` | Instrucciones para agentes: identidad, límites y cómo leer el sitio (generado) |
 | `llms-full.txt` | Todo el markdown del sitio en un archivo (generado) |
+| `catalog.json` | **El catálogo entero tipado en una sola petición** (generado): precios y packs, pauta, duración del frasco, activos con su entidad de Wikidata, empresa y límites de uso |
+| `guia-de-eleccion.md` | Guía de decisión por objetivo y tabla comparativa de las siete fórmulas (generado) |
+| `ingredientes.md` | Glosario de los activos: qué es cada uno, en qué producto está y su entidad en Wikidata y Wikipedia (generado) |
 | `*.md` | Gemelo markdown de cada página, incluido `404.md` |
 | `robots.txt`, `sitemap.xml` | Rastreo y páginas indexables |
 | `.well-known/security.txt` | Canal de reporte de vulnerabilidades (RFC 9116) |
@@ -134,7 +137,22 @@ npm run gen && npm run check   # regenera, construye dist/ y ejecuta la suite
 ## Contenido para agentes
 
 - **`/llms.txt`** — índice en formato [llmstxt.org](https://llmstxt.org): resumen, cómo llamar
-  al sitio, cuándo usarlo (y cuándo no) y enlaces a todo el contenido en markdown.
+  al sitio, cuándo usarlo (y cuándo no) y enlaces a todo el contenido en markdown. Se **genera**
+  desde el catálogo: cuando se escribía a mano se desvió y anunciaba un precio distinto del de
+  `agents.md`, y para un modelo dos cifras del mismo dato son motivo para desconfiar del resto.
+- **`/catalog.json`** — el catálogo entero **tipado**, para un agente que quiera datos y no prosa:
+  precios y packs, pauta diaria, cuánto dura un frasco, activos con su identificador de Wikidata,
+  datos de la empresa y los límites de uso, en una sola petición. No es una API: documento
+  estático, sin stock en tiempo real y sin escrituras. Se declara en el `<head>` del catálogo con
+  `<link rel="alternate" type="application/json">` y como `DataFeed` en los datos estructurados.
+- **`/guia-de-eleccion.md`** — la pregunta con la que llega la gente («¿cuál me sirve para X?»)
+  respondida objetivo por objetivo, con tabla comparativa de las siete fórmulas.
+- **`/ingredientes.md`** — qué es cada activo, cómo se llama también, en qué fórmulas está y su
+  entidad en **Wikidata** y Wikipedia, para que «maca» o «melisa» se resuelvan a la especie
+  correcta sin inferirla del contexto.
+- **FAQ por ficha** — cada gemelo markdown de producto cierra las preguntas previas a la compra
+  (para qué sirve, cómo se toma, cuánto dura el frasco, precio y envío, si es vegano, qué activos
+  lleva, contraindicaciones, cómo se pide, devoluciones) con datos salidos del catálogo.
 - **`/agents.md`** — archivo de instrucciones autocontenido para agentes que buscan uno:
   identidad, casos de uso, límites explícitos y cómo leer el sitio.
 - **`/llms-full.txt`** — todo el markdown del sitio en un solo archivo, con la URL de origen
@@ -142,15 +160,29 @@ npm run gen && npm run check   # regenera, construye dist/ y ejecuta la suite
 - **Gemelos markdown** — cada página HTML tiene su `.md` en la misma ruta
   (`/tienda.html` → `/tienda.md`, `/about` → `/about.md`), declarado con
   `<link rel="alternate" type="text/markdown">`.
-- **`robots.txt`** — rastreo permitido explícitamente para GPTBot, ClaudeBot, PerplexityBot,
-  Google-Extended, Applebot y compañía, y punteros a `llms.txt` y `agents.md`.
+- **`robots.txt`** — rastreo permitido explícitamente para 33 rastreadores, **CCBot incluido**:
+  es el de Common Crawl, el corpus público del que parten casi todos los modelos de lenguaje, y
+  por tanto la vía por la que el sitio llega a los datos de entrenamiento y no solo al buscador
+  de un asistente. Con él van GPTBot, ClaudeBot, PerplexityBot, Google-Extended,
+  Google-CloudVertexBot, Applebot-Extended, Meta-ExternalFetcher, MistralAI-User, Ai2Bot y
+  compañía, más punteros a todos los artefactos para máquinas.
+- **Entidades enlazadas** — `Organization.knowsAbout` declara cada activo como `DefinedTerm` con
+  su `sameAs` a Wikidata, y cada ficha publica su propio `DefinedTermSet`. Es lo que permite a un
+  modelo anclar el catálogo a entidades que ya conoce.
+- **Idioma y región** — cada página indexable declara `hreflang="es-EC"` y `x-default` hacia su
+  propia canónica, más `geo.region` (`EC-P`) y `geo.placename`: el sitio se presenta como la
+  edición ecuatoriana, que es la única.
 - **404 recuperable** — `404.html` responde 404 real con enlaces a `/llms.txt`, `/sitemap.xml`
   y las secciones principales; `404.md` es su versión markdown.
 - **Datos estructurados** — `FAQPage` en la portada, `CollectionPage`+`ItemList` en la tienda,
-  `Product` con `Offer`, `shippingDetails` y `hasMerchantReturnPolicy` por producto,
-  `AboutPage`/`ContactPage` en las páginas de confianza. Van estáticos en el HTML (la CSP
-  impide inyectarlos por JS) y `npm test` falla si dejan de coincidir con el catálogo o con el
-  texto visible de la página.
+  `["Product","DietarySupplement"]` por producto —el tipo que schema.org tiene para un complemento
+  alimenticio, con `activeIngredient`, `recommendedIntake`, `safetyConsideration`,
+  `targetPopulation` y `audience` en propiedades propias— con `Offer`, `shippingDetails` y
+  `hasMerchantReturnPolicy`. La oferta es **una sola** (el frasco suelto) para que ningún buscador
+  anuncie el precio de un pack como si fuera el del producto: la escalera de precios va en
+  `additionalProperty` y en `catalog.json`. Y `AboutPage`/`ContactPage` en las páginas de
+  confianza. Van estáticos en el HTML (la CSP impide inyectarlos por JS) y `npm test` falla si
+  dejan de coincidir con el catálogo o con el texto visible de la página.
 - **Política de devoluciones** — devolución o cambio dentro de los 15 días posteriores a recibir
   el pedido, con el frasco cerrado y su sello intacto; los pedidos dañados, incompletos o
   equivocados se resuelven por WhatsApp. Está en `/terms`, `/contact#devoluciones`, en el FAQ de

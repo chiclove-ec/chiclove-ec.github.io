@@ -317,6 +317,8 @@ test("los precios publicados coinciden con el catálogo", () => {
     "agents.md",
     "llms.txt",
     "llms-full.txt",
+    "guia-de-eleccion.md",
+    "ingredientes.md",
     ...TRUST_ANCHORS.map((a) => a + ".html")
   ];
   for (const file of files) {

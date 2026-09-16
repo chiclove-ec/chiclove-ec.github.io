@@ -75,6 +75,9 @@ describe("endpoints publicados", () => {
       "/llms-full.txt": /text\/plain/,
       "/ai.txt": /text\/plain/,
       "/agents.md": /text\/markdown/,
+      "/catalog.json": /application\/json/,
+      "/guia-de-eleccion.md": /text\/markdown/,
+      "/ingredientes.md": /text\/markdown/,
       "/sitemap.xml": /xml/,
       "/robots.txt": /text\/plain/,
       "/index.md": /text\/markdown/,
@@ -156,6 +159,19 @@ describe("endpoints publicados", () => {
     assert.equal(response.status, 200);
     assert.match(response.headers.get("content-type"), /text\/css/);
     assert.equal(response.headers.get("vary"), null);
+  });
+
+  // El catálogo JSON no es una página: no tiene gemelo markdown y no entra en la
+  // negociación, así que se sirve igual pida lo que pida el agente. Comprobarlo evita
+  // que un `Accept: text/markdown` acabe devolviendo un 406 en el endpoint de datos.
+  test("el catálogo JSON se sirve igual con cualquier Accept", async () => {
+    for (const accept of [undefined, "application/json", "text/markdown", "*/*"]) {
+      const response = await get("/catalog.json", accept);
+      assert.equal(response.status, 200, `Accept: ${accept}`);
+      assert.match(response.headers.get("content-type"), /application\/json/, `Accept: ${accept}`);
+      const data = JSON.parse(await response.text());
+      assert.equal(data.products.length, 7, `Accept: ${accept}: catálogo incompleto`);
+    }
   });
 
   test("el artefacto no publica archivos privados", async () => {
