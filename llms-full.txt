@@ -1,12 +1,12 @@
 # Chic&Love Ecuador — contenido completo
 
-> Todo el contenido en markdown del sitio https://chiclove-ec.github.io/ en un solo
-> archivo. Cada sección conserva su URL de origen. Índice: https://chiclove-ec.github.io/llms.txt
-> Instrucciones para agentes: https://chiclove-ec.github.io/agents.md
+> Todo el contenido en markdown del sitio https://chiclove-ec.com/ en un solo
+> archivo. Cada sección conserva su URL de origen. Índice: https://chiclove-ec.com/llms.txt
+> Instrucciones para agentes: https://chiclove-ec.com/agents.md
 
 ---
 
-<!-- source: https://chiclove-ec.github.io/index.md -->
+<!-- source: https://chiclove-ec.com/index.md -->
 
 # Chic&Love Ecuador — vitaminas en gummies
 
@@ -22,13 +22,13 @@ consentimiento.
 
 ## Colección
 
-- [Hair & Nails Forte](https://chiclove-ec.github.io/hair-nails-forte.md): Cabello más fuerte. Uñas de acero. Cabello y uñas, sabor arándanos, $29.99.
-- [Radiant Skin Vitamins](https://chiclove-ec.github.io/radiant-skin.md): Tu piel, en modo glow. Piel radiante, sabor frutos rojos, $18.00.
-- [Vinagre de Manzana](https://chiclove-ec.github.io/vinagre-de-manzana.md): Digestión ligera. Digestión y balance, sabor manzana, $29.99.
-- [Sleep Vitamins](https://chiclove-ec.github.io/sleep-vitamins.md): Duerme profundo. Despierta increíble. Sueño reparador, sabor fresa, $29.99.
-- [Sexual Booster Women](https://chiclove-ec.github.io/sexual-booster-women.md): Enciende tu energía. Energía íntima, sabor cereza, $29.99.
-- [Sexual Booster Men](https://chiclove-ec.github.io/sexual-booster-men.md): Rendimiento al máximo. Energía íntima, sabor cereza, $29.99.
-- [Anti-Stress Gummies](https://chiclove-ec.github.io/anti-stress.md): Serenidad para días intensos. Calma y enfoque, sabor naranja, $29.99.
+- [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte.md): Cabello más fuerte. Uñas de acero. Cabello y uñas, sabor arándanos, $29.99.
+- [Radiant Skin Vitamins](https://chiclove-ec.com/radiant-skin.md): Tu piel, en modo glow. Piel radiante, sabor frutos rojos, $18.00.
+- [Vinagre de Manzana](https://chiclove-ec.com/vinagre-de-manzana.md): Digestión ligera. Digestión y balance, sabor manzana, $29.99.
+- [Sleep Vitamins](https://chiclove-ec.com/sleep-vitamins.md): Duerme profundo. Despierta increíble. Sueño reparador, sabor fresa, $29.99.
+- [Sexual Booster Women](https://chiclove-ec.com/sexual-booster-women.md): Enciende tu energía. Energía íntima, sabor cereza, $29.99.
+- [Sexual Booster Men](https://chiclove-ec.com/sexual-booster-men.md): Rendimiento al máximo. Energía íntima, sabor cereza, $29.99.
+- [Anti-Stress Gummies](https://chiclove-ec.com/anti-stress.md): Serenidad para días intensos. Calma y enfoque, sabor naranja, $29.99.
 
 ## Preguntas frecuentes
 
@@ -49,13 +49,13 @@ consentimiento.
 
 ## Páginas
 
-- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
-- [Información de la empresa](https://chiclove-ec.github.io/about.md)
-- [Contacto y atención al cliente](https://chiclove-ec.github.io/contact.md)
-- [Política de privacidad](https://chiclove-ec.github.io/privacy.md)
-- [Términos de compra](https://chiclove-ec.github.io/terms.md)
-- [Nuestra historia](https://chiclove-ec.github.io/nosotros.md)
-- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
+- [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Información de la empresa](https://chiclove-ec.com/about.md)
+- [Contacto y atención al cliente](https://chiclove-ec.com/contact.md)
+- [Política de privacidad](https://chiclove-ec.com/privacy.md)
+- [Términos de compra](https://chiclove-ec.com/terms.md)
+- [Nuestra historia](https://chiclove-ec.com/nosotros.md)
+- [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
 ---
 
@@ -63,7 +63,7 @@ Complemento alimenticio. No sustituye una dieta equilibrada ni un estilo de vida
 
 ---
 
-<!-- source: https://chiclove-ec.github.io/tienda.md -->
+<!-- source: https://chiclove-ec.com/tienda.md -->
 
 # Tienda Chic&Love Ecuador — catálogo completo
 
@@ -86,7 +86,7 @@ Cabello más fuerte. Uñas de acero. La fórmula forte con biotina, ashwagandha 
 - **Dosis:** 2 gummies al día después de la comida.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Biotina, Vitamina B12, Ácido fólico, Vitamina A, Vitamina D, Ashwagandha, Zinc
-- **Ficha completa:** [hair-nails-forte.md](https://chiclove-ec.github.io/hair-nails-forte.md), [versión HTML](https://chiclove-ec.github.io/hair-nails-forte.html)
+- **Ficha completa:** [hair-nails-forte.md](https://chiclove-ec.com/hair-nails-forte.md), [versión HTML](https://chiclove-ec.com/hair-nails-forte.html)
 
 ## Radiant Skin Vitamins
 
@@ -98,7 +98,7 @@ Tu piel, en modo glow. Colágeno, coenzima Q10 y biotina en una gummy que ilumin
 - **Dosis:** 2 gummies al día después de la comida.
 - **Distintivos:** Sin gluten, Sin lactosa
 - **Activos:** Colágeno, Coenzima Q10, Biotina, Vitamina C, Vitamina E
-- **Ficha completa:** [radiant-skin.md](https://chiclove-ec.github.io/radiant-skin.md), [versión HTML](https://chiclove-ec.github.io/radiant-skin.html)
+- **Ficha completa:** [radiant-skin.md](https://chiclove-ec.com/radiant-skin.md), [versión HTML](https://chiclove-ec.com/radiant-skin.html)
 
 ## Vinagre de Manzana
 
@@ -110,7 +110,7 @@ Digestión ligera. Vinagre de manzana con extracto de jengibre: glucosa estable,
 - **Dosis:** 2 gummies en ayunas, o 1 gummy después de la comida.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Vinagre de manzana, Extracto de jengibre
-- **Ficha completa:** [vinagre-de-manzana.md](https://chiclove-ec.github.io/vinagre-de-manzana.md), [versión HTML](https://chiclove-ec.github.io/vinagre-de-manzana.html)
+- **Ficha completa:** [vinagre-de-manzana.md](https://chiclove-ec.com/vinagre-de-manzana.md), [versión HTML](https://chiclove-ec.com/vinagre-de-manzana.html)
 
 ## Sleep Vitamins
 
@@ -122,7 +122,7 @@ Duerme profundo. Despierta increíble. Melatonina + vitamina B6 para conciliar e
 - **Dosis:** 1–3 gummies al día antes de dormir según tu patrón de sueño.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Melatonina, Vitamina B6
-- **Ficha completa:** [sleep-vitamins.md](https://chiclove-ec.github.io/sleep-vitamins.md), [versión HTML](https://chiclove-ec.github.io/sleep-vitamins.html)
+- **Ficha completa:** [sleep-vitamins.md](https://chiclove-ec.com/sleep-vitamins.md), [versión HTML](https://chiclove-ec.com/sleep-vitamins.html)
 
 ## Sexual Booster Women
 
@@ -134,7 +134,7 @@ Enciende tu energía. Maca y damiana 100% naturales que estabilizan tus canales 
 - **Dosis:** 2 gummies al día después del desayuno.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Maca, Damiana, Ashwagandha
-- **Ficha completa:** [sexual-booster-women.md](https://chiclove-ec.github.io/sexual-booster-women.md), [versión HTML](https://chiclove-ec.github.io/sexual-booster-women.html)
+- **Ficha completa:** [sexual-booster-women.md](https://chiclove-ec.com/sexual-booster-women.md), [versión HTML](https://chiclove-ec.com/sexual-booster-women.html)
 
 ## Sexual Booster Men
 
@@ -146,7 +146,7 @@ Rendimiento al máximo. Maca y fenogreco para mejorar el rendimiento, la calidad
 - **Dosis:** 2 gummies al día después del desayuno.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Maca, Fenogreco, Zinc, L-arginina
-- **Ficha completa:** [sexual-booster-men.md](https://chiclove-ec.github.io/sexual-booster-men.md), [versión HTML](https://chiclove-ec.github.io/sexual-booster-men.html)
+- **Ficha completa:** [sexual-booster-men.md](https://chiclove-ec.com/sexual-booster-men.md), [versión HTML](https://chiclove-ec.com/sexual-booster-men.html)
 
 ## Anti-Stress Gummies
 
@@ -158,14 +158,14 @@ Serenidad para días intensos. Ashwagandha, melisa y ginseng que regulan el cort
 - **Dosis:** 2 gummies al día durante períodos altos de estrés y/o ansiedad.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Ashwagandha, Melisa, Ginseng
-- **Ficha completa:** [anti-stress.md](https://chiclove-ec.github.io/anti-stress.md), [versión HTML](https://chiclove-ec.github.io/anti-stress.html)
+- **Ficha completa:** [anti-stress.md](https://chiclove-ec.com/anti-stress.md), [versión HTML](https://chiclove-ec.com/anti-stress.html)
 
 ## Enlaces
 
-- [Inicio](https://chiclove-ec.github.io/index.md)
-- [Contacto](https://chiclove-ec.github.io/contact.md)
-- [Términos de compra](https://chiclove-ec.github.io/terms.md)
-- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
+- [Inicio](https://chiclove-ec.com/index.md)
+- [Contacto](https://chiclove-ec.com/contact.md)
+- [Términos de compra](https://chiclove-ec.com/terms.md)
+- [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
 ---
 
@@ -173,7 +173,7 @@ Complemento alimenticio. No sustituye una dieta equilibrada ni un estilo de vida
 
 ---
 
-<!-- source: https://chiclove-ec.github.io/hair-nails-forte.md -->
+<!-- source: https://chiclove-ec.com/hair-nails-forte.md -->
 
 # Hair & Nails Forte — Chic&Love Ecuador
 
@@ -200,7 +200,7 @@ Tu carrito se prepara directamente en tu navegador. Cuando pulsas «Finalizar pe
 continúas en WhatsApp con el detalle de tu compra listo para enviar. Allí confirmamos
 disponibilidad, dirección de entrega y datos para la transferencia. La web no procesa pagos
 con tarjeta. Los precios publicados incluyen IVA y son los vigentes en la tienda. Antes de
-confirmar tu pedido podrás revisar el total de tu compra. Ver [/contact.md](https://chiclove-ec.github.io/contact.md).
+confirmar tu pedido podrás revisar el total de tu compra. Ver [/contact.md](https://chiclove-ec.com/contact.md).
 
 **Devoluciones y cambios:** puedes solicitarlos dentro de los 15 días posteriores a recibir
 tu pedido, siempre que el producto esté en el mismo estado en que lo recibiste. Por seguridad
@@ -210,9 +210,9 @@ solucionarlo.
 
 ## Enlaces
 
-- [Página del producto](https://chiclove-ec.github.io/hair-nails-forte.html)
-- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
-- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
+- [Página del producto](https://chiclove-ec.com/hair-nails-forte.html)
+- [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
 ---
 
@@ -221,7 +221,7 @@ No es un medicamento y no trata ni previene enfermedades.
 
 ---
 
-<!-- source: https://chiclove-ec.github.io/radiant-skin.md -->
+<!-- source: https://chiclove-ec.com/radiant-skin.md -->
 
 # Radiant Skin Vitamins — Chic&Love Ecuador
 
@@ -248,7 +248,7 @@ Tu carrito se prepara directamente en tu navegador. Cuando pulsas «Finalizar pe
 continúas en WhatsApp con el detalle de tu compra listo para enviar. Allí confirmamos
 disponibilidad, dirección de entrega y datos para la transferencia. La web no procesa pagos
 con tarjeta. Los precios publicados incluyen IVA y son los vigentes en la tienda. Antes de
-confirmar tu pedido podrás revisar el total de tu compra. Ver [/contact.md](https://chiclove-ec.github.io/contact.md).
+confirmar tu pedido podrás revisar el total de tu compra. Ver [/contact.md](https://chiclove-ec.com/contact.md).
 
 **Devoluciones y cambios:** puedes solicitarlos dentro de los 15 días posteriores a recibir
 tu pedido, siempre que el producto esté en el mismo estado en que lo recibiste. Por seguridad
@@ -258,9 +258,9 @@ solucionarlo.
 
 ## Enlaces
 
-- [Página del producto](https://chiclove-ec.github.io/radiant-skin.html)
-- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
-- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
+- [Página del producto](https://chiclove-ec.com/radiant-skin.html)
+- [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
 ---
 
@@ -269,7 +269,7 @@ No es un medicamento y no trata ni previene enfermedades.
 
 ---
 
-<!-- source: https://chiclove-ec.github.io/vinagre-de-manzana.md -->
+<!-- source: https://chiclove-ec.com/vinagre-de-manzana.md -->
 
 # Vinagre de Manzana — Chic&Love Ecuador
 
@@ -296,7 +296,7 @@ Tu carrito se prepara directamente en tu navegador. Cuando pulsas «Finalizar pe
 continúas en WhatsApp con el detalle de tu compra listo para enviar. Allí confirmamos
 disponibilidad, dirección de entrega y datos para la transferencia. La web no procesa pagos
 con tarjeta. Los precios publicados incluyen IVA y son los vigentes en la tienda. Antes de
-confirmar tu pedido podrás revisar el total de tu compra. Ver [/contact.md](https://chiclove-ec.github.io/contact.md).
+confirmar tu pedido podrás revisar el total de tu compra. Ver [/contact.md](https://chiclove-ec.com/contact.md).
 
 **Devoluciones y cambios:** puedes solicitarlos dentro de los 15 días posteriores a recibir
 tu pedido, siempre que el producto esté en el mismo estado en que lo recibiste. Por seguridad
@@ -306,9 +306,9 @@ solucionarlo.
 
 ## Enlaces
 
-- [Página del producto](https://chiclove-ec.github.io/vinagre-de-manzana.html)
-- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
-- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
+- [Página del producto](https://chiclove-ec.com/vinagre-de-manzana.html)
+- [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
 ---
 
@@ -317,7 +317,7 @@ No es un medicamento y no trata ni previene enfermedades.
 
 ---
 
-<!-- source: https://chiclove-ec.github.io/sleep-vitamins.md -->
+<!-- source: https://chiclove-ec.com/sleep-vitamins.md -->
 
 # Sleep Vitamins — Chic&Love Ecuador
 
@@ -344,7 +344,7 @@ Tu carrito se prepara directamente en tu navegador. Cuando pulsas «Finalizar pe
 continúas en WhatsApp con el detalle de tu compra listo para enviar. Allí confirmamos
 disponibilidad, dirección de entrega y datos para la transferencia. La web no procesa pagos
 con tarjeta. Los precios publicados incluyen IVA y son los vigentes en la tienda. Antes de
-confirmar tu pedido podrás revisar el total de tu compra. Ver [/contact.md](https://chiclove-ec.github.io/contact.md).
+confirmar tu pedido podrás revisar el total de tu compra. Ver [/contact.md](https://chiclove-ec.com/contact.md).
 
 **Devoluciones y cambios:** puedes solicitarlos dentro de los 15 días posteriores a recibir
 tu pedido, siempre que el producto esté en el mismo estado en que lo recibiste. Por seguridad
@@ -354,9 +354,9 @@ solucionarlo.
 
 ## Enlaces
 
-- [Página del producto](https://chiclove-ec.github.io/sleep-vitamins.html)
-- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
-- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
+- [Página del producto](https://chiclove-ec.com/sleep-vitamins.html)
+- [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
 ---
 
@@ -365,7 +365,7 @@ No es un medicamento y no trata ni previene enfermedades.
 
 ---
 
-<!-- source: https://chiclove-ec.github.io/sexual-booster-women.md -->
+<!-- source: https://chiclove-ec.com/sexual-booster-women.md -->
 
 # Sexual Booster Women — Chic&Love Ecuador
 
@@ -392,7 +392,7 @@ Tu carrito se prepara directamente en tu navegador. Cuando pulsas «Finalizar pe
 continúas en WhatsApp con el detalle de tu compra listo para enviar. Allí confirmamos
 disponibilidad, dirección de entrega y datos para la transferencia. La web no procesa pagos
 con tarjeta. Los precios publicados incluyen IVA y son los vigentes en la tienda. Antes de
-confirmar tu pedido podrás revisar el total de tu compra. Ver [/contact.md](https://chiclove-ec.github.io/contact.md).
+confirmar tu pedido podrás revisar el total de tu compra. Ver [/contact.md](https://chiclove-ec.com/contact.md).
 
 **Devoluciones y cambios:** puedes solicitarlos dentro de los 15 días posteriores a recibir
 tu pedido, siempre que el producto esté en el mismo estado en que lo recibiste. Por seguridad
@@ -402,9 +402,9 @@ solucionarlo.
 
 ## Enlaces
 
-- [Página del producto](https://chiclove-ec.github.io/sexual-booster-women.html)
-- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
-- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
+- [Página del producto](https://chiclove-ec.com/sexual-booster-women.html)
+- [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
 ---
 
@@ -413,7 +413,7 @@ No es un medicamento y no trata ni previene enfermedades.
 
 ---
 
-<!-- source: https://chiclove-ec.github.io/sexual-booster-men.md -->
+<!-- source: https://chiclove-ec.com/sexual-booster-men.md -->
 
 # Sexual Booster Men — Chic&Love Ecuador
 
@@ -440,7 +440,7 @@ Tu carrito se prepara directamente en tu navegador. Cuando pulsas «Finalizar pe
 continúas en WhatsApp con el detalle de tu compra listo para enviar. Allí confirmamos
 disponibilidad, dirección de entrega y datos para la transferencia. La web no procesa pagos
 con tarjeta. Los precios publicados incluyen IVA y son los vigentes en la tienda. Antes de
-confirmar tu pedido podrás revisar el total de tu compra. Ver [/contact.md](https://chiclove-ec.github.io/contact.md).
+confirmar tu pedido podrás revisar el total de tu compra. Ver [/contact.md](https://chiclove-ec.com/contact.md).
 
 **Devoluciones y cambios:** puedes solicitarlos dentro de los 15 días posteriores a recibir
 tu pedido, siempre que el producto esté en el mismo estado en que lo recibiste. Por seguridad
@@ -450,9 +450,9 @@ solucionarlo.
 
 ## Enlaces
 
-- [Página del producto](https://chiclove-ec.github.io/sexual-booster-men.html)
-- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
-- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
+- [Página del producto](https://chiclove-ec.com/sexual-booster-men.html)
+- [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
 ---
 
@@ -461,7 +461,7 @@ No es un medicamento y no trata ni previene enfermedades.
 
 ---
 
-<!-- source: https://chiclove-ec.github.io/anti-stress.md -->
+<!-- source: https://chiclove-ec.com/anti-stress.md -->
 
 # Anti-Stress Gummies — Chic&Love Ecuador
 
@@ -488,7 +488,7 @@ Tu carrito se prepara directamente en tu navegador. Cuando pulsas «Finalizar pe
 continúas en WhatsApp con el detalle de tu compra listo para enviar. Allí confirmamos
 disponibilidad, dirección de entrega y datos para la transferencia. La web no procesa pagos
 con tarjeta. Los precios publicados incluyen IVA y son los vigentes en la tienda. Antes de
-confirmar tu pedido podrás revisar el total de tu compra. Ver [/contact.md](https://chiclove-ec.github.io/contact.md).
+confirmar tu pedido podrás revisar el total de tu compra. Ver [/contact.md](https://chiclove-ec.com/contact.md).
 
 **Devoluciones y cambios:** puedes solicitarlos dentro de los 15 días posteriores a recibir
 tu pedido, siempre que el producto esté en el mismo estado en que lo recibiste. Por seguridad
@@ -498,9 +498,9 @@ solucionarlo.
 
 ## Enlaces
 
-- [Página del producto](https://chiclove-ec.github.io/anti-stress.html)
-- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
-- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
+- [Página del producto](https://chiclove-ec.com/anti-stress.html)
+- [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
 ---
 
@@ -509,12 +509,12 @@ No es un medicamento y no trata ni previene enfermedades.
 
 ---
 
-<!-- source: https://chiclove-ec.github.io/about.md -->
+<!-- source: https://chiclove-ec.com/about.md -->
 
 # Información de la empresa — Chic&Love Ecuador
 
 > Datos verificables de Chic&Love Ecuador: qué vendemos, dónde estamos, cómo se compra y
-> quién nos respalda. Versión markdown de https://chiclove-ec.github.io/about.html
+> quién nos respalda. Versión markdown de https://chiclove-ec.com/about.html
 
 ## Qué es Chic&Love Ecuador
 
@@ -546,7 +546,7 @@ fundado en 1977 y distribuidor oficial de Chic&Love en el país.
 - **Teléfonos:** +593 2 237 9285 / +593 2 237 6425
 - **Moneda y pago:** dólar estadounidense (USD), transferencia bancaria
 - **Idioma de atención:** español (es-EC)
-- **Sitio oficial:** https://chiclove-ec.github.io/
+- **Sitio oficial:** https://chiclove-ec.com/
 
 ## Cómo se compra
 
@@ -561,7 +561,7 @@ de entrega y datos para la transferencia. La web no procesa pagos con tarjeta.
   pedido se puede revisar el total de la compra.
 - Devolución o cambio dentro de los 15 días posteriores a recibir el pedido, con el frasco
   cerrado y su sello intacto. Detalle en
-  [/terms.md](https://chiclove-ec.github.io/terms.md).
+  [/terms.md](https://chiclove-ec.com/terms.md).
 
 ## Qué no hacemos
 
@@ -571,32 +571,32 @@ de entrega y datos para la transferencia. La web no procesa pagos con tarjeta.
   lactancia o medicación, hay que consultar a un profesional.
 - No recogemos correos ni pedimos datos personales en el sitio. La analítica de uso es opcional:
   solo se carga con consentimiento y no incluye nombres, teléfonos ni el contenido del carrito
-  (ver [/privacy.md](https://chiclove-ec.github.io/privacy.md)).
+  (ver [/privacy.md](https://chiclove-ec.com/privacy.md)).
 - No hay pasarela de pago en el sitio: ninguna página pide datos de tarjeta.
 
 ## Enlaces
 
-- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
-- [Instrucciones para agentes](https://chiclove-ec.github.io/agents.md)
-- [Contenido completo del sitio en markdown](https://chiclove-ec.github.io/llms-full.txt)
-- [Contacto y atención al cliente](https://chiclove-ec.github.io/contact.md)
-- [Política de privacidad](https://chiclove-ec.github.io/privacy.md)
-- [Términos de compra](https://chiclove-ec.github.io/terms.md)
-- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
-- [Nuestra historia](https://chiclove-ec.github.io/nosotros.md)
-- [Versión HTML de esta página](https://chiclove-ec.github.io/about.html)
+- [Índice para agentes](https://chiclove-ec.com/llms.txt)
+- [Instrucciones para agentes](https://chiclove-ec.com/agents.md)
+- [Contenido completo del sitio en markdown](https://chiclove-ec.com/llms-full.txt)
+- [Contacto y atención al cliente](https://chiclove-ec.com/contact.md)
+- [Política de privacidad](https://chiclove-ec.com/privacy.md)
+- [Términos de compra](https://chiclove-ec.com/terms.md)
+- [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Nuestra historia](https://chiclove-ec.com/nosotros.md)
+- [Versión HTML de esta página](https://chiclove-ec.com/about.html)
 
 Última revisión: 7 de septiembre de 2026.
 
 ---
 
-<!-- source: https://chiclove-ec.github.io/contact.md -->
+<!-- source: https://chiclove-ec.com/contact.md -->
 
 # Contacto y atención al cliente — Chic&Love Ecuador
 
 > Cómo contactar a Chic&Love Ecuador: WhatsApp +593 98 759 1741, Instagram @chicloveec y
 > ubicación en Quito. Atención en español para todo el país.
-> Versión markdown de https://chiclove-ec.github.io/contact.html
+> Versión markdown de https://chiclove-ec.com/contact.html
 
 ## Canales oficiales
 
@@ -612,7 +612,7 @@ dinero.
 - **Distribuidor:** LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A.
   (Laboratorios Lira S.A.), RUC 1790336352001
 - **Cobertura:** envíos a todo Ecuador, atención en español
-- **Reporte de seguridad:** https://chiclove-ec.github.io/.well-known/security.txt
+- **Reporte de seguridad:** https://chiclove-ec.com/.well-known/security.txt
 
 Respondemos los mensajes en horario laboral de Ecuador (GMT-5). No hay tienda física de atención
 al público: la venta y el seguimiento se hacen por WhatsApp.
@@ -627,7 +627,7 @@ al público: la venta y el seguimiento se hacen por WhatsApp.
 - **Pedido incompleto o dañado:** escribir por WhatsApp con una foto del paquete.
 - **Devoluciones y cambios:** 15 días desde que se recibe el pedido (ver abajo).
 - **Mayoristas, spas y farmacias:** escribir por WhatsApp indicando negocio y ciudad.
-- **Privacidad y datos:** ver la [política de privacidad](https://chiclove-ec.github.io/privacy.md)
+- **Privacidad y datos:** ver la [política de privacidad](https://chiclove-ec.com/privacy.md)
   y escribir por el mismo canal.
 
 ## Cómo termina un pedido
@@ -649,28 +649,28 @@ Queremos que compres con tranquilidad. Puedes solicitar una devolución o cambio
 estado en que lo recibiste. Por seguridad e higiene, el frasco debe permanecer cerrado y con su
 sello intacto. Si recibes un producto dañado, incompleto o diferente al que pediste, escríbenos por
 WhatsApp y nos encargaremos de solucionarlo. Las condiciones completas están en los
-[términos de compra](https://chiclove-ec.github.io/terms.md).
+[términos de compra](https://chiclove-ec.com/terms.md).
 
 ## Enlaces
 
-- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
-- [Información de la empresa](https://chiclove-ec.github.io/about.md)
-- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
-- [Términos de compra](https://chiclove-ec.github.io/terms.md)
-- [Versión HTML de esta página](https://chiclove-ec.github.io/contact.html)
+- [Índice para agentes](https://chiclove-ec.com/llms.txt)
+- [Información de la empresa](https://chiclove-ec.com/about.md)
+- [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Términos de compra](https://chiclove-ec.com/terms.md)
+- [Versión HTML de esta página](https://chiclove-ec.com/contact.html)
 
 Última revisión: 7 de septiembre de 2026.
 
 ---
 
-<!-- source: https://chiclove-ec.github.io/privacy.md -->
+<!-- source: https://chiclove-ec.com/privacy.md -->
 
 # Política de privacidad — Chic&Love Ecuador
 
 > Tu privacidad importa. La analítica de esta web es opcional y solo se activa si tú la aceptas.
 > Puedes cambiar tu elección cuando quieras. El carrito vive en el navegador y solo tratamos los
 > datos que la persona envía por WhatsApp para gestionar su pedido.
-> Versión markdown de https://chiclove-ec.github.io/privacy.html
+> Versión markdown de https://chiclove-ec.com/privacy.html
 
 ## Responsable del tratamiento
 
@@ -730,7 +730,7 @@ lo cancelamos.
 
 El sitio se sirve por HTTPS y aplica una política de seguridad de contenido que limita los scripts
 y conexiones a los proveedores de analítica habilitados. Los canales para reportar vulnerabilidades están publicados en
-https://chiclove-ec.github.io/.well-known/security.txt
+https://chiclove-ec.com/.well-known/security.txt
 
 ## Cambios en esta política
 
@@ -740,23 +740,23 @@ escribió.
 
 ## Enlaces
 
-- [Contacto y atención al cliente](https://chiclove-ec.github.io/contact.md)
-- [Información de la empresa](https://chiclove-ec.github.io/about.md)
-- [Términos de compra](https://chiclove-ec.github.io/terms.md)
-- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
-- [Versión HTML de esta página](https://chiclove-ec.github.io/privacy.html)
+- [Contacto y atención al cliente](https://chiclove-ec.com/contact.md)
+- [Información de la empresa](https://chiclove-ec.com/about.md)
+- [Términos de compra](https://chiclove-ec.com/terms.md)
+- [Índice para agentes](https://chiclove-ec.com/llms.txt)
+- [Versión HTML de esta página](https://chiclove-ec.com/privacy.html)
 
 Última revisión: 7 de septiembre de 2026.
 
 ---
 
-<!-- source: https://chiclove-ec.github.io/terms.md -->
+<!-- source: https://chiclove-ec.com/terms.md -->
 
 # Términos de compra — Chic&Love Ecuador
 
 > Condiciones de venta de Chic&Love Ecuador: identidad del distribuidor, precios con IVA,
 > pedidos por WhatsApp, pago por transferencia, envíos y devoluciones dentro de 15 días.
-> Versión markdown de https://chiclove-ec.github.io/terms.html
+> Versión markdown de https://chiclove-ec.com/terms.html
 
 ## Quiénes somos
 
@@ -830,7 +830,7 @@ El responsable del tratamiento es LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONE
 (Laboratorios Lira S.A.), RUC 1790336352001. El carrito vive en el navegador y la analítica de la
 web es opcional: solo se activa si la persona la acepta. Los datos compartidos por WhatsApp se
 usan únicamente para gestionar el pedido. El detalle está en la
-[política de privacidad](https://chiclove-ec.github.io/privacy.md).
+[política de privacidad](https://chiclove-ec.com/privacy.md).
 
 ## Contacto
 
@@ -840,23 +840,23 @@ Para cualquier consulta sobre un pedido, una devolución o estos términos: What
 
 ## Enlaces
 
-- [Información de la empresa](https://chiclove-ec.github.io/about.md)
-- [Contacto y atención al cliente](https://chiclove-ec.github.io/contact.md)
-- [Política de privacidad](https://chiclove-ec.github.io/privacy.md)
-- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
-- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
-- [Versión HTML de esta página](https://chiclove-ec.github.io/terms.html)
+- [Información de la empresa](https://chiclove-ec.com/about.md)
+- [Contacto y atención al cliente](https://chiclove-ec.com/contact.md)
+- [Política de privacidad](https://chiclove-ec.com/privacy.md)
+- [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Índice para agentes](https://chiclove-ec.com/llms.txt)
+- [Versión HTML de esta página](https://chiclove-ec.com/terms.html)
 
 Última revisión: 7 de septiembre de 2026.
 
 ---
 
-<!-- source: https://chiclove-ec.github.io/nosotros.md -->
+<!-- source: https://chiclove-ec.com/nosotros.md -->
 
 # Nuestra historia — Chic&Love Ecuador
 
 > El origen de Chic&Love, su filosofía de wellness y el respaldo de Laboratorios Lira en Ecuador.
-> Versión markdown de https://chiclove-ec.github.io/nosotros.html
+> Versión markdown de https://chiclove-ec.com/nosotros.html
 
 ## Filosofía
 
@@ -890,11 +890,11 @@ exclusivo de Chic&Love en Ecuador**.
 
 ## Enlaces
 
-- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
-- [Información de la empresa](https://chiclove-ec.github.io/about.md)
-- [Contacto](https://chiclove-ec.github.io/contact.md)
-- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
-- [Versión HTML de esta página](https://chiclove-ec.github.io/nosotros.html)
+- [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Información de la empresa](https://chiclove-ec.com/about.md)
+- [Contacto](https://chiclove-ec.com/contact.md)
+- [Índice para agentes](https://chiclove-ec.com/llms.txt)
+- [Versión HTML de esta página](https://chiclove-ec.com/nosotros.html)
 
 ---
 

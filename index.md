@@ -12,13 +12,13 @@ consentimiento.
 
 ## Colección
 
-- [Hair & Nails Forte](https://chiclove-ec.github.io/hair-nails-forte.md): Cabello más fuerte. Uñas de acero. Cabello y uñas, sabor arándanos, $29.99.
-- [Radiant Skin Vitamins](https://chiclove-ec.github.io/radiant-skin.md): Tu piel, en modo glow. Piel radiante, sabor frutos rojos, $18.00.
-- [Vinagre de Manzana](https://chiclove-ec.github.io/vinagre-de-manzana.md): Digestión ligera. Digestión y balance, sabor manzana, $29.99.
-- [Sleep Vitamins](https://chiclove-ec.github.io/sleep-vitamins.md): Duerme profundo. Despierta increíble. Sueño reparador, sabor fresa, $29.99.
-- [Sexual Booster Women](https://chiclove-ec.github.io/sexual-booster-women.md): Enciende tu energía. Energía íntima, sabor cereza, $29.99.
-- [Sexual Booster Men](https://chiclove-ec.github.io/sexual-booster-men.md): Rendimiento al máximo. Energía íntima, sabor cereza, $29.99.
-- [Anti-Stress Gummies](https://chiclove-ec.github.io/anti-stress.md): Serenidad para días intensos. Calma y enfoque, sabor naranja, $29.99.
+- [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte.md): Cabello más fuerte. Uñas de acero. Cabello y uñas, sabor arándanos, $29.99.
+- [Radiant Skin Vitamins](https://chiclove-ec.com/radiant-skin.md): Tu piel, en modo glow. Piel radiante, sabor frutos rojos, $18.00.
+- [Vinagre de Manzana](https://chiclove-ec.com/vinagre-de-manzana.md): Digestión ligera. Digestión y balance, sabor manzana, $29.99.
+- [Sleep Vitamins](https://chiclove-ec.com/sleep-vitamins.md): Duerme profundo. Despierta increíble. Sueño reparador, sabor fresa, $29.99.
+- [Sexual Booster Women](https://chiclove-ec.com/sexual-booster-women.md): Enciende tu energía. Energía íntima, sabor cereza, $29.99.
+- [Sexual Booster Men](https://chiclove-ec.com/sexual-booster-men.md): Rendimiento al máximo. Energía íntima, sabor cereza, $29.99.
+- [Anti-Stress Gummies](https://chiclove-ec.com/anti-stress.md): Serenidad para días intensos. Calma y enfoque, sabor naranja, $29.99.
 
 ## Preguntas frecuentes
 
@@ -39,13 +39,13 @@ consentimiento.
 
 ## Páginas
 
-- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
-- [Información de la empresa](https://chiclove-ec.github.io/about.md)
-- [Contacto y atención al cliente](https://chiclove-ec.github.io/contact.md)
-- [Política de privacidad](https://chiclove-ec.github.io/privacy.md)
-- [Términos de compra](https://chiclove-ec.github.io/terms.md)
-- [Nuestra historia](https://chiclove-ec.github.io/nosotros.md)
-- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
+- [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Información de la empresa](https://chiclove-ec.com/about.md)
+- [Contacto y atención al cliente](https://chiclove-ec.com/contact.md)
+- [Política de privacidad](https://chiclove-ec.com/privacy.md)
+- [Términos de compra](https://chiclove-ec.com/terms.md)
+- [Nuestra historia](https://chiclove-ec.com/nosotros.md)
+- [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
 ---
 

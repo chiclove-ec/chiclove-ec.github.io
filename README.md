@@ -4,7 +4,7 @@
 [![Deploy](https://github.com/chiclove-ec/chiclove-ec.github.io/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/chiclove-ec/chiclove-ec.github.io/actions/workflows/deploy-pages.yml)
 
 Sitio estático (HTML/CSS/JS vanilla, sin dependencias de runtime ni de build) para la marca de
-gummies de vitaminas **Chic&Love Ecuador** — <https://chiclove-ec.github.io>.
+gummies de vitaminas **Chic&Love Ecuador** — <https://chiclove-ec.com>.
 Diseño minimalista/futurista inspirado en lusetabeauty.com.
 
 Sin backend: el catálogo vive en un archivo, el carrito en `localStorage` y el pedido se
@@ -289,8 +289,8 @@ salen de **un solo sitio**, [`site.config.json`](site.config.json):
 
 ```json
 {
-  "canonicalOrigin": "https://chiclove-ec.github.io",
-  "sourceOrigin": "https://chiclove-ec.github.io",
+  "canonicalOrigin": "https://chiclove-ec.com",
+  "sourceOrigin": "https://chiclove-ec.com",
   "cloudflare": { "projectName": "chiclove-ec", "productionBranch": "main" }
 }
 ```
@@ -310,7 +310,7 @@ aquí, y una prueba falla si alguien lo vuelve a incrustar.
 Cambia `canonicalOrigin` y despliega. Nada más:
 
 ```json
-{ "canonicalOrigin": "https://chiclove.ec", "sourceOrigin": "https://chiclove-ec.github.io", ... }
+{ "canonicalOrigin": "https://chiclove.ec", "sourceOrigin": "https://chiclove-ec.com", ... }
 ```
 
 A partir de ese commit **todos** los hosts publican el sitio declarando el
@@ -339,7 +339,7 @@ npm run gen && npm run check                          # regenerar y comprobar
 Deja `sourceOrigin` y `canonicalOrigin` iguales otra vez. Ojo con dos cosas que
 el script ya resuelve: el dominio aparece también **como host suelto** en texto
 visible (la ficha de empresa de `/about`, el mensaje del 404), y las URLs de
-`github.com` **no** se mudan — el repositorio se llama `chiclove-ec.github.io`
+`github.com` **no** se mudan — el repositorio se llama `chiclove-ec.com`
 y seguirá llamándose así.
 
 Después del cambio quedan dos pasos fuera del repositorio: apuntar el DNS y, en
@@ -366,7 +366,7 @@ Cloudflare.
 | Ajuste | Valor |
 |---|---|
 | Proyecto | `chiclove-ec` (el de `cloudflare.projectName`; `wrangler.toml` debe coincidir) |
-| Repositorio | `chiclove-ec/chiclove-ec.github.io`, rama de producción `main` |
+| Repositorio | `chiclove-ec/chiclove-ec.com`, rama de producción `main` |
 | Framework preset | *None* |
 | Comando de build | `npm test && npm run build:cloudflare` |
 | Directorio de salida | `dist` |
@@ -414,7 +414,7 @@ proveedores; todos publican el mismo `dist/`:
 Sustituye el dominio por el que acabes de publicar:
 
 ```bash
-SITE=https://chiclove-ec.github.io
+SITE=https://chiclove-ec.com
 
 # Lo público responde 200
 for p in / /tienda.html /about /contact /privacy /llms.txt /agents.md /llms-full.txt /tienda.md; do

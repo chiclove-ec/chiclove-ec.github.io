@@ -1,7 +1,7 @@
 # Información de la empresa — Chic&Love Ecuador
 
 > Datos verificables de Chic&Love Ecuador: qué vendemos, dónde estamos, cómo se compra y
-> quién nos respalda. Versión markdown de https://chiclove-ec.github.io/about.html
+> quién nos respalda. Versión markdown de https://chiclove-ec.com/about.html
 
 ## Qué es Chic&Love Ecuador
 
@@ -33,7 +33,7 @@ fundado en 1977 y distribuidor oficial de Chic&Love en el país.
 - **Teléfonos:** +593 2 237 9285 / +593 2 237 6425
 - **Moneda y pago:** dólar estadounidense (USD), transferencia bancaria
 - **Idioma de atención:** español (es-EC)
-- **Sitio oficial:** https://chiclove-ec.github.io/
+- **Sitio oficial:** https://chiclove-ec.com/
 
 ## Cómo se compra
 
@@ -48,7 +48,7 @@ de entrega y datos para la transferencia. La web no procesa pagos con tarjeta.
   pedido se puede revisar el total de la compra.
 - Devolución o cambio dentro de los 15 días posteriores a recibir el pedido, con el frasco
   cerrado y su sello intacto. Detalle en
-  [/terms.md](https://chiclove-ec.github.io/terms.md).
+  [/terms.md](https://chiclove-ec.com/terms.md).
 
 ## Qué no hacemos
 
@@ -58,19 +58,19 @@ de entrega y datos para la transferencia. La web no procesa pagos con tarjeta.
   lactancia o medicación, hay que consultar a un profesional.
 - No recogemos correos ni pedimos datos personales en el sitio. La analítica de uso es opcional:
   solo se carga con consentimiento y no incluye nombres, teléfonos ni el contenido del carrito
-  (ver [/privacy.md](https://chiclove-ec.github.io/privacy.md)).
+  (ver [/privacy.md](https://chiclove-ec.com/privacy.md)).
 - No hay pasarela de pago en el sitio: ninguna página pide datos de tarjeta.
 
 ## Enlaces
 
-- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
-- [Instrucciones para agentes](https://chiclove-ec.github.io/agents.md)
-- [Contenido completo del sitio en markdown](https://chiclove-ec.github.io/llms-full.txt)
-- [Contacto y atención al cliente](https://chiclove-ec.github.io/contact.md)
-- [Política de privacidad](https://chiclove-ec.github.io/privacy.md)
-- [Términos de compra](https://chiclove-ec.github.io/terms.md)
-- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
-- [Nuestra historia](https://chiclove-ec.github.io/nosotros.md)
-- [Versión HTML de esta página](https://chiclove-ec.github.io/about.html)
+- [Índice para agentes](https://chiclove-ec.com/llms.txt)
+- [Instrucciones para agentes](https://chiclove-ec.com/agents.md)
+- [Contenido completo del sitio en markdown](https://chiclove-ec.com/llms-full.txt)
+- [Contacto y atención al cliente](https://chiclove-ec.com/contact.md)
+- [Política de privacidad](https://chiclove-ec.com/privacy.md)
+- [Términos de compra](https://chiclove-ec.com/terms.md)
+- [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Nuestra historia](https://chiclove-ec.com/nosotros.md)
+- [Versión HTML de esta página](https://chiclove-ec.com/about.html)
 
 Última revisión: 7 de septiembre de 2026.

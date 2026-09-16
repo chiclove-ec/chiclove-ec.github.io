@@ -3,7 +3,7 @@
 ## Alcance
 
 Este repositorio contiene el sitio web estático de **Chic&Love Ecuador**
-(<https://chiclove-ec.github.io>). No hay backend, base de datos ni cuentas de
+(<https://chiclove-ec.com>). No hay backend, base de datos ni cuentas de
 usuario: el sitio se sirve como archivos estáticos y el pedido se entrega por
 WhatsApp cuando la persona pulsa el botón de checkout.
 

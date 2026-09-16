@@ -1,7 +1,7 @@
 # Chic&Love Ecuador
-# Índice para agentes: https://chiclove-ec.github.io/llms.txt
-# Instrucciones para agentes: https://chiclove-ec.github.io/agents.md
-# Contenido completo en markdown: https://chiclove-ec.github.io/llms-full.txt
+# Índice para agentes: https://chiclove-ec.com/llms.txt
+# Instrucciones para agentes: https://chiclove-ec.com/agents.md
+# Contenido completo en markdown: https://chiclove-ec.com/llms-full.txt
 # Cada página HTML tiene un gemelo markdown en la misma ruta con extensión .md
 
 User-agent: *
@@ -59,4 +59,4 @@ Allow: /
 User-agent: YouBot
 Allow: /
 
-Sitemap: https://chiclove-ec.github.io/sitemap.xml
+Sitemap: https://chiclove-ec.com/sitemap.xml

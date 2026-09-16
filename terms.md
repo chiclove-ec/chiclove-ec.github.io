@@ -2,7 +2,7 @@
 
 > Condiciones de venta de Chic&Love Ecuador: identidad del distribuidor, precios con IVA,
 > pedidos por WhatsApp, pago por transferencia, envíos y devoluciones dentro de 15 días.
-> Versión markdown de https://chiclove-ec.github.io/terms.html
+> Versión markdown de https://chiclove-ec.com/terms.html
 
 ## Quiénes somos
 
@@ -76,7 +76,7 @@ El responsable del tratamiento es LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONE
 (Laboratorios Lira S.A.), RUC 1790336352001. El carrito vive en el navegador y la analítica de la
 web es opcional: solo se activa si la persona la acepta. Los datos compartidos por WhatsApp se
 usan únicamente para gestionar el pedido. El detalle está en la
-[política de privacidad](https://chiclove-ec.github.io/privacy.md).
+[política de privacidad](https://chiclove-ec.com/privacy.md).
 
 ## Contacto
 
@@ -86,11 +86,11 @@ Para cualquier consulta sobre un pedido, una devolución o estos términos: What
 
 ## Enlaces
 
-- [Información de la empresa](https://chiclove-ec.github.io/about.md)
-- [Contacto y atención al cliente](https://chiclove-ec.github.io/contact.md)
-- [Política de privacidad](https://chiclove-ec.github.io/privacy.md)
-- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
-- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
-- [Versión HTML de esta página](https://chiclove-ec.github.io/terms.html)
+- [Información de la empresa](https://chiclove-ec.com/about.md)
+- [Contacto y atención al cliente](https://chiclove-ec.com/contact.md)
+- [Política de privacidad](https://chiclove-ec.com/privacy.md)
+- [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Índice para agentes](https://chiclove-ec.com/llms.txt)
+- [Versión HTML de esta página](https://chiclove-ec.com/terms.html)
 
 Última revisión: 7 de septiembre de 2026.

@@ -2,7 +2,7 @@
 
 > Tienda oficial en Ecuador de Chic&Love: complementos alimenticios en formato gummy.
 > Este archivo dice para qué sirve el sitio, cómo leerlo y qué no esperar de él.
-> Índice completo en https://chiclove-ec.github.io/llms.txt
+> Índice completo en https://chiclove-ec.com/llms.txt
 
 ## Identidad
 
@@ -40,21 +40,21 @@
   `<link rel="alternate" type="text/markdown">`.
 - **El alojamiento actual (GitHub Pages) no negocia por cabecera `Accept`**: pedir
   `Accept: text/markdown` devolverá HTML. Pide directamente la URL `.md`.
-- [/llms-full.txt](https://chiclove-ec.github.io/llms-full.txt) trae todo el contenido markdown del sitio
+- [/llms-full.txt](https://chiclove-ec.com/llms-full.txt) trae todo el contenido markdown del sitio
   en un solo archivo, útil para cargarlo de una sola vez.
 - Las rutas inexistentes devuelven un 404 real (nunca un 200 con la aplicación), con
-  enlaces de recuperación; su versión markdown es [/404.md](https://chiclove-ec.github.io/404.md).
+  enlaces de recuperación; su versión markdown es [/404.md](https://chiclove-ec.com/404.md).
 
 ## Precisión y frescura
 
 - La fuente única de precios y fichas es el catálogo del sitio; los markdown se generan
   desde él. Si un dato difiere entre HTML y markdown, gana el markdown.
 - Los precios publicados incluyen IVA y son los vigentes en la tienda.
-- Al citar, enlaza a la URL canónica en HTML (por ejemplo https://chiclove-ec.github.io/tienda.html).
+- Al citar, enlaza a la URL canónica en HTML (por ejemplo https://chiclove-ec.com/tienda.html).
 
 ## Mapa rápido
 
-- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
-- [Portada](https://chiclove-ec.github.io/index.md), [Catálogo](https://chiclove-ec.github.io/tienda.md)
-- [Empresa](https://chiclove-ec.github.io/about.md), [Contacto](https://chiclove-ec.github.io/contact.md), [Privacidad](https://chiclove-ec.github.io/privacy.md), [Términos](https://chiclove-ec.github.io/terms.md), [Historia](https://chiclove-ec.github.io/nosotros.md)
-- [Mapa del sitio](https://chiclove-ec.github.io/sitemap.xml), [robots.txt](https://chiclove-ec.github.io/robots.txt)
+- [Índice para agentes](https://chiclove-ec.com/llms.txt)
+- [Portada](https://chiclove-ec.com/index.md), [Catálogo](https://chiclove-ec.com/tienda.md)
+- [Empresa](https://chiclove-ec.com/about.md), [Contacto](https://chiclove-ec.com/contact.md), [Privacidad](https://chiclove-ec.com/privacy.md), [Términos](https://chiclove-ec.com/terms.md), [Historia](https://chiclove-ec.com/nosotros.md)
+- [Mapa del sitio](https://chiclove-ec.com/sitemap.xml), [robots.txt](https://chiclove-ec.com/robots.txt)

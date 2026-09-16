@@ -5,4 +5,4 @@ Contact: https://www.instagram.com/chicloveec
 Contact: mailto:ventas@laboratorioslira.com
 Expires: 2027-07-19T00:00:00.000Z
 Preferred-Languages: es, en
-Canonical: https://chiclove-ec.github.io/.well-known/security.txt
+Canonical: https://chiclove-ec.com/.well-known/security.txt

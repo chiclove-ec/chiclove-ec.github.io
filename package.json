@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "Sitio est\u00e1tico de Chic&Love Ecuador: cat\u00e1logo de gummies de vitaminas, checkout por WhatsApp y capa de contenido para agentes.",
-  "homepage": "https://chiclove-ec.github.io",
+  "homepage": "https://chiclove-ec.com",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chiclove-ec/chiclove-ec.github.io.git"

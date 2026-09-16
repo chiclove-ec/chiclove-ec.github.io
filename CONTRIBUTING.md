@@ -50,7 +50,7 @@ Detalles que hay que tener presentes y que las pruebas ya vigilan:
 - El dominio aparece también **como host suelto** en texto visible (la ficha de
   empresa de `/about`, el mensaje del 404), no solo como `https://…`.
 - Las URLs de **`github.com` no se mudan**: el repositorio se llama
-  `chiclove-ec.github.io` y seguirá llamándose así aunque el sitio cambie de
+  `chiclove-ec.com` y seguirá llamándose así aunque el sitio cambie de
   dominio. `rewriteOrigin` las aparta a propósito.
 
 El procedimiento completo está en la sección *El dominio del sitio* del README.

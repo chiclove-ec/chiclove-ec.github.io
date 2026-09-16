@@ -3,7 +3,7 @@
 > Tu privacidad importa. La analítica de esta web es opcional y solo se activa si tú la aceptas.
 > Puedes cambiar tu elección cuando quieras. El carrito vive en el navegador y solo tratamos los
 > datos que la persona envía por WhatsApp para gestionar su pedido.
-> Versión markdown de https://chiclove-ec.github.io/privacy.html
+> Versión markdown de https://chiclove-ec.com/privacy.html
 
 ## Responsable del tratamiento
 
@@ -63,7 +63,7 @@ lo cancelamos.
 
 El sitio se sirve por HTTPS y aplica una política de seguridad de contenido que limita los scripts
 y conexiones a los proveedores de analítica habilitados. Los canales para reportar vulnerabilidades están publicados en
-https://chiclove-ec.github.io/.well-known/security.txt
+https://chiclove-ec.com/.well-known/security.txt
 
 ## Cambios en esta política
 
@@ -73,10 +73,10 @@ escribió.
 
 ## Enlaces
 
-- [Contacto y atención al cliente](https://chiclove-ec.github.io/contact.md)
-- [Información de la empresa](https://chiclove-ec.github.io/about.md)
-- [Términos de compra](https://chiclove-ec.github.io/terms.md)
-- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
-- [Versión HTML de esta página](https://chiclove-ec.github.io/privacy.html)
+- [Contacto y atención al cliente](https://chiclove-ec.com/contact.md)
+- [Información de la empresa](https://chiclove-ec.com/about.md)
+- [Términos de compra](https://chiclove-ec.com/terms.md)
+- [Índice para agentes](https://chiclove-ec.com/llms.txt)
+- [Versión HTML de esta página](https://chiclove-ec.com/privacy.html)
 
 Última revisión: 7 de septiembre de 2026.

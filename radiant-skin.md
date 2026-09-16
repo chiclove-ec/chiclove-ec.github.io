@@ -23,7 +23,7 @@ Tu carrito se prepara directamente en tu navegador. Cuando pulsas «Finalizar pe
 continúas en WhatsApp con el detalle de tu compra listo para enviar. Allí confirmamos
 disponibilidad, dirección de entrega y datos para la transferencia. La web no procesa pagos
 con tarjeta. Los precios publicados incluyen IVA y son los vigentes en la tienda. Antes de
-confirmar tu pedido podrás revisar el total de tu compra. Ver [/contact.md](https://chiclove-ec.github.io/contact.md).
+confirmar tu pedido podrás revisar el total de tu compra. Ver [/contact.md](https://chiclove-ec.com/contact.md).
 
 **Devoluciones y cambios:** puedes solicitarlos dentro de los 15 días posteriores a recibir
 tu pedido, siempre que el producto esté en el mismo estado en que lo recibiste. Por seguridad
@@ -33,9 +33,9 @@ solucionarlo.
 
 ## Enlaces
 
-- [Página del producto](https://chiclove-ec.github.io/radiant-skin.html)
-- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
-- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
+- [Página del producto](https://chiclove-ec.com/radiant-skin.html)
+- [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
 ---
 

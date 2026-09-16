@@ -27,16 +27,16 @@
   document.title = product.name + " — Chic&Love Ecuador";
   var pdDescription = document.getElementById("pd-description");
   if (pdDescription) pdDescription.content = product.desc + " Sabor " + product.flavor.toLowerCase() + ", 60 gummies. Envíos a todo Ecuador.";
-  var canonicalUrl = "https://chiclove-ec.github.io/" + product.id + ".html";
+  var canonicalUrl = "https://chiclove-ec.com/" + product.id + ".html";
   document.getElementById("pd-canonical").href = canonicalUrl;
   document.getElementById("pd-og-title").content = product.name + " — Chic&Love Ecuador";
   document.getElementById("pd-og-description").content = product.tagline + " " + product.desc;
   document.getElementById("pd-og-url").content = canonicalUrl;
-  document.getElementById("pd-og-image").content = "https://chiclove-ec.github.io/" + product.hero;
+  document.getElementById("pd-og-image").content = "https://chiclove-ec.com/" + product.hero;
   var pdOgImageAlt = document.getElementById("pd-og-image-alt");
   if (pdOgImageAlt) pdOgImageAlt.content = "Frasco de " + product.name;
   var pdTwImage = document.getElementById("pd-tw-image");
-  if (pdTwImage) pdTwImage.content = "https://chiclove-ec.github.io/" + product.hero;
+  if (pdTwImage) pdTwImage.content = "https://chiclove-ec.com/" + product.hero;
 
   // Textos (todo con textContent: cero riesgo de inyección)
   document.getElementById("pd-crumb").textContent = product.name;

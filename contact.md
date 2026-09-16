@@ -2,7 +2,7 @@
 
 > Cómo contactar a Chic&Love Ecuador: WhatsApp +593 98 759 1741, Instagram @chicloveec y
 > ubicación en Quito. Atención en español para todo el país.
-> Versión markdown de https://chiclove-ec.github.io/contact.html
+> Versión markdown de https://chiclove-ec.com/contact.html
 
 ## Canales oficiales
 
@@ -18,7 +18,7 @@ dinero.
 - **Distribuidor:** LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A.
   (Laboratorios Lira S.A.), RUC 1790336352001
 - **Cobertura:** envíos a todo Ecuador, atención en español
-- **Reporte de seguridad:** https://chiclove-ec.github.io/.well-known/security.txt
+- **Reporte de seguridad:** https://chiclove-ec.com/.well-known/security.txt
 
 Respondemos los mensajes en horario laboral de Ecuador (GMT-5). No hay tienda física de atención
 al público: la venta y el seguimiento se hacen por WhatsApp.
@@ -33,7 +33,7 @@ al público: la venta y el seguimiento se hacen por WhatsApp.
 - **Pedido incompleto o dañado:** escribir por WhatsApp con una foto del paquete.
 - **Devoluciones y cambios:** 15 días desde que se recibe el pedido (ver abajo).
 - **Mayoristas, spas y farmacias:** escribir por WhatsApp indicando negocio y ciudad.
-- **Privacidad y datos:** ver la [política de privacidad](https://chiclove-ec.github.io/privacy.md)
+- **Privacidad y datos:** ver la [política de privacidad](https://chiclove-ec.com/privacy.md)
   y escribir por el mismo canal.
 
 ## Cómo termina un pedido
@@ -55,14 +55,14 @@ Queremos que compres con tranquilidad. Puedes solicitar una devolución o cambio
 estado en que lo recibiste. Por seguridad e higiene, el frasco debe permanecer cerrado y con su
 sello intacto. Si recibes un producto dañado, incompleto o diferente al que pediste, escríbenos por
 WhatsApp y nos encargaremos de solucionarlo. Las condiciones completas están en los
-[términos de compra](https://chiclove-ec.github.io/terms.md).
+[términos de compra](https://chiclove-ec.com/terms.md).
 
 ## Enlaces
 
-- [Índice para agentes](https://chiclove-ec.github.io/llms.txt)
-- [Información de la empresa](https://chiclove-ec.github.io/about.md)
-- [Catálogo completo](https://chiclove-ec.github.io/tienda.md)
-- [Términos de compra](https://chiclove-ec.github.io/terms.md)
-- [Versión HTML de esta página](https://chiclove-ec.github.io/contact.html)
+- [Índice para agentes](https://chiclove-ec.com/llms.txt)
+- [Información de la empresa](https://chiclove-ec.com/about.md)
+- [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Términos de compra](https://chiclove-ec.com/terms.md)
+- [Versión HTML de esta página](https://chiclove-ec.com/contact.html)
 
 Última revisión: 7 de septiembre de 2026.
