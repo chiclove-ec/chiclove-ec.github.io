@@ -19,7 +19,7 @@ Cabello más fuerte. Uñas de acero. La fórmula forte con biotina, ashwagandha 
 - **Dosis:** 2 gummies al día después de la comida.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Biotina, Vitamina B12, Ácido fólico, Vitamina A, Vitamina D, Ashwagandha, Zinc
-- **Ficha completa:** [hair-nails-forte.md](https://chiclove-ec.com/hair-nails-forte.md), [versión HTML](https://chiclove-ec.com/hair-nails-forte.html)
+- **Ficha completa:** [hair-nails-forte.md](https://chiclove-ec.com/hair-nails-forte.md), [versión HTML](https://chiclove-ec.com/hair-nails-forte)
 
 ## Radiant Skin Vitamins
 
@@ -31,7 +31,7 @@ Tu piel, en modo glow. Colágeno, coenzima Q10 y biotina en una gummy que ilumin
 - **Dosis:** 2 gummies al día después de la comida.
 - **Distintivos:** Sin gluten, Sin lactosa
 - **Activos:** Colágeno, Coenzima Q10, Biotina, Vitamina C, Vitamina E
-- **Ficha completa:** [radiant-skin.md](https://chiclove-ec.com/radiant-skin.md), [versión HTML](https://chiclove-ec.com/radiant-skin.html)
+- **Ficha completa:** [radiant-skin.md](https://chiclove-ec.com/radiant-skin.md), [versión HTML](https://chiclove-ec.com/radiant-skin)
 
 ## Vinagre de Manzana
 
@@ -43,7 +43,7 @@ Digestión ligera. Vinagre de manzana con extracto de jengibre: glucosa estable,
 - **Dosis:** 2 gummies en ayunas, o 1 gummy después de la comida.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Vinagre de manzana, Extracto de jengibre
-- **Ficha completa:** [vinagre-de-manzana.md](https://chiclove-ec.com/vinagre-de-manzana.md), [versión HTML](https://chiclove-ec.com/vinagre-de-manzana.html)
+- **Ficha completa:** [vinagre-de-manzana.md](https://chiclove-ec.com/vinagre-de-manzana.md), [versión HTML](https://chiclove-ec.com/vinagre-de-manzana)
 
 ## Sleep Vitamins
 
@@ -55,7 +55,7 @@ Duerme profundo. Despierta increíble. Melatonina + vitamina B6 para conciliar e
 - **Dosis:** 1–3 gummies al día antes de dormir según tu patrón de sueño.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Melatonina, Vitamina B6
-- **Ficha completa:** [sleep-vitamins.md](https://chiclove-ec.com/sleep-vitamins.md), [versión HTML](https://chiclove-ec.com/sleep-vitamins.html)
+- **Ficha completa:** [sleep-vitamins.md](https://chiclove-ec.com/sleep-vitamins.md), [versión HTML](https://chiclove-ec.com/sleep-vitamins)
 
 ## Sexual Booster Women
 
@@ -67,7 +67,7 @@ Enciende tu energía. Maca y damiana 100% naturales que estabilizan tus canales 
 - **Dosis:** 2 gummies al día después del desayuno.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Maca, Damiana, Ashwagandha
-- **Ficha completa:** [sexual-booster-women.md](https://chiclove-ec.com/sexual-booster-women.md), [versión HTML](https://chiclove-ec.com/sexual-booster-women.html)
+- **Ficha completa:** [sexual-booster-women.md](https://chiclove-ec.com/sexual-booster-women.md), [versión HTML](https://chiclove-ec.com/sexual-booster-women)
 
 ## Sexual Booster Men
 
@@ -79,7 +79,7 @@ Rendimiento al máximo. Maca y fenogreco para mejorar el rendimiento, la calidad
 - **Dosis:** 2 gummies al día después del desayuno.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Maca, Fenogreco, Zinc, L-arginina
-- **Ficha completa:** [sexual-booster-men.md](https://chiclove-ec.com/sexual-booster-men.md), [versión HTML](https://chiclove-ec.com/sexual-booster-men.html)
+- **Ficha completa:** [sexual-booster-men.md](https://chiclove-ec.com/sexual-booster-men.md), [versión HTML](https://chiclove-ec.com/sexual-booster-men)
 
 ## Anti-Stress Gummies
 
@@ -91,7 +91,7 @@ Serenidad para días intensos. Ashwagandha, melisa y ginseng que regulan el cort
 - **Dosis:** 2 gummies al día durante períodos altos de estrés y/o ansiedad.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Ashwagandha, Melisa, Ginseng
-- **Ficha completa:** [anti-stress.md](https://chiclove-ec.com/anti-stress.md), [versión HTML](https://chiclove-ec.com/anti-stress.html)
+- **Ficha completa:** [anti-stress.md](https://chiclove-ec.com/anti-stress.md), [versión HTML](https://chiclove-ec.com/anti-stress)
 
 ## Enlaces
 

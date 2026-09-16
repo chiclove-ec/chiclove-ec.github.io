@@ -1,4 +1,5 @@
 import { loadCatalog } from "./catalog.mjs";
+import { pagePath } from "./site-config.mjs";
 
 const catalog = loadCatalog();
 
@@ -11,7 +12,7 @@ function escapeHtml(value) {
 }
 
 function productUrl(product, baseUrl) {
-  return String(baseUrl || "") + encodeURIComponent(product.id) + ".html";
+  return String(baseUrl || "") + encodeURIComponent(pagePath(product.id + ".html"));
 }
 
 export function renderProductCard(product, { page = "home", headingLevel = 3, baseUrl = "" } = {}) {

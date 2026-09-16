@@ -7,7 +7,7 @@ import { test } from "node:test";
 
 import { loadCatalog, projectRoot } from "../scripts/lib/catalog.mjs";
 import { renderProductCard } from "../scripts/lib/product-card.mjs";
-import { loadSiteConfig } from "../scripts/lib/site-config.mjs";
+import { loadSiteConfig, pagePath } from "../scripts/lib/site-config.mjs";
 import { MARKDOWN_TWINS } from "../scripts/lib/markdown-negotiation.mjs";
 import { loadPublicFiles } from "./public-files.mjs";
 
@@ -32,7 +32,7 @@ test("el serializador publica una tarjeta de tienda completa y segura", () => {
   });
 
   assert.match(card, new RegExp('data-product-id="' + escapeRegExp(product.id) + '"'));
-  assert.match(card, new RegExp('href="' + escapeRegExp(BASE + product.id + ".html") + '"'));
+  assert.match(card, new RegExp('href="' + escapeRegExp(BASE + pagePath(product.id + ".html")) + '"'));
   assert.ok(card.includes(escapeHtml(product.name)), "nombre");
   assert.ok(card.includes(product.flavor), "sabor");
   assert.match(card, /60 gummies/i, "cantidad");
@@ -51,7 +51,7 @@ test("la portada y la tienda publican una tarjeta inicial completa por producto"
 
     cards.forEach((card, index) => {
       const product = catalog.CL_PRODUCTS[index];
-      const canonical = BASE + product.id + ".html";
+      const canonical = BASE + pagePath(product.id + ".html");
       assert.match(card, new RegExp('data-product-id="' + escapeRegExp(product.id) + '"'));
       assert.match(card, new RegExp('href="' + escapeRegExp(canonical) + '"'));
       assert.ok(card.includes(escapeHtml(product.name)), `${page}/${product.id}: nombre`);
@@ -73,7 +73,7 @@ test("todas las páginas indexables declaran idioma, indexación, canónica y ge
     const html = read(page);
     assert.match(html, /^<html lang="es-EC">/m, `${page}: idioma regional`);
     assert.match(html, /<meta name="robots" content="index,follow(?:,[^"]*)?">/, `${page}: robots indexable`);
-    const canonical = BASE + (page === "index.html" ? "" : page);
+    const canonical = BASE + pagePath(page);
     assert.match(html, new RegExp('<link rel="canonical"[^>]*href="' + escapeRegExp(canonical) + '"'));
     assert.match(
       html,

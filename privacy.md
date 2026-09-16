@@ -3,7 +3,7 @@
 > Tu privacidad importa. La analítica de esta web es opcional y solo se activa si tú la aceptas.
 > Puedes cambiar tu elección cuando quieras. El carrito vive en el navegador y solo tratamos los
 > datos que la persona envía por WhatsApp para gestionar su pedido.
-> Versión markdown de https://chiclove-ec.com/privacy.html
+> Versión markdown de https://chiclove-ec.com/privacy
 
 ## Responsable del tratamiento
 
@@ -77,6 +77,6 @@ escribió.
 - [Información de la empresa](https://chiclove-ec.com/about.md)
 - [Términos de compra](https://chiclove-ec.com/terms.md)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
-- [Versión HTML de esta página](https://chiclove-ec.com/privacy.html)
+- [Versión HTML de esta página](https://chiclove-ec.com/privacy)
 
 Última revisión: 7 de septiembre de 2026.

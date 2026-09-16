@@ -10,7 +10,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 import { loadCatalog, projectRoot as root } from "./lib/catalog.mjs";
-import { loadSiteConfig } from "./lib/site-config.mjs";
+import { loadSiteConfig, pagePath } from "./lib/site-config.mjs";
 
 // El dominio sale de site.config.json; el build lo reescribe si se publica en otro.
 const siteConfig = loadSiteConfig();
@@ -92,12 +92,12 @@ const listItems = (image) =>
       description: product.tagline + " " + product.desc,
       sku: product.id,
       image: image(product),
-      url: BASE + product.id + ".html",
+      url: BASE + pagePath(product.id + ".html"),
       category: product.goalLabel,
       brand: { "@type": "Brand", name: "Chic&Love" },
       offers: {
         "@type": "Offer",
-        url: BASE + product.id + ".html",
+        url: BASE + pagePath(product.id + ".html"),
         priceCurrency: "USD",
         price: clSinglePrice(product).toFixed(2),
         availability: "https://schema.org/InStock",
@@ -147,8 +147,8 @@ const storePath = resolve(root, "tienda.html");
 const storeHtml = upsertJsonLd(readFileSync(storePath, "utf8"), "CollectionPage", {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "@id": BASE + "tienda.html",
-  url: BASE + "tienda.html",
+  "@id": BASE + pagePath("tienda.html"),
+  url: BASE + pagePath("tienda.html"),
   name: "Tienda Chic&Love Ecuador — colección completa",
   inLanguage: "es-EC",
   dateModified: CONTENT_MODIFIED,
@@ -166,7 +166,7 @@ writeFileSync(storePath, storeHtml);
 
 const editorialPages = {
   "index.html": { type: "WebPage", id: BASE, name: "Chic&Love Ecuador" },
-  "nosotros.html": { type: "WebPage", id: BASE + "nosotros.html", name: "Nosotros — Chic&Love Ecuador" }
+  "nosotros.html": { type: "WebPage", id: BASE + pagePath("nosotros.html"), name: "Nosotros — Chic&Love Ecuador" }
 };
 
 for (const [file, page] of Object.entries(editorialPages)) {

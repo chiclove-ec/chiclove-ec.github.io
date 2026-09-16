@@ -1,7 +1,7 @@
 # Nuestra historia — Chic&Love Ecuador
 
 > El origen de Chic&Love, su filosofía de wellness y el respaldo de Laboratorios Lira en Ecuador.
-> Versión markdown de https://chiclove-ec.com/nosotros.html
+> Versión markdown de https://chiclove-ec.com/nosotros
 
 ## Filosofía
 
@@ -39,7 +39,7 @@ exclusivo de Chic&Love en Ecuador**.
 - [Información de la empresa](https://chiclove-ec.com/about.md)
 - [Contacto](https://chiclove-ec.com/contact.md)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
-- [Versión HTML de esta página](https://chiclove-ec.com/nosotros.html)
+- [Versión HTML de esta página](https://chiclove-ec.com/nosotros)
 
 ---
 

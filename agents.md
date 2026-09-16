@@ -36,10 +36,11 @@
 
 - Todo es HTTP GET público: sin API, sin claves, sin autenticación y sin límite de uso.
 - Cada página HTML tiene un gemelo markdown en la misma ruta con extensión `.md`
-  (`/tienda.html` → `/tienda.md`, `/about` → `/about.md`), declarado en el HTML con
+  (`/tienda` → `/tienda.md`, `/about` → `/about.md`), declarado en el HTML con
   `<link rel="alternate" type="text/markdown">`.
-- **El alojamiento actual (GitHub Pages) no negocia por cabecera `Accept`**: pedir
-  `Accept: text/markdown` devolverá HTML. Pide directamente la URL `.md`.
+- **Este dominio negocia por cabecera `Accept`**: `Accept: text/markdown` devuelve el
+  markdown en la misma URL, con `Vary: Accept`. Pedir la URL `.md` directamente también
+  funciona siempre, y es el camino seguro en cualquier espejo estático del sitio.
 - [/llms-full.txt](https://chiclove-ec.com/llms-full.txt) trae todo el contenido markdown del sitio
   en un solo archivo, útil para cargarlo de una sola vez.
 - Las rutas inexistentes devuelven un 404 real (nunca un 200 con la aplicación), con
@@ -50,7 +51,7 @@
 - La fuente única de precios y fichas es el catálogo del sitio; los markdown se generan
   desde él. Si un dato difiere entre HTML y markdown, gana el markdown.
 - Los precios publicados incluyen IVA y son los vigentes en la tienda.
-- Al citar, enlaza a la URL canónica en HTML (por ejemplo https://chiclove-ec.com/tienda.html).
+- Al citar, enlaza a la URL canónica en HTML (por ejemplo https://chiclove-ec.com/tienda).
 
 ## Mapa rápido
 

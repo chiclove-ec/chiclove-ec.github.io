@@ -6,7 +6,7 @@ import { resolve } from "node:path";
 import { test } from "node:test";
 
 import { loadCatalog, projectRoot } from "../scripts/lib/catalog.mjs";
-import { loadSiteConfig } from "../scripts/lib/site-config.mjs";
+import { loadSiteConfig, pagePath, pageFile } from "../scripts/lib/site-config.mjs";
 import { MARKDOWN_TWINS } from "../scripts/lib/markdown-negotiation.mjs";
 
 const BASE = loadSiteConfig().base;
@@ -102,7 +102,7 @@ test("los enlaces internos de llms.txt apuntan a archivos publicados", () => {
   const links = [...read("llms.txt").matchAll(pattern)];
   assert.ok(links.length >= 15, "llms.txt debe indexar el sitio");
   for (const [, url] of links) {
-    const path = url.slice(BASE.length) || "index.html";
+    const path = pageFile(url.slice(BASE.length));
     assert.ok(exists(path), `llms.txt enlaza a ${url}, que no existe en el repositorio`);
   }
 });
@@ -122,8 +122,10 @@ test("agents.md es autocontenido: identidad, cuándo usarlo y cómo leerlo", () 
   assert.match(body, /when to use this/i, "la sección debe ser localizable en inglés");
   assert.match(body, /^## .*[Cc]uándo NO usar este sitio.*$/m, "falta cuándo no usarlo");
   assert.match(body, /^## Cómo leer el sitio$/m, "falta cómo leer el sitio");
-  // El límite del alojamiento debe estar dicho: en GitHub Pages `Accept` no negocia.
-  assert.match(body, /no negocia por cabecera `Accept`/, "no advierte del límite del host");
+  // El dominio oficial (Cloudflare Pages) negocia por `Accept`; agents.md debe decirlo,
+  // y seguir ofreciendo la URL `.md` como camino que funciona en cualquier espejo.
+  assert.match(body, /negocia por cabecera `Accept`/, "no explica la negociación de contenido");
+  assert.match(body, /URL `\.md`/, "no ofrece la URL .md como alternativa");
   assert.ok(body.includes(catalog.clWhatsAppDisplay()), "falta el contacto humano");
   assert.ok(body.includes("llms-full.txt"), "no apunta al volcado completo");
 });
@@ -226,7 +228,7 @@ test("las páginas de confianza tienen título, descripción y canónica propios
     assert.match(html, /<meta name="description" content="[^"]{80,}">/, `${anchor}: descripción`);
     assert.match(
       html,
-      new RegExp('<link rel="canonical" href="' + BASE + anchor + '\\.html">'),
+      new RegExp('<link rel="canonical" href="' + BASE + pagePath(anchor + '.html') + '">'),
       `${anchor}: canónica`
     );
     assert.match(html, /application\/ld\+json/, `${anchor}: datos estructurados`);
@@ -237,7 +239,7 @@ test("todas las páginas enlazan a las páginas de confianza desde el pie", () =
   for (const page of htmlPages) {
     const html = read(page);
     for (const anchor of TRUST_ANCHORS) {
-      assert.match(html, new RegExp('href="' + anchor + '\\.html"'), `${page} no enlaza ${anchor}`);
+      assert.match(html, new RegExp('href="' + pagePath(anchor + '.html') + '"'), `${page} no enlaza ${anchor}`);
     }
   }
 });
@@ -246,7 +248,7 @@ test("todas las páginas enlazan a las páginas de confianza desde el pie", () =
 
 test("el 404 ofrece rutas de recuperación para agentes", () => {
   const html = read("404.html");
-  for (const target of ["/llms.txt", "/sitemap.xml", "/index.html", "/tienda.html", "/404.md"]) {
+  for (const target of ["/llms.txt", "/sitemap.xml", "/", "/tienda", "/404.md"]) {
     assert.match(html, new RegExp('href="' + target + '"'), `404.html no enlaza ${target}`);
   }
   assert.match(html, /<meta name="robots" content="noindex">/, "el 404 no debe indexarse");
@@ -268,15 +270,15 @@ test("el 404 ofrece rutas de recuperación para agentes", () => {
 test("el sitemap lista las páginas indexables y solo esas", () => {
   const locs = [...read("sitemap.xml").matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, url]) => url);
   for (const anchor of TRUST_ANCHORS) {
-    assert.ok(locs.includes(BASE + anchor + ".html"), `el sitemap no incluye ${anchor}.html`);
+    assert.ok(locs.includes(BASE + pagePath(anchor + ".html")), `el sitemap no incluye ${anchor}`);
   }
   for (const url of locs) {
-    const path = url.slice(BASE.length) || "index.html";
+    const path = pageFile(url.slice(BASE.length));
     assert.ok(exists(path), `el sitemap apunta a ${url}, que no existe`);
     assert.ok(!path.endsWith(".md"), "los gemelos markdown no van en el sitemap");
   }
-  assert.ok(!locs.some((url) => url.endsWith("404.html")), "el 404 no va en el sitemap");
-  assert.ok(!locs.some((url) => url.endsWith("producto.html")), "la página legacy no va en el sitemap");
+  assert.ok(!locs.some((url) => url.endsWith("404")), "el 404 no va en el sitemap");
+  assert.ok(!locs.some((url) => url.endsWith("producto")), "la página legacy no va en el sitemap");
 });
 
 test("la lista blanca del build publica todos los artefactos nuevos", () => {

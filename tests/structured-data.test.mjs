@@ -7,7 +7,7 @@ import { resolve } from "node:path";
 import { test } from "node:test";
 
 import { loadCatalog, projectRoot } from "../scripts/lib/catalog.mjs";
-import { loadSiteConfig } from "../scripts/lib/site-config.mjs";
+import { loadSiteConfig, pagePath } from "../scripts/lib/site-config.mjs";
 
 const BASE = loadSiteConfig().base;
 const catalog = loadCatalog();
@@ -93,7 +93,7 @@ test("los ItemList de portada y tienda reflejan el catálogo completo", () => {
       const entry = list.itemListElement[index];
       assert.equal(entry.position, index + 1, `${label}: posición`);
       assert.equal(entry.item.name, product.name, `${label}: nombre`);
-      assert.equal(entry.item.url, BASE + product.id + ".html", `${label}: URL`);
+      assert.equal(entry.item.url, BASE + pagePath(product.id + ".html"), `${label}: URL`);
       assert.equal(entry.item.category, product.goalLabel, `${label}: categoría`);
       assert.equal(
         entry.item.description,
@@ -142,7 +142,7 @@ test("cada página de producto publica oferta, envío y vendedor", () => {
       catalog.CL_LEGAL.returnDays,
       `${product.id}: los días de devolución deben salir del catálogo`
     );
-    assert.equal(returns.merchantReturnLink, BASE + "terms.html", `${product.id}: enlace`);
+    assert.equal(returns.merchantReturnLink, BASE + pagePath("terms.html"), `${product.id}: enlace`);
   }
 });
 
@@ -211,8 +211,8 @@ test("la navegación estructurada incluye las páginas de confianza", () => {
       [].concat(node["@type"]).includes("SiteNavigationElement")
     );
     const urls = nav.map((node) => node.url);
-    assert.ok(urls.includes(BASE + "contact.html"), `${page}: falta Contacto`);
-    assert.ok(urls.includes(BASE + "about.html"), `${page}: falta Información de la empresa`);
+    assert.ok(urls.includes(BASE + pagePath("contact.html")), `${page}: falta Contacto`);
+    assert.ok(urls.includes(BASE + pagePath("about.html")), `${page}: falta Información de la empresa`);
   }
 });
 

@@ -33,7 +33,7 @@ solucionarlo.
 
 ## Enlaces
 
-- [Página del producto](https://chiclove-ec.com/vinagre-de-manzana.html)
+- [Página del producto](https://chiclove-ec.com/vinagre-de-manzana)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
 

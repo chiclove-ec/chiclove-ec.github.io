@@ -2,7 +2,7 @@
 
 > Condiciones de venta de Chic&Love Ecuador: identidad del distribuidor, precios con IVA,
 > pedidos por WhatsApp, pago por transferencia, envíos y devoluciones dentro de 15 días.
-> Versión markdown de https://chiclove-ec.com/terms.html
+> Versión markdown de https://chiclove-ec.com/terms
 
 ## Quiénes somos
 
@@ -91,6 +91,6 @@ Para cualquier consulta sobre un pedido, una devolución o estos términos: What
 - [Política de privacidad](https://chiclove-ec.com/privacy.md)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
-- [Versión HTML de esta página](https://chiclove-ec.com/terms.html)
+- [Versión HTML de esta página](https://chiclove-ec.com/terms)
 
 Última revisión: 7 de septiembre de 2026.

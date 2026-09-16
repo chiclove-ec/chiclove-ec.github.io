@@ -2,7 +2,7 @@
 
 > Cómo contactar a Chic&Love Ecuador: WhatsApp +593 98 759 1741, Instagram @chicloveec y
 > ubicación en Quito. Atención en español para todo el país.
-> Versión markdown de https://chiclove-ec.com/contact.html
+> Versión markdown de https://chiclove-ec.com/contact
 
 ## Canales oficiales
 
@@ -63,6 +63,6 @@ WhatsApp y nos encargaremos de solucionarlo. Las condiciones completas están en
 - [Información de la empresa](https://chiclove-ec.com/about.md)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Términos de compra](https://chiclove-ec.com/terms.md)
-- [Versión HTML de esta página](https://chiclove-ec.com/contact.html)
+- [Versión HTML de esta página](https://chiclove-ec.com/contact)
 
 Última revisión: 7 de septiembre de 2026.

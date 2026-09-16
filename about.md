@@ -1,7 +1,7 @@
 # Información de la empresa — Chic&Love Ecuador
 
 > Datos verificables de Chic&Love Ecuador: qué vendemos, dónde estamos, cómo se compra y
-> quién nos respalda. Versión markdown de https://chiclove-ec.com/about.html
+> quién nos respalda. Versión markdown de https://chiclove-ec.com/about
 
 ## Qué es Chic&Love Ecuador
 
@@ -71,6 +71,6 @@ de entrega y datos para la transferencia. La web no procesa pagos con tarjeta.
 - [Términos de compra](https://chiclove-ec.com/terms.md)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Nuestra historia](https://chiclove-ec.com/nosotros.md)
-- [Versión HTML de esta página](https://chiclove-ec.com/about.html)
+- [Versión HTML de esta página](https://chiclove-ec.com/about)
 
 Última revisión: 7 de septiembre de 2026.

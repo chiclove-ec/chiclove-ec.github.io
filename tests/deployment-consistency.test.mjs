@@ -9,7 +9,7 @@ import { resolve } from "node:path";
 import { test } from "node:test";
 
 import { projectRoot } from "../scripts/lib/catalog.mjs";
-import { assertContentModified, loadSiteConfig } from "../scripts/lib/site-config.mjs";
+import { assertContentModified, loadSiteConfig, pageFile, pagePath } from "../scripts/lib/site-config.mjs";
 import { loadPublicFiles } from "./public-files.mjs";
 
 const read = (file) => readFileSync(resolve(projectRoot, file), "utf8");
@@ -36,7 +36,7 @@ test("toda página indexable declara metadatos regionales completos", () => {
   const origin = loadSiteConfig().canonicalOrigin;
   for (const page of indexablePages) {
     const html = read(page);
-    const expectedUrl = page === "index.html" ? origin + "/" : origin + "/" + page;
+    const expectedUrl = origin + "/" + pagePath(page);
     const markdown = page.replace(/\.html$/, ".md");
     assert.match(html, /<html lang="es-EC">/, `${page} no declara es-EC`);
     assert.match(html, /<meta name="author" content="Chic&amp;Love Ecuador">/, `${page} no declara autor`);
@@ -183,7 +183,7 @@ test("cada referencia interna existe en el repositorio", () => {
 test("todo lo que una página publicada referencia también se publica", () => {
   for (const page of htmlPages) {
     for (const reference of internalReferences(read(page))) {
-      const target = publicFiles.has(reference) ? reference : reference + ".html";
+      const target = publicFiles.has(reference) ? reference : pageFile(reference);
       assert.ok(
         publicFiles.has(target),
         `${page} referencia ${reference}, que falta en la lista blanca de scripts/build.mjs`

@@ -30,6 +30,36 @@ describe("endpoints publicados", () => {
   const get = (path, accept) =>
     fetch(origin + path, { headers: accept ? { Accept: accept } : {} });
 
+  // Las URLs que el sitio declara (canónicas, sitemap, JSON-LD) son limpias, sin `.html`.
+  // Esta prueba las ejerce tal cual: si alguna dejara de servirse, el sitemap estaría
+  // entregando a Google URLs muertas. En Cloudflare Pages el `.html` redirige (308) a la
+  // forma limpia, y GitHub Pages sirve las dos, así que la limpia es la única común.
+  test("cada URL del sitemap se sirve tal como se declara", async () => {
+    const sitemap = await (await get("/sitemap.xml")).text();
+    const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, url]) => url);
+    assert.ok(locs.length >= 14, "el sitemap debe listar el sitio entero");
+    for (const loc of locs) {
+      const path = new URL(loc).pathname;
+      assert.doesNotMatch(path, /\.html$/, `${path}: el sitemap no debe declarar .html`);
+      const response = await get(path, "text/html");
+      assert.equal(response.status, 200, `${path} no responde 200`);
+      assert.match(response.headers.get("content-type"), /text\/html/, `${path}: tipo`);
+    }
+  });
+
+  test("la negociación markdown funciona en las URLs limpias", async () => {
+    for (const path of ["/", "/tienda", "/about", "/anti-stress"]) {
+      const response = await get(path, "text/markdown");
+      assert.equal(response.status, 200, `${path} no responde 200`);
+      assert.match(
+        response.headers.get("content-type"),
+        /text\/markdown/,
+        `${path}: no negocia markdown en la ruta limpia`
+      );
+      assert.match(response.headers.get("vary") || "", /Accept/, `${path}: falta Vary`);
+    }
+  });
+
   test("las páginas públicas responden 200 en HTML", async () => {
     const paths = ["/", "/tienda.html", "/nosotros.html", "/about", "/contact", "/privacy"];
     for (const path of paths) {
@@ -107,7 +137,7 @@ describe("endpoints publicados", () => {
     const response = await get("/esta-ruta-no-existe", "text/html");
     assert.equal(response.status, 404);
     const body = await response.text();
-    for (const target of ["/llms.txt", "/ai.txt", "/sitemap.xml", "/tienda.html"]) {
+    for (const target of ["/llms.txt", "/ai.txt", "/sitemap.xml", "/tienda"]) {
       assert.ok(body.includes(`href="${target}"`), `el 404 no enlaza ${target}`);
     }
   });

@@ -87,7 +87,7 @@ Cabello más fuerte. Uñas de acero. La fórmula forte con biotina, ashwagandha 
 - **Dosis:** 2 gummies al día después de la comida.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Biotina, Vitamina B12, Ácido fólico, Vitamina A, Vitamina D, Ashwagandha, Zinc
-- **Ficha completa:** [hair-nails-forte.md](https://chiclove-ec.com/hair-nails-forte.md), [versión HTML](https://chiclove-ec.com/hair-nails-forte.html)
+- **Ficha completa:** [hair-nails-forte.md](https://chiclove-ec.com/hair-nails-forte.md), [versión HTML](https://chiclove-ec.com/hair-nails-forte)
 
 ## Radiant Skin Vitamins
 
@@ -99,7 +99,7 @@ Tu piel, en modo glow. Colágeno, coenzima Q10 y biotina en una gummy que ilumin
 - **Dosis:** 2 gummies al día después de la comida.
 - **Distintivos:** Sin gluten, Sin lactosa
 - **Activos:** Colágeno, Coenzima Q10, Biotina, Vitamina C, Vitamina E
-- **Ficha completa:** [radiant-skin.md](https://chiclove-ec.com/radiant-skin.md), [versión HTML](https://chiclove-ec.com/radiant-skin.html)
+- **Ficha completa:** [radiant-skin.md](https://chiclove-ec.com/radiant-skin.md), [versión HTML](https://chiclove-ec.com/radiant-skin)
 
 ## Vinagre de Manzana
 
@@ -111,7 +111,7 @@ Digestión ligera. Vinagre de manzana con extracto de jengibre: glucosa estable,
 - **Dosis:** 2 gummies en ayunas, o 1 gummy después de la comida.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Vinagre de manzana, Extracto de jengibre
-- **Ficha completa:** [vinagre-de-manzana.md](https://chiclove-ec.com/vinagre-de-manzana.md), [versión HTML](https://chiclove-ec.com/vinagre-de-manzana.html)
+- **Ficha completa:** [vinagre-de-manzana.md](https://chiclove-ec.com/vinagre-de-manzana.md), [versión HTML](https://chiclove-ec.com/vinagre-de-manzana)
 
 ## Sleep Vitamins
 
@@ -123,7 +123,7 @@ Duerme profundo. Despierta increíble. Melatonina + vitamina B6 para conciliar e
 - **Dosis:** 1–3 gummies al día antes de dormir según tu patrón de sueño.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Melatonina, Vitamina B6
-- **Ficha completa:** [sleep-vitamins.md](https://chiclove-ec.com/sleep-vitamins.md), [versión HTML](https://chiclove-ec.com/sleep-vitamins.html)
+- **Ficha completa:** [sleep-vitamins.md](https://chiclove-ec.com/sleep-vitamins.md), [versión HTML](https://chiclove-ec.com/sleep-vitamins)
 
 ## Sexual Booster Women
 
@@ -135,7 +135,7 @@ Enciende tu energía. Maca y damiana 100% naturales que estabilizan tus canales 
 - **Dosis:** 2 gummies al día después del desayuno.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Maca, Damiana, Ashwagandha
-- **Ficha completa:** [sexual-booster-women.md](https://chiclove-ec.com/sexual-booster-women.md), [versión HTML](https://chiclove-ec.com/sexual-booster-women.html)
+- **Ficha completa:** [sexual-booster-women.md](https://chiclove-ec.com/sexual-booster-women.md), [versión HTML](https://chiclove-ec.com/sexual-booster-women)
 
 ## Sexual Booster Men
 
@@ -147,7 +147,7 @@ Rendimiento al máximo. Maca y fenogreco para mejorar el rendimiento, la calidad
 - **Dosis:** 2 gummies al día después del desayuno.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Maca, Fenogreco, Zinc, L-arginina
-- **Ficha completa:** [sexual-booster-men.md](https://chiclove-ec.com/sexual-booster-men.md), [versión HTML](https://chiclove-ec.com/sexual-booster-men.html)
+- **Ficha completa:** [sexual-booster-men.md](https://chiclove-ec.com/sexual-booster-men.md), [versión HTML](https://chiclove-ec.com/sexual-booster-men)
 
 ## Anti-Stress Gummies
 
@@ -159,7 +159,7 @@ Serenidad para días intensos. Ashwagandha, melisa y ginseng que regulan el cort
 - **Dosis:** 2 gummies al día durante períodos altos de estrés y/o ansiedad.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Ashwagandha, Melisa, Ginseng
-- **Ficha completa:** [anti-stress.md](https://chiclove-ec.com/anti-stress.md), [versión HTML](https://chiclove-ec.com/anti-stress.html)
+- **Ficha completa:** [anti-stress.md](https://chiclove-ec.com/anti-stress.md), [versión HTML](https://chiclove-ec.com/anti-stress)
 
 ## Enlaces
 
@@ -211,7 +211,7 @@ solucionarlo.
 
 ## Enlaces
 
-- [Página del producto](https://chiclove-ec.com/hair-nails-forte.html)
+- [Página del producto](https://chiclove-ec.com/hair-nails-forte)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
@@ -259,7 +259,7 @@ solucionarlo.
 
 ## Enlaces
 
-- [Página del producto](https://chiclove-ec.com/radiant-skin.html)
+- [Página del producto](https://chiclove-ec.com/radiant-skin)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
@@ -307,7 +307,7 @@ solucionarlo.
 
 ## Enlaces
 
-- [Página del producto](https://chiclove-ec.com/vinagre-de-manzana.html)
+- [Página del producto](https://chiclove-ec.com/vinagre-de-manzana)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
@@ -355,7 +355,7 @@ solucionarlo.
 
 ## Enlaces
 
-- [Página del producto](https://chiclove-ec.com/sleep-vitamins.html)
+- [Página del producto](https://chiclove-ec.com/sleep-vitamins)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
@@ -403,7 +403,7 @@ solucionarlo.
 
 ## Enlaces
 
-- [Página del producto](https://chiclove-ec.com/sexual-booster-women.html)
+- [Página del producto](https://chiclove-ec.com/sexual-booster-women)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
@@ -451,7 +451,7 @@ solucionarlo.
 
 ## Enlaces
 
-- [Página del producto](https://chiclove-ec.com/sexual-booster-men.html)
+- [Página del producto](https://chiclove-ec.com/sexual-booster-men)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
@@ -499,7 +499,7 @@ solucionarlo.
 
 ## Enlaces
 
-- [Página del producto](https://chiclove-ec.com/anti-stress.html)
+- [Página del producto](https://chiclove-ec.com/anti-stress)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
 
@@ -515,7 +515,7 @@ No es un medicamento y no trata ni previene enfermedades.
 # Información de la empresa — Chic&Love Ecuador
 
 > Datos verificables de Chic&Love Ecuador: qué vendemos, dónde estamos, cómo se compra y
-> quién nos respalda. Versión markdown de https://chiclove-ec.com/about.html
+> quién nos respalda. Versión markdown de https://chiclove-ec.com/about
 
 ## Qué es Chic&Love Ecuador
 
@@ -585,7 +585,7 @@ de entrega y datos para la transferencia. La web no procesa pagos con tarjeta.
 - [Términos de compra](https://chiclove-ec.com/terms.md)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Nuestra historia](https://chiclove-ec.com/nosotros.md)
-- [Versión HTML de esta página](https://chiclove-ec.com/about.html)
+- [Versión HTML de esta página](https://chiclove-ec.com/about)
 
 Última revisión: 7 de septiembre de 2026.
 
@@ -597,7 +597,7 @@ de entrega y datos para la transferencia. La web no procesa pagos con tarjeta.
 
 > Cómo contactar a Chic&Love Ecuador: WhatsApp +593 98 759 1741, Instagram @chicloveec y
 > ubicación en Quito. Atención en español para todo el país.
-> Versión markdown de https://chiclove-ec.com/contact.html
+> Versión markdown de https://chiclove-ec.com/contact
 
 ## Canales oficiales
 
@@ -658,7 +658,7 @@ WhatsApp y nos encargaremos de solucionarlo. Las condiciones completas están en
 - [Información de la empresa](https://chiclove-ec.com/about.md)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Términos de compra](https://chiclove-ec.com/terms.md)
-- [Versión HTML de esta página](https://chiclove-ec.com/contact.html)
+- [Versión HTML de esta página](https://chiclove-ec.com/contact)
 
 Última revisión: 7 de septiembre de 2026.
 
@@ -671,7 +671,7 @@ WhatsApp y nos encargaremos de solucionarlo. Las condiciones completas están en
 > Tu privacidad importa. La analítica de esta web es opcional y solo se activa si tú la aceptas.
 > Puedes cambiar tu elección cuando quieras. El carrito vive en el navegador y solo tratamos los
 > datos que la persona envía por WhatsApp para gestionar su pedido.
-> Versión markdown de https://chiclove-ec.com/privacy.html
+> Versión markdown de https://chiclove-ec.com/privacy
 
 ## Responsable del tratamiento
 
@@ -745,7 +745,7 @@ escribió.
 - [Información de la empresa](https://chiclove-ec.com/about.md)
 - [Términos de compra](https://chiclove-ec.com/terms.md)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
-- [Versión HTML de esta página](https://chiclove-ec.com/privacy.html)
+- [Versión HTML de esta página](https://chiclove-ec.com/privacy)
 
 Última revisión: 7 de septiembre de 2026.
 
@@ -757,7 +757,7 @@ escribió.
 
 > Condiciones de venta de Chic&Love Ecuador: identidad del distribuidor, precios con IVA,
 > pedidos por WhatsApp, pago por transferencia, envíos y devoluciones dentro de 15 días.
-> Versión markdown de https://chiclove-ec.com/terms.html
+> Versión markdown de https://chiclove-ec.com/terms
 
 ## Quiénes somos
 
@@ -846,7 +846,7 @@ Para cualquier consulta sobre un pedido, una devolución o estos términos: What
 - [Política de privacidad](https://chiclove-ec.com/privacy.md)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
-- [Versión HTML de esta página](https://chiclove-ec.com/terms.html)
+- [Versión HTML de esta página](https://chiclove-ec.com/terms)
 
 Última revisión: 7 de septiembre de 2026.
 
@@ -857,7 +857,7 @@ Para cualquier consulta sobre un pedido, una devolución o estos términos: What
 # Nuestra historia — Chic&Love Ecuador
 
 > El origen de Chic&Love, su filosofía de wellness y el respaldo de Laboratorios Lira en Ecuador.
-> Versión markdown de https://chiclove-ec.com/nosotros.html
+> Versión markdown de https://chiclove-ec.com/nosotros
 
 ## Filosofía
 
@@ -895,7 +895,7 @@ exclusivo de Chic&Love en Ecuador**.
 - [Información de la empresa](https://chiclove-ec.com/about.md)
 - [Contacto](https://chiclove-ec.com/contact.md)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
-- [Versión HTML de esta página](https://chiclove-ec.com/nosotros.html)
+- [Versión HTML de esta página](https://chiclove-ec.com/nosotros)
 
 ---
 

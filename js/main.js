@@ -373,9 +373,9 @@ function buildCartChrome() {
   var terms = makeEl("p", "cart-note cart-terms");
   terms.append(
     document.createTextNode("Al finalizar tu pedido aceptas nuestros "),
-    Object.assign(makeEl("a", "", "Términos de compra"), { href: "terms.html" }),
+    Object.assign(makeEl("a", "", "Términos de compra"), { href: "terms" }),
     document.createTextNode(". Consulta cómo tratamos tus datos en nuestra "),
-    Object.assign(makeEl("a", "", "Política de privacidad"), { href: "privacy.html" }),
+    Object.assign(makeEl("a", "", "Política de privacidad"), { href: "privacy" }),
     document.createTextNode(".")
   );
   foot.appendChild(terms);
@@ -497,7 +497,7 @@ function renderCart() {
     });
   }
   var addMore = makeEl("a", "btn btn-ghost btn-wide cart-add-more");
-  addMore.href = "tienda.html";
+  addMore.href = "tienda";
   var addMoreIcon = makeEl("span", "cart-add-more-icon", "+");
   addMoreIcon.setAttribute("aria-hidden", "true");
   addMore.append(addMoreIcon, document.createTextNode("Añadir más productos"));
@@ -528,7 +528,7 @@ function renderCart() {
 function productCard(p, revealDelay) {
   var card = makeEl("article", "pcard reveal" + (revealDelay ? " reveal-d" + revealDelay : ""));
   card.setAttribute("data-product-id", p.id);
-  var productUrl = encodeURIComponent(p.id) + ".html";
+  var productUrl = encodeURIComponent(p.id);
   var promo = clActivePromo(p);
   if (promo) card.classList.add("is-promo");
   card.appendChild(makeEl("span", "pcard-tag", p.goalLabel));
@@ -602,7 +602,7 @@ function productCard(p, revealDelay) {
 /* ---------- banda de promoción ---------- */
 function promoBand(product, promo) {
   var band = makeEl("a", "promo-band");
-  band.href = encodeURIComponent(product.id) + ".html";
+  band.href = encodeURIComponent(product.id);
   band.style.setProperty("--a", product.accent);
   band.style.setProperty("--a-dark", product.accentDark);
   band.setAttribute("aria-label", "Ver " + product.name + " con " + clPromoPercent(product) +

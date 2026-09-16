@@ -144,6 +144,36 @@ export function withoutGitHubUrls(text) {
   return text.replace(GITHUB_URL, "");
 }
 
+/**
+ * URL pública de una página a partir de su nombre de archivo.
+ *
+ * Las URLs del sitio son LIMPIAS (`/tienda`, no `/tienda.html`). Cloudflare Pages
+ * redirige `/tienda.html` a `/tienda` con un 308, así que declarar el `.html` en
+ * canónicas, sitemap y JSON-LD entregaba a Google URLs que redirigen. GitHub Pages
+ * sirve las dos formas, de modo que la limpia es la única correcta en los dos
+ * hosts a la vez.
+ *
+ * El nombre de ARCHIVO no cambia: `tienda.html` se sigue escribiendo y publicando
+ * igual. Lo que cambia es la URL con la que el sitio se nombra a sí mismo.
+ */
+export function pagePath(file) {
+  const name = String(file).replace(/\.html$/, "");
+  return name === "index" ? "" : name;
+}
+
+/**
+ * Archivo que sirve una URL pública: el inverso de `pagePath()`.
+ *
+ * `""` → `index.html`, `tienda` → `tienda.html`. Una ruta que ya trae extensión
+ * (`tienda.md`, `llms.txt`) se devuelve tal cual: solo las páginas se publican
+ * sin extensión.
+ */
+export function pageFile(path) {
+  const clean = String(path).replace(/^\//, "");
+  if (clean === "") return "index.html";
+  return /\.[a-z0-9]+$/i.test(clean) ? clean : clean + ".html";
+}
+
 /** Extensiones que el build trata como texto y en las que se reescribe el origen. */
 export const TEXT_EXTENSIONS = new Set([
   ".html",

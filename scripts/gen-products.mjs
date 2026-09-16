@@ -17,7 +17,7 @@ import { resolve } from "node:path";
 
 import { loadCatalog, projectRoot as root } from "./lib/catalog.mjs";
 import { renderProductGrid } from "./lib/product-card.mjs";
-import { loadSiteConfig } from "./lib/site-config.mjs";
+import { loadSiteConfig, pagePath } from "./lib/site-config.mjs";
 
 // El dominio sale de site.config.json; el build lo reescribe si se publica en otro.
 const siteConfig = loadSiteConfig();
@@ -266,7 +266,7 @@ function storeMarkdown() {
       "- **Distintivos:** " + p.badges.join(", "),
       "- **Activos:** " + p.actives.join(", "),
       "- **Ficha completa:** [" + p.id + ".md](" + BASE + p.id + ".md), " +
-        "[versión HTML](" + BASE + p.id + ".html)",
+        "[versión HTML](" + BASE + pagePath(p.id + ".html") + ")",
       ""
     ]),
     "## Enlaces",
@@ -327,10 +327,11 @@ function agentsMarkdown() {
     "",
     "- Todo es HTTP GET público: sin API, sin claves, sin autenticación y sin límite de uso.",
     "- Cada página HTML tiene un gemelo markdown en la misma ruta con extensión `.md`",
-    "  (`/tienda.html` → `/tienda.md`, `/about` → `/about.md`), declarado en el HTML con",
+    "  (`/tienda` → `/tienda.md`, `/about` → `/about.md`), declarado en el HTML con",
     "  `<link rel=\"alternate\" type=\"text/markdown\">`.",
-    "- **El alojamiento actual (GitHub Pages) no negocia por cabecera `Accept`**: pedir",
-    "  `Accept: text/markdown` devolverá HTML. Pide directamente la URL `.md`.",
+    "- **Este dominio negocia por cabecera `Accept`**: `Accept: text/markdown` devuelve el",
+    "  markdown en la misma URL, con `Vary: Accept`. Pedir la URL `.md` directamente también",
+    "  funciona siempre, y es el camino seguro en cualquier espejo estático del sitio.",
     "- [/llms-full.txt](" + BASE + "llms-full.txt) trae todo el contenido markdown del sitio",
     "  en un solo archivo, útil para cargarlo de una sola vez.",
     "- Las rutas inexistentes devuelven un 404 real (nunca un 200 con la aplicación), con",
@@ -341,7 +342,7 @@ function agentsMarkdown() {
     "- La fuente única de precios y fichas es el catálogo del sitio; los markdown se generan",
     "  desde él. Si un dato difiere entre HTML y markdown, gana el markdown.",
     "- Los precios publicados incluyen IVA y son los vigentes en la tienda.",
-    "- Al citar, enlaza a la URL canónica en HTML (por ejemplo " + BASE + "tienda.html).",
+    "- Al citar, enlaza a la URL canónica en HTML (por ejemplo " + BASE + pagePath("tienda.html") + ").",
     "",
     "## Mapa rápido",
     "",
@@ -414,7 +415,7 @@ function fullTextBundle() {
 let count = 0;
 const promoted = [];
 for (const p of catalog.CL_PRODUCTS) {
-  const url = BASE + p.id + ".html";
+  const url = BASE + pagePath(p.id + ".html");
   const title = p.name + " — Chic&Love Ecuador";
   const metaDesc = p.desc + " Sabor " + p.flavor.toLowerCase() + ", 60 gummies. Envíos a todo Ecuador.";
   const ogDesc = p.tagline + " " + p.desc;
@@ -472,7 +473,7 @@ for (const p of catalog.CL_PRODUCTS) {
         returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
         merchantReturnDays: catalog.CL_LEGAL.returnDays,
         returnMethod: "https://schema.org/ReturnByMail",
-        merchantReturnLink: BASE + "terms.html"
+        merchantReturnLink: BASE + pagePath("terms.html")
       }
     }
   };
@@ -486,7 +487,7 @@ for (const p of catalog.CL_PRODUCTS) {
     dateModified: CONTENT_MODIFIED,
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Inicio", item: BASE },
-      { "@type": "ListItem", position: 2, name: "Tienda", item: BASE + "tienda.html" },
+      { "@type": "ListItem", position: 2, name: "Tienda", item: BASE + pagePath("tienda.html") },
       { "@type": "ListItem", position: 3, name: p.name, item: url }
     ]
   };
@@ -580,14 +581,14 @@ for (const p of catalog.CL_PRODUCTS) {
 function sitemapXml() {
   const pages = [
     { path: "", image: "assets/img/cover-lifestyle.webp" },
-    { path: "tienda.html" },
-    { path: "nosotros.html" },
-    { path: "about.html" },
-    { path: "contact.html" },
-    { path: "privacy.html" },
-    { path: "terms.html" },
+    { path: pagePath("tienda.html") },
+    { path: pagePath("nosotros.html") },
+    { path: pagePath("about.html") },
+    { path: pagePath("contact.html") },
+    { path: pagePath("privacy.html") },
+    { path: pagePath("terms.html") },
     ...catalog.CL_PRODUCTS.map((product) => ({
-      path: product.id + ".html",
+      path: pagePath(product.id + ".html"),
       image: product.hero,
       title: product.name
     }))
