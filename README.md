@@ -23,7 +23,7 @@ propio y `dist/` (el único artefacto publicable) se arma copiando por lista bla
 
 | Archivo | Qué es |
 |---|---|
-| `index.html` | Landing: hero, bestsellers, beneficios, ritual, testimonios y FAQ |
+| `index.html` | Landing: hero, bestsellers, beneficios, ritual, certificaciones y FAQ |
 | `tienda.html` | Catálogo completo con filtros por objetivo |
 | `<slug>.html` | **Página canónica de cada producto** (`hair-nails-forte`, `radiant-skin`, `vinagre-de-manzana`, `sleep-vitamins`, `sexual-booster-women`, `sexual-booster-men`, `anti-stress`), generada desde el catálogo con `Product` JSON-LD |
 | `producto.html?id=<slug>` | Página heredada: sigue funcionando y canonicaliza a la URL nueva. Es además la **plantilla** de la que `gen-products.mjs` deriva las fichas |

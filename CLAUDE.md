@@ -95,6 +95,20 @@ dos veces.
   `js/frame-guard.js`.
 - La promoción de `CL_PROMOS` entra y sale sola por fecha, pero el JSON-LD es
   estático: al cerrar la promo hay que regenerar y desplegar.
+- **Nada de `aggregateRating` ni `review` mientras no haya reseñas reales.** Search
+  Console avisa de que faltan en los «fragmentos de producto». Son avisos **no
+  críticos**: la ficha ya califica por `offers`, y Google lo dice en el propio aviso.
+  Cerrarlos inventando valoraciones es *spammy structured markup* y se castiga con
+  acción manual, que sí retira los resultados enriquecidos. Hubo un campo
+  `reviews: 214` por producto que ninguna página mostraba: se retiró justo por eso.
+  Para cerrar el aviso de verdad hacen falta reseñas reales, **visibles en la ficha**,
+  y solo entonces se relaja `tests/structured-data.test.mjs`, que hoy falla ante
+  cualquier valoración publicada.
+- **Un nodo `Product` se publica entero o no se publica.** Uno con solo `name` y `url`
+  es, para Google, otro producto sin precio, y lo denuncia. Para apuntar a otra ficha
+  (`isSimilarTo`) se usa `{"@id": …}` a secas: eso es una referencia, no una
+  definición. Cada producto tiene el `@id` `<url>#product` y lo comparte en su ficha,
+  en la portada y en la tienda, así que las tres apariciones son **una** entidad.
 - **Ningún artefacto publica un precio calculado.** Solo existen los tres del catálogo
   (frasco, pack x2, pack x3) y el umbral de envío gratis; un precio por unidad derivado
   (`49.99 / 2`) sería una oferta que nadie puede comprar. Dos pruebas lo exigen, una
