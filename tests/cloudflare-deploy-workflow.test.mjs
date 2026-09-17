@@ -1,6 +1,6 @@
-// El deploy de Cloudflare Pages es directo desde GitHub Actions. Esta prueba
-// protege los detalles que hacen que cada push a main publique y deje su estado
-// visible en el commit, sin sustituir GitHub Pages.
+// El deploy directo de Cloudflare Pages es una vía manual de recuperación.
+// La publicación normal ocurre por la integración Git nativa de Cloudflare,
+// evitando que dos despliegues automáticos compitan por el mismo proyecto.
 import { strict as assert } from "node:assert";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
@@ -13,8 +13,9 @@ const workflow = readFileSync(
   "utf8"
 );
 
-test("Cloudflare Pages se despliega automáticamente desde main sin desactivar GitHub Pages", () => {
-  assert.match(workflow, /push:\s*\n\s+branches: \[main\]/, "el workflow no escucha main");
+test("Cloudflare Pages conserva una vía manual sin despliegue automático duplicado", () => {
+  assert.match(workflow, /workflow_dispatch:/, "falta la vía manual");
+  assert.doesNotMatch(workflow, /push:\s*\n\s+branches: \[main\]/, "no debe competir con la integración Git nativa");
   assert.match(workflow, /npm run build:cloudflare/, "no construye el artefacto de Cloudflare");
   assert.match(workflow, /pages deploy dist/, "no publica dist en Cloudflare Pages");
   assert.match(

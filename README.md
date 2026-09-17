@@ -122,7 +122,7 @@ que toda acción de GitHub esté anclada a un SHA.
 |---|---|---|
 | `ci.yml` | En cada pull request, y como paso previo del despliegue | `npm test`, `npm run build:github` y comprueba que `npm run gen` no deje diferencias |
 | `deploy-pages.yml` | Al empujar a `main` | Llama a `ci.yml` y **solo publica si pasa**; sube a GitHub Pages el `dist/` de la lista blanca |
-| `deploy-cloudflare.yml` | Al empujar a `main` | Alternativa **dormida**: Cloudflare publica hoy por su integración Git, no por este workflow. Se salta solo mientras no existan sus secretos (ver *Despliegue automático*) |
+| `deploy-cloudflare.yml` | Manual | Vía de recuperación con CI y Wrangler; la publicación normal la hace la integración Git nativa de Cloudflare, sin dos despliegues automáticos |
 | `weekly-analytics-report.yml` | Lunes 09:00 (Ecuador) | Envía por correo el informe de GA4 |
 
 Las acciones están ancladas por SHA y Dependabot propone sus actualizaciones una vez al mes
@@ -212,8 +212,9 @@ negociando.
 | Vercel | sí | no: `has.value` usa RE2, sin lookahead para los valores q |
 
 `functions/_middleware.js` y `scripts/lib/markdown-negotiation.mjs` están escritos y probados,
-y el despliegue a Cloudflare Pages ya está armado en `deploy-cloudflare.yml`: en cuanto se
-active, la negociación empieza a funcionar sin tocar código. Ver *Despliegue automático*.
+y la publicación normal a Cloudflare Pages ocurre por la integración Git nativa; el workflow
+`deploy-cloudflare.yml` queda disponible como vía manual de recuperación y siempre pasa por CI.
+Ver *Despliegue automático*.
 
 El middleware construye sus enlaces de recuperación a partir del origen de la propia
 petición, así que sigue siendo correcto en cualquier dominio o preview.
@@ -415,11 +416,10 @@ La suite va **dentro** del comando de build a propósito: si `npm test` falla, e
 build falla y Cloudflare no publica. Es el mismo portero que `ci.yml` pone delante
 de GitHub Pages.
 
-`deploy-cloudflare.yml` sigue en el repositorio como alternativa por si algún día
-conviene publicar desde Actions (despliegue directo con Wrangler). Mientras no
-existan los secretos `CLOUDFLARE_API_TOKEN` y `CLOUDFLARE_ACCOUNT_ID` se salta
-solo y no estorba. **No añadas esos secretos sin desconectar antes la integración
-Git**, o cada push publicaría dos veces.
+`deploy-cloudflare.yml` sigue en el repositorio como vía manual de recuperación
+(despliegue directo con Wrangler). Las credenciales `CLOUDFLARE_API_TOKEN` y
+`CLOUDFLARE_ACCOUNT_ID` están guardadas como secretos para esa vía, pero el workflow
+no escucha `push` y no compite con la integración Git nativa.
 
 ### Por qué Cloudflare es el destino final
 

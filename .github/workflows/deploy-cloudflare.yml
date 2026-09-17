@@ -1,13 +1,12 @@
 name: Deploy public site to Cloudflare Pages
 
-# Queda armado desde ya, pero NO hace nada hasta que existan los secretos
-# CLOUDFLARE_API_TOKEN y CLOUDFLARE_ACCOUNT_ID. Mientras tanto GitHub Pages
-# sigue siendo el sitio en producción y este workflow se salta solo.
+# El dominio de producción se publica por la integración Git nativa de
+# Cloudflare Pages. Este workflow queda como vía manual de recuperación, para
+# que nunca haya dos despliegues automáticos compitiendo por el mismo proyecto.
 #
 # Para activarlo (una vez):
-#   1. Crea el proyecto de Pages con el nombre de `cloudflare.projectName`
-#      en site.config.json (hoy: chiclove-ec), sin conectarlo a Git: lo
-#      despliega este workflow.
+#   1. Crea/valida el proyecto de Pages con el nombre de `cloudflare.projectName`
+#      en site.config.json (hoy: chiclove-ec) y conéctalo a este repositorio.
 #   2. Settings → Secrets and variables → Actions:
 #        CLOUDFLARE_API_TOKEN    token con permiso "Cloudflare Pages: Edit"
 #        CLOUDFLARE_ACCOUNT_ID   id de la cuenta
@@ -18,8 +17,6 @@ name: Deploy public site to Cloudflare Pages
 # Ver la sección "Cambiar de dominio" del README.
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -51,7 +48,8 @@ jobs:
             echo "Cloudflare configurado: se desplegará."
           else
             echo "configured=false" >> "$GITHUB_OUTPUT"
-            echo "::notice::Cloudflare Pages aún no está configurado (faltan los secretos). Se omite el despliegue; GitHub Pages sigue sirviendo el sitio."
+            echo "::error::Faltan las credenciales de la vía manual de recuperación de Cloudflare."
+            exit 1
           fi
 
   ci:
