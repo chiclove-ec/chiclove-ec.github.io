@@ -140,11 +140,21 @@
     if (sent) state.pageViewSent = true;
   }
 
+  function linkContext(target) {
+    var declared = target.getAttribute("data-analytics-context") || "";
+    if (/^[a-z0-9_-]{1,40}$/i.test(declared)) return declared.toLowerCase();
+    return target.closest && target.closest("[data-product-id]") ? "product" : "site";
+  }
+
   function trackClicks() {
     document.addEventListener("click", function (event) {
       var target = event.target && event.target.closest ? event.target.closest("a, button") : null;
       if (!target) return;
-      if (target.matches("[data-whatsapp-link]")) send("whatsapp_click", { link_type: "contact" });
+      if (target.matches("[data-whatsapp-link]")) send("whatsapp_click", {
+        link_type: "contact",
+        link_context: linkContext(target),
+        page_path: window.location.pathname
+      });
       if (target.matches("[data-instagram-link]")) send("instagram_click", { link_type: "social" });
       var itemId = target.getAttribute("data-analytics-item");
       if (itemId) {

@@ -228,8 +228,10 @@ Para cambiar el número, edita `CL_WHATSAPP` en `js/products.js`.
 
 `js/analytics.js` está incluido en todas las páginas. Google Analytics 4 ya está configurado y la
 web pide consentimiento antes de cargarlo. Registra visitas, productos vistos, filtros, clics de
-contacto, carrito, inicio de checkout y preguntas frecuentes, sin enviar nombres, teléfonos,
-mensajes ni el contenido del carrito. El archivo `googlee70d0e2c8fe95f2c.html` mantiene la
+contacto con contexto de página, carrito, inicio de checkout, intención de lead por WhatsApp y
+preguntas frecuentes, sin enviar nombres, teléfonos, mensajes ni el contenido del carrito. El
+evento `generate_lead` sólo se emite cuando se abre correctamente la ventana de WhatsApp; no
+representa una compra confirmada. El archivo `googlee70d0e2c8fe95f2c.html` mantiene la
 verificación de Google Search Console para los informes de impresiones y clics de búsqueda.
 
 ### Informe automático de los lunes

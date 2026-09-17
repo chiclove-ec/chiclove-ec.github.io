@@ -61,6 +61,9 @@ npm run set-origin https://otro.dominio          # mudanza permanente (ver READM
 9. **Nada de emojis dentro de URLs de `wa.me`**: WhatsApp los convierte en `U+FFFD`.
 10. **Nunca** escribas credenciales en el repositorio; los secretos del informe
    semanal viven en los *Actions secrets* de GitHub.
+11. La analítica sólo puede registrar contexto agregado. `begin_checkout` y `generate_lead`
+   significan que la ventana de WhatsApp se abrió; nunca los conviertas en `purchase` sin una
+   confirmación real del pedido y nunca envíes el mensaje, teléfono o dirección.
 
 ## Despliegue
 
@@ -109,6 +112,9 @@ dos veces.
   (`isSimilarTo`) se usa `{"@id": …}` a secas: eso es una referencia, no una
   definición. Cada producto tiene el `@id` `<url>#product` y lo comparte en su ficha,
   en la portada y en la tienda, así que las tres apariciones son **una** entidad.
+- **La disponibilidad no es tiempo real.** El catálogo y el Markdown dicen que se confirma por
+  WhatsApp; el JSON-LD no puede anunciar `InStock` mientras no exista una fuente de inventario
+  sincronizada.
 - **Ningún artefacto publica un precio calculado.** Solo existen los tres del catálogo
   (frasco, pack x2, pack x3) y el umbral de envío gratis; un precio por unidad derivado
   (`49.99 / 2`) sería una oferta que nadie puede comprar. Dos pruebas lo exigen, una
