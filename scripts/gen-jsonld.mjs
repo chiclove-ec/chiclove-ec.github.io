@@ -19,13 +19,11 @@ const CONTENT_MODIFIED = siteConfig.contentModified;
 const catalog = loadCatalog();
 const { clSinglePrice, clFreeShippingLabel } = catalog;
 
+const HTML_ENTITIES = Object.freeze({ amp: "&", quot: '"', lt: "<", gt: ">" });
 const plainText = (html) =>
   html
     .replace(/<[^>]+>/g, "")
-    .replaceAll("&amp;", "&")
-    .replaceAll("&quot;", '"')
-    .replaceAll("&lt;", "<")
-    .replaceAll("&gt;", ">")
+    .replace(/&(?:amp|quot|lt|gt);/g, (entity) => HTML_ENTITIES[entity.slice(1, -1)])
     .replace(/\s+/g, " ")
     .trim();
 

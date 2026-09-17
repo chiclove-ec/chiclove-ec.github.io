@@ -22,13 +22,11 @@ function jsonLd(file) {
 const byType = (file, type) =>
   jsonLd(file).find((node) => [].concat(node["@type"]).includes(type));
 
+const HTML_ENTITIES = Object.freeze({ amp: "&", quot: '"', lt: "<", gt: ">" });
 const plainText = (html) =>
   html
     .replace(/<[^>]+>/g, "")
-    .replaceAll("&amp;", "&")
-    .replaceAll("&quot;", '"')
-    .replaceAll("&lt;", "<")
-    .replaceAll("&gt;", ">")
+    .replace(/&(?:amp|quot|lt|gt);/g, (entity) => HTML_ENTITIES[entity.slice(1, -1)])
     .replace(/\s+/g, " ")
     .trim();
 

@@ -44,6 +44,15 @@ test("prefetch only accepts same-origin document links", () => {
   assert.match(mainSource, /hash/);
 });
 
+test("lazy images only accept same-origin assets", () => {
+  assert.match(mainSource, /function safeLazyImageUrl\(/);
+  assert.match(mainSource, /url\.protocol !== window\.location\.protocol/);
+  assert.match(mainSource, /url\.origin !== window\.location\.origin/);
+  assert.match(mainSource, /assets\/img\//);
+  assert.match(mainSource, /image\.src = safeSource;/);
+  assert.doesNotMatch(mainSource, /image\.src = source;/);
+});
+
 test("header navigation uses the scheduler rather than a raw scroll callback", () => {
   assert.match(mainSource, /createScrollScheduler/);
   assert.doesNotMatch(mainSource, /window\.addEventListener\("scroll", onScroll/);

@@ -1,0 +1,8 @@
+name: Chic&Love CodeQL configuration
+
+# Las pruebas son código de verificación local, no código que se publica ni se
+# ejecuta con datos de visitantes. Excluirlas evita alertas de los regex usados
+# para comprobar artefactos sin reducir el análisis del sitio ni de los scripts
+# de generación/despliegue.
+paths-ignore:
+  - tests

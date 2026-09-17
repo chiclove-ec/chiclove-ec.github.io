@@ -52,15 +52,43 @@ function toast(msg) {
 
 /* ---------- imágenes diferidas ---------- */
 var lazyImageObserver = null;
+function safeLazyImageUrl(value) {
+  if (!value) return null;
+  try {
+    var url = new URL(value, document.baseURI);
+    var assetRoot = new URL("assets/img/", document.baseURI);
+    if (url.protocol !== window.location.protocol || url.origin !== window.location.origin) return null;
+    if (!url.pathname.startsWith(assetRoot.pathname) || url.username || url.password) return null;
+    return url.href;
+  } catch (_) {
+    return null;
+  }
+}
+
+function safeLazyImageSrcset(value) {
+  return value
+    .split(",")
+    .map(function (candidate) {
+      var parts = candidate.trim().split(/\s+/);
+      var safeUrl = safeLazyImageUrl(parts.shift());
+      return safeUrl ? [safeUrl].concat(parts).join(" ") : "";
+    })
+    .filter(Boolean)
+    .join(", ");
+}
+
 function revealLazyImage(image) {
   var source = image.getAttribute("data-lazy-src");
   if (!source) return;
+  var safeSource = safeLazyImageUrl(source);
+  if (!safeSource) return;
   image.addEventListener("load", function () { image.classList.add("loaded"); }, { once: true });
   var sourceSet = image.getAttribute("data-lazy-srcset");
   var sizes = image.getAttribute("data-lazy-sizes");
-  if (sourceSet) image.srcset = sourceSet;
+  var safeSourceSet = sourceSet ? safeLazyImageSrcset(sourceSet) : "";
+  if (safeSourceSet) image.srcset = safeSourceSet;
   if (sizes) image.sizes = sizes;
-  image.src = source;
+  image.src = safeSource;
   image.removeAttribute("data-lazy-src");
   image.removeAttribute("data-lazy-srcset");
   image.removeAttribute("data-lazy-sizes");
