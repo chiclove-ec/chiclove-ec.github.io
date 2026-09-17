@@ -23,6 +23,19 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Validate report configuration
+        env:
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+          GA4_SERVICE_ACCOUNT_JSON: ${{ secrets.GA4_SERVICE_ACCOUNT_JSON }}
+          REPORT_SMTP_HOST: ${{ secrets.REPORT_SMTP_HOST }}
+          REPORT_SMTP_PORT: ${{ secrets.REPORT_SMTP_PORT }}
+          REPORT_SMTP_USER: ${{ secrets.REPORT_SMTP_USER }}
+          REPORT_SMTP_PASSWORD: ${{ secrets.REPORT_SMTP_PASSWORD }}
+          REPORT_FROM_EMAIL: ${{ secrets.REPORT_FROM_EMAIL }}
+          REPORT_TO_EMAIL: marketing@laboratorioslira.com
+          REPORT_TIMEZONE: America/Guayaquil
+        run: python3 scripts/analytics_report.py --check-config
+
       - name: Generate and send report
         env:
           GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}

@@ -263,11 +263,15 @@ Actions → New repository secret**:
 La cuenta de servicio debe tener acceso de solo lectura en **GA4 → Administrar → Administración
 de accesos de la propiedad**, y el proyecto de Google Cloud debe tener habilitada la GA4 Data
 API. Ambas funciones son gratuitas dentro de sus cuotas. Para Gmail se recomienda usar una
-contraseña de aplicación; para un correo corporativo se pueden usar sus datos SMTP.
+contraseña de aplicación; para un correo corporativo se pueden usar sus datos SMTP. El workflow
+ejecuta primero un preflight que valida todos los secretos, la clave PEM, el puerto SMTP, la zona
+horaria y que el destinatario siga siendo `marketing@laboratorioslira.com`, sin imprimir valores
+secretos.
 
 El workflow también puede lanzarse manualmente desde **Actions → Weekly analytics report → Run
-workflow** para probar la configuración sin esperar al lunes. Nunca pongas estas credenciales en
-HTML, JavaScript, el repositorio ni `js/analytics.js`.
+workflow** sin esperar al lunes: primero valida la configuración y solo consulta GA4 y envía el
+correo si el preflight pasa. Nunca pongas estas credenciales en HTML, JavaScript, el repositorio
+ni `js/analytics.js`.
 
 ## Editar datos comerciales
 
