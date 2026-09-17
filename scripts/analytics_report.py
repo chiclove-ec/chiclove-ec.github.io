@@ -15,6 +15,7 @@ import html
 import json
 import math
 import os
+import re
 import smtplib
 import ssl
 import subprocess
@@ -24,8 +25,9 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from email.message import EmailMessage
+from email.utils import parseaddr
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional
+from typing import Any, Dict, Iterable, List, Mapping, Optional
 from zoneinfo import ZoneInfo
 
 
@@ -35,6 +37,7 @@ API_URL = "https://analyticsdata.googleapis.com/v1beta/properties/{property_id}:
 DEFAULT_TO = "marketing@laboratorioslira.com"
 DEFAULT_TIMEZONE = "America/Guayaquil"
 MONTHS = ("ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic")
+REQUIRED_ENV = ("GA4_PROPERTY_ID", "GA4_SERVICE_ACCOUNT_JSON", "REPORT_SMTP_USER", "REPORT_SMTP_PASSWORD")
 
 
 def b64url(value: bytes) -> str:
@@ -51,6 +54,87 @@ def http_json(url: str, data: Optional[bytes] = None, headers: Optional[Dict[str
         raise RuntimeError(f"Respuesta HTTP {error.code} de {url}: {detail[:800]}") from error
     except urllib.error.URLError as error:
         raise RuntimeError(f"No se pudo conectar con {url}: {error.reason}") from error
+
+
+def _valid_email(value: str) -> bool:
+    name, address = parseaddr(value)
+    return not name and address == value and bool(re.fullmatch(r"[^@\s]+@[^@\s]+\.[^@\s]+", value))
+
+
+def validate_config(environ: Mapping[str, str]) -> Dict[str, Any]:
+    """Valida y normaliza la configuración sin llamar a servicios externos."""
+    errors: List[str] = []
+    missing = [name for name in REQUIRED_ENV if not str(environ.get(name, "")).strip()]
+    if missing:
+        errors.append("Faltan secretos o variables requeridas: " + ", ".join(missing))
+
+    property_id = str(environ.get("GA4_PROPERTY_ID", "")).strip()
+    if property_id and not re.fullmatch(r"\d+", property_id):
+        errors.append("GA4_PROPERTY_ID debe ser un ID numérico de propiedad GA4")
+
+    credentials: Optional[Dict[str, Any]] = None
+    credentials_raw = str(environ.get("GA4_SERVICE_ACCOUNT_JSON", "")).strip()
+    if credentials_raw:
+        try:
+            parsed = json.loads(credentials_raw)
+        except json.JSONDecodeError:
+            errors.append("GA4_SERVICE_ACCOUNT_JSON no contiene JSON válido")
+        else:
+            if not isinstance(parsed, dict):
+                errors.append("GA4_SERVICE_ACCOUNT_JSON debe ser un objeto JSON")
+            else:
+                credentials = parsed
+                if not str(parsed.get("client_email", "")).strip():
+                    errors.append("GA4_SERVICE_ACCOUNT_JSON no contiene client_email")
+                private_key = str(parsed.get("private_key", "")).strip()
+                if not private_key:
+                    errors.append("GA4_SERVICE_ACCOUNT_JSON no contiene private_key")
+                elif not re.search(r"-----BEGIN (?:RSA )?PRIVATE KEY-----", private_key):
+                    errors.append("GA4_SERVICE_ACCOUNT_JSON contiene una private_key que no parece PEM")
+
+    username = str(environ.get("REPORT_SMTP_USER", "")).strip()
+    if username and not _valid_email(username):
+        errors.append("REPORT_SMTP_USER debe ser una dirección de correo válida")
+
+    smtp_password = str(environ.get("REPORT_SMTP_PASSWORD", ""))
+    smtp_host = str(environ.get("REPORT_SMTP_HOST", "")).strip() or "smtp.gmail.com"
+    smtp_port_raw = str(environ.get("REPORT_SMTP_PORT", "")).strip() or "465"
+    try:
+        smtp_port = int(smtp_port_raw)
+        if not 1 <= smtp_port <= 65535:
+            raise ValueError
+    except ValueError:
+        errors.append("REPORT_SMTP_PORT debe ser un puerto entre 1 y 65535")
+        smtp_port = 465
+
+    sender = str(environ.get("REPORT_FROM_EMAIL", "")).strip() or username
+    if sender and not _valid_email(sender):
+        errors.append("REPORT_FROM_EMAIL debe ser una dirección de correo válida")
+
+    recipient = str(environ.get("REPORT_TO_EMAIL", "")).strip() or DEFAULT_TO
+    if recipient != DEFAULT_TO:
+        errors.append(f"REPORT_TO_EMAIL debe ser {DEFAULT_TO}")
+
+    timezone_name = str(environ.get("REPORT_TIMEZONE", "")).strip() or DEFAULT_TIMEZONE
+    try:
+        ZoneInfo(timezone_name)
+    except Exception:
+        errors.append("REPORT_TIMEZONE no es una zona horaria IANA válida")
+
+    if errors:
+        raise RuntimeError("Configuración inválida del informe semanal:\n- " + "\n- ".join(errors))
+
+    return {
+        "property_id": property_id,
+        "credentials": credentials,
+        "smtp_host": smtp_host,
+        "smtp_port": smtp_port,
+        "smtp_user": username,
+        "smtp_password": smtp_password,
+        "sender": sender,
+        "recipient": recipient,
+        "timezone": timezone_name,
+    }
 
 
 def access_token(credentials: Dict[str, Any]) -> str:
@@ -317,13 +401,13 @@ def report_text(data: Dict[str, Any], windows: Dict[str, dt.date]) -> str:
     ])
 
 
-def send_email(subject: str, html_body: str, text_body: str) -> None:
-    host = os.getenv("REPORT_SMTP_HOST") or "smtp.gmail.com"
-    port = int(os.getenv("REPORT_SMTP_PORT") or "465")
-    username = os.environ["REPORT_SMTP_USER"]
-    password = os.environ["REPORT_SMTP_PASSWORD"]
-    sender = os.getenv("REPORT_FROM_EMAIL") or username
-    recipient = os.getenv("REPORT_TO_EMAIL") or DEFAULT_TO
+def send_email(subject: str, html_body: str, text_body: str, config: Dict[str, Any]) -> None:
+    host = config["smtp_host"]
+    port = config["smtp_port"]
+    username = config["smtp_user"]
+    password = config["smtp_password"]
+    sender = config["sender"]
+    recipient = config["recipient"]
     message = EmailMessage()
     message["Subject"] = subject
     message["From"] = sender
@@ -364,20 +448,26 @@ def main() -> None:
     parser.add_argument("--fixture", help="JSON local para previsualizar sin llamar a GA4")
     parser.add_argument("--output", help="Guarda el HTML en esta ruta en vez de enviarlo")
     parser.add_argument("--no-send", action="store_true", help="No envía correo; útil para comprobar el diseño")
+    parser.add_argument("--check-config", action="store_true", help="Valida secretos y configuración sin llamar a GA4 ni enviar correo")
     args = parser.parse_args()
-    timezone = ZoneInfo(os.getenv("REPORT_TIMEZONE", DEFAULT_TIMEZONE))
+    preview_only = bool(args.fixture and (args.output or args.no_send))
+    try:
+        config = None if preview_only and not args.check_config else validate_config(os.environ)
+    except RuntimeError as error:
+        raise SystemExit(str(error)) from None
+    if args.check_config:
+        print(f"Configuración válida; el informe se enviará a {config['recipient']}")
+        return
+
+    timezone = ZoneInfo(config["timezone"]) if config else ZoneInfo(DEFAULT_TIMEZONE)
     now = dt.datetime.now(timezone)
     windows = date_windows(now.date())
 
     if args.fixture:
         data = json.loads(Path(args.fixture).read_text(encoding="utf-8"))
     else:
-        property_id = os.environ.get("GA4_PROPERTY_ID", "").strip()
-        credentials_raw = os.environ.get("GA4_SERVICE_ACCOUNT_JSON", "")
-        if not property_id or not credentials_raw:
-            raise SystemExit("Faltan GA4_PROPERTY_ID y GA4_SERVICE_ACCOUNT_JSON")
-        credentials = json.loads(credentials_raw)
-        data = fetch_data(access_token(credentials), property_id, windows)
+        assert config is not None
+        data = fetch_data(access_token(config["credentials"]), config["property_id"], windows)
 
     html_body = report_html(data, windows, now)
     if args.output:
@@ -387,9 +477,10 @@ def main() -> None:
     if args.no_send:
         print("Informe validado sin envío")
         return
+    assert config is not None
     subject = f"Chic&Love   Analítica semanal   {period_label(windows['current_start'], windows['current_end'])}"
-    send_email(subject, html_body, report_text(data, windows))
-    print(f"Informe enviado a {os.getenv('REPORT_TO_EMAIL', DEFAULT_TO)}")
+    send_email(subject, html_body, report_text(data, windows), config)
+    print(f"Informe enviado a {config['recipient']}")
 
 
 if __name__ == "__main__":
