@@ -15,4 +15,4 @@ RUC: 1790336352001
 Use for: product discovery, catalog comparison, prices, shipping and company information in Ecuador.
 Do not use for: automated checkout, live stock, medical diagnosis or purchases outside Ecuador.
 This is an informational site profile, not an official AI standard or API.
-Last reviewed: 2026-09-16
+Last reviewed: 2026-09-17

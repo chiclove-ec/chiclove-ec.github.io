@@ -1281,7 +1281,7 @@ for (const p of catalog.CL_PRODUCTS) {
 
 function sitemapXml() {
   const pages = [
-    { path: "", image: "assets/img/cover-lifestyle.webp" },
+    { path: "", image: "assets/img/family-bottles.webp" },
     { path: pagePath("tienda.html") },
     { path: pagePath("nosotros.html") },
     { path: pagePath("about.html") },
