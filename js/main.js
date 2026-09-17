@@ -59,6 +59,7 @@ function safeLazyImageUrl(value) {
     var assetRoot = new URL("assets/img/", document.baseURI);
     if (url.protocol !== window.location.protocol || url.origin !== window.location.origin) return null;
     if (!url.pathname.startsWith(assetRoot.pathname) || url.username || url.password) return null;
+    if (url.search || url.hash) return null;
     return url.href;
   } catch (_) {
     return null;
@@ -71,7 +72,8 @@ function safeLazyImageSrcset(value) {
     .map(function (candidate) {
       var parts = candidate.trim().split(/\s+/);
       var safeUrl = safeLazyImageUrl(parts.shift());
-      return safeUrl ? [safeUrl].concat(parts).join(" ") : "";
+      var safeDescriptors = parts.every(function (part) { return /^\d+[wx]$/.test(part); });
+      return safeUrl && safeDescriptors ? [safeUrl].concat(parts).join(" ") : "";
     })
     .filter(Boolean)
     .join(", ");
@@ -130,6 +132,7 @@ function cartLoad() {
       cartSave([]);
       return [];
     }
+    if (raw.length > MAX_CART_LINES * 2) raw = raw.slice(0, MAX_CART_LINES * 2);
     // Revalida, elimina campos inesperados y consolida duplicados manipulados.
     var normalized = [];
     raw.forEach(function (it) {
@@ -207,7 +210,7 @@ function cartAdd(id, variant, qty) {
   var items = cartLoad();
   var found = items.find(function (it) { return it.id === id && it.variant === variant; });
   if (found) found.qty = Math.min(found.qty + qty, 99);
-  else items.push({ id: id, variant: variant, qty: qty });
+  else if (items.length < MAX_CART_LINES) items.push({ id: id, variant: variant, qty: qty });
   cartSave(items);
   renderCart();
   if (window.clAnalytics) {
@@ -238,7 +241,7 @@ function cartSetQty(id, variant, qty) {
   var it = items.find(function (x) { return x.id === id && x.variant === variant; });
   if (!it) return;
   qty = Number(qty);
-  it.qty = Number.isInteger(qty) ? Math.min(qty, 99) : 0;
+  it.qty = Number.isInteger(qty) ? Math.max(0, Math.min(qty, 99)) : 0;
   cartSave(items.filter(function (x) { return x.qty > 0; }));
   renderCart();
 }
@@ -929,7 +932,9 @@ function shouldPrefetchUrl(rawUrl, link) {
   var url;
   try { url = new URL(rawUrl, window.location.href); } catch (e) { return false; }
   if (url.origin !== window.location.origin || (url.protocol !== "http:" && url.protocol !== "https:")) return false;
+  if (url.username || url.password) return false;
   if (url.hash || url.pathname === window.location.pathname && !url.search) return false;
+  if (/\.(?:json|xml|txt|pdf|zip)$/i.test(url.pathname)) return false;
   return true;
 }
 

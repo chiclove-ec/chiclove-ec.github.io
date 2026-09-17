@@ -62,7 +62,12 @@ export async function onRequest(context) {
     return new Response(notAcceptableBody(new URL(request.url).origin), {
       status: 406,
       headers: withNegotiationHeaders(
-        { "Content-Type": "text/plain; charset=utf-8" },
+        {
+          "Content-Type": "text/plain; charset=utf-8",
+          "X-Content-Type-Options": "nosniff",
+          "X-Frame-Options": "DENY",
+          "Referrer-Policy": "no-referrer"
+        },
         plan.markdownPath
       )
     });

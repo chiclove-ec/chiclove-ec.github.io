@@ -146,6 +146,20 @@ test("las cabeceras que GitHub Pages no puede dar están en los hosts que sí", 
   }
 });
 
+test("HSTS y Permissions-Policy cumplen directivas completas de protección", () => {
+  const headersFile = read("_headers");
+  const vercel = JSON.parse(read("vercel.json"));
+  const vercelGlobal = vercel.headers.find((rule) => rule.source === "/(.*)").headers;
+  const vercelHsts = vercelGlobal.find((h) => h.key === "Strict-Transport-Security")?.value || "";
+  const vercelPerms = vercelGlobal.find((h) => h.key === "Permissions-Policy")?.value || "";
+
+  assert.match(headersFile, /Strict-Transport-Security: max-age=31536000; includeSubDomains; preload/);
+  assert.equal(vercelHsts, "max-age=31536000; includeSubDomains; preload");
+
+  assert.match(headersFile, /interest-cohort=\(\)/);
+  assert.match(vercelPerms, /interest-cohort=\(\)/);
+});
+
 test("el guard anti-frame se carga en todas las páginas, que es lo único que hay en Pages", () => {
   for (const page of htmlPages) {
     assert.match(
