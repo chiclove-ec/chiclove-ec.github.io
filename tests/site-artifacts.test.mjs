@@ -370,3 +370,29 @@ test("los gemelos markdown de producto reflejan el catálogo", () => {
     }
   }
 });
+
+/* ---------- Verificación de Google Search Console ---------- */
+
+test("la portada publica la etiqueta de verificación de Search Console", () => {
+  // Segundo método de verificación, además del DNS. Hace falta porque el testigo
+  // `googlee70d0e2c8fe95f2c.html` NO responde 200 en el dominio oficial: Cloudflare le
+  // aplica la redirección a URLs limpias y devuelve un 308. Una etiqueta meta es inmune
+  // a eso. Google avisa de que quitarla revoca la verificación aunque ya esté hecha, así
+  // que esta prueba existe para que nadie la borre limpiando el <head>.
+  const home = read("index.html");
+  assert.match(
+    home,
+    /<meta name="google-site-verification" content="[A-Za-z0-9_-]{30,}">/,
+    "index.html ya no declara la etiqueta de verificación de Search Console"
+  );
+
+  // Va solo en la portada: es la única página que Google comprueba, y repetirla
+  // en las demás solo añade ruido que alguien acabará desincronizando.
+  for (const page of htmlPages.filter((file) => file !== "index.html")) {
+    assert.doesNotMatch(
+      read(page),
+      /google-site-verification/,
+      `${page} no debe llevar la etiqueta de verificación: va solo en la portada`
+    );
+  }
+});
