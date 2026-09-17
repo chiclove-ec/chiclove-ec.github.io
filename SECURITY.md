@@ -30,11 +30,10 @@ Respondemos en español o en inglés. No ofrecemos recompensas económicas.
 
 ## Fuera de alcance
 
-- Ausencia de cabeceras HTTP que GitHub Pages no permite definir
-  (`Content-Security-Policy` por cabecera, `Permissions-Policy`, COOP/COEP).
-  Son una limitación conocida del hosting: el sitio las declara por `<meta>`
-  donde el navegador las acepta y añade un guard anti-frame. Está documentado en
-  el README, sección *Deploy*.
+- Limitaciones del espejo de GitHub Pages, que no permite definir algunas
+  cabeceras HTTP. El dominio de producción usa Cloudflare Pages y sí aplica
+  las cabeceras completas desde `_headers`; además, el sitio conserva las
+  defensas compatibles por `<meta>` y el guard anti-frame.
 - Reportes generados por escáneres automáticos sin un impacto demostrado.
 - Ingeniería social, phishing o denegación de servicio.
 
@@ -46,7 +45,11 @@ informe semanal, cuenta de servicio de GA4, token de Cloudflare). Por eso:
 | Control | Estado |
 |---|---|
 | Escaneo de secretos y *push protection* | **Activado.** GitHub bloquea un push que contenga una credencial reconocible, antes de que llegue al historial |
+| Reporte privado de vulnerabilidades | **Activado** para recibir avisos sin exponerlos públicamente |
 | Alertas y actualizaciones de seguridad de Dependabot | **Activado**, además de las actualizaciones mensuales de `dependabot.yml` |
+| Análisis de código CodeQL | **Activado** con configuración predeterminada, en cambios y revisión semanal |
+| Permisos y acciones de Actions | Allowlist restringida; acciones ancladas por SHA y requisito de SHA activo |
+| Protección de `main` | PR obligatorio, CI y despliegue requeridos, historial lineal, sin force-push ni borrado, conversaciones resueltas |
 | Permisos por defecto de Actions | `contents: read`; los workflows elevan permisos solo en el job que publica |
 | Acciones de terceros | Ancladas por SHA de commit, nunca por etiqueta. `npm test` falla si aparece una sin anclar |
 | Credenciales en workflows | Solo por `env` desde *secrets*; nunca se interpolan en un script ni se imprimen |
@@ -59,7 +62,7 @@ Los secretos se configuran en *Settings → Secrets and variables → Actions* y
 ## Cómo se protege el sitio
 
 Resumen en la sección *Seguridad* del [README](README.md): CSP cerrada sin
-scripts ni estilos inline, build por lista blanca para que la documentación y
+scripts ni estilos inline, cabeceras completas en Cloudflare, build por lista blanca para que la documentación y
 los artefactos locales nunca lleguen al artefacto público, validación del `id`
 de producto contra el catálogo, saneado del carrito de `localStorage` y enlaces
 externos con `rel="noopener noreferrer"`.
