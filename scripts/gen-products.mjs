@@ -24,6 +24,7 @@ const siteConfig = loadSiteConfig();
 const BASE = siteConfig.base;
 const CONTENT_MODIFIED = siteConfig.contentModified;
 const INDEXABLE_ROBOTS = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
+const AVAILABILITY_NOTE = "Disponibilidad confirmada por WhatsApp; no hay stock en tiempo real.";
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 const catalog = loadCatalog();
@@ -179,7 +180,7 @@ function productMarkdown(p, url) {
     "> " + p.tagline + " " + p.desc,
     "",
     "- **Precio:** " + priceDetail(p) + ", frasco de 60 gummies",
-    "- **Disponibilidad:** en stock, envíos a todo Ecuador. Envío gratis en compras desde " +
+    "- **Disponibilidad:** " + AVAILABILITY_NOTE + " Envíos a todo Ecuador. Envío gratis en compras desde " +
       clFreeShippingLabel() + ". IVA incluido.",
     "- **Objetivo:** " + p.goalLabel,
     "- **Sabor:** " + p.flavor,
@@ -712,7 +713,7 @@ function catalogJson() {
             };
           }),
           benefits: p.benefits,
-          availability: "InStock",
+          availability: AVAILABILITY_NOTE,
           pricing: {
             currency: "USD",
             vatIncluded: true,
@@ -1131,7 +1132,6 @@ for (const p of catalog.CL_PRODUCTS) {
         price: price,
         valueAddedTaxIncluded: true
       },
-      availability: "https://schema.org/InStock",
       itemCondition: "https://schema.org/NewCondition",
       areaServed: { "@type": "Country", name: "Ecuador" },
       seller: { "@id": BASE + "#organization" },

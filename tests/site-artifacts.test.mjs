@@ -361,6 +361,10 @@ test("los gemelos markdown de producto reflejan el catálogo", () => {
       `${product.id}.md no publica el precio vigente`
     );
     assert.ok(markdown.includes(product.dose), `${product.id}.md no publica la dosis`);
+    assert.ok(
+      markdown.includes("Disponibilidad confirmada por WhatsApp; no hay stock en tiempo real."),
+      `${product.id}.md no explica cómo confirmar disponibilidad`
+    );
     for (const active of product.actives) {
       assert.ok(markdown.includes(active), `${product.id}.md no lista el activo ${active}`);
     }

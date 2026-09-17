@@ -3,7 +3,7 @@
 > Digestión ligera. Vinagre de manzana con extracto de jengibre: glucosa estable, digestión y control de peso — sin el sabor ácido del vinagre.
 
 - **Precio:** $29.99, pack x2 $49.99, pack x3 $74.99, frasco de 60 gummies
-- **Disponibilidad:** en stock, envíos a todo Ecuador. Envío gratis en compras desde $49,99. IVA incluido.
+- **Disponibilidad:** Disponibilidad confirmada por WhatsApp; no hay stock en tiempo real. Envíos a todo Ecuador. Envío gratis en compras desde $49,99. IVA incluido.
 - **Objetivo:** Digestión y balance
 - **Sabor:** Manzana
 - **Dosis recomendada:** 2 gummies en ayunas, o 1 gummy después de la comida.

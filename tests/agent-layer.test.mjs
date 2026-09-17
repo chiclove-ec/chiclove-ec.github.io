@@ -171,6 +171,11 @@ test("catalog.json publica el catálogo entero, en orden y sin inventar datos", 
     assert.equal(entry.vegan, product.badges.includes("Vegano"), `${product.id}: vegano`);
     assert.deepEqual(entry.benefits, product.benefits, `${product.id}: beneficios`);
     assert.equal(entry.audience.gender, product.audience || "any", `${product.id}: público`);
+    assert.equal(
+      entry.availability,
+      "Disponibilidad confirmada por WhatsApp; no hay stock en tiempo real.",
+      `${product.id}: disponibilidad`
+    );
 
     assert.deepEqual(
       entry.actives.map((a) => a.name),

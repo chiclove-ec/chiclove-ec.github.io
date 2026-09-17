@@ -110,7 +110,7 @@ test("las ofertas de la tienda publican el precio vigente", () => {
     const offer = store.mainEntity.itemListElement[index].item.offers;
     assert.equal(offer.price, catalog.clSinglePrice(product).toFixed(2), product.id);
     assert.equal(offer.priceCurrency, "USD");
-    assert.equal(offer.availability, "https://schema.org/InStock");
+    assert.equal("availability" in offer, false, `${product.id}: no se debe inventar stock en tiempo real`);
   });
 });
 
@@ -119,6 +119,7 @@ test("cada página de producto publica oferta, envío y vendedor", () => {
     const node = byType(product.id + ".html", "Product");
     assert.ok(node, `${product.id}: falta el Product`);
     assert.equal(node.offers.price, catalog.clSinglePrice(product).toFixed(2), product.id);
+    assert.equal("availability" in node.offers, false, `${product.id}: no se debe inventar stock en tiempo real`);
     assert.equal(node.offers.seller["@id"], BASE + "#organization", `${product.id}: vendedor`);
 
     const shipping = node.offers.shippingDetails;
