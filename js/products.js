@@ -82,8 +82,7 @@ const CL_PRODUCTS = [
       "El grupo de vitaminas B aumenta el flujo de sangre al cuero cabelludo para un pelo fuerte y brillante."
     ],
     actives: ["Biotina", "Vitamina B12", "Ácido fólico", "Vitamina A", "Vitamina D", "Ashwagandha", "Zinc"],
-    dose: "2 gummies al día después de la comida.",
-    reviews: 214
+    dose: "2 gummies al día después de la comida."
   },
   {
     id: "radiant-skin",
@@ -115,8 +114,7 @@ const CL_PRODUCTS = [
       "Piel perfecta: hidratación y firmeza desde el interior."
     ],
     actives: ["Colágeno", "Coenzima Q10", "Biotina", "Vitamina C", "Vitamina E"],
-    dose: "2 gummies al día después de la comida.",
-    reviews: 189
+    dose: "2 gummies al día después de la comida."
   },
   {
     id: "vinagre-de-manzana",
@@ -148,8 +146,7 @@ const CL_PRODUCTS = [
       "Contribuye al control de peso y ayuda a absorber minerales y vitaminas."
     ],
     actives: ["Vinagre de manzana", "Extracto de jengibre"],
-    dose: "2 gummies en ayunas, o 1 gummy después de la comida.",
-    reviews: 176
+    dose: "2 gummies en ayunas, o 1 gummy después de la comida."
   },
   {
     id: "sleep-vitamins",
@@ -181,8 +178,7 @@ const CL_PRODUCTS = [
       "Melatonina + B6: regenera las defensas de piel y pelo contra el estrés oxidativo."
     ],
     actives: ["Melatonina", "Vitamina B6"],
-    dose: "1–3 gummies al día antes de dormir según tu patrón de sueño.",
-    reviews: 241
+    dose: "1–3 gummies al día antes de dormir según tu patrón de sueño."
   },
   {
     id: "sexual-booster-women",
@@ -216,8 +212,7 @@ const CL_PRODUCTS = [
       "Maca y damiana: ingredientes activos 100% naturales."
     ],
     actives: ["Maca", "Damiana", "Ashwagandha"],
-    dose: "2 gummies al día después del desayuno.",
-    reviews: 132
+    dose: "2 gummies al día después del desayuno."
   },
   {
     id: "sexual-booster-men",
@@ -251,8 +246,7 @@ const CL_PRODUCTS = [
       "Ingredientes activos 100% naturales."
     ],
     actives: ["Maca", "Fenogreco", "Zinc", "L-arginina"],
-    dose: "2 gummies al día después del desayuno.",
-    reviews: 118
+    dose: "2 gummies al día después del desayuno."
   },
   {
     id: "anti-stress",
@@ -284,8 +278,7 @@ const CL_PRODUCTS = [
       "La ashwagandha, planta adaptógena, regula los niveles de cortisol."
     ],
     actives: ["Ashwagandha", "Melisa", "Ginseng"],
-    dose: "2 gummies al día durante períodos altos de estrés y/o ansiedad.",
-    reviews: 167
+    dose: "2 gummies al día durante períodos altos de estrés y/o ansiedad."
   }
 ];
 

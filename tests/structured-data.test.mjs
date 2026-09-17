@@ -264,3 +264,116 @@ test("el sitemap usa la fecha configurada exclusivamente en URLs indexables", ()
     assert.doesNotMatch(entry, /(?:\.md|404\.html|producto\.html)/);
   }
 });
+
+/* ---------- Fragmentos de producto: sin valoraciones inventadas ---------- */
+
+// Todas las páginas que publican algún nodo Product, esté al nivel que esté.
+const PRODUCT_PAGES = [
+  "index.html",
+  "tienda.html",
+  ...catalog.CL_PRODUCTS.map((product) => product.id + ".html")
+];
+
+/** Todo nodo Product de una página, incluidos los anidados en listas y ofertas. */
+function productNodes(file) {
+  const found = [];
+  (function walk(node) {
+    if (Array.isArray(node)) return node.forEach(walk);
+    if (!node || typeof node !== "object") return;
+    const types = [].concat(node["@type"] ?? []);
+    if (types.includes("Product")) found.push(node);
+    for (const value of Object.values(node)) walk(value);
+  })(jsonLd(file));
+  return found;
+}
+
+/** Cualquier nodo del JSON-LD de una página, para barrer propiedades prohibidas. */
+function everyNode(file) {
+  const found = [];
+  (function walk(node) {
+    if (Array.isArray(node)) return node.forEach(walk);
+    if (!node || typeof node !== "object") return;
+    found.push(node);
+    for (const value of Object.values(node)) walk(value);
+  })(jsonLd(file));
+  return found;
+}
+
+// Search Console avisa de que a los fragmentos de producto les faltan `aggregateRating`
+// y `review`. Son avisos NO críticos: la ficha ya califica por `offers`. La única forma
+// legítima de cerrarlos es tener reseñas reales y visibles en la página; publicarlas sin
+// tenerlas es «spammy structured markup» y se castiga con acción manual, que sí retira
+// los resultados enriquecidos. Mientras el catálogo no tenga reseñas, no se publica ni
+// una valoración. Para cerrar el aviso de verdad: añadir las reseñas reales al catálogo,
+// renderizarlas visibles en la ficha, y entonces —y solo entonces— relajar esta prueba.
+const RATING_PROPERTIES = [
+  "aggregateRating",
+  "review",
+  "reviews",
+  "ratingValue",
+  "reviewCount",
+  "ratingCount",
+  "bestRating",
+  "worstRating"
+];
+
+test("ninguna página publica valoraciones que el sitio no muestra", () => {
+  for (const page of [...PRODUCT_PAGES, "nosotros.html", "about.html", "contact.html"]) {
+    for (const node of everyNode(page)) {
+      for (const property of RATING_PROPERTIES) {
+        assert.ok(
+          !(property in node),
+          `${page} publica "${property}" en un nodo ${[].concat(node["@type"] ?? "?").join("+")}, ` +
+            "pero el sitio no muestra ninguna reseña. Marcar valoraciones inexistentes es " +
+            "motivo de acción manual en Google. Si ya hay reseñas reales, publícalas visibles " +
+            "en la ficha primero y actualiza esta prueba a conciencia."
+        );
+      }
+    }
+  }
+});
+
+test("el catálogo no guarda contadores de reseñas sin respaldo", () => {
+  // Hubo un campo `reviews: 214` por producto que ninguna página mostraba. Un número
+  // así acaba publicado como `aggregateRating` por quien lo encuentre y lo dé por bueno.
+  for (const product of catalog.CL_PRODUCTS) {
+    for (const property of RATING_PROPERTIES) {
+      assert.ok(
+        !(property in product),
+        `${product.id} declara "${property}" en js/products.js. Si son reseñas reales, ` +
+          "deben traer texto y autor y verse en la ficha; si no lo son, no deben existir."
+      );
+    }
+  }
+});
+
+test("ningún nodo Product se publica a medias", () => {
+  // Un Product con solo nombre y URL es, para Google, otro producto sin precio: lo
+  // denuncia como fragmento incompleto. Las referencias a otra ficha se hacen con
+  // `@id` a secas, que es una referencia y no una definición.
+  for (const page of PRODUCT_PAGES) {
+    for (const node of productNodes(page)) {
+      assert.ok(node.offers, `${page}: hay un Product sin oferta (${node.name ?? node["@id"] ?? "sin nombre"})`);
+      assert.ok(node["@id"], `${page}: hay un Product sin @id (${node.name})`);
+      assert.ok(node.name, `${page}: hay un Product sin nombre (${node["@id"]})`);
+    }
+  }
+});
+
+test("cada producto es una sola entidad en todo el sitio", () => {
+  // La ficha, la portada y la tienda describen el mismo producto. Con el mismo `@id`
+  // en los tres sitios, Google y cualquier modelo lo leen como una entidad, no como
+  // tres parecidas.
+  for (const product of catalog.CL_PRODUCTS) {
+    const expected = BASE + pagePath(product.id + ".html") + "#product";
+    for (const page of PRODUCT_PAGES) {
+      for (const node of productNodes(page).filter((n) => n.name === product.name)) {
+        assert.equal(
+          node["@id"],
+          expected,
+          `${page}: ${product.name} se publica con otra identidad que su ficha canónica`
+        );
+      }
+    }
+  }
+});

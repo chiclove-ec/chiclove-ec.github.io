@@ -124,6 +124,11 @@ const SAFETY_NOTE =
 
 const audienceLabel = (p) => p.audienceLabel || "Adultos";
 
+/* Identidad estable de cada producto en los datos estructurados. La misma fórmula se
+   usa en la portada y en la tienda (scripts/gen-jsonld.mjs), de modo que las cuatro
+   apariciones de un producto son UNA entidad y no cuatro parecidas. */
+const productId = (p) => BASE + pagePath(p.id + ".html") + "#product";
+
 /* Cada activo como término definido y ENLAZADO a su entidad en Wikidata y Wikipedia.
    Es lo que permite a un modelo resolver que la «melisa» del catálogo es Melissa
    officinalis y no otra planta, sin inferirlo del contexto. */
@@ -1072,6 +1077,7 @@ for (const p of catalog.CL_PRODUCTS) {
   const productLd = {
     "@context": "https://schema.org",
     "@type": ["Product", "DietarySupplement"],
+    "@id": productId(p),
     name: p.name,
     alternateName: p.short,
     description: ogDesc,
@@ -1108,15 +1114,7 @@ for (const p of catalog.CL_PRODUCTS) {
       { "@type": "PropertyValue", name: "Sin gluten", value: p.badges.includes("Sin gluten") },
       { "@type": "PropertyValue", name: "Sin lactosa", value: p.badges.includes("Sin lactosa") }
     ],
-    ...(siblings.length
-      ? {
-          isSimilarTo: siblings.map((other) => ({
-            "@type": "Product",
-            name: other.name,
-            url: BASE + pagePath(other.id + ".html")
-          }))
-        }
-      : {}),
+    ...(siblings.length ? { isSimilarTo: siblings.map((other) => ({ "@id": productId(other) })) } : {}),
     dateModified: CONTENT_MODIFIED,
     isPartOf: { "@id": BASE + "#website" },
     about: { "@id": BASE + "#organization" },

@@ -88,6 +88,7 @@ const listItems = (image) =>
     position: index + 1,
     item: {
       "@type": "Product",
+      "@id": BASE + pagePath(product.id + ".html") + "#product",
       name: product.name,
       description: product.tagline + " " + product.desc,
       sku: product.id,
