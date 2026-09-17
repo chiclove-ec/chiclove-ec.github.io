@@ -22,6 +22,7 @@ import { loadSiteConfig, pagePath } from "./lib/site-config.mjs";
 // El dominio sale de site.config.json; el build lo reescribe si se publica en otro.
 const siteConfig = loadSiteConfig();
 const BASE = siteConfig.base;
+const SITE_NAME = siteConfig.brandName;
 const CONTENT_MODIFIED = siteConfig.contentModified;
 const INDEXABLE_ROBOTS = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
 const AVAILABILITY_NOTE = "Disponibilidad confirmada por WhatsApp; no hay stock en tiempo real.";
@@ -175,7 +176,7 @@ function priceDetail(p) {
 function productMarkdown(p, url) {
   const whatsapp = catalog.clWhatsAppDisplay();
   return [
-    "# " + p.name + " — Chic&Love Ecuador",
+    "# " + p.name + " — " + SITE_NAME,
     "",
     "> " + p.tagline + " " + p.desc,
     "",
@@ -228,7 +229,7 @@ function productMarkdown(p, url) {
 function homeMarkdown() {
   const cheapest = Math.min(...catalog.CL_PRODUCTS.map((p) => clSinglePrice(p)));
   return [
-    "# Chic&Love Ecuador — vitaminas en gummies",
+    "# " + SITE_NAME + " — vitaminas en gummies",
     "",
     "> Tienda oficial de Chic&Love en Ecuador: siete fórmulas de complementos alimenticios en",
     "> formato gummy para cabello y uñas, piel, digestión, sueño, energía íntima y calma. Desde " +
@@ -289,7 +290,7 @@ function homeMarkdown() {
 function storeMarkdown() {
   const [first] = catalog.CL_PRODUCTS;
   return [
-    "# Tienda Chic&Love Ecuador — catálogo completo",
+    "# Tienda " + SITE_NAME + " — catálogo completo",
     "",
     "> Las siete fórmulas de Chic&Love disponibles en Ecuador, con precio, objetivo, sabor, dosis",
     "> y activos. Precio por frasco de 60 gummies: " + clMoney(clSinglePrice(first)) +
@@ -432,7 +433,7 @@ function ingredientsMarkdown() {
       .replace(/^-|-$/g, "");
 
   return [
-    "# Activos de Chic&Love Ecuador — qué es cada ingrediente",
+    "# Activos de " + SITE_NAME + " — qué es cada ingrediente",
     "",
     "> Glosario de los " + names.length + " activos que aparecen en las " +
       catalog.CL_PRODUCTS.length + " fórmulas de Chic&Love en Ecuador: qué es cada uno, con qué " +
@@ -603,7 +604,7 @@ function catalogJson() {
 
   return JSON.stringify(
     {
-      name: "Chic&Love Ecuador",
+      name: SITE_NAME,
       description:
         "Catálogo completo de Chic&Love Ecuador en JSON: complementos alimenticios en formato " +
         "gummy, con precio, pauta, activos y datos de la empresa. Documento estático, público y " +
@@ -618,8 +619,8 @@ function catalogJson() {
       fullText: BASE + "llms-full.txt",
       brand: {
         name: "Chic&Love",
-        storefront: "Chic&Love Ecuador",
-        alternateNames: ["Chic & Love", "Chic and Love Ecuador", "Chic&Love EC"],
+        storefront: SITE_NAME,
+        alternateNames: ["Chic&Love", "Chic & Love", "Chic and Love Ecuador"],
         slogan: "Tu dosis diaria de amor propio"
       },
       company: {
@@ -772,7 +773,7 @@ function catalogJson() {
 function agentsMarkdown() {
   const cheapest = clMoney(Math.min(...catalog.CL_PRODUCTS.map((p) => clSinglePrice(p))));
   return [
-    "# Instrucciones para agentes — Chic&Love Ecuador",
+    "# Instrucciones para agentes — " + SITE_NAME,
     "",
     "> Tienda oficial en Ecuador de Chic&Love: complementos alimenticios en formato gummy.",
     "> Este archivo dice para qué sirve el sitio, cómo leerlo y qué no esperar de él.",
@@ -780,7 +781,7 @@ function agentsMarkdown() {
     "",
     "## Identidad",
     "",
-    "- **Nombre:** Chic&Love Ecuador (también «Chic & Love», «Chic and Love Ecuador»).",
+    "- **Nombre:** " + SITE_NAME + " (también «Chic&Love», «Chic and Love Ecuador»).",
     "- **Qué vende:** siete fórmulas de vitaminas en gummies para cabello y uñas, piel,",
     "  digestión, sueño, energía íntima y calma.",
     "- **Dónde opera:** todo Ecuador, desde Quito, Pichincha. Atención en español.",
@@ -862,7 +863,7 @@ function agentsMarkdown() {
 // solo resume capacidades, límites y fuentes públicas a partir de los datos canónicos.
 function aiProfile() {
   return [
-    "# Chic&Love Ecuador",
+    "# " + SITE_NAME,
     "Site profile: official Ecuador storefront for Chic&Love gummies.",
     "Language: es-EC",
     "Region: Ecuador",
@@ -904,7 +905,7 @@ function llmsIndex() {
     : "";
 
   return [
-    "# Chic&Love Ecuador",
+    "# " + SITE_NAME,
     "",
     "> Tienda oficial en Ecuador de Chic&Love: " + catalog.CL_PRODUCTS.length + " fórmulas de " +
       "complementos alimenticios en formato gummy (vitaminas masticables) para cabello y uñas, " +
@@ -1036,7 +1037,7 @@ function fullTextBundle() {
     "nosotros.md"
   ];
   const header = [
-    "# Chic&Love Ecuador — contenido completo",
+    "# " + SITE_NAME + " — contenido completo",
     "",
     "> Todo el contenido en markdown del sitio " + BASE + " en un solo",
     "> archivo. Cada sección conserva su URL de origen. Índice: " + BASE + "llms.txt",
@@ -1061,7 +1062,7 @@ let count = 0;
 const promoted = [];
 for (const p of catalog.CL_PRODUCTS) {
   const url = BASE + pagePath(p.id + ".html");
-  const title = p.name + " — Chic&Love Ecuador";
+  const title = p.name + " — " + SITE_NAME;
   const metaDesc = p.desc + " Sabor " + p.flavor.toLowerCase() + ", 60 gummies. Envíos a todo Ecuador.";
   const ogDesc = p.tagline + " " + p.desc;
   const imgAlt = "Frasco de " + p.name;

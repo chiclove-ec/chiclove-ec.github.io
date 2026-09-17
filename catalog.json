@@ -1,5 +1,5 @@
 {
-  "name": "Chic&Love Ecuador",
+  "name": "Chic & Love Ecuador",
   "description": "Catálogo completo de Chic&Love Ecuador en JSON: complementos alimenticios en formato gummy, con precio, pauta, activos y datos de la empresa. Documento estático, público y sin autenticación. No es una API: no hay stock en tiempo real ni compra automática.",
   "canonicalUrl": "https://chiclove-ec.com/",
   "language": "es-EC",
@@ -11,11 +11,11 @@
   "fullText": "https://chiclove-ec.com/llms-full.txt",
   "brand": {
     "name": "Chic&Love",
-    "storefront": "Chic&Love Ecuador",
+    "storefront": "Chic & Love Ecuador",
     "alternateNames": [
+      "Chic&Love",
       "Chic & Love",
-      "Chic and Love Ecuador",
-      "Chic&Love EC"
+      "Chic and Love Ecuador"
     ],
     "slogan": "Tu dosis diaria de amor propio"
   },
