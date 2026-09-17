@@ -238,14 +238,11 @@
       sticky.setAttribute("aria-hidden", shouldShow ? "false" : "true");
       sticky.inert = !shouldShow;
     }
-    var stickyFrame = null;
-    function queueStickyUpdate() {
-      if (stickyFrame !== null) return;
-      stickyFrame = window.requestAnimationFrame(function () {
-        stickyFrame = null;
-        updateSticky();
-      });
-    }
+    var scheduler = window.__CL_SCROLL_SCHEDULER__;
+    var queueStickyUpdate = scheduler
+      ? function () { scheduler.request(); }
+      : function () { window.requestAnimationFrame(updateSticky); };
+    if (scheduler) scheduler.subscribe(updateSticky);
     window.addEventListener("scroll", queueStickyUpdate, { passive: true });
     window.addEventListener("resize", queueStickyUpdate);
     updateSticky();

@@ -599,6 +599,55 @@ function productCard(p, revealDelay) {
   return card;
 }
 
+function expectedGridProductIds(grid) {
+  var filter = grid.getAttribute("data-filter") || "todos";
+  var limit = parseInt(grid.getAttribute("data-limit"), 10) || CL_PRODUCTS.length;
+  var exclude = grid.getAttribute("data-exclude") || "";
+  return CL_PRODUCTS.filter(function (p) {
+    if (p.id === exclude) return false;
+    return filter === "todos" || p.goal === filter;
+  }).slice(0, limit).map(function (p) { return p.id; });
+}
+
+function canHydrateGrid(grid, list) {
+  var cards = Array.from(grid.children).filter(function (child) {
+    return child.hasAttribute && child.hasAttribute("data-product-id");
+  });
+  if (cards.length !== list.length) return false;
+  return list.every(function (product, index) {
+    var card = cards[index];
+    return card.getAttribute("data-product-id") === product.id &&
+      card.classList.contains("is-promo") === !!clActivePromo(product);
+  });
+}
+
+function hydrateProductCard(card, product, revealDelay) {
+  card.setAttribute("data-hydrated-card", "true");
+  card.classList.add("reveal");
+  ["reveal-d1", "reveal-d2", "reveal-d3", "reveal-d4", "reveal-d5"].forEach(function (name) {
+    card.classList.remove(name);
+  });
+  if (revealDelay) card.classList.add("reveal-d" + revealDelay);
+
+  var links = card.querySelectorAll(".pcard-img, .pcard-body h2 a, .pcard-body h3 a");
+  links.forEach(function (link) {
+    link.setAttribute("data-analytics-item", product.id);
+    link.setAttribute("data-analytics-item-name", product.name);
+    link.setAttribute("data-analytics-item-category", product.goalLabel);
+  });
+
+  var action = card.querySelector(".add-btn");
+  if (!action || action.dataset.hydratedAction === "true") return;
+  var button = document.createElement("button");
+  button.type = "button";
+  button.className = action.className;
+  button.textContent = "Añadir";
+  button.setAttribute("aria-label", "Añadir " + product.name + " al carrito");
+  button.dataset.hydratedAction = "true";
+  button.addEventListener("click", function () { cartAdd(product.id, "uno", 1); });
+  action.replaceWith(button);
+}
+
 /* ---------- banda de promoción ---------- */
 function promoBand(product, promo) {
   var band = makeEl("a", "promo-band");
@@ -669,16 +718,17 @@ function renderPromoBand() {
 
 function renderGrids() {
   document.querySelectorAll("[data-products-grid]").forEach(function (grid) {
-    var filter = grid.getAttribute("data-filter") || "todos";
-    var limit = parseInt(grid.getAttribute("data-limit"), 10) || CL_PRODUCTS.length;
-    var exclude = grid.getAttribute("data-exclude") || "";
-    var list = CL_PRODUCTS.filter(function (p) {
-      if (p.id === exclude) return false;
-      return filter === "todos" || p.goal === filter;
-    }).slice(0, limit);
-    grid.textContent = "";
+    var list = expectedGridProductIds(grid).map(function (id) { return clFindProduct(id); });
     grid.classList.toggle("is-seven", list.length === 7);
-    list.forEach(function (p, i) { grid.appendChild(productCard(p, (i % 4) ? (i % 4) : 0)); });
+    if (!canHydrateGrid(grid, list)) {
+      grid.textContent = "";
+      list.forEach(function (p, i) { grid.appendChild(productCard(p, (i % 4) ? (i % 4) : 0)); });
+    } else {
+      list.forEach(function (p, i) {
+        var card = grid.children[i];
+        hydrateProductCard(card, p, (i % 4) ? (i % 4) : 0);
+      });
+    }
     var filterStatus = document.getElementById("filter-status");
     if (filterStatus && grid.hasAttribute("data-filter")) {
       filterStatus.textContent = list.length + (list.length === 1 ? " producto mostrado" : " productos mostrados");
@@ -802,6 +852,103 @@ function closeMenu() {
   }
 }
 
+/* ---------- trabajo agrupado de scroll ---------- */
+function createScrollScheduler() {
+  var subscribers = [];
+  var frame = null;
+
+  function flush() {
+    frame = null;
+    subscribers.slice().forEach(function (subscriber) { subscriber(); });
+  }
+
+  function request() {
+    if (frame === null) frame = window.requestAnimationFrame(flush);
+  }
+
+  function subscribe(subscriber) {
+    if (typeof subscriber !== "function") return function () {};
+    subscribers.push(subscriber);
+    return function unsubscribe() {
+      var index = subscribers.indexOf(subscriber);
+      if (index !== -1) subscribers.splice(index, 1);
+    };
+  }
+
+  return { request: request, subscribe: subscribe };
+}
+
+var clScrollScheduler = createScrollScheduler();
+window.__CL_SCROLL_SCHEDULER__ = clScrollScheduler;
+
+/* ---------- precarga con intención ---------- */
+var MAX_INTENT_PREFETCHES = 4;
+var INTENT_PREFETCH_DELAY = 80;
+var intentPrefetchedUrls = new Set();
+var pendingIntentPrefetches = new WeakMap();
+
+function shouldPrefetchUrl(rawUrl, link) {
+  if (!rawUrl || (link && link.hasAttribute("download"))) return false;
+  var connection = navigator.connection;
+  if (connection && (connection.saveData || connection.effectiveType === "slow-2g" || connection.effectiveType === "2g")) return false;
+  var url;
+  try { url = new URL(rawUrl, window.location.href); } catch (e) { return false; }
+  if (url.origin !== window.location.origin || (url.protocol !== "http:" && url.protocol !== "https:")) return false;
+  if (url.hash || url.pathname === window.location.pathname && !url.search) return false;
+  return true;
+}
+
+function prefetchInternalLink(link) {
+  if (!link || intentPrefetchedUrls.size >= MAX_INTENT_PREFETCHES || !shouldPrefetchUrl(link.href, link)) return;
+  var url = new URL(link.href, window.location.href);
+  url.hash = "";
+  if (intentPrefetchedUrls.has(url.href)) return;
+  intentPrefetchedUrls.add(url.href);
+  var hint = document.createElement("link");
+  hint.rel = "prefetch";
+  hint.as = "document";
+  hint.href = url.href;
+  document.head.appendChild(hint);
+}
+
+function cancelIntentPrefetch(link) {
+  var timer = pendingIntentPrefetches.get(link);
+  if (timer !== undefined) {
+    clearTimeout(timer);
+    pendingIntentPrefetches.delete(link);
+  }
+}
+
+function queueIntentPrefetch(link) {
+  if (!link || pendingIntentPrefetches.has(link) || intentPrefetchedUrls.size >= MAX_INTENT_PREFETCHES || !shouldPrefetchUrl(link.href, link)) return;
+  var timer = setTimeout(function () {
+    pendingIntentPrefetches.delete(link);
+    prefetchInternalLink(link);
+  }, INTENT_PREFETCH_DELAY);
+  pendingIntentPrefetches.set(link, timer);
+}
+
+function initNavigationPrefetch() {
+  document.addEventListener("pointerover", function (event) {
+    var link = event.target && event.target.closest ? event.target.closest("a[href]") : null;
+    if (!link || (event.relatedTarget && link.contains(event.relatedTarget))) return;
+    queueIntentPrefetch(link);
+  }, { passive: true });
+  document.addEventListener("pointerout", function (event) {
+    var link = event.target && event.target.closest ? event.target.closest("a[href]") : null;
+    if (!link || (event.relatedTarget && link.contains(event.relatedTarget))) return;
+    cancelIntentPrefetch(link);
+  }, { passive: true });
+  document.addEventListener("focusin", function (event) {
+    var link = event.target && event.target.closest ? event.target.closest("a[href]") : null;
+    queueIntentPrefetch(link);
+  }, { passive: true });
+  document.addEventListener("focusout", function (event) {
+    var link = event.target && event.target.closest ? event.target.closest("a[href]") : null;
+    cancelIntentPrefetch(link);
+  }, { passive: true });
+}
+
 /* ---------- datos comerciales desde una sola fuente ---------- */
 function initBusinessData() {
   var singleMinimum = clCurrentSingleMinimum();
@@ -904,7 +1051,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var header = document.querySelector(".header");
   if (header) {
     var onScroll = function () { header.classList.toggle("scrolled", window.scrollY > 8); };
-    window.addEventListener("scroll", onScroll, { passive: true });
+    clScrollScheduler.subscribe(onScroll);
+    window.addEventListener("scroll", clScrollScheduler.request, { passive: true });
     onScroll();
   }
 
@@ -930,4 +1078,5 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll("[data-year]").forEach(function (el) {
     el.textContent = new Date().getFullYear();
   });
+  initNavigationPrefetch();
 });
