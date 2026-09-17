@@ -125,6 +125,23 @@ test("la previsualización con fixture sigue funcionando sin credenciales", () =
   }
 });
 
+test("la contraseña SMTP tolera espacios invisibles o separadores de copia", () => {
+  const check = `
+import importlib.util
+spec = importlib.util.spec_from_file_location("report", "scripts/analytics_report.py")
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+config = module.validate_config({
+    "GA4_PROPERTY_ID": "123456789",
+    "GA4_SERVICE_ACCOUNT_JSON": '{"client_email":"reporter@example.com","private_key":"-----BEGIN PRIVATE KEY-----\\\\nfake\\\\n-----END PRIVATE KEY-----"}',
+    "REPORT_SMTP_USER": "reporter@example.com",
+    "REPORT_SMTP_PASSWORD": "\\u00a0app- password\\u00a0",
+})
+assert config["smtp_password"] == "app-password"
+`;
+  execFileSync("python3", ["-B", "-c", check], { cwd: projectRoot, stdio: "pipe" });
+});
+
 test("el envío SMTP construye un correo HTML dirigido a Lira", () => {
   const check = `
 import importlib.util

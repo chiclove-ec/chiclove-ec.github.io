@@ -96,7 +96,9 @@ def validate_config(environ: Mapping[str, str]) -> Dict[str, Any]:
     if username and not _valid_email(username):
         errors.append("REPORT_SMTP_USER debe ser una dirección de correo válida")
 
-    smtp_password = str(environ.get("REPORT_SMTP_PASSWORD", ""))
+    # Gmail muestra las contraseñas de aplicación agrupadas; al copiarlas
+    # pueden llegar con espacios normales o no separables. SMTP no los admite.
+    smtp_password = "".join(str(environ.get("REPORT_SMTP_PASSWORD", "")).split())
     smtp_host = str(environ.get("REPORT_SMTP_HOST", "")).strip() or "smtp.gmail.com"
     smtp_port_raw = str(environ.get("REPORT_SMTP_PORT", "")).strip() or "465"
     try:
