@@ -101,7 +101,6 @@ const listItems = (image) =>
         url: BASE + pagePath(product.id + ".html"),
         priceCurrency: "USD",
         price: clSinglePrice(product).toFixed(2),
-        availability: "https://schema.org/InStock",
         seller: { "@id": BASE + "#organization" }
       }
     }

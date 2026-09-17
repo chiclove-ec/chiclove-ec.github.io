@@ -3,7 +3,7 @@
 > Enciende tu energía. Maca y damiana 100% naturales que estabilizan tus canales de energía, estimulan la libido y reducen el estrés.
 
 - **Precio:** $29.99, pack x2 $49.99, pack x3 $74.99, frasco de 60 gummies
-- **Disponibilidad:** en stock, envíos a todo Ecuador. Envío gratis en compras desde $49,99. IVA incluido.
+- **Disponibilidad:** Disponibilidad confirmada por WhatsApp; no hay stock en tiempo real. Envíos a todo Ecuador. Envío gratis en compras desde $49,99. IVA incluido.
 - **Objetivo:** Energía íntima
 - **Sabor:** Cereza
 - **Dosis recomendada:** 2 gummies al día después del desayuno.

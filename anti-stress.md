@@ -3,7 +3,7 @@
 > Serenidad para días intensos. Ashwagandha, melisa y ginseng que regulan el cortisol para aliviar el estrés y la ansiedad, y ayudarte a fluir con el cambio.
 
 - **Precio:** $29.99, pack x2 $49.99, pack x3 $74.99, frasco de 60 gummies
-- **Disponibilidad:** en stock, envíos a todo Ecuador. Envío gratis en compras desde $49,99. IVA incluido.
+- **Disponibilidad:** Disponibilidad confirmada por WhatsApp; no hay stock en tiempo real. Envíos a todo Ecuador. Envío gratis en compras desde $49,99. IVA incluido.
 - **Objetivo:** Calma y enfoque
 - **Sabor:** Naranja
 - **Dosis recomendada:** 2 gummies al día durante períodos altos de estrés y/o ansiedad.

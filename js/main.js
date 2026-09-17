@@ -316,6 +316,13 @@ function checkoutWhatsApp() {
       currency: "USD",
       items: analyticsCartItems(items)
     });
+    if (window.clAnalytics) window.clAnalytics.track("generate_lead", {
+      method: "whatsapp",
+      items_count: items.length,
+      value: cartTotal(items),
+      currency: "USD",
+      items: analyticsCartItems(items)
+    });
   }
 }
 
