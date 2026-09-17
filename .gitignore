@@ -9,6 +9,7 @@ dist/
 # --- Informes y capturas locales (no forman parte del sitio) ---
 output/
 .playwright-cli/
+.worktrees/
 
 # --- Configuración local de proveedores de hosting ---
 .netlify/
