@@ -55,9 +55,13 @@ npm run set-origin https://otro.dominio          # mudanza permanente (ver READM
    aplica, así que `/googlee70d0e2c8fe95f2c.html` responde **308** hacia
    `/googlee70d0e2c8fe95f2c` en vez de 200. El contenido sigue ahí tras la
    redirección, y en GitHub Pages sí responde 200 directo. Hoy la propiedad está
-   verificada por **DNS** (proveedor de nombres de dominio), que es el método
-   activo; el archivo queda como respaldo. No lo borres —recuperar una
-   verificación perdida es caro— pero no asumas que es lo que sostiene el acceso.
+   verificada por **DNS** (proveedor de nombres de dominio) y, como segundo método,
+   por la **etiqueta `<meta name="google-site-verification">` de la portada**, que sí
+   es inmune a la redirección. El archivo queda como tercer respaldo. No borres
+   ninguno de los dos —Google revoca la verificación si quitas el método, aunque ya
+   estuviera hecha— y ten presente que el archivo `.html` ya no es lo que sostiene
+   el acceso. La etiqueta va **solo en la portada**; hay una prueba que falla tanto
+   si desaparece como si alguien la copia a otra página.
 9. **Nada de emojis dentro de URLs de `wa.me`**: WhatsApp los convierte en `U+FFFD`.
 10. **Nunca** escribas credenciales en el repositorio; los secretos del informe
    semanal viven en los *Actions secrets* de GitHub.
