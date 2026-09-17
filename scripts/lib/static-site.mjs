@@ -62,13 +62,19 @@ export function createSiteServer(rootDir) {
 
   return createServer(async (req, res) => {
     const url = new URL(req.url, "http://localhost");
-    const pathname = decodeURIComponent(url.pathname);
+    let pathname;
+    try {
+      pathname = decodeURIComponent(url.pathname);
+    } catch {
+      pathname = url.pathname;
+    }
     const plan = planResponse({ pathname, accept: req.headers.accept });
     const extra = plan.kind === "passthrough" ? {} : negotiationHeaders(plan.markdownPath);
 
     if (plan.kind === "notAcceptable") {
       return send(req, res, 406, NOT_ACCEPTABLE_BODY, {
         "Content-Type": "text/plain; charset=utf-8",
+        "X-Content-Type-Options": "nosniff",
         ...extra
       });
     }

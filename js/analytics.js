@@ -104,7 +104,9 @@
         }).filter(function (item) { return item.item_id || item.item_name; });
         return;
       }
-      if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") {
+      if (typeof value === "string") {
+        if (value.length <= 500) clean[key] = value;
+      } else if ((typeof value === "number" && Number.isFinite(value)) || typeof value === "boolean") {
         clean[key] = value;
       }
     });

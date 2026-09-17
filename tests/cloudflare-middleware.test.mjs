@@ -48,6 +48,8 @@ test("responde 406 a un tipo no soportado", async () => {
   const response = await call("/about.html", "application/json");
   assert.equal(response.status, 406);
   assert.equal(response.headers.get("vary"), "Accept, Accept-Encoding");
+  assert.equal(response.headers.get("x-content-type-options"), "nosniff");
+  assert.equal(response.headers.get("x-frame-options"), "DENY");
   assert.match(await response.text(), /406 Not Acceptable/);
 });
 

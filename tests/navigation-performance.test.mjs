@@ -57,3 +57,9 @@ test("header navigation uses the scheduler rather than a raw scroll callback", (
   assert.match(mainSource, /createScrollScheduler/);
   assert.doesNotMatch(mainSource, /window\.addEventListener\("scroll", onScroll/);
 });
+
+test("safeLazyImageSrcset and shouldPrefetchUrl enforce strict token and credential guards", () => {
+  assert.match(mainSource, /url\.username \|\| url\.password/);
+  assert.match(mainSource, /safeDescriptors/);
+  assert.match(mainSource, /MAX_CART_LINES/);
+});
