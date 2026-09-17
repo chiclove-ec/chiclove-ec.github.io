@@ -215,7 +215,7 @@ test("wrangler.toml cuadra con site.config.json y con el build", () => {
   assert.match(wrangler, /^compatibility_date\s*=\s*"\d{4}-\d{2}-\d{2}"/m);
 });
 
-test("el despliegue a Cloudflare pasa por CI y se salta solo sin secretos", () => {
+test("el despliegue manual a Cloudflare pasa por CI y exige sus secretos", () => {
   const workflow = read(".github/workflows/deploy-cloudflare.yml");
   assert.match(workflow, /uses:\s*\.\/\.github\/workflows\/ci\.yml/, "no llama a CI");
   assert.match(
