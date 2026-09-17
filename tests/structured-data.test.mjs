@@ -23,12 +23,31 @@ const byType = (file, type) =>
   jsonLd(file).find((node) => [].concat(node["@type"]).includes(type));
 
 const HTML_ENTITIES = Object.freeze({ amp: "&", quot: '"', lt: "<", gt: ">" });
-const plainText = (html) =>
-  html
-    .replace(/<[^>]+>/g, "")
-    .replace(/&(?:amp|quot|lt|gt);/g, (entity) => HTML_ENTITIES[entity.slice(1, -1)])
-    .replace(/\s+/g, " ")
-    .trim();
+function plainText(html) {
+  let text = "";
+  let inTag = false;
+  for (let index = 0; index < html.length; index += 1) {
+    const character = html[index];
+    if (character === "<") {
+      inTag = true;
+      continue;
+    }
+    if (inTag) {
+      if (character === ">") inTag = false;
+      continue;
+    }
+    if (character === "&") {
+      const entity = html.slice(index).match(/^&(amp|quot|lt|gt);/);
+      if (entity) {
+        text += HTML_ENTITIES[entity[1]];
+        index += entity[0].length - 1;
+        continue;
+      }
+    }
+    text += character;
+  }
+  return text.replace(/\s+/g, " ").trim();
+}
 
 const primaryTypes = new Set(["Product", "CollectionPage", "FAQPage", "WebPage", "AboutPage", "ContactPage"]);
 const nodesOfType = (file, types) =>
