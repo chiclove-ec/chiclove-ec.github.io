@@ -144,6 +144,7 @@ itemList.dateModified = CONTENT_MODIFIED;
 const organization = graph["@graph"].find((node) => [].concat(node["@type"]).includes("Organization"));
 const website = graph["@graph"].find((node) => node["@type"] === "WebSite");
 if (!organization || !website) throw new Error("El grafo de la portada no declara Organization y WebSite");
+organization.image = BASE + "assets/img/family-bottles.webp";
 organization.dateModified = CONTENT_MODIFIED;
 organization.hasOfferCatalog = {
   "@type": "OfferCatalog",
