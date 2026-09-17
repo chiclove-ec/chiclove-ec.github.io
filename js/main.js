@@ -52,6 +52,7 @@ function toast(msg) {
 
 /* ---------- imágenes diferidas ---------- */
 var lazyImageObserver = null;
+// Las imágenes diferidas solo pueden salir del directorio local de assets.
 function safeLazyImageUrl(value) {
   if (!value) return null;
   try {
