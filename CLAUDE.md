@@ -49,8 +49,15 @@ npm run set-origin https://otro.dominio          # mudanza permanente (ver READM
    aparece también como **host suelto** en texto visible (`/about`, el 404), y
    las URLs de **github.com no se mudan** (el repo se llama igual que el dominio
    de Pages).
-8. **`googlee70d0e2c8fe95f2c.html` no se borra** ni sale del build: es la
-   verificación de Google Search Console.
+8. **`googlee70d0e2c8fe95f2c.html` no se borra** ni sale del build: es el testigo
+   de verificación de Google Search Console. OJO con lo que ya **no** hace: en
+   Cloudflare —el dominio oficial— la redirección a URLs limpias también se le
+   aplica, así que `/googlee70d0e2c8fe95f2c.html` responde **308** hacia
+   `/googlee70d0e2c8fe95f2c` en vez de 200. El contenido sigue ahí tras la
+   redirección, y en GitHub Pages sí responde 200 directo. Hoy la propiedad está
+   verificada por **DNS** (proveedor de nombres de dominio), que es el método
+   activo; el archivo queda como respaldo. No lo borres —recuperar una
+   verificación perdida es caro— pero no asumas que es lo que sostiene el acceso.
 9. **Nada de emojis dentro de URLs de `wa.me`**: WhatsApp los convierte en `U+FFFD`.
 10. **Nunca** escribas credenciales en el repositorio; los secretos del informe
    semanal viven en los *Actions secrets* de GitHub.
