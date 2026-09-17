@@ -116,6 +116,11 @@ test("la CSP cierra los sinks y no reabre inline ni orígenes abiertos", () => {
   assert.ok(!csp.includes("'unsafe-inline'"), "la CSP no debe permitir 'unsafe-inline'");
   assert.ok(!csp.includes("'unsafe-eval'"), "la CSP no debe permitir 'unsafe-eval'");
   assert.ok(!/(script|style|connect)-src[^;]*\s\*/.test(csp), "ninguna fuente debe ser un comodín");
+  assert.match(
+    csp,
+    /img-src[^;]*https:\/\/www\.googletagmanager\.com/,
+    "GA4 necesita su endpoint de medición de imágenes"
+  );
   assert.ok(csp.includes("upgrade-insecure-requests"), "falta upgrade-insecure-requests");
 });
 
