@@ -34,8 +34,12 @@ test("the hydration contract compares product order, limit, and exclusion", () =
   assert.match(mainSource, /data-analytics-item/);
 });
 
+test("hydration preserves the seven-card grid layout state", () => {
+  assert.match(mainSource, /grid\.classList\.toggle\("is-seven", list\.length === 7\);[\s\S]{0,220}if \(!canHydrateGrid\(grid, list\)\)/);
+});
+
 test("prefetch only accepts same-origin document links", () => {
-  assert.match(mainSource, /url\.origin === window\.location\.origin/);
+  assert.match(mainSource, /url\.origin !== window\.location\.origin/);
   assert.match(mainSource, /download/);
   assert.match(mainSource, /hash/);
 });
