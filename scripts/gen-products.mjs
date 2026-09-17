@@ -783,7 +783,7 @@ function agentsMarkdown() {
       ", pack x3 " + clMoney(catalog.CL_PRODUCT_PRICING.pricePack3) + "). Precio más bajo vigente " +
       "hoy en el catálogo: " + cheapest + ", por una promoción con fecha de cierre. Envío gratis " +
       "en compras desde " + clFreeShippingLabel() + ". IVA incluido. El precio autoritativo de " +
-      "cada fórmula es el de su ficha y el de " + BASE + "catalog.json.",
+      "cada fórmula es el de su ficha y el de [/catalog.json](" + BASE + "catalog.json).",
     "- **Devoluciones:** puedes solicitar una devolución o cambio dentro de los 15 días posteriores",
     "  a recibir tu pedido, si el frasco sigue cerrado y con el sello intacto.",
     "- **Contacto humano:** WhatsApp " + catalog.clWhatsAppDisplay() + ".",

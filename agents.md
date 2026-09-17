@@ -10,7 +10,7 @@
 - **Qué vende:** siete fórmulas de vitaminas en gummies para cabello y uñas, piel,
   digestión, sueño, energía íntima y calma.
 - **Dónde opera:** todo Ecuador, desde Quito, Pichincha. Atención en español.
-- **Precio:** $29.99 el frasco de 60 gummies (pack x2 $49.99, pack x3 $74.99). Precio más bajo vigente hoy en el catálogo: $18.00, por una promoción con fecha de cierre. Envío gratis en compras desde $49,99. IVA incluido. El precio autoritativo de cada fórmula es el de su ficha y el de https://chiclove-ec.com/catalog.json.
+- **Precio:** $29.99 el frasco de 60 gummies (pack x2 $49.99, pack x3 $74.99). Precio más bajo vigente hoy en el catálogo: $18.00, por una promoción con fecha de cierre. Envío gratis en compras desde $49,99. IVA incluido. El precio autoritativo de cada fórmula es el de su ficha y el de [/catalog.json](https://chiclove-ec.com/catalog.json).
 - **Devoluciones:** puedes solicitar una devolución o cambio dentro de los 15 días posteriores
   a recibir tu pedido, si el frasco sigue cerrado y con el sello intacto.
 - **Contacto humano:** WhatsApp +593 98 759 1741.
