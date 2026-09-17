@@ -5,4 +5,4 @@ name: Chic&Love CodeQL configuration
 # para comprobar artefactos sin reducir el análisis del sitio ni de los scripts
 # de generación/despliegue.
 paths-ignore:
-  - tests
+  - tests/**
