@@ -18,9 +18,9 @@ Allow: /
 # `robots.txt permite a los rastreadores de IA` (tests/site-artifacts.test.mjs).
 
 # --- Corpus de entrenamiento de propósito general ---
-# CCBot es el rastreador de Common Crawl, el corpus público del que parten casi todos
-# los modelos de lenguaje. Es la vía por la que el sitio acaba en los pesos de un
-# modelo y no solo en su buscador, así que se permite explícitamente.
+# CCBot es el rastreador de Common Crawl, un corpus público que algunos conjuntos de
+# datos y pipelines de investigación usan. Permitirlo mejora la accesibilidad del sitio,
+# pero ningún rastreador garantiza entrenamiento, almacenamiento en pesos o recomendaciones.
 User-agent: CCBot
 Allow: /
 
