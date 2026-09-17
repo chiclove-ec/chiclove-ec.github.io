@@ -206,6 +206,13 @@ test("la Organization declara alias de marca, contacto y ubicación", () => {
   assert.equal(org.hasOfferCatalog.itemListElement.length, catalog.CL_PRODUCTS.length);
 });
 
+test("la portada no duplica los productos en el catálogo de la Organization", () => {
+  const homeProducts = productNodes("index.html");
+  const ids = homeProducts.map((product) => product["@id"]).filter(Boolean);
+  assert.equal(ids.length, catalog.CL_PRODUCTS.length, "cada producto debe aparecer una sola vez en la portada");
+  assert.equal(new Set(ids).size, ids.length, "Google no debe recibir el mismo Product dos veces");
+});
+
 test("cada Product publica identidad, imagen, precio, envío y devoluciones", () => {
   for (const product of catalog.CL_PRODUCTS) {
     const node = byType(product.id + ".html", "Product");

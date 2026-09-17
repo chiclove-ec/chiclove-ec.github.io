@@ -149,7 +149,13 @@ organization.dateModified = CONTENT_MODIFIED;
 organization.hasOfferCatalog = {
   "@type": "OfferCatalog",
   name: "Colección Chic&Love Ecuador",
-  itemListElement: listItems((product) => BASE + product.store)
+  // La portada ya publica el ItemList completo. Aquí solo se enlazan esas entidades
+  // para que Google no reciba dos Products con el mismo @id y duplique `brand`.
+  itemListElement: catalog.CL_PRODUCTS.map((product, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: { "@id": BASE + pagePath(product.id + ".html") + "#product" }
+  }))
 };
 /* `knowsAbout` con los activos ENLAZADOS a su entidad externa. Un `Thing` con nombre
    obliga a adivinar que la «melisa» del catálogo es Melissa officinalis; un `DefinedTerm`
