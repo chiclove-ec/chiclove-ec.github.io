@@ -1,0 +1,63 @@
+import { strict as assert } from "node:assert";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+import { test } from "node:test";
+
+import { loadCatalog, projectRoot } from "../scripts/lib/catalog.mjs";
+
+const SEARCH_NAME = "Chic & Love Ecuador";
+const FORBIDDEN_ALIAS = /Chic&Love EC|ChicLove EC/;
+const catalog = loadCatalog();
+const read = (file) => readFileSync(resolve(projectRoot, file), "utf8");
+const htmlPages = [
+  "index.html",
+  "tienda.html",
+  "nosotros.html",
+  "about.html",
+  "contact.html",
+  "privacy.html",
+  "terms.html",
+  ...catalog.CL_PRODUCTS.map((product) => product.id + ".html")
+];
+
+function jsonLd(file) {
+  return [...read(file).matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+    .map(([, json]) => JSON.parse(json))
+    .flatMap((data) => (data["@graph"] ? data["@graph"] : [data]));
+}
+
+const nodesOfType = (file, type) =>
+  jsonLd(file).filter((node) => [].concat(node["@type"] ?? []).includes(type));
+
+test("la identidad SEO usa exactamente Chic & Love Ecuador", () => {
+  const home = read("index.html");
+
+  assert.match(home, /<title>Chic &amp; Love Ecuador — Vitaminas y complementos en gummies<\/title>/);
+  assert.match(home, /<meta property="og:site_name" content="Chic &amp; Love Ecuador">/);
+  assert.match(home, /<meta property="og:title" content="Chic &amp; Love Ecuador — Vitaminas y complementos en gummies">/);
+
+  const organization = nodesOfType("index.html", "Organization")[0];
+  const website = nodesOfType("index.html", "WebSite")[0];
+  assert.equal(organization.name, SEARCH_NAME);
+  assert.equal(website.name, SEARCH_NAME);
+  assert.ok(!organization.alternateName.includes("Chic&Love EC"));
+  assert.ok(!FORBIDDEN_ALIAS.test(home));
+});
+
+test("todas las páginas publican el nombre oficial en Open Graph y Organization", () => {
+  for (const page of htmlPages) {
+    const html = read(page);
+    assert.match(html, /<meta property="og:site_name" content="Chic &amp; Love Ecuador">/, page);
+    assert.ok(!FORBIDDEN_ALIAS.test(html), `${page}: alias corto no permitido`);
+    for (const organization of nodesOfType(page, "Organization")) {
+      assert.equal(organization.name, SEARCH_NAME, `${page}: Organization.name`);
+    }
+  }
+});
+
+test("el catálogo para máquinas no ofrece ChicLove EC como nombre de marca", () => {
+  const data = JSON.parse(read("catalog.json"));
+  assert.equal(data.brand.storefront, SEARCH_NAME);
+  assert.ok(!data.brand.alternateNames.includes("Chic&Love EC"));
+  assert.ok(!FORBIDDEN_ALIAS.test(read("catalog.json")));
+});

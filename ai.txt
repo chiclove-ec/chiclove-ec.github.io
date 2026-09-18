@@ -1,4 +1,4 @@
-# Chic&Love Ecuador
+# Chic & Love Ecuador
 Site profile: official Ecuador storefront for Chic&Love gummies.
 Language: es-EC
 Region: Ecuador

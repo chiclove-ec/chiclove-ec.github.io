@@ -15,6 +15,7 @@ import { loadSiteConfig, pagePath } from "./lib/site-config.mjs";
 // El dominio sale de site.config.json; el build lo reescribe si se publica en otro.
 const siteConfig = loadSiteConfig();
 const BASE = siteConfig.base;
+const SITE_NAME = siteConfig.brandName;
 const CONTENT_MODIFIED = siteConfig.contentModified;
 const catalog = loadCatalog();
 const { clSinglePrice, clFreeShippingLabel } = catalog;
@@ -144,11 +145,13 @@ itemList.dateModified = CONTENT_MODIFIED;
 const organization = graph["@graph"].find((node) => [].concat(node["@type"]).includes("Organization"));
 const website = graph["@graph"].find((node) => node["@type"] === "WebSite");
 if (!organization || !website) throw new Error("El grafo de la portada no declara Organization y WebSite");
+organization.name = SITE_NAME;
+organization.alternateName = ["Chic&Love", "Chic & Love", "Chic and Love Ecuador"];
 organization.image = BASE + "assets/img/family-bottles.webp";
 organization.dateModified = CONTENT_MODIFIED;
 organization.hasOfferCatalog = {
   "@type": "OfferCatalog",
-  name: "Colección Chic&Love Ecuador",
+  name: "Colección " + SITE_NAME,
   // La portada ya publica el ItemList completo. Aquí solo se enlazan esas entidades
   // para que Google no reciba dos Products con el mismo @id y duplique `brand`.
   itemListElement: catalog.CL_PRODUCTS.map((product, index) => ({
@@ -191,7 +194,7 @@ const machineNodes = [
     "@type": "DefinedTermSet",
     "@id": BASE + "ingredientes.md",
     url: BASE + "ingredientes.md",
-    name: "Activos de Chic&Love Ecuador",
+    name: "Activos de " + SITE_NAME,
     description:
       "Glosario de los " + activeNames.length + " activos del catálogo: qué es cada uno, cómo se " +
       "llama también, en qué fórmulas está y su entidad en Wikidata y Wikipedia.",
@@ -214,7 +217,7 @@ const machineNodes = [
     "@type": "DataFeed",
     "@id": BASE + "catalog.json",
     url: BASE + "catalog.json",
-    name: "Catálogo Chic&Love Ecuador en JSON",
+    name: "Catálogo " + SITE_NAME + " en JSON",
     description:
       "El catálogo completo tipado en una sola petición: precios y packs, pauta diaria, duración " +
       "del frasco, activos con su identificador de Wikidata, datos de la empresa y límites de " +
@@ -235,6 +238,7 @@ for (const node of machineNodes) {
   else graph["@graph"][index] = node;
 }
 website.dateModified = CONTENT_MODIFIED;
+website.name = SITE_NAME;
 indexHtml = indexHtml.replace(
   graphMatch[0],
   '<script type="application/ld+json">' + JSON.stringify(graph) + "</script>"
@@ -248,7 +252,7 @@ const storeHtml = upsertJsonLd(readFileSync(storePath, "utf8"), "CollectionPage"
   "@type": "CollectionPage",
   "@id": BASE + pagePath("tienda.html"),
   url: BASE + pagePath("tienda.html"),
-  name: "Tienda Chic&Love Ecuador — colección completa",
+  name: "Tienda " + SITE_NAME + " — colección completa",
   inLanguage: "es-EC",
   dateModified: CONTENT_MODIFIED,
   isPartOf: { "@id": BASE + "#website" },
@@ -264,8 +268,8 @@ const storeHtml = upsertJsonLd(readFileSync(storePath, "utf8"), "CollectionPage"
 writeFileSync(storePath, storeHtml);
 
 const editorialPages = {
-  "index.html": { type: "WebPage", id: BASE, name: "Chic&Love Ecuador" },
-  "nosotros.html": { type: "WebPage", id: BASE + pagePath("nosotros.html"), name: "Nosotros — Chic&Love Ecuador" }
+  "index.html": { type: "WebPage", id: BASE, name: SITE_NAME },
+  "nosotros.html": { type: "WebPage", id: BASE + pagePath("nosotros.html"), name: "Nosotros — " + SITE_NAME }
 };
 
 for (const [file, page] of Object.entries(editorialPages)) {
@@ -299,6 +303,16 @@ for (const file of allIndexablePages) {
     const nodes = data["@graph"] ?? [data];
     for (const node of nodes) {
       const types = [].concat(node["@type"]);
+      if (types.includes("Organization")) {
+        node.name = SITE_NAME;
+        if (node.alternateName) {
+          node.alternateName = ["Chic&Love", "Chic & Love", "Chic and Love Ecuador"];
+        }
+      }
+      if (types.includes("WebSite")) node.name = SITE_NAME;
+      if (types.some((type) => ["WebPage", "AboutPage", "ContactPage", "CollectionPage"].includes(type)) && typeof node.name === "string") {
+        node.name = node.name.replaceAll("Chic&Love Ecuador", SITE_NAME);
+      }
       if (types.includes("BreadcrumbList")) {
         node.isPartOf = { "@id": BASE + "#website" };
         node.about = { "@id": BASE + "#organization" };
@@ -318,7 +332,8 @@ for (const file of allIndexablePages) {
     }
     return '<script type="application/ld+json">' + JSON.stringify(data) + "</script>";
   });
-  writeFileSync(path, rewritten);
+  const [head, body] = rewritten.split(/(?=<\/head>)/i);
+  writeFileSync(path, head.replaceAll("Chic&amp;Love Ecuador", "Chic &amp; Love Ecuador") + body);
 }
 
 console.log(

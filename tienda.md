@@ -1,4 +1,4 @@
-# Tienda Chic&Love Ecuador — catálogo completo
+# Tienda Chic & Love Ecuador — catálogo completo
 
 > Las siete fórmulas de Chic&Love disponibles en Ecuador, con precio, objetivo, sabor, dosis
 > y activos. Precio por frasco de 60 gummies: $29.99, pack x2 $49.99, pack x3 $74.99. Envío gratis en compras desde $49,99. IVA incluido.
