@@ -130,12 +130,17 @@ test("cada página de producto publica oferta, envío y vendedor", () => {
     assert.ok(node, `${product.id}: falta el Product`);
     assert.equal(node.offers.price, catalog.clSinglePrice(product).toFixed(2), product.id);
     assert.equal("availability" in node.offers, false, `${product.id}: no se debe inventar stock en tiempo real`);
-    if (node.offers.priceValidUntil !== "2027-07-31") {
+    const activePromo = catalog.clActivePromo(product);
+    if (activePromo) {
+      assert.equal(node.offers.priceValidUntil, activePromo.priceValidUntil, `${product.id}: fin de la promoción`);
       assert.match(
         node.offers.validFrom ?? "",
         /^\d{4}-\d{2}-\d{2}$/,
         `${product.id}: la promoción debe declarar desde cuándo es válido el precio`
       );
+    } else {
+      assert.equal("priceValidUntil" in node.offers, false, `${product.id}: no debe inventar caducidad del precio base`);
+      assert.equal("validFrom" in node.offers, false, `${product.id}: no debe inventar inicio del precio base`);
     }
     assert.equal(node.offers.seller["@id"], BASE + "#organization", `${product.id}: vendedor`);
 

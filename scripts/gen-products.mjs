@@ -1126,8 +1126,12 @@ for (const p of catalog.CL_PRODUCTS) {
       url: url,
       priceCurrency: "USD",
       price: price,
-      priceValidUntil: promo ? promo.priceValidUntil : "2027-07-31",
-      ...(promo ? { validFrom: new Date(promo.start).toISOString().slice(0, 10) } : {}),
+      ...(promo
+        ? {
+            validFrom: new Date(promo.start).toISOString().slice(0, 10),
+            priceValidUntil: promo.priceValidUntil
+          }
+        : {}),
       priceSpecification: {
         "@type": "UnitPriceSpecification",
         priceCurrency: "USD",
