@@ -102,7 +102,9 @@ test("los enlaces internos de llms.txt apuntan a archivos publicados", () => {
   const links = [...read("llms.txt").matchAll(pattern)];
   assert.ok(links.length >= 15, "llms.txt debe indexar el sitio");
   for (const [, url] of links) {
-    const path = pageFile(url.slice(BASE.length));
+    // El ancla (#…) apunta a un encabezado del documento; el archivo es lo que va antes.
+    // tests/agent-knowledge.test.mjs comprueba que cada ancla exista.
+    const path = pageFile(url.slice(BASE.length).split("#")[0]);
     assert.ok(exists(path), `llms.txt enlaza a ${url}, que no existe en el repositorio`);
   }
 });

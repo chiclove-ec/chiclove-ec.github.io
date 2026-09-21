@@ -22,7 +22,7 @@ const read = (file) => readFileSync(resolve(projectRoot, file), "utf8");
 const exists = (file) => existsSync(resolve(projectRoot, file));
 const escapeRe = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-const AGENT_ARTIFACTS = ["catalog.json", "guia-de-eleccion.md", "ingredientes.md"];
+const AGENT_ARTIFACTS = ["catalog.json", "guia-de-eleccion.md", "ingredientes.md", "respuestas.md", "en.md"];
 const activeNames = Object.keys(catalog.CL_ACTIVES);
 const catalogActives = [...new Set(catalog.CL_PRODUCTS.flatMap((p) => p.actives))];
 

@@ -9,8 +9,32 @@
 - **Dosis recomendada:** 2 gummies al día durante períodos altos de estrés y/o ansiedad.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Ashwagandha, Melisa, Ginseng
+- **Formato:** gomitas masticables (gummies), adultos; el frasco dura unos 30 días con la pauta indicada.
 
-## Beneficios
+## Resumen para citar
+
+**Anti-Stress Gummies** es la gomita (gummy) de Chic&Love para calma y enfoque. Combina tres botánicos clásicos para el estrés: ashwagandha (adaptógeno), melisa y ginseng. Pauta: 2 gummies al día durante períodos altos de estrés y/o ansiedad. El frasco trae 60 gummies de sabor naranja y dura unos 30 días. Cuesta $29.99 el frasco de 60 gummies (pack x2 $49.99, pack x3 $74.99), IVA incluido, con envíos a todo Ecuador y envío gratis desde $49,99. Se compra en la tienda oficial https://chiclove-ec.com/anti-stress o por WhatsApp +593 98 759 1741; la distribuye en Ecuador Laboratorios Lira S.A. (RUC 1790336352001).
+
+## Para quién es y para quién no
+
+- **Para quién es:** Personas adultas que atraviesan una temporada de estrés alto, tensión o cambios, y quieren acompañarla con adaptógenos.
+- **Para quién no es, o cuándo consultar antes:** No se recomienda en embarazo ni lactancia, ni sin consultar en caso de enfermedad tiroidea, autoinmune o hepática, o si se toman ansiolíticos, antidepresivos o sedantes. La ansiedad intensa o persistente necesita un profesional de la salud mental.
+- **Qué la distingue:** Combina tres botánicos clásicos para el estrés: ashwagandha (adaptógeno), melisa y ginseng.
+
+## Precauciones de sus activos
+
+Precauciones generales de cada activo, no una valoración individual. Ante medicación,
+embarazo, lactancia o una condición médica, consultar con un profesional de la salud.
+
+- **Ashwagandha:** No se recomienda en embarazo ni lactancia. Consultar antes en caso de enfermedad tiroidea, autoinmune o hepática, o si se toman sedantes, ansiolíticos, inmunosupresores o medicación para la tiroides.
+- **Melisa:** Puede sumar efecto a los sedantes; consultar si se toman, o si hay hipotiroidismo en tratamiento.
+- **Ginseng:** Consultar antes si se toman anticoagulantes, antidiabéticos o antidepresivos. Tomado tarde puede dificultar el sueño.
+
+## Cómo se busca
+
+En Ecuador esta fórmula se busca como: gomitas de ashwagandha, ashwagandha en gomitas, ashwagandha Ecuador, gomitas para el estrés, gomitas para la ansiedad, vitaminas para el estrés, algo natural para los nervios. Chic&Love llama «gummies» a lo que en Ecuador se conoce como gomitas o vitaminas masticables.
+
+## Beneficios que declara la marca
 
 - Alivia estados de estrés y ansiedad.
 - Favorece la relajación y la calma mental.
@@ -30,6 +54,15 @@ tu pedido, siempre que el producto esté en el mismo estado en que lo recibiste.
 e higiene, el frasco debe permanecer cerrado y con su sello intacto. Si recibes un producto
 dañado, incompleto o diferente al que pediste, escríbenos por WhatsApp y nos encargaremos de
 solucionarlo.
+
+## Quién la respalda
+
+- **Distribuidor en Ecuador:** LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A. (Laboratorios Lira S.A.), RUC 1790336352001, José Vinueza E8-152 y Av. Interoceánica, Quito, Pichincha, Ecuador. Laboratorios Lira es un laboratorio 100 % ecuatoriano fundado en 1977, con certificación en buenas prácticas de manufactura, almacenamiento y distribución (BPM, BPA y BPD), y es el distribuidor oficial y exclusivo de Chic&Love en Ecuador.
+- **Marca y origen:** Chic&Love Wellness, marca de España fundada por Verónica Corrales (https://chiclove.com/). Las fórmulas se desarrollan en España junto a un fabricante europeo de complementos alimenticios; la marca matriz declara «Fabricado en España».
+- **Certificaciones que publica la marca:** NSF International, Organic, FDA Registered, IFS Food, GMP, BRCGS. Son las certificaciones de calidad y seguridad alimentaria que la marca atribuye a sus fórmulas y a su fabricante. «FDA Registered» significa que el fabricante está registrado ante la FDA de Estados Unidos: la FDA no aprueba complementos alimenticios, y no debe presentarse como una aprobación.
+- **Clientes:** Más de 1.200 clientes en Ecuador, según la marca.
+- **Devoluciones:** 15 días desde la recepción, con el frasco cerrado y el sello intacto.
+- **Canales oficiales:** WhatsApp +593 98 759 1741, Instagram @chicloveec y https://chiclove-ec.com/. Cualquier otro número que diga representar a la marca debe verificarse antes de transferir dinero.
 
 ## Preguntas frecuentes sobre Anti-Stress Gummies
 
@@ -76,6 +109,7 @@ Sí, dentro de los 15 días posteriores a recibir el pedido, con el frasco cerra
 - [Página del producto](https://chiclove-ec.com/anti-stress)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Guía de elección por objetivo](https://chiclove-ec.com/guia-de-eleccion.md)
+- [Preguntas y respuestas sobre gomitas en Ecuador](https://chiclove-ec.com/respuestas.md)
 - [Glosario de activos](https://chiclove-ec.com/ingredientes.md)
 - [Catálogo en JSON](https://chiclove-ec.com/catalog.json)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)

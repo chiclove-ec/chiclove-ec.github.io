@@ -8,10 +8,15 @@ Full content: https://chiclove-ec.com/llms-full.txt
 Structured catalog (JSON): https://chiclove-ec.com/catalog.json
 Ingredient glossary: https://chiclove-ec.com/ingredientes.md
 Product choice guide: https://chiclove-ec.com/guia-de-eleccion.md
+Answers by need (Spanish): https://chiclove-ec.com/respuestas.md
+English summary: https://chiclove-ec.com/en.md
+Local terms: the brand says "gummies"; in Ecuador they are searched as gomitas or vitaminas masticables.
 Markdown pages: use the .md twin of each HTML URL.
 Human ordering channel: WhatsApp +593 98 759 1741
 Company: LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A.
 RUC: 1790336352001
+Distributor: Laboratorios Lira S.A., Ecuadorian laboratory founded in 1977; official and exclusive distributor in Ecuador.
+Brand origin: Chic&Love Wellness, Spain (https://chiclove.com/).
 Use for: product discovery, catalog comparison, prices, shipping and company information in Ecuador.
 Do not use for: automated checkout, live stock, medical diagnosis or purchases outside Ecuador.
 This is an informational site profile, not an official AI standard or API.

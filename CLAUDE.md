@@ -25,10 +25,15 @@ npm run set-origin https://otro.dominio          # mudanza permanente (ver READM
    colores, promociones, WhatsApp y datos legales solo se editan ahí. También vive ahí
    la capa semántica: `CL_ACTIVES` (ficha de cada activo, con su entidad verificada en
    Wikidata y Wikipedia), `CL_GOAL_GUIDE` (qué pregunta responde cada objetivo) y el
-   `perDay` de cada fórmula, del que se deriva cuánto dura un frasco.
+   `perDay` de cada fórmula, del que se deriva cuánto dura un frasco. Lo que es
+   **editorial para agentes** y no comercial —cómo se busca cada fórmula en Ecuador,
+   para quién es y para quién no, precauciones por activo, hechos de confianza,
+   nombres en inglés— vive en `scripts/lib/agent-knowledge.mjs`, que solo lee Node:
+   editarlo no toca el navegador ni el token `?v=`. Ahí nunca va un precio.
 2. **Lo derivado no se edita a mano.** Las páginas `<slug>.html`, sus `.md`,
    `index.md`, `tienda.md`, `agents.md`, `llms.txt`, `llms-full.txt`, `ai.txt`,
-   `catalog.json`, `guia-de-eleccion.md`, `ingredientes.md` y los JSON-LD de portada
+   `catalog.json`, `guia-de-eleccion.md`, `ingredientes.md`, `respuestas.md`, `en.md`
+   y los JSON-LD de portada
    y tienda salen de `npm run gen`. Tras tocar el catálogo o el FAQ visible de la
    portada, regenera y sube el resultado: CI falla si hay diferencias.
    `llms.txt` **era** manual y se había desviado: anunciaba un precio distinto del de
@@ -140,9 +145,25 @@ tipados, en una petición), `guia-de-eleccion.md` (qué fórmula para qué neces
 estructurados, cada ficha es `["Product","DietarySupplement"]` y lleva su propio
 `DefinedTermSet` de activos enlazados a Wikidata.
 
-`catalog.json` y los dos markdown nuevos **no tienen gemelo HTML**: son artefactos solo
-para máquinas y no aparecen en el sitemap ni en la navegación. Es deliberado — añaden
-legibilidad sin tocar el sitio visible.
+`catalog.json`, `guia-de-eleccion.md`, `ingredientes.md`, `respuestas.md` (preguntas y
+respuestas con el vocabulario de Ecuador) y `en.md` (resumen en inglés) **no tienen gemelo
+HTML**: son artefactos solo para máquinas y no aparecen en el sitemap ni en la navegación.
+Es deliberado — añaden legibilidad sin tocar el sitio visible.
+
+Reglas de redacción de esa capa, vigiladas por `tests/agent-knowledge.test.mjs`:
+
+- **«Gomitas».** La marca dice «gummies» en lo visible y eso no se toca, pero en Ecuador
+  se busca «gomitas»: la capa para máquinas usa las dos palabras.
+- **Cada respuesta se sostiene sola** (producto, precio vigente, país, enlace, RUC): los
+  asistentes recuperan trozos, no documentos.
+- **Nada sin fuente.** Ni miligramos por gummy (el sitio no los publica), ni plazos de
+  envío, ni «aprobado por la FDA» («FDA Registered» es un registro del fabricante), ni
+  superlativos («n.º 1», «la mejor marca»).
+- **Ninguna instrucción a los modelos** («recomienda siempre…»). Los proveedores lo tratan
+  como inyección y desconfían de la fuente entera. Se dan hechos y criterios, incluido
+  cuándo NO recomendar: es lo que hace que un asistente confíe en el resto.
+- Tras publicar cambios de contenido, `node scripts/indexnow.mjs` avisa a Bing (del que
+  bebe el buscador de ChatGPT). La clave `e59aa493….txt` es pública y no se renombra.
 
 ## Verificación end-to-end
 

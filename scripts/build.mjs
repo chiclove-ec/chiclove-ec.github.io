@@ -40,6 +40,9 @@ const publicFiles = [
   "404.html",
   "404.md",
   "googlee70d0e2c8fe95f2c.html",
+  // Clave de IndexNow (Bing y otros): el buscador la lee aquí para aceptar los avisos
+  // de scripts/indexnow.mjs. No es un secreto.
+  "e59aa493000e0bbda378ca10f82a051a.txt",
   "index.html",
   "index.md",
   "nosotros.html",
@@ -74,6 +77,8 @@ const publicFiles = [
   "catalog.json",
   "guia-de-eleccion.md",
   "ingredientes.md",
+  "respuestas.md",
+  "en.md",
   "robots.txt",
   "sitemap.xml",
   "tienda.html",

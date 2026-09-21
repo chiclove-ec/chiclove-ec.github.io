@@ -53,7 +53,10 @@ propio y `dist/` (el único artefacto publicable) se arma copiando por lista bla
 | `llms-full.txt` | Todo el markdown del sitio en un archivo (generado) |
 | `catalog.json` | **El catálogo entero tipado en una sola petición** (generado): precios y packs, pauta, duración del frasco, activos con su entidad de Wikidata, empresa y límites de uso |
 | `guia-de-eleccion.md` | Guía de decisión por objetivo y tabla comparativa de las siete fórmulas (generado) |
-| `ingredientes.md` | Glosario de los activos: qué es cada uno, en qué producto está y su entidad en Wikidata y Wikipedia (generado) |
+| `ingredientes.md` | Glosario de los activos: qué es cada uno, sus precauciones, en qué producto está y su entidad en Wikidata y Wikipedia (generado) |
+| `respuestas.md` | **Preguntas y respuestas con el vocabulario de Ecuador** («gomitas de biotina», «¿envían a Cuenca?», «¿es confiable?»), cada una citable por sí sola (generado) |
+| `en.md` | Resumen en inglés de la tienda, las fórmulas, los precios y la seguridad (generado) |
+| `e59aa493000e0bbda378ca10f82a051a.txt` | Clave pública de IndexNow; la usa `scripts/indexnow.mjs`. **No renombrar** |
 | `*.md` | Gemelo markdown de cada página, incluido `404.md` |
 | `robots.txt`, `sitemap.xml` | Rastreo y páginas indexables |
 | `.well-known/security.txt` | Canal de reporte de vulnerabilidades (RFC 9116) |
@@ -147,9 +150,21 @@ npm run gen && npm run check   # regenera, construye dist/ y ejecuta la suite
   `<link rel="alternate" type="application/json">` y como `DataFeed` en los datos estructurados.
 - **`/guia-de-eleccion.md`** — la pregunta con la que llega la gente («¿cuál me sirve para X?»)
   respondida objetivo por objetivo, con tabla comparativa de las siete fórmulas.
-- **`/ingredientes.md`** — qué es cada activo, cómo se llama también, en qué fórmulas está y su
-  entidad en **Wikidata** y Wikipedia, para que «maca» o «melisa» se resuelvan a la especie
-  correcta sin inferirla del contexto.
+- **`/ingredientes.md`** — qué es cada activo, cómo se llama también, sus precauciones, en qué
+  fórmulas está y su entidad en **Wikidata** y Wikipedia, para que «maca» o «melisa» se
+  resuelvan a la especie correcta sin inferirla del contexto.
+- **`/respuestas.md`** — lo que se pregunta en Ecuador, con sus palabras: la marca dice
+  «gummies», pero en Ecuador se busca «gomitas», y antes esa palabra no aparecía en ningún texto
+  del sitio. Una respuesta por necesidad y por activo, más compra, envío, confianza y seguridad.
+  Un asistente recupera trozos, no documentos: cada respuesta nombra producto, precio vigente,
+  país, enlace y distribuidor, y se sostiene sola.
+- **`/en.md`** — resumen en inglés, para expatriados, turistas y modelos que razonan en inglés.
+- **Para quién es y para quién no** — cada ficha markdown abre con un «Resumen para citar», dice
+  para quién es la fórmula, cuándo no lo es y las precauciones de cada activo. Un asistente
+  recomienda antes una fuente que le dice cuándo NO recomendar que una que solo vende.
+- **IndexNow** — `node scripts/indexnow.mjs` avisa a Bing y compañía de las URL nuevas tras un
+  despliegue (el buscador de ChatGPT y Copilot se apoya en Bing). Ejecútalo después de publicar
+  cambios de contenido; `--dry-run` enseña lo que enviaría.
 - **FAQ por ficha** — cada gemelo markdown de producto cierra las preguntas previas a la compra
   (para qué sirve, cómo se toma, cuánto dura el frasco, precio y envío, si es vegano, qué activos
   lleva, contraindicaciones, cómo se pide, devoluciones) con datos salidos del catálogo.

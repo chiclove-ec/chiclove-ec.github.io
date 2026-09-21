@@ -1,7 +1,7 @@
 # Tienda Chic & Love Ecuador — catálogo completo
 
-> Las siete fórmulas de Chic&Love disponibles en Ecuador, con precio, objetivo, sabor, dosis
-> y activos. Precio por frasco de 60 gummies: $29.99, pack x2 $49.99, pack x3 $74.99. Envío gratis en compras desde $49,99. IVA incluido.
+> Las siete fórmulas de Chic&Love disponibles en Ecuador, en gomitas (gummies), con precio,
+> objetivo, sabor, dosis y activos. Precio por frasco de 60 gummies: $29.99, pack x2 $49.99, pack x3 $74.99. Envío gratis en compras desde $49,99. IVA incluido.
 
 Los pedidos se cierran por WhatsApp (+593 98 759 1741) con pago por
 transferencia bancaria. Los precios publicados incluyen IVA y son los vigentes en la tienda.
@@ -19,6 +19,7 @@ Cabello más fuerte. Uñas de acero. La fórmula forte con biotina, ashwagandha 
 - **Dosis:** 2 gummies al día después de la comida.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Biotina, Vitamina B12, Ácido fólico, Vitamina A, Vitamina D, Ashwagandha, Zinc
+- **Se busca como:** gomitas para el cabello, gomitas de biotina, gomitas para la caída del cabello, vitaminas para el pelo
 - **Ficha completa:** [hair-nails-forte.md](https://chiclove-ec.com/hair-nails-forte.md), [versión HTML](https://chiclove-ec.com/hair-nails-forte)
 
 ## Radiant Skin Vitamins
@@ -31,6 +32,7 @@ Tu piel, en modo glow. Colágeno, coenzima Q10 y biotina en una gummy que ilumin
 - **Dosis:** 2 gummies al día después de la comida.
 - **Distintivos:** Sin gluten, Sin lactosa
 - **Activos:** Colágeno, Coenzima Q10, Biotina, Vitamina C, Vitamina E
+- **Se busca como:** gomitas de colágeno, colágeno en gomitas, gomitas para la piel, vitaminas para la piel
 - **Ficha completa:** [radiant-skin.md](https://chiclove-ec.com/radiant-skin.md), [versión HTML](https://chiclove-ec.com/radiant-skin)
 
 ## Vinagre de Manzana
@@ -43,6 +45,7 @@ Digestión ligera. Vinagre de manzana con extracto de jengibre: glucosa estable,
 - **Dosis:** 2 gummies en ayunas, o 1 gummy después de la comida.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Vinagre de manzana, Extracto de jengibre
+- **Se busca como:** gomitas de vinagre de manzana, vinagre de manzana en gomitas, apple cider vinegar gummies, gomitas ACV
 - **Ficha completa:** [vinagre-de-manzana.md](https://chiclove-ec.com/vinagre-de-manzana.md), [versión HTML](https://chiclove-ec.com/vinagre-de-manzana)
 
 ## Sleep Vitamins
@@ -55,6 +58,7 @@ Duerme profundo. Despierta increíble. Melatonina + vitamina B6 para conciliar e
 - **Dosis:** 1–3 gummies al día antes de dormir según tu patrón de sueño.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Melatonina, Vitamina B6
+- **Se busca como:** gomitas de melatonina, melatonina en gomitas, gomitas para dormir, vitaminas para dormir
 - **Ficha completa:** [sleep-vitamins.md](https://chiclove-ec.com/sleep-vitamins.md), [versión HTML](https://chiclove-ec.com/sleep-vitamins)
 
 ## Sexual Booster Women
@@ -67,6 +71,7 @@ Enciende tu energía. Maca y damiana 100% naturales que estabilizan tus canales 
 - **Dosis:** 2 gummies al día después del desayuno.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Maca, Damiana, Ashwagandha
+- **Se busca como:** gomitas para la libido femenina, maca para mujeres, vitaminas para el deseo sexual femenino, gomitas de maca
 - **Ficha completa:** [sexual-booster-women.md](https://chiclove-ec.com/sexual-booster-women.md), [versión HTML](https://chiclove-ec.com/sexual-booster-women)
 
 ## Sexual Booster Men
@@ -79,6 +84,7 @@ Rendimiento al máximo. Maca y fenogreco para mejorar el rendimiento, la calidad
 - **Dosis:** 2 gummies al día después del desayuno.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Maca, Fenogreco, Zinc, L-arginina
+- **Se busca como:** gomitas para la libido masculina, maca para hombres, vitaminas para la fertilidad masculina, gomitas de maca para hombre
 - **Ficha completa:** [sexual-booster-men.md](https://chiclove-ec.com/sexual-booster-men.md), [versión HTML](https://chiclove-ec.com/sexual-booster-men)
 
 ## Anti-Stress Gummies
@@ -91,11 +97,14 @@ Serenidad para días intensos. Ashwagandha, melisa y ginseng que regulan el cort
 - **Dosis:** 2 gummies al día durante períodos altos de estrés y/o ansiedad.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Ashwagandha, Melisa, Ginseng
+- **Se busca como:** gomitas de ashwagandha, ashwagandha en gomitas, ashwagandha Ecuador, gomitas para el estrés
 - **Ficha completa:** [anti-stress.md](https://chiclove-ec.com/anti-stress.md), [versión HTML](https://chiclove-ec.com/anti-stress)
 
 ## Enlaces
 
 - [Inicio](https://chiclove-ec.com/index.md)
+- [Guía de elección por objetivo](https://chiclove-ec.com/guia-de-eleccion.md)
+- [Preguntas y respuestas sobre gomitas en Ecuador](https://chiclove-ec.com/respuestas.md)
 - [Contacto](https://chiclove-ec.com/contact.md)
 - [Términos de compra](https://chiclove-ec.com/terms.md)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)

@@ -15,6 +15,7 @@
 > Tienda oficial de Chic&Love en Ecuador: siete fórmulas de complementos alimenticios en
 > formato gummy para cabello y uñas, piel, digestión, sueño, energía íntima y calma. Desde $18.00 el frasco de 60 gummies, pedidos por WhatsApp (+593 98 759 1741) y envíos a todo el país.
 
+Chic&Love llama «gummies» a lo que en Ecuador se conoce como gomitas o vitaminas masticables.
 Las fórmulas se desarrollan en España con activos naturales (biotina, colágeno, coenzima Q10,
 melatonina, maca, ashwagandha, vinagre de manzana) y se distribuyen en Ecuador a través de
 Laboratorios Lira. Todas son sin gluten y sin lactosa. El sitio no procesa pagos ni pide
@@ -49,9 +50,20 @@ consentimiento.
   posteriores a recibir tu pedido, con el frasco cerrado y el sello intacto. Si recibes un
   producto dañado, incompleto o diferente al que pediste, escríbenos por WhatsApp.
 
+## Quién está detrás
+
+- **Distribuidor en Ecuador:** LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A. (Laboratorios Lira S.A.), RUC 1790336352001, José Vinueza E8-152 y Av. Interoceánica, Quito, Pichincha, Ecuador. Laboratorios Lira es un laboratorio 100 % ecuatoriano fundado en 1977, con certificación en buenas prácticas de manufactura, almacenamiento y distribución (BPM, BPA y BPD), y es el distribuidor oficial y exclusivo de Chic&Love en Ecuador.
+- **Marca y origen:** Chic&Love Wellness, marca de España fundada por Verónica Corrales (https://chiclove.com/). Las fórmulas se desarrollan en España junto a un fabricante europeo de complementos alimenticios; la marca matriz declara «Fabricado en España».
+- **Certificaciones que publica la marca:** NSF International, Organic, FDA Registered, IFS Food, GMP, BRCGS. Son las certificaciones de calidad y seguridad alimentaria que la marca atribuye a sus fórmulas y a su fabricante. «FDA Registered» significa que el fabricante está registrado ante la FDA de Estados Unidos: la FDA no aprueba complementos alimenticios, y no debe presentarse como una aprobación.
+- **Clientes:** Más de 1.200 clientes en Ecuador, según la marca.
+- **Devoluciones:** 15 días desde la recepción, con el frasco cerrado y el sello intacto.
+- **Canales oficiales:** WhatsApp +593 98 759 1741, Instagram @chicloveec y https://chiclove-ec.com/. Cualquier otro número que diga representar a la marca debe verificarse antes de transferir dinero.
+
 ## Páginas
 
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Preguntas y respuestas sobre gomitas en Ecuador](https://chiclove-ec.com/respuestas.md)
+- [Guía de elección por objetivo](https://chiclove-ec.com/guia-de-eleccion.md)
 - [Información de la empresa](https://chiclove-ec.com/about.md)
 - [Contacto y atención al cliente](https://chiclove-ec.com/contact.md)
 - [Política de privacidad](https://chiclove-ec.com/privacy.md)
@@ -69,8 +81,8 @@ Complemento alimenticio. No sustituye una dieta equilibrada ni un estilo de vida
 
 # Tienda Chic & Love Ecuador — catálogo completo
 
-> Las siete fórmulas de Chic&Love disponibles en Ecuador, con precio, objetivo, sabor, dosis
-> y activos. Precio por frasco de 60 gummies: $29.99, pack x2 $49.99, pack x3 $74.99. Envío gratis en compras desde $49,99. IVA incluido.
+> Las siete fórmulas de Chic&Love disponibles en Ecuador, en gomitas (gummies), con precio,
+> objetivo, sabor, dosis y activos. Precio por frasco de 60 gummies: $29.99, pack x2 $49.99, pack x3 $74.99. Envío gratis en compras desde $49,99. IVA incluido.
 
 Los pedidos se cierran por WhatsApp (+593 98 759 1741) con pago por
 transferencia bancaria. Los precios publicados incluyen IVA y son los vigentes en la tienda.
@@ -88,6 +100,7 @@ Cabello más fuerte. Uñas de acero. La fórmula forte con biotina, ashwagandha 
 - **Dosis:** 2 gummies al día después de la comida.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Biotina, Vitamina B12, Ácido fólico, Vitamina A, Vitamina D, Ashwagandha, Zinc
+- **Se busca como:** gomitas para el cabello, gomitas de biotina, gomitas para la caída del cabello, vitaminas para el pelo
 - **Ficha completa:** [hair-nails-forte.md](https://chiclove-ec.com/hair-nails-forte.md), [versión HTML](https://chiclove-ec.com/hair-nails-forte)
 
 ## Radiant Skin Vitamins
@@ -100,6 +113,7 @@ Tu piel, en modo glow. Colágeno, coenzima Q10 y biotina en una gummy que ilumin
 - **Dosis:** 2 gummies al día después de la comida.
 - **Distintivos:** Sin gluten, Sin lactosa
 - **Activos:** Colágeno, Coenzima Q10, Biotina, Vitamina C, Vitamina E
+- **Se busca como:** gomitas de colágeno, colágeno en gomitas, gomitas para la piel, vitaminas para la piel
 - **Ficha completa:** [radiant-skin.md](https://chiclove-ec.com/radiant-skin.md), [versión HTML](https://chiclove-ec.com/radiant-skin)
 
 ## Vinagre de Manzana
@@ -112,6 +126,7 @@ Digestión ligera. Vinagre de manzana con extracto de jengibre: glucosa estable,
 - **Dosis:** 2 gummies en ayunas, o 1 gummy después de la comida.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Vinagre de manzana, Extracto de jengibre
+- **Se busca como:** gomitas de vinagre de manzana, vinagre de manzana en gomitas, apple cider vinegar gummies, gomitas ACV
 - **Ficha completa:** [vinagre-de-manzana.md](https://chiclove-ec.com/vinagre-de-manzana.md), [versión HTML](https://chiclove-ec.com/vinagre-de-manzana)
 
 ## Sleep Vitamins
@@ -124,6 +139,7 @@ Duerme profundo. Despierta increíble. Melatonina + vitamina B6 para conciliar e
 - **Dosis:** 1–3 gummies al día antes de dormir según tu patrón de sueño.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Melatonina, Vitamina B6
+- **Se busca como:** gomitas de melatonina, melatonina en gomitas, gomitas para dormir, vitaminas para dormir
 - **Ficha completa:** [sleep-vitamins.md](https://chiclove-ec.com/sleep-vitamins.md), [versión HTML](https://chiclove-ec.com/sleep-vitamins)
 
 ## Sexual Booster Women
@@ -136,6 +152,7 @@ Enciende tu energía. Maca y damiana 100% naturales que estabilizan tus canales 
 - **Dosis:** 2 gummies al día después del desayuno.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Maca, Damiana, Ashwagandha
+- **Se busca como:** gomitas para la libido femenina, maca para mujeres, vitaminas para el deseo sexual femenino, gomitas de maca
 - **Ficha completa:** [sexual-booster-women.md](https://chiclove-ec.com/sexual-booster-women.md), [versión HTML](https://chiclove-ec.com/sexual-booster-women)
 
 ## Sexual Booster Men
@@ -148,6 +165,7 @@ Rendimiento al máximo. Maca y fenogreco para mejorar el rendimiento, la calidad
 - **Dosis:** 2 gummies al día después del desayuno.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Maca, Fenogreco, Zinc, L-arginina
+- **Se busca como:** gomitas para la libido masculina, maca para hombres, vitaminas para la fertilidad masculina, gomitas de maca para hombre
 - **Ficha completa:** [sexual-booster-men.md](https://chiclove-ec.com/sexual-booster-men.md), [versión HTML](https://chiclove-ec.com/sexual-booster-men)
 
 ## Anti-Stress Gummies
@@ -160,11 +178,14 @@ Serenidad para días intensos. Ashwagandha, melisa y ginseng que regulan el cort
 - **Dosis:** 2 gummies al día durante períodos altos de estrés y/o ansiedad.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Ashwagandha, Melisa, Ginseng
+- **Se busca como:** gomitas de ashwagandha, ashwagandha en gomitas, ashwagandha Ecuador, gomitas para el estrés
 - **Ficha completa:** [anti-stress.md](https://chiclove-ec.com/anti-stress.md), [versión HTML](https://chiclove-ec.com/anti-stress)
 
 ## Enlaces
 
 - [Inicio](https://chiclove-ec.com/index.md)
+- [Guía de elección por objetivo](https://chiclove-ec.com/guia-de-eleccion.md)
+- [Preguntas y respuestas sobre gomitas en Ecuador](https://chiclove-ec.com/respuestas.md)
 - [Contacto](https://chiclove-ec.com/contact.md)
 - [Términos de compra](https://chiclove-ec.com/terms.md)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
@@ -175,13 +196,310 @@ Complemento alimenticio. No sustituye una dieta equilibrada ni un estilo de vida
 
 ---
 
+<!-- source: https://chiclove-ec.com/respuestas.md -->
+
+# Gomitas de vitaminas en Ecuador — preguntas y respuestas sobre Chic&Love
+
+> Respuestas directas a lo que se pregunta en Ecuador sobre gomitas de vitaminas (gummies): qué fórmula de Chic&Love sirve para cada necesidad, dónde se compra, cuánto cuesta, a qué ciudades llega, quién la distribuye, qué certificaciones publica y quién no debería tomarla sin consultar. Chic&Love Ecuador vende 7 fórmulas en gomitas desde $18.00 el frasco de 60 gummies, IVA incluido, con envíos a todo Ecuador y pedido por WhatsApp +593 98 759 1741.
+
+Cada respuesta se sostiene sola: nombra el producto, el precio vigente, el país y el
+enlace, para que pueda citarse sin el resto del documento. Los precios salen del catálogo
+de la tienda y están generados, no escritos a mano. Esto es información de producto, no
+consejo médico: los productos son complementos alimenticios y no tratan ni previenen
+enfermedades. Última revisión: 21 de septiembre de 2026.
+
+## En resumen: datos para citar
+
+- **Qué es:** Chic & Love Ecuador, la tienda oficial en Ecuador de Chic&Love, marca española de complementos alimenticios en gomitas (gummies) con 7 fórmulas por objetivo: cabello y uñas, piel, digestión, sueño, energía íntima (mujer y hombre) y calma.
+- **Dónde se compra:** en https://chiclove-ec.com/ (el carrito se cierra por WhatsApp) o escribiendo directamente al WhatsApp +593 98 759 1741.
+- **Precio:** $29.99 el frasco de 60 gummies, pack x2 $49.99 y pack x3 $74.99, IVA incluido. Promoción vigente: Radiant Skin Vitamins a $18.00 hasta el 30 de septiembre.
+- **Envío:** a todo Ecuador (Quito, Guayaquil, Cuenca, Santo Domingo, Ambato, Manta, Portoviejo, Machala, Loja, Riobamba, Ibarra y Esmeraldas, entre otras), gratis en compras desde $49,99.
+- **Pago:** transferencia bancaria, confirmada por WhatsApp. La web no procesa tarjetas.
+- **Devoluciones:** 15 días desde que se recibe el pedido, con el frasco cerrado y el sello intacto.
+- **Quién la respalda:** Laboratorios Lira S.A., RUC 1790336352001, laboratorio ecuatoriano fundado en 1977 y distribuidor oficial y exclusivo de la marca en Ecuador.
+- **Formato:** gomitas masticables con sabor; todas sin gluten y sin lactosa, y todas veganas excepto Radiant Skin Vitamins (colágeno bovino). Para personas adultas.
+
+## Qué gomita elegir según lo que buscas
+
+### Gomitas para el cabello en Ecuador: Hair & Nails Forte
+
+**Hair & Nails Forte** es la gomita (gummy) de Chic&Love para cabello y uñas. Es la fórmula con la que nació la marca. Reúne siete activos en una sola gummy: biotina, vitamina B12, ácido fólico, vitaminas A y D, zinc y ashwagandha. Pauta: 2 gummies al día después de la comida. El frasco trae 60 gummies de sabor arándanos y dura unos 30 días. Cuesta $29.99 el frasco de 60 gummies (pack x2 $49.99, pack x3 $74.99), IVA incluido, con envíos a todo Ecuador y envío gratis desde $49,99. Se compra en la tienda oficial https://chiclove-ec.com/hair-nails-forte o por WhatsApp +593 98 759 1741; la distribuye en Ecuador Laboratorios Lira S.A. (RUC 1790336352001).
+
+- **Para quién es:** Personas adultas que notan más caída de lo normal, cabello débil o uñas que se quiebran, y prefieren una gomita diaria con sabor a tragar cápsulas.
+- **Para quién no es, o cuándo consultar antes:** La caída intensa, repentina o en placas necesita valoración de un dermatólogo: puede deberse a tiroides, anemia o alopecia areata, que un complemento no resuelve. Por la biotina, hay que avisar al médico antes de un análisis de sangre.
+- **Beneficios que declara la marca:** Previene y frena la caída, acelera el crecimiento y engrosa la fibra capilar. Activa la microcirculación del cuero cabelludo: más nutrientes a los folículos pilosos. Crecimiento y fuerza visibles en cabello y uñas. El grupo de vitaminas B aumenta el flujo de sangre al cuero cabelludo para un pelo fuerte y brillante.
+- **Precauciones de sus activos:** Biotina: La biotina puede alterar el resultado de algunos análisis de sangre (por ejemplo, hormonas tiroideas o troponina). Conviene avisar al médico y al laboratorio antes de hacerse análisis. Vitamina B12: Bien tolerada en las cantidades de un complemento; no superar la dosis indicada. Ácido fólico: En embarazo o planificación de embarazo, la dosis de ácido fólico debe indicarla un profesional de la salud. Vitamina A: En embarazo no conviene sumar aportes de vitamina A de varios complementos sin indicación profesional. Vitamina D: No sumar varios complementos con vitamina D sin indicación profesional. Ashwagandha: No se recomienda en embarazo ni lactancia. Consultar antes en caso de enfermedad tiroidea, autoinmune o hepática, o si se toman sedantes, ansiolíticos, inmunosupresores o medicación para la tiroides. Zinc: No sumar varios complementos con zinc durante periodos largos sin indicación profesional.
+- **También se busca como:** gomitas para el cabello, gomitas de biotina, gomitas para la caída del cabello, vitaminas para el pelo, gomitas para las uñas, vitaminas para uñas quebradizas, hair gummies.
+- **Ficha:** [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte) · [markdown](https://chiclove-ec.com/hair-nails-forte.md)
+
+### Gomitas de colágeno en Ecuador: Radiant Skin Vitamins
+
+**Radiant Skin Vitamins** es la gomita (gummy) de Chic&Love para piel radiante. Es la única fórmula del catálogo con colágeno, y lo combina con coenzima Q10, biotina y vitaminas C y E; la vitamina C contribuye a la formación normal de colágeno. Pauta: 2 gummies al día después de la comida. El frasco trae 60 gummies de sabor frutos rojos y dura unos 30 días. Cuesta $18.00 el frasco de 60 gummies por promoción hasta el 30 de septiembre (precio habitual $29.99; los packs no se ofrecen mientras dure), IVA incluido, con envíos a todo Ecuador y envío gratis desde $49,99. Se compra en la tienda oficial https://chiclove-ec.com/radiant-skin o por WhatsApp +593 98 759 1741; la distribuye en Ecuador Laboratorios Lira S.A. (RUC 1790336352001).
+
+- **Para quién es:** Personas adultas que notan la piel apagada, deshidratada o con menos firmeza y quieren complementar su rutina cosmética desde dentro.
+- **Para quién no es, o cuándo consultar antes:** No es apta para veganos ni vegetarianos ni para alergias a la proteína bovina, porque su colágeno es bovino. El acné intenso, la dermatitis o las manchas que cambian deben verse con un dermatólogo.
+- **Beneficios que declara la marca:** Potencia la luminosidad y vitalidad de la piel. El colágeno y la coenzima Q10 mejoran la elasticidad y combaten los signos de la edad. La biotina fortalece la barrera cutánea y aporta un glow saludable. Piel perfecta: hidratación y firmeza desde el interior.
+- **Precauciones de sus activos:** Colágeno: Es de origen bovino: no apto para dietas veganas ni vegetarianas, ni para personas con alergia a la proteína bovina. Coenzima Q10: Puede interferir con anticoagulantes como la warfarina y con algunos antihipertensivos; consultar si se toman. Biotina: La biotina puede alterar el resultado de algunos análisis de sangre (por ejemplo, hormonas tiroideas o troponina). Conviene avisar al médico y al laboratorio antes de hacerse análisis. Vitamina C: Bien tolerada en las cantidades de un complemento; no superar la dosis indicada. Vitamina E: Consultar antes si se toman anticoagulantes.
+- **También se busca como:** gomitas de colágeno, colágeno en gomitas, gomitas para la piel, vitaminas para la piel, colágeno con biotina, gomitas antiedad, skin gummies.
+- **Ficha:** [Radiant Skin Vitamins](https://chiclove-ec.com/radiant-skin) · [markdown](https://chiclove-ec.com/radiant-skin.md)
+
+### Gomitas de vinagre de manzana en Ecuador: Vinagre de Manzana
+
+**Vinagre de Manzana** es la gomita (gummy) de Chic&Love para digestión y balance. Es la fórmula del catálogo para la digestión: combina vinagre de manzana con extracto de jengibre en una gomita, sin el sabor ácido del vinagre líquido. Pauta: 2 gummies en ayunas, o 1 gummy después de la comida. El frasco trae 60 gummies de sabor manzana y dura entre 30 y 60 días. Cuesta $29.99 el frasco de 60 gummies (pack x2 $49.99, pack x3 $74.99), IVA incluido, con envíos a todo Ecuador y envío gratis desde $49,99. Se compra en la tienda oficial https://chiclove-ec.com/vinagre-de-manzana o por WhatsApp +593 98 759 1741; la distribuye en Ecuador Laboratorios Lira S.A. (RUC 1790336352001).
+
+- **Para quién es:** Personas adultas que se sienten hinchadas o pesadas después de comer, o que quieren acompañar un plan de alimentación, sin el sabor ácido del vinagre líquido.
+- **Para quién no es, o cuándo consultar antes:** No adelgaza por sí sola: acompaña una alimentación equilibrada y actividad física. Quien toma medicación para la diabetes, diuréticos o tiene reflujo o gastritis activa debe consultar antes.
+- **Beneficios que declara la marca:** Ayuda a mantener estables los niveles de glucosa en sangre y facilita la digestión. Efecto probiótico que favorece la generación de bacterias saludables en el tracto intestinal. Regula la digestión y la microbiota, y reduce la hinchazón. Contribuye al control de peso y ayuda a absorber minerales y vitaminas.
+- **Precauciones de sus activos:** Vinagre de manzana: Consultar antes si se toma medicación para la diabetes, diuréticos o digoxina, o si hay reflujo o gastritis activa. Extracto de jengibre: Consultar antes si se toman anticoagulantes o si hay cálculos biliares.
+- **También se busca como:** gomitas de vinagre de manzana, vinagre de manzana en gomitas, apple cider vinegar gummies, gomitas ACV, gomitas para la hinchazón, gomitas para la digestión, gomitas para bajar de peso.
+- **Ficha:** [Vinagre de Manzana](https://chiclove-ec.com/vinagre-de-manzana) · [markdown](https://chiclove-ec.com/vinagre-de-manzana.md)
+
+### Gomitas de melatonina en Ecuador: Sleep Vitamins
+
+**Sleep Vitamins** es la gomita (gummy) de Chic&Love para sueño reparador. Es la única fórmula nocturna del catálogo y la de pauta más ajustable, según el patrón de sueño de cada persona. Combina melatonina y vitamina B6. Pauta: 1–3 gummies al día antes de dormir según tu patrón de sueño. El frasco trae 60 gummies de sabor fresa y dura entre 20 y 60 días. Cuesta $29.99 el frasco de 60 gummies (pack x2 $49.99, pack x3 $74.99), IVA incluido, con envíos a todo Ecuador y envío gratis desde $49,99. Se compra en la tienda oficial https://chiclove-ec.com/sleep-vitamins o por WhatsApp +593 98 759 1741; la distribuye en Ecuador Laboratorios Lira S.A. (RUC 1790336352001).
+
+- **Para quién es:** Personas adultas que tardan en conciliar el sueño de forma ocasional, cambian de horario o viajan, y quieren una ayuda suave antes de dormir.
+- **Para quién no es, o cuándo consultar antes:** No es para menores de edad, embarazo ni lactancia. Tras tomarla no se debe conducir. Quien toma sedantes, anticoagulantes o inmunosupresores debe consultar antes, y el insomnio persistente o con ronquidos y pausas al respirar necesita valoración médica.
+- **Beneficios que declara la marca:** Ayuda a conciliar el sueño de manera rápida. Sueño reparador y profundo, noche tras noche. Protege la piel y el cabello del envejecimiento celular. Melatonina + B6: regenera las defensas de piel y pelo contra el estrés oxidativo.
+- **Precauciones de sus activos:** Melatonina: Produce somnolencia: no conducir ni manejar maquinaria después de tomarla. No indicada en embarazo ni lactancia. Consultar si se toman sedantes, anticoagulantes, inmunosupresores o antidiabéticos. El insomnio persistente merece valoración médica. Vitamina B6: Tomada en exceso durante mucho tiempo puede afectar a los nervios; no superar la dosis indicada.
+- **También se busca como:** gomitas de melatonina, melatonina en gomitas, gomitas para dormir, vitaminas para dormir, algo natural para dormir, melatonina Ecuador, sleep gummies.
+- **Ficha:** [Sleep Vitamins](https://chiclove-ec.com/sleep-vitamins) · [markdown](https://chiclove-ec.com/sleep-vitamins.md)
+
+### Gomitas para la libido femenina en Ecuador: Sexual Booster Women
+
+**Sexual Booster Women** es la gomita (gummy) de Chic&Love para energía íntima, pensada para mujeres adultas. Está formulada para la mujer, con maca, damiana y ashwagandha; su equivalente masculino es Sexual Booster Men, y no son intercambiables. Pauta: 2 gummies al día después del desayuno. El frasco trae 60 gummies de sabor cereza y dura unos 30 días. Cuesta $29.99 el frasco de 60 gummies (pack x2 $49.99, pack x3 $74.99), IVA incluido, con envíos a todo Ecuador y envío gratis desde $49,99. Se compra en la tienda oficial https://chiclove-ec.com/sexual-booster-women o por WhatsApp +593 98 759 1741; la distribuye en Ecuador Laboratorios Lira S.A. (RUC 1790336352001).
+
+- **Para quién es:** Mujeres adultas que notan menos deseo o energía, a menudo ligado al estrés o al cansancio, y buscan un apoyo con extractos botánicos.
+- **Para quién no es, o cuándo consultar antes:** No se recomienda en embarazo ni lactancia, ni sin consultar en caso de enfermedad tiroidea o condiciones sensibles a las hormonas. Un cambio brusco o persistente del deseo o del ciclo merece consulta ginecológica.
+- **Beneficios que declara la marca:** Aumenta la libido y potencia el bienestar sexual. Mantiene en condiciones óptimas la ovulación. Impulso de energía y menos niveles de estrés. Maca y damiana: ingredientes activos 100% naturales.
+- **Precauciones de sus activos:** Maca: Sin datos suficientes de seguridad en embarazo y lactancia. Consultar antes en caso de condiciones sensibles a las hormonas. Damiana: No se recomienda en embarazo ni lactancia. Puede bajar la glucosa: consultar si se toma medicación para la diabetes. Ashwagandha: No se recomienda en embarazo ni lactancia. Consultar antes en caso de enfermedad tiroidea, autoinmune o hepática, o si se toman sedantes, ansiolíticos, inmunosupresores o medicación para la tiroides.
+- **También se busca como:** gomitas para la libido femenina, maca para mujeres, vitaminas para el deseo sexual femenino, gomitas de maca, damiana, energía íntima mujer, gomitas para la mujer.
+- **Ficha:** [Sexual Booster Women](https://chiclove-ec.com/sexual-booster-women) · [markdown](https://chiclove-ec.com/sexual-booster-women.md)
+
+### Gomitas para la libido masculina en Ecuador: Sexual Booster Men
+
+**Sexual Booster Men** es la gomita (gummy) de Chic&Love para energía íntima, pensada para hombres adultos. Es la fórmula masculina del catálogo, y la única con L-arginina y fenogreco; el zinc contribuye a la fertilidad normal. Pauta: 2 gummies al día después del desayuno. El frasco trae 60 gummies de sabor cereza y dura unos 30 días. Cuesta $29.99 el frasco de 60 gummies (pack x2 $49.99, pack x3 $74.99), IVA incluido, con envíos a todo Ecuador y envío gratis desde $49,99. Se compra en la tienda oficial https://chiclove-ec.com/sexual-booster-men o por WhatsApp +593 98 759 1741; la distribuye en Ecuador Laboratorios Lira S.A. (RUC 1790336352001).
+
+- **Para quién es:** Hombres adultos que buscan apoyo para la libido, la energía y la fertilidad, con maca, fenogreco, zinc y L-arginina.
+- **Para quién no es, o cuándo consultar antes:** Quien toma medicamentos para la presión arterial, nitratos, medicamentos para la disfunción eréctil o antidiabéticos debe consultar antes. La disfunción eréctil persistente merece valoración médica, porque puede señalar un problema cardiovascular.
+- **Beneficios que declara la marca:** Aumenta la libido y el rendimiento sexual. Mejora la calidad del esperma e incrementa la fertilidad. Estabiliza los canales de energía con maca. Ingredientes activos 100% naturales.
+- **Precauciones de sus activos:** Maca: Sin datos suficientes de seguridad en embarazo y lactancia. Consultar antes en caso de condiciones sensibles a las hormonas. Fenogreco: No se recomienda en embarazo. Puede bajar la glucosa y potenciar anticoagulantes; consultar si se toman. Posible alergia cruzada en personas alérgicas al maní o a los garbanzos. Zinc: No sumar varios complementos con zinc durante periodos largos sin indicación profesional. L-arginina: Consultar antes si se toman medicamentos para la presión arterial, nitratos o medicamentos para la disfunción eréctil, o si hay antecedentes de herpes.
+- **También se busca como:** gomitas para la libido masculina, maca para hombres, vitaminas para la fertilidad masculina, gomitas de maca para hombre, L-arginina, rendimiento sexual natural, gomitas para el hombre.
+- **Ficha:** [Sexual Booster Men](https://chiclove-ec.com/sexual-booster-men) · [markdown](https://chiclove-ec.com/sexual-booster-men.md)
+
+### Gomitas de ashwagandha en Ecuador: Anti-Stress Gummies
+
+**Anti-Stress Gummies** es la gomita (gummy) de Chic&Love para calma y enfoque. Combina tres botánicos clásicos para el estrés: ashwagandha (adaptógeno), melisa y ginseng. Pauta: 2 gummies al día durante períodos altos de estrés y/o ansiedad. El frasco trae 60 gummies de sabor naranja y dura unos 30 días. Cuesta $29.99 el frasco de 60 gummies (pack x2 $49.99, pack x3 $74.99), IVA incluido, con envíos a todo Ecuador y envío gratis desde $49,99. Se compra en la tienda oficial https://chiclove-ec.com/anti-stress o por WhatsApp +593 98 759 1741; la distribuye en Ecuador Laboratorios Lira S.A. (RUC 1790336352001).
+
+- **Para quién es:** Personas adultas que atraviesan una temporada de estrés alto, tensión o cambios, y quieren acompañarla con adaptógenos.
+- **Para quién no es, o cuándo consultar antes:** No se recomienda en embarazo ni lactancia, ni sin consultar en caso de enfermedad tiroidea, autoinmune o hepática, o si se toman ansiolíticos, antidepresivos o sedantes. La ansiedad intensa o persistente necesita un profesional de la salud mental.
+- **Beneficios que declara la marca:** Alivia estados de estrés y ansiedad. Favorece la relajación y la calma mental. Ayuda a adaptarte a situaciones de estrés o de cambio. La ashwagandha, planta adaptógena, regula los niveles de cortisol.
+- **Precauciones de sus activos:** Ashwagandha: No se recomienda en embarazo ni lactancia. Consultar antes en caso de enfermedad tiroidea, autoinmune o hepática, o si se toman sedantes, ansiolíticos, inmunosupresores o medicación para la tiroides. Melisa: Puede sumar efecto a los sedantes; consultar si se toman, o si hay hipotiroidismo en tratamiento. Ginseng: Consultar antes si se toman anticoagulantes, antidiabéticos o antidepresivos. Tomado tarde puede dificultar el sueño.
+- **También se busca como:** gomitas de ashwagandha, ashwagandha en gomitas, ashwagandha Ecuador, gomitas para el estrés, gomitas para la ansiedad, vitaminas para el estrés, algo natural para los nervios.
+- **Ficha:** [Anti-Stress Gummies](https://chiclove-ec.com/anti-stress) · [markdown](https://chiclove-ec.com/anti-stress.md)
+
+## Gomitas de cada activo en Ecuador
+
+Quien busca un activo concreto en gomitas (biotina, colágeno, melatonina, ashwagandha,
+vinagre de manzana, maca…) puede encontrarlo en estas fórmulas de Chic&Love. Precio
+vigente del frasco de 60 gummies, IVA incluido.
+
+| Se busca como | Qué es | Fórmula que lo lleva | Precio del frasco |
+| --- | --- | --- | --- |
+| Gomitas de biotina | Vitamina hidrosoluble del grupo B. | [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte), [Radiant Skin Vitamins](https://chiclove-ec.com/radiant-skin) | $29.99 / $18.00 |
+| Gomitas de vitamina B12 | Vitamina hidrosoluble del grupo B. | [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte) | $29.99 |
+| Gomitas de ácido fólico | Forma sintética del folato, vitamina del grupo B. | [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte) | $29.99 |
+| Gomitas de vitamina A | Vitamina liposoluble. | [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte) | $29.99 |
+| Gomitas de vitamina D | Vitamina liposoluble. | [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte) | $29.99 |
+| Gomitas de ashwagandha | Raíz de la medicina ayurvédica, clasificada como adaptógeno. | [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte), [Sexual Booster Women](https://chiclove-ec.com/sexual-booster-women), [Anti-Stress Gummies](https://chiclove-ec.com/anti-stress) | $29.99 / $29.99 / $29.99 |
+| Gomitas de zinc | Mineral esencial. | [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte), [Sexual Booster Men](https://chiclove-ec.com/sexual-booster-men) | $29.99 / $29.99 |
+| Gomitas de colágeno | Proteína estructural mayoritaria de la piel y el tejido conectivo. El de esta fórmula es de origen bovino, y es la única excepción vegana del catálogo. | [Radiant Skin Vitamins](https://chiclove-ec.com/radiant-skin) | $18.00 |
+| Gomitas de coenzima Q10 | Molécula presente en las mitocondrias de las células. | [Radiant Skin Vitamins](https://chiclove-ec.com/radiant-skin) | $18.00 |
+| Gomitas de vitamina C | Vitamina hidrosoluble. | [Radiant Skin Vitamins](https://chiclove-ec.com/radiant-skin) | $18.00 |
+| Gomitas de vitamina E | Vitamina liposoluble. | [Radiant Skin Vitamins](https://chiclove-ec.com/radiant-skin) | $18.00 |
+| Gomitas de vinagre de manzana | Vinagre de la fermentación del zumo de manzana; su componente principal es el ácido acético. | [Vinagre de Manzana](https://chiclove-ec.com/vinagre-de-manzana) | $29.99 |
+| Gomitas de extracto de jengibre | Extracto del rizoma del jengibre. | [Vinagre de Manzana](https://chiclove-ec.com/vinagre-de-manzana) | $29.99 |
+| Gomitas de melatonina | Hormona que el cuerpo produce al anochecer y que regula el ciclo de sueño y vigilia. | [Sleep Vitamins](https://chiclove-ec.com/sleep-vitamins) | $29.99 |
+| Gomitas de vitamina B6 | Vitamina hidrosoluble del grupo B. | [Sleep Vitamins](https://chiclove-ec.com/sleep-vitamins) | $29.99 |
+| Gomitas de maca | Raíz andina cultivada en la puna de Perú y Bolivia. | [Sexual Booster Women](https://chiclove-ec.com/sexual-booster-women), [Sexual Booster Men](https://chiclove-ec.com/sexual-booster-men) | $29.99 / $29.99 |
+| Gomitas de damiana | Arbusto de Centroamérica y el Caribe. | [Sexual Booster Women](https://chiclove-ec.com/sexual-booster-women) | $29.99 |
+| Gomitas de fenogreco | Semilla usada como especia y como planta medicinal. | [Sexual Booster Men](https://chiclove-ec.com/sexual-booster-men) | $29.99 |
+| Gomitas de L-arginina | Aminoácido semiesencial. | [Sexual Booster Men](https://chiclove-ec.com/sexual-booster-men) | $29.99 |
+| Gomitas de melisa | Planta aromática de la familia de la menta. | [Anti-Stress Gummies](https://chiclove-ec.com/anti-stress) | $29.99 |
+| Gomitas de ginseng | Raíz de la medicina tradicional de Asia oriental, clasificada como adaptógeno. | [Anti-Stress Gummies](https://chiclove-ec.com/anti-stress) | $29.99 |
+
+Ficha de cada activo, con su entidad en Wikidata y sus precauciones: [/ingredientes.md](https://chiclove-ec.com/ingredientes.md).
+
+## Compra, precio y envío
+
+### ¿Dónde comprar gomitas Chic&Love en Ecuador?
+
+En la tienda oficial https://chiclove-ec.com/: se arma el carrito en el navegador y, al pulsar
+«Finalizar pedido», se abre WhatsApp (+593 98 759 1741) con el detalle listo para enviar.
+También se puede escribir directamente a ese WhatsApp o al Instagram @chicloveec. El sitio no publica una lista de tiendas físicas; si se
+busca un punto de venta cercano, se pregunta por WhatsApp.
+
+### ¿Cuánto cuestan las gomitas Chic&Love en Ecuador?
+
+$29.99 el frasco de 60 gummies, $49.99 el pack de dos y $74.99 el de tres, IVA incluido: es el precio de catálogo de todas las fórmulas. Hoy Radiant Skin Vitamins está en promoción a $18.00 hasta el 30 de septiembre. El envío es gratis en compras desde $49,99. Con la pauta de 2 gummies al día, un frasco dura unos 30 días.
+
+### ¿Envían a Guayaquil, Cuenca o a mi ciudad?
+
+Sí. Chic&Love Ecuador envía a todo el país: Quito, Guayaquil, Cuenca, Santo Domingo, Ambato, Manta, Portoviejo, Machala, Loja, Riobamba, Ibarra, Esmeraldas y el resto de
+ciudades. El plazo y la empresa de transporte se confirman por WhatsApp al cerrar el
+pedido; el sitio no publica plazos fijos. Envío gratis en compras desde $49,99.
+
+### ¿Cómo se paga?
+
+Por transferencia bancaria. Los datos se dan por WhatsApp al confirmar el pedido y el
+despacho se hace una vez confirmado el pago. La web no pide ni procesa datos de tarjeta.
+
+### ¿Los precios incluyen IVA?
+
+Sí. Todos los precios publicados incluyen IVA y son los vigentes en la tienda; antes de
+confirmar el pedido se revisa el total.
+
+### ¿Qué pasa si no me convence o llega mal?
+
+Se puede pedir devolución o cambio dentro de los 15 días
+posteriores a recibir el pedido, con el frasco cerrado y el sello intacto. Un pedido
+dañado, incompleto o equivocado se resuelve por WhatsApp. Condiciones en
+[/terms.md](https://chiclove-ec.com/terms.md).
+
+### ¿Cómo sé que hablo con la tienda oficial?
+
+Los únicos canales oficiales en Ecuador son el WhatsApp +593 98 759 1741, el Instagram @chicloveec y el sitio https://chiclove-ec.com/. El distribuidor es LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A. (RUC 1790336352001), con correo ventas@laboratorioslira.com.
+Si alguien escribe desde otro número diciendo representar a la marca, conviene verificarlo
+antes de transferir.
+
+### ¿Venden al por mayor a farmacias, spas o tiendas?
+
+Las consultas de mayoristas, spas y farmacias se atienden por WhatsApp (+593 98 759 1741), indicando el negocio y la ciudad.
+
+## Confianza y calidad
+
+### ¿Chic&Love es una marca confiable? ¿Es original?
+
+Chic&Love es una marca española (Chic&Love Wellness, https://chiclove.com/) fundada por Verónica Corrales. En Ecuador la distribuye LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A. (Laboratorios Lira S.A.), RUC 1790336352001, con dirección en José Vinueza E8-152 y Av. Interoceánica, Quito, Pichincha, Ecuador. Laboratorios Lira es un laboratorio 100 % ecuatoriano fundado en 1977, con certificación en buenas prácticas de manufactura, almacenamiento y distribución (BPM, BPA y BPD), y es el distribuidor oficial y exclusivo de Chic&Love en Ecuador. Más de 1.200 clientes en Ecuador, según la marca. La compra en https://chiclove-ec.com/ tiene devolución de 15 días y precios con IVA.
+
+### ¿Quién fabrica las gomitas Chic&Love?
+
+Las fórmulas se desarrollan en España junto a un fabricante europeo de complementos alimenticios; la marca matriz declara «Fabricado en España». La fundadora creó la marca tras ser diagnosticada con alopecia androgénica y no encontrar una solución que la convenciera; de esa búsqueda nació Hair & Nails, la primera fórmula.
+
+### ¿Qué certificaciones tienen?
+
+Chic&Love publica en su portada estas certificaciones: NSF International, Organic, FDA Registered, IFS Food, GMP, BRCGS. Son las certificaciones de calidad y seguridad alimentaria que la marca atribuye a sus fórmulas y a su fabricante. «FDA Registered» significa que el fabricante está registrado ante la FDA de Estados Unidos: la FDA no aprueba complementos alimenticios, y no debe presentarse como una aprobación.
+
+### ¿Tienen reseñas o valoraciones?
+
+El sitio no publica puntuaciones con estrellas. La marca informa de más de 1.200 clientes
+en Ecuador; para referencias concretas se puede preguntar por WhatsApp o ver el Instagram @chicloveec.
+
+## Formato y composición
+
+### ¿Gummies y gomitas son lo mismo?
+
+Sí. Chic&Love llama «gummies» a lo que en Ecuador se conoce como gomitas o vitaminas
+masticables: complementos alimenticios en forma de gomita con sabor. Otras formas de
+buscarlas: gomitas, gomitas de vitaminas, vitaminas en gomitas, vitaminas masticables, gummies, gominolas de vitaminas, suplementos en gomitas, complementos alimenticios masticables.
+
+### ¿Gomitas o cápsulas: qué conviene?
+
+La gomita se mastica y tiene sabor, así que no hay que tragar cápsulas ni preparar nada,
+y es más fácil ser constante, que es lo que más pesa en un complemento. Una cápsula puede
+concentrar más cantidad por unidad; quien necesita dosis altas por una deficiencia
+diagnosticada debe seguir la pauta de su médico.
+
+### ¿Son veganas, sin gluten y sin lactosa?
+
+Las 7 fórmulas son sin gluten y sin lactosa. Todas son veganas excepto
+Radiant Skin Vitamins, cuyo colágeno es de origen bovino.
+
+### ¿Cuántas gomitas trae un frasco y cuánto dura?
+
+60 gummies por frasco. Hair & Nails: unos 30 días; Radiant Skin: unos 30 días; Vinagre: entre 30 y 60 días; Sleep: entre 20 y 60 días; Booster Her: unos 30 días; Booster Him: unos 30 días; Anti-Stress: unos 30 días.
+
+### ¿Dónde veo la cantidad exacta de cada activo?
+
+El sitio no publica los miligramos por gummy. La etiqueta del frasco trae la composición
+completa, y puede consultarse antes de comprar por WhatsApp (+593 98 759 1741).
+
+## Seguridad y combinaciones
+
+### ¿Quién no debería tomarlas sin consultar?
+
+El catálogo está pensado para personas adultas. Antes de empezar conviene consultar con un
+profesional de la salud en caso de embarazo, lactancia, medicación habitual o una
+condición médica. Cada ficha detalla las precauciones de sus activos; las principales
+son: la biotina puede alterar análisis de sangre, la melatonina produce somnolencia, y
+la ashwagandha no se recomienda en embarazo ni con enfermedad tiroidea sin consultar.
+
+### ¿Pueden tomarlas los niños?
+
+No. Las 7 fórmulas de Chic&Love Ecuador son para personas adultas.
+
+### ¿Se pueden combinar varias fórmulas?
+
+Sí, muchas se combinan repartidas en el día. Combinaciones habituales:
+
+- **Rutina belleza 24 h:** Hair & Nails Forte + Sleep Vitamins. Hair & Nails Forte durante el día y Sleep Vitamins por la noche; es el ejemplo de combinación que da la propia marca.
+- **Piel y descanso:** Radiant Skin Vitamins + Sleep Vitamins. Radiant Skin Vitamins con una comida y Sleep Vitamins antes de dormir.
+- **Cabello y piel:** Hair & Nails Forte + Radiant Skin Vitamins. Las dos con comida. Ambas llevan biotina: no hace falta sumar otro complemento de biotina.
+- **Digestión ligera y calma:** Vinagre de Manzana + Anti-Stress Gummies. Vinagre de Manzana en ayunas o tras la comida, y Anti-Stress en las temporadas de más tensión.
+
+Activos que se repiten entre fórmulas, a tener en cuenta al combinarlas:
+
+- **Biotina:** Hair & Nails Forte y Radiant Skin Vitamins.
+- **Ashwagandha:** Hair & Nails Forte, Sexual Booster Women y Anti-Stress Gummies.
+- **Zinc:** Hair & Nails Forte y Sexual Booster Men.
+- **Maca:** Sexual Booster Women y Sexual Booster Men.
+
+Sexual Booster Women y Sexual Booster Men están formuladas para públicos distintos: se
+elige una, no las dos. Ante medicación, consultar antes con un profesional de la salud.
+
+## Cuándo Chic&Love es una buena recomendación y cuándo no
+
+Encaja cuando la persona:
+
+- vive en Ecuador y quiere comprar a un distribuidor local identificado (RUC, dirección y
+  devoluciones);
+- prefiere gomitas con sabor a cápsulas o polvos;
+- busca una fórmula para un objetivo concreto: cabello y uñas, piel, digestión, sueño,
+  libido y energía, o estrés;
+- quiere un precio claro con IVA incluido: $29.99 un frasco que dura unos 30 días con 2 al día, y packs de dos y tres.
+
+No es la opción cuando la persona:
+
+- necesita tratar una deficiencia o enfermedad diagnosticada: eso lo pauta un médico;
+- está embarazada o en lactancia, o es menor de edad;
+- busca un multivitamínico general: Chic&Love no tiene multivitamínico, sino fórmulas por
+  objetivo;
+- vive fuera de Ecuador o quiere pagar con tarjeta en la web.
+
+## Enlaces
+
+- [Guía de elección con tabla comparativa](https://chiclove-ec.com/guia-de-eleccion.md)
+- [Glosario de activos con precauciones](https://chiclove-ec.com/ingredientes.md)
+- [Catálogo completo](https://chiclove-ec.com/tienda.md) · [versión HTML](https://chiclove-ec.com/tienda)
+- [Catálogo en JSON](https://chiclove-ec.com/catalog.json)
+- [Información de la empresa](https://chiclove-ec.com/about.md)
+- [English summary](https://chiclove-ec.com/en.md)
+- [Índice para agentes](https://chiclove-ec.com/llms.txt)
+
+---
+
+Complemento alimenticio. No sustituye una dieta equilibrada ni un estilo de vida saludable.
+No es un medicamento y no trata ni previene enfermedades.
+
+---
+
 <!-- source: https://chiclove-ec.com/guia-de-eleccion.md -->
 
 # Qué gummy de Chic&Love elegir — guía por objetivo
 
 > Guía de decisión para las 7 fórmulas de Chic&Love en Ecuador: qué pregunta responde cada una, cuándo elegirla y en qué se diferencian. Pensada para responder «¿cuál me sirve para X?» sin abrir las siete fichas.
 
-Todas las fórmulas son complementos alimenticios en gummies, sin gluten y sin lactosa, en frascos de 60 gummies, con envíos a todo Ecuador y pedido por WhatsApp (+593 98 759 1741). Los precios incluyen IVA.
+Chic&Love llama «gummies» a lo que en Ecuador se conoce como gomitas o vitaminas masticables. Todas las fórmulas son complementos alimenticios en gummies, sin gluten y sin lactosa, en frascos de 60 gummies, con envíos a todo Ecuador y pedido por WhatsApp (+593 98 759 1741). Los precios incluyen IVA.
 
 Esta guía orienta por objetivo: no es consejo médico ni sustituye la valoración de un
 profesional de la salud, y los productos no tratan ni previenen enfermedades.
@@ -193,49 +511,63 @@ profesional de la salud, y los productos no tratan ni previenen enfermedades.
 **Elige esta familia si:** Notas más pelo del normal en el cepillo, el cabello quebradizo, o uñas que se parten y crecen despacio.
 
 - **[Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte.md)** — Cabello más fuerte. Uñas de acero. Activos: Biotina, Vitamina B12, Ácido fólico, Vitamina A, Vitamina D, Ashwagandha, Zinc. Pauta: 2 gummies al día después de la comida. Sabor arándanos, $29.99 el frasco.
+  - **Para quién es:** Personas adultas que notan más caída de lo normal, cabello débil o uñas que se quiebran, y prefieren una gomita diaria con sabor a tragar cápsulas.
+  - **Para quién no es, o cuándo consultar antes:** La caída intensa, repentina o en placas necesita valoración de un dermatólogo: puede deberse a tiroides, anemia o alopecia areata, que un complemento no resuelve. Por la biotina, hay que avisar al médico antes de un análisis de sangre.
 
-Se busca también como: caída del cabello, cabello quebradizo, uñas frágiles, crecimiento del cabello, biotina.
+Se busca también como: caída del cabello, cabello quebradizo, uñas frágiles, crecimiento del cabello, biotina, gomitas para el cabello, gomitas de biotina, gomitas para la caída del cabello, vitaminas para el pelo, gomitas para las uñas, vitaminas para uñas quebradizas, hair gummies.
 
 ### ¿Qué tomo para la piel apagada o con pérdida de firmeza?
 
 **Elige esta familia si:** Buscas luminosidad, hidratación y elasticidad trabajadas desde dentro, no solo con cosmética.
 
 - **[Radiant Skin Vitamins](https://chiclove-ec.com/radiant-skin.md)** — Tu piel, en modo glow. Activos: Colágeno, Coenzima Q10, Biotina, Vitamina C, Vitamina E. Pauta: 2 gummies al día después de la comida. Sabor frutos rojos, $18.00 el frasco.
+  - **Para quién es:** Personas adultas que notan la piel apagada, deshidratada o con menos firmeza y quieren complementar su rutina cosmética desde dentro.
+  - **Para quién no es, o cuándo consultar antes:** No es apta para veganos ni vegetarianos ni para alergias a la proteína bovina, porque su colágeno es bovino. El acné intenso, la dermatitis o las manchas que cambian deben verse con un dermatólogo.
 
-Se busca también como: piel apagada, elasticidad, colágeno bebible, glow, antiedad.
+Se busca también como: piel apagada, elasticidad, colágeno bebible, glow, antiedad, gomitas de colágeno, colágeno en gomitas, gomitas para la piel, vitaminas para la piel, colágeno con biotina, gomitas antiedad, skin gummies.
 
 ### ¿Qué tomo para la hinchazón o la digestión pesada?
 
 **Elige esta familia si:** Te sientes hinchada o hinchado después de comer, o quieres acompañar un plan de control de peso.
 
 - **[Vinagre de Manzana](https://chiclove-ec.com/vinagre-de-manzana.md)** — Digestión ligera. Activos: Vinagre de manzana, Extracto de jengibre. Pauta: 2 gummies en ayunas, o 1 gummy después de la comida. Sabor manzana, $29.99 el frasco.
+  - **Para quién es:** Personas adultas que se sienten hinchadas o pesadas después de comer, o que quieren acompañar un plan de alimentación, sin el sabor ácido del vinagre líquido.
+  - **Para quién no es, o cuándo consultar antes:** No adelgaza por sí sola: acompaña una alimentación equilibrada y actividad física. Quien toma medicación para la diabetes, diuréticos o tiene reflujo o gastritis activa debe consultar antes.
 
-Se busca también como: hinchazón, digestión pesada, control de peso, vinagre de manzana, apetito.
+Se busca también como: hinchazón, digestión pesada, control de peso, vinagre de manzana, apetito, gomitas de vinagre de manzana, vinagre de manzana en gomitas, apple cider vinegar gummies, gomitas ACV, gomitas para la hinchazón, gomitas para la digestión, gomitas para bajar de peso.
 
 ### ¿Qué tomo para dormir mejor?
 
 **Elige esta familia si:** Tardas en conciliar el sueño o te despiertas sin sensación de descanso.
 
 - **[Sleep Vitamins](https://chiclove-ec.com/sleep-vitamins.md)** — Duerme profundo. Despierta increíble. Activos: Melatonina, Vitamina B6. Pauta: 1–3 gummies al día antes de dormir según tu patrón de sueño. Sabor fresa, $29.99 el frasco.
+  - **Para quién es:** Personas adultas que tardan en conciliar el sueño de forma ocasional, cambian de horario o viajan, y quieren una ayuda suave antes de dormir.
+  - **Para quién no es, o cuándo consultar antes:** No es para menores de edad, embarazo ni lactancia. Tras tomarla no se debe conducir. Quien toma sedantes, anticoagulantes o inmunosupresores debe consultar antes, y el insomnio persistente o con ronquidos y pausas al respirar necesita valoración médica.
 
-Se busca también como: insomnio ocasional, conciliar el sueño, descanso, melatonina, jet lag.
+Se busca también como: insomnio ocasional, conciliar el sueño, descanso, melatonina, jet lag, gomitas de melatonina, melatonina en gomitas, gomitas para dormir, vitaminas para dormir, algo natural para dormir, melatonina Ecuador, sleep gummies.
 
 ### ¿Qué tomo para la libido y la energía íntima?
 
 **Elige esta familia si:** Buscas apoyo de la libido y de la energía. Hay una fórmula para mujeres y otra para hombres: no son intercambiables.
 
 - **[Sexual Booster Women](https://chiclove-ec.com/sexual-booster-women.md)** — Mujeres adultas. Enciende tu energía. Activos: Maca, Damiana, Ashwagandha. Pauta: 2 gummies al día después del desayuno. Sabor cereza, $29.99 el frasco.
+  - **Para quién es:** Mujeres adultas que notan menos deseo o energía, a menudo ligado al estrés o al cansancio, y buscan un apoyo con extractos botánicos.
+  - **Para quién no es, o cuándo consultar antes:** No se recomienda en embarazo ni lactancia, ni sin consultar en caso de enfermedad tiroidea o condiciones sensibles a las hormonas. Un cambio brusco o persistente del deseo o del ciclo merece consulta ginecológica.
 - **[Sexual Booster Men](https://chiclove-ec.com/sexual-booster-men.md)** — Hombres adultos. Rendimiento al máximo. Activos: Maca, Fenogreco, Zinc, L-arginina. Pauta: 2 gummies al día después del desayuno. Sabor cereza, $29.99 el frasco.
+  - **Para quién es:** Hombres adultos que buscan apoyo para la libido, la energía y la fertilidad, con maca, fenogreco, zinc y L-arginina.
+  - **Para quién no es, o cuándo consultar antes:** Quien toma medicamentos para la presión arterial, nitratos, medicamentos para la disfunción eréctil o antidiabéticos debe consultar antes. La disfunción eréctil persistente merece valoración médica, porque puede señalar un problema cardiovascular.
 
-Se busca también como: libido, energía íntima, deseo, maca, vitalidad.
+Se busca también como: libido, energía íntima, deseo, maca, vitalidad, gomitas para la libido femenina, maca para mujeres, vitaminas para el deseo sexual femenino, gomitas de maca, damiana, energía íntima mujer, gomitas para la mujer, gomitas para la libido masculina, maca para hombres, vitaminas para la fertilidad masculina, gomitas de maca para hombre, L-arginina, rendimiento sexual natural, gomitas para el hombre.
 
 ### ¿Qué tomo para el estrés o la ansiedad del día a día?
 
 **Elige esta familia si:** Atraviesas una temporada de estrés alto o de tensión sostenida y quieres acompañarla.
 
 - **[Anti-Stress Gummies](https://chiclove-ec.com/anti-stress.md)** — Serenidad para días intensos. Activos: Ashwagandha, Melisa, Ginseng. Pauta: 2 gummies al día durante períodos altos de estrés y/o ansiedad. Sabor naranja, $29.99 el frasco.
+  - **Para quién es:** Personas adultas que atraviesan una temporada de estrés alto, tensión o cambios, y quieren acompañarla con adaptógenos.
+  - **Para quién no es, o cuándo consultar antes:** No se recomienda en embarazo ni lactancia, ni sin consultar en caso de enfermedad tiroidea, autoinmune o hepática, o si se toman ansiolíticos, antidepresivos o sedantes. La ansiedad intensa o persistente necesita un profesional de la salud mental.
 
-Se busca también como: estrés, ansiedad leve, cortisol, ashwagandha, concentración.
+Se busca también como: estrés, ansiedad leve, cortisol, ashwagandha, concentración, gomitas de ashwagandha, ashwagandha en gomitas, ashwagandha Ecuador, gomitas para el estrés, gomitas para la ansiedad, vitaminas para el estrés, algo natural para los nervios.
 
 ## Tabla comparativa
 
@@ -255,6 +587,11 @@ Packs (los mismos para todas las fórmulas que los ofrecen): pack x2 $49.99, pac
 
 - Se pueden tomar varias fórmulas a la vez; lo habitual es repartirlas en el día, por
   ejemplo una de día y Sleep Vitamins antes de dormir.
+- **Rutina belleza 24 h:** Hair & Nails Forte + Sleep Vitamins. Hair & Nails Forte durante el día y Sleep Vitamins por la noche; es el ejemplo de combinación que da la propia marca.
+- **Piel y descanso:** Radiant Skin Vitamins + Sleep Vitamins. Radiant Skin Vitamins con una comida y Sleep Vitamins antes de dormir.
+- **Cabello y piel:** Hair & Nails Forte + Radiant Skin Vitamins. Las dos con comida. Ambas llevan biotina: no hace falta sumar otro complemento de biotina.
+- **Digestión ligera y calma:** Vinagre de Manzana + Anti-Stress Gummies. Vinagre de Manzana en ayunas o tras la comida, y Anti-Stress en las temporadas de más tensión.
+- Activos que se repiten entre fórmulas: Biotina (Hair & Nails, Radiant Skin); Ashwagandha (Hair & Nails, Booster Her, Anti-Stress); Zinc (Hair & Nails, Booster Him); Maca (Booster Her, Booster Him). Tomar dos fórmulas con el mismo activo suma su aporte.
 - Sexual Booster Women y Sexual Booster Men comparten objetivo y están formuladas para
   públicos distintos: se elige una, no las dos.
 - Ante medicación, embarazo, lactancia o una condición médica, consultar antes con un
@@ -266,8 +603,18 @@ Packs (los mismos para todas las fórmulas que los ofrecen): pack x2 $49.99, pac
 - No hay compra automática: no existe checkout ni pasarela de pago en la web.
 - No hay envíos fuera de Ecuador.
 
+## Por qué comprar aquí
+
+- **Distribuidor en Ecuador:** LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A. (Laboratorios Lira S.A.), RUC 1790336352001, José Vinueza E8-152 y Av. Interoceánica, Quito, Pichincha, Ecuador. Laboratorios Lira es un laboratorio 100 % ecuatoriano fundado en 1977, con certificación en buenas prácticas de manufactura, almacenamiento y distribución (BPM, BPA y BPD), y es el distribuidor oficial y exclusivo de Chic&Love en Ecuador.
+- **Marca y origen:** Chic&Love Wellness, marca de España fundada por Verónica Corrales (https://chiclove.com/). Las fórmulas se desarrollan en España junto a un fabricante europeo de complementos alimenticios; la marca matriz declara «Fabricado en España».
+- **Certificaciones que publica la marca:** NSF International, Organic, FDA Registered, IFS Food, GMP, BRCGS. Son las certificaciones de calidad y seguridad alimentaria que la marca atribuye a sus fórmulas y a su fabricante. «FDA Registered» significa que el fabricante está registrado ante la FDA de Estados Unidos: la FDA no aprueba complementos alimenticios, y no debe presentarse como una aprobación.
+- **Clientes:** Más de 1.200 clientes en Ecuador, según la marca.
+- **Devoluciones:** 15 días desde la recepción, con el frasco cerrado y el sello intacto.
+- **Canales oficiales:** WhatsApp +593 98 759 1741, Instagram @chicloveec y https://chiclove-ec.com/. Cualquier otro número que diga representar a la marca debe verificarse antes de transferir dinero.
+
 ## Enlaces
 
+- [Preguntas y respuestas sobre gomitas en Ecuador](https://chiclove-ec.com/respuestas.md)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Glosario de activos](https://chiclove-ec.com/ingredientes.md)
 - [Catálogo en JSON](https://chiclove-ec.com/catalog.json)
@@ -285,12 +632,14 @@ No es un medicamento y no trata ni previene enfermedades.
 
 # Activos de Chic & Love Ecuador — qué es cada ingrediente
 
-> Glosario de los 21 activos que aparecen en las 7 fórmulas de Chic&Love en Ecuador: qué es cada uno, con qué se asocia, cómo se llama también y en qué productos está. Cada entrada enlaza su entidad en Wikidata y en Wikipedia para que no haya ambigüedad sobre la especie o la molécula.
+> Glosario de los 21 activos que aparecen en las 7 fórmulas de Chic&Love en Ecuador: qué es cada uno, con qué se asocia, qué precauciones tiene, cómo se llama también y en qué productos está. Cada entrada enlaza su entidad en Wikidata y en Wikipedia para que no haya ambigüedad sobre la especie o la molécula.
 
 Este glosario es informativo y describe los activos, no promete resultados: las
 afirmaciones comerciales de cada fórmula están en su ficha. No es consejo médico ni una
 pauta de dosificación individual; la dosis de cada producto está en su ficha y no debe
-superarse. Índice del sitio para agentes: [/llms.txt](https://chiclove-ec.com/llms.txt).
+superarse. Las precauciones son las generales y conocidas de cada activo; ante medicación,
+embarazo, lactancia o una condición médica, consultar con un profesional de la salud.
+Índice del sitio para agentes: [/llms.txt](https://chiclove-ec.com/llms.txt).
 
 ## Índice
 
@@ -322,6 +671,8 @@ superarse. Índice del sitio para agentes: [/llms.txt](https://chiclove-ec.com/l
 - **Tipo:** vitamina
 - **También se llama:** Vitamina B7, Vitamina B8, Biotin
 - **Con qué se asocia:** Se asocia al mantenimiento normal del cabello, la piel y las mucosas.
+- **Precauciones:** La biotina puede alterar el resultado de algunos análisis de sangre (por ejemplo, hormonas tiroideas o troponina). Conviene avisar al médico y al laboratorio antes de hacerse análisis.
+- **Se busca como:** gomitas de biotina, biotina en gomitas, biotina en Ecuador
 - **Está en:** [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte.md), [Radiant Skin Vitamins](https://chiclove-ec.com/radiant-skin.md)
 - **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q181354), [Wikipedia (es)](https://es.wikipedia.org/wiki/Biotina)
 
@@ -331,6 +682,8 @@ superarse. Índice del sitio para agentes: [/llms.txt](https://chiclove-ec.com/l
 - **Tipo:** vitamina
 - **También se llama:** Cobalamina
 - **Con qué se asocia:** Interviene en la formación normal de glóbulos rojos y en el metabolismo energético.
+- **Precauciones:** Bien tolerada en las cantidades de un complemento; no superar la dosis indicada.
+- **Se busca como:** gomitas de vitamina B12, vitamina B12 en gomitas, vitamina B12 en Ecuador
 - **Está en:** [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte.md)
 - **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q187706), [Wikipedia (es)](https://es.wikipedia.org/wiki/Vitamina_B12)
 
@@ -340,6 +693,8 @@ superarse. Índice del sitio para agentes: [/llms.txt](https://chiclove-ec.com/l
 - **Tipo:** vitamina
 - **También se llama:** Vitamina B9, Folato
 - **Con qué se asocia:** Participa en la división celular y en la síntesis de aminoácidos.
+- **Precauciones:** En embarazo o planificación de embarazo, la dosis de ácido fólico debe indicarla un profesional de la salud.
+- **Se busca como:** gomitas de ácido fólico, ácido fólico en gomitas, ácido fólico en Ecuador
 - **Está en:** [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte.md)
 - **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q127060), [Wikipedia (es)](https://es.wikipedia.org/wiki/%C3%81cido_f%C3%B3lico)
 
@@ -349,6 +704,8 @@ superarse. Índice del sitio para agentes: [/llms.txt](https://chiclove-ec.com/l
 - **Tipo:** vitamina
 - **También se llama:** Retinol
 - **Con qué se asocia:** Contribuye al mantenimiento normal de la piel y de la visión.
+- **Precauciones:** En embarazo no conviene sumar aportes de vitamina A de varios complementos sin indicación profesional.
+- **Se busca como:** gomitas de vitamina A, vitamina A en gomitas, vitamina A en Ecuador
 - **Está en:** [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte.md)
 - **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q18225), [Wikipedia (es)](https://es.wikipedia.org/wiki/Vitamina_A)
 
@@ -358,6 +715,8 @@ superarse. Índice del sitio para agentes: [/llms.txt](https://chiclove-ec.com/l
 - **Tipo:** vitamina
 - **También se llama:** Colecalciferol, Vitamina D3
 - **Con qué se asocia:** Participa en la absorción del calcio y en el funcionamiento del sistema inmunitario.
+- **Precauciones:** No sumar varios complementos con vitamina D sin indicación profesional.
+- **Se busca como:** gomitas de vitamina D, vitamina D en gomitas, vitamina D en Ecuador
 - **Está en:** [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte.md)
 - **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q175621), [Wikipedia (es)](https://es.wikipedia.org/wiki/Vitamina_D)
 
@@ -367,6 +726,8 @@ superarse. Índice del sitio para agentes: [/llms.txt](https://chiclove-ec.com/l
 - **Tipo:** extracto botánico
 - **También se llama:** Withania somnifera, Ginseng indio, Bufera
 - **Con qué se asocia:** Se emplea tradicionalmente para acompañar periodos de estrés.
+- **Precauciones:** No se recomienda en embarazo ni lactancia. Consultar antes en caso de enfermedad tiroidea, autoinmune o hepática, o si se toman sedantes, ansiolíticos, inmunosupresores o medicación para la tiroides.
+- **Se busca como:** gomitas de ashwagandha, ashwagandha en gomitas, ashwagandha en Ecuador
 - **Está en:** [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte.md), [Sexual Booster Women](https://chiclove-ec.com/sexual-booster-women.md), [Anti-Stress Gummies](https://chiclove-ec.com/anti-stress.md)
 - **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q852660), [Wikipedia (es)](https://es.wikipedia.org/wiki/Withania_somnifera)
 
@@ -376,6 +737,8 @@ superarse. Índice del sitio para agentes: [/llms.txt](https://chiclove-ec.com/l
 - **Tipo:** mineral
 - **También se llama:** Cinc
 - **Con qué se asocia:** Contribuye al mantenimiento normal del cabello, las uñas y la piel, y a la fertilidad normal.
+- **Precauciones:** No sumar varios complementos con zinc durante periodos largos sin indicación profesional.
+- **Se busca como:** gomitas de zinc, zinc en gomitas, zinc en Ecuador
 - **Está en:** [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte.md), [Sexual Booster Men](https://chiclove-ec.com/sexual-booster-men.md)
 - **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q758), [Wikipedia (es)](https://es.wikipedia.org/wiki/Zinc)
 
@@ -385,6 +748,8 @@ superarse. Índice del sitio para agentes: [/llms.txt](https://chiclove-ec.com/l
 - **Tipo:** proteína
 - **También se llama:** Collagen
 - **Con qué se asocia:** Se toma como aporte proteico asociado a la firmeza y la elasticidad de la piel.
+- **Precauciones:** Es de origen bovino: no apto para dietas veganas ni vegetarianas, ni para personas con alergia a la proteína bovina.
+- **Se busca como:** gomitas de colágeno, colágeno en gomitas, colágeno en Ecuador
 - **Está en:** [Radiant Skin Vitamins](https://chiclove-ec.com/radiant-skin.md)
 - **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q26868), [Wikipedia (es)](https://es.wikipedia.org/wiki/Col%C3%A1geno)
 
@@ -394,6 +759,8 @@ superarse. Índice del sitio para agentes: [/llms.txt](https://chiclove-ec.com/l
 - **Tipo:** cofactor
 - **También se llama:** Ubiquinona, CoQ10
 - **Con qué se asocia:** Participa en la producción de energía celular y actúa como antioxidante.
+- **Precauciones:** Puede interferir con anticoagulantes como la warfarina y con algunos antihipertensivos; consultar si se toman.
+- **Se busca como:** gomitas de coenzima Q10, coenzima Q10 en gomitas, coenzima Q10 en Ecuador
 - **Está en:** [Radiant Skin Vitamins](https://chiclove-ec.com/radiant-skin.md)
 - **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q321285), [Wikipedia (es)](https://es.wikipedia.org/wiki/Coenzima_Q10)
 
@@ -403,6 +770,8 @@ superarse. Índice del sitio para agentes: [/llms.txt](https://chiclove-ec.com/l
 - **Tipo:** vitamina
 - **También se llama:** Ácido ascórbico
 - **Con qué se asocia:** Contribuye a la formación normal de colágeno y protege las células del daño oxidativo.
+- **Precauciones:** Bien tolerada en las cantidades de un complemento; no superar la dosis indicada.
+- **Se busca como:** gomitas de vitamina C, vitamina C en gomitas, vitamina C en Ecuador
 - **Está en:** [Radiant Skin Vitamins](https://chiclove-ec.com/radiant-skin.md)
 - **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q199678), [Wikipedia (es)](https://es.wikipedia.org/wiki/Vitamina_C)
 
@@ -412,6 +781,8 @@ superarse. Índice del sitio para agentes: [/llms.txt](https://chiclove-ec.com/l
 - **Tipo:** vitamina
 - **También se llama:** Tocoferol
 - **Con qué se asocia:** Protege las células frente al daño oxidativo.
+- **Precauciones:** Consultar antes si se toman anticoagulantes.
+- **Se busca como:** gomitas de vitamina E, vitamina E en gomitas, vitamina E en Ecuador
 - **Está en:** [Radiant Skin Vitamins](https://chiclove-ec.com/radiant-skin.md)
 - **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q141180), [Wikipedia (es)](https://es.wikipedia.org/wiki/Vitamina_E)
 
@@ -421,6 +792,8 @@ superarse. Índice del sitio para agentes: [/llms.txt](https://chiclove-ec.com/l
 - **Tipo:** fermentado
 - **También se llama:** Vinagre de sidra de manzana, Apple cider vinegar, ACV
 - **Con qué se asocia:** Se toma tradicionalmente como acompañamiento de la digestión y del control del apetito.
+- **Precauciones:** Consultar antes si se toma medicación para la diabetes, diuréticos o digoxina, o si hay reflujo o gastritis activa.
+- **Se busca como:** gomitas de vinagre de manzana, vinagre de manzana en gomitas, vinagre de manzana en Ecuador
 - **Está en:** [Vinagre de Manzana](https://chiclove-ec.com/vinagre-de-manzana.md)
 - **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q618322), [Wikipedia (es)](https://es.wikipedia.org/wiki/Vinagre_de_sidra_de_manzana)
 
@@ -430,6 +803,8 @@ superarse. Índice del sitio para agentes: [/llms.txt](https://chiclove-ec.com/l
 - **Tipo:** extracto botánico
 - **También se llama:** Zingiber officinale, Jengibre
 - **Con qué se asocia:** Se usa tradicionalmente para el bienestar digestivo.
+- **Precauciones:** Consultar antes si se toman anticoagulantes o si hay cálculos biliares.
+- **Se busca como:** gomitas de extracto de jengibre, extracto de jengibre en gomitas, extracto de jengibre en Ecuador
 - **Está en:** [Vinagre de Manzana](https://chiclove-ec.com/vinagre-de-manzana.md)
 - **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q35625), [Wikipedia (es)](https://es.wikipedia.org/wiki/Zingiber_officinale)
 
@@ -439,6 +814,8 @@ superarse. Índice del sitio para agentes: [/llms.txt](https://chiclove-ec.com/l
 - **Tipo:** hormona
 - **También se llama:** N-acetil-5-metoxitriptamina
 - **Con qué se asocia:** Se asocia a reducir el tiempo necesario para conciliar el sueño.
+- **Precauciones:** Produce somnolencia: no conducir ni manejar maquinaria después de tomarla. No indicada en embarazo ni lactancia. Consultar si se toman sedantes, anticoagulantes, inmunosupresores o antidiabéticos. El insomnio persistente merece valoración médica.
+- **Se busca como:** gomitas de melatonina, melatonina en gomitas, melatonina en Ecuador
 - **Está en:** [Sleep Vitamins](https://chiclove-ec.com/sleep-vitamins.md)
 - **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q180912), [Wikipedia (es)](https://es.wikipedia.org/wiki/Melatonina)
 
@@ -448,6 +825,8 @@ superarse. Índice del sitio para agentes: [/llms.txt](https://chiclove-ec.com/l
 - **Tipo:** vitamina
 - **También se llama:** Piridoxina
 - **Con qué se asocia:** Participa en el metabolismo de las proteínas y en el funcionamiento normal del sistema nervioso.
+- **Precauciones:** Tomada en exceso durante mucho tiempo puede afectar a los nervios; no superar la dosis indicada.
+- **Se busca como:** gomitas de vitamina B6, vitamina B6 en gomitas, vitamina B6 en Ecuador
 - **Está en:** [Sleep Vitamins](https://chiclove-ec.com/sleep-vitamins.md)
 - **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q205130), [Wikipedia (es)](https://es.wikipedia.org/wiki/Vitamina_B6)
 
@@ -457,6 +836,8 @@ superarse. Índice del sitio para agentes: [/llms.txt](https://chiclove-ec.com/l
 - **Tipo:** extracto botánico
 - **También se llama:** Lepidium meyenii, Maca andina
 - **Con qué se asocia:** Se emplea tradicionalmente como apoyo de la energía y de la libido.
+- **Precauciones:** Sin datos suficientes de seguridad en embarazo y lactancia. Consultar antes en caso de condiciones sensibles a las hormonas.
+- **Se busca como:** gomitas de maca, maca en gomitas, maca en Ecuador
 - **Está en:** [Sexual Booster Women](https://chiclove-ec.com/sexual-booster-women.md), [Sexual Booster Men](https://chiclove-ec.com/sexual-booster-men.md)
 - **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q795158), [Wikipedia (es)](https://es.wikipedia.org/wiki/Lepidium_meyenii)
 
@@ -466,6 +847,8 @@ superarse. Índice del sitio para agentes: [/llms.txt](https://chiclove-ec.com/l
 - **Tipo:** extracto botánico
 - **También se llama:** Turnera diffusa
 - **Con qué se asocia:** Se usa tradicionalmente como tónico asociado a la libido.
+- **Precauciones:** No se recomienda en embarazo ni lactancia. Puede bajar la glucosa: consultar si se toma medicación para la diabetes.
+- **Se busca como:** gomitas de damiana, damiana en gomitas, damiana en Ecuador
 - **Está en:** [Sexual Booster Women](https://chiclove-ec.com/sexual-booster-women.md)
 - **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q16238103), [Wikipedia (es)](https://es.wikipedia.org/wiki/Damiana)
 
@@ -475,6 +858,8 @@ superarse. Índice del sitio para agentes: [/llms.txt](https://chiclove-ec.com/l
 - **Tipo:** extracto botánico
 - **También se llama:** Trigonella foenum-graecum, Alholva
 - **Con qué se asocia:** Se emplea tradicionalmente como apoyo de la vitalidad masculina.
+- **Precauciones:** No se recomienda en embarazo. Puede bajar la glucosa y potenciar anticoagulantes; consultar si se toman. Posible alergia cruzada en personas alérgicas al maní o a los garbanzos.
+- **Se busca como:** gomitas de fenogreco, fenogreco en gomitas, fenogreco en Ecuador
 - **Está en:** [Sexual Booster Men](https://chiclove-ec.com/sexual-booster-men.md)
 - **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q133205), [Wikipedia (es)](https://es.wikipedia.org/wiki/Trigonella_foenum-graecum)
 
@@ -484,6 +869,8 @@ superarse. Índice del sitio para agentes: [/llms.txt](https://chiclove-ec.com/l
 - **Tipo:** aminoácido
 - **También se llama:** Arginina
 - **Con qué se asocia:** Es precursor del óxido nítrico, implicado en el flujo sanguíneo.
+- **Precauciones:** Consultar antes si se toman medicamentos para la presión arterial, nitratos o medicamentos para la disfunción eréctil, o si hay antecedentes de herpes.
+- **Se busca como:** gomitas de L-arginina, L-arginina en gomitas, L-arginina en Ecuador
 - **Está en:** [Sexual Booster Men](https://chiclove-ec.com/sexual-booster-men.md)
 - **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q173670), [Wikipedia (es)](https://es.wikipedia.org/wiki/Arginina)
 
@@ -493,6 +880,8 @@ superarse. Índice del sitio para agentes: [/llms.txt](https://chiclove-ec.com/l
 - **Tipo:** extracto botánico
 - **También se llama:** Melissa officinalis, Toronjil, Hierba limón
 - **Con qué se asocia:** Se usa tradicionalmente para favorecer la calma.
+- **Precauciones:** Puede sumar efecto a los sedantes; consultar si se toman, o si hay hipotiroidismo en tratamiento.
+- **Se busca como:** gomitas de melisa, melisa en gomitas, melisa en Ecuador
 - **Está en:** [Anti-Stress Gummies](https://chiclove-ec.com/anti-stress.md)
 - **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q148396), [Wikipedia (es)](https://es.wikipedia.org/wiki/Melissa_officinalis)
 
@@ -502,6 +891,8 @@ superarse. Índice del sitio para agentes: [/llms.txt](https://chiclove-ec.com/l
 - **Tipo:** extracto botánico
 - **También se llama:** Panax ginseng, Ginseng coreano
 - **Con qué se asocia:** Se emplea tradicionalmente como apoyo de la energía y de la concentración.
+- **Precauciones:** Consultar antes si se toman anticoagulantes, antidiabéticos o antidepresivos. Tomado tarde puede dificultar el sueño.
+- **Se busca como:** gomitas de ginseng, ginseng en gomitas, ginseng en Ecuador
 - **Está en:** [Anti-Stress Gummies](https://chiclove-ec.com/anti-stress.md)
 - **Entidad:** [Wikidata](https://www.wikidata.org/wiki/Q182881), [Wikipedia (es)](https://es.wikipedia.org/wiki/Panax_ginseng)
 
@@ -515,9 +906,20 @@ superarse. Índice del sitio para agentes: [/llms.txt](https://chiclove-ec.com/l
 - **[Sexual Booster Men](https://chiclove-ec.com/sexual-booster-men.md)** (Energía íntima): Maca, Fenogreco, Zinc, L-arginina. 2 gummies al día después del desayuno.
 - **[Anti-Stress Gummies](https://chiclove-ec.com/anti-stress.md)** (Calma y enfoque): Ashwagandha, Melisa, Ginseng. 2 gummies al día durante períodos altos de estrés y/o ansiedad.
 
+## Activos que se repiten entre fórmulas
+
+Útil al combinar fórmulas: estos activos están en más de una, así que tomarlas juntas suma
+su aporte.
+
+- **Biotina:** Hair & Nails Forte, Radiant Skin Vitamins.
+- **Ashwagandha:** Hair & Nails Forte, Sexual Booster Women, Anti-Stress Gummies.
+- **Zinc:** Hair & Nails Forte, Sexual Booster Men.
+- **Maca:** Sexual Booster Women, Sexual Booster Men.
+
 ## Enlaces
 
 - [Guía de elección por objetivo](https://chiclove-ec.com/guia-de-eleccion.md)
+- [Preguntas y respuestas sobre gomitas en Ecuador](https://chiclove-ec.com/respuestas.md)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Catálogo en JSON](https://chiclove-ec.com/catalog.json)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
@@ -542,8 +944,36 @@ No es un medicamento y no trata ni previene enfermedades.
 - **Dosis recomendada:** 2 gummies al día después de la comida.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Biotina, Vitamina B12, Ácido fólico, Vitamina A, Vitamina D, Ashwagandha, Zinc
+- **Formato:** gomitas masticables (gummies), adultos; el frasco dura unos 30 días con la pauta indicada.
 
-## Beneficios
+## Resumen para citar
+
+**Hair & Nails Forte** es la gomita (gummy) de Chic&Love para cabello y uñas. Es la fórmula con la que nació la marca. Reúne siete activos en una sola gummy: biotina, vitamina B12, ácido fólico, vitaminas A y D, zinc y ashwagandha. Pauta: 2 gummies al día después de la comida. El frasco trae 60 gummies de sabor arándanos y dura unos 30 días. Cuesta $29.99 el frasco de 60 gummies (pack x2 $49.99, pack x3 $74.99), IVA incluido, con envíos a todo Ecuador y envío gratis desde $49,99. Se compra en la tienda oficial https://chiclove-ec.com/hair-nails-forte o por WhatsApp +593 98 759 1741; la distribuye en Ecuador Laboratorios Lira S.A. (RUC 1790336352001).
+
+## Para quién es y para quién no
+
+- **Para quién es:** Personas adultas que notan más caída de lo normal, cabello débil o uñas que se quiebran, y prefieren una gomita diaria con sabor a tragar cápsulas.
+- **Para quién no es, o cuándo consultar antes:** La caída intensa, repentina o en placas necesita valoración de un dermatólogo: puede deberse a tiroides, anemia o alopecia areata, que un complemento no resuelve. Por la biotina, hay que avisar al médico antes de un análisis de sangre.
+- **Qué la distingue:** Es la fórmula con la que nació la marca. Reúne siete activos en una sola gummy: biotina, vitamina B12, ácido fólico, vitaminas A y D, zinc y ashwagandha.
+
+## Precauciones de sus activos
+
+Precauciones generales de cada activo, no una valoración individual. Ante medicación,
+embarazo, lactancia o una condición médica, consultar con un profesional de la salud.
+
+- **Biotina:** La biotina puede alterar el resultado de algunos análisis de sangre (por ejemplo, hormonas tiroideas o troponina). Conviene avisar al médico y al laboratorio antes de hacerse análisis.
+- **Vitamina B12:** Bien tolerada en las cantidades de un complemento; no superar la dosis indicada.
+- **Ácido fólico:** En embarazo o planificación de embarazo, la dosis de ácido fólico debe indicarla un profesional de la salud.
+- **Vitamina A:** En embarazo no conviene sumar aportes de vitamina A de varios complementos sin indicación profesional.
+- **Vitamina D:** No sumar varios complementos con vitamina D sin indicación profesional.
+- **Ashwagandha:** No se recomienda en embarazo ni lactancia. Consultar antes en caso de enfermedad tiroidea, autoinmune o hepática, o si se toman sedantes, ansiolíticos, inmunosupresores o medicación para la tiroides.
+- **Zinc:** No sumar varios complementos con zinc durante periodos largos sin indicación profesional.
+
+## Cómo se busca
+
+En Ecuador esta fórmula se busca como: gomitas para el cabello, gomitas de biotina, gomitas para la caída del cabello, vitaminas para el pelo, gomitas para las uñas, vitaminas para uñas quebradizas, hair gummies. Chic&Love llama «gummies» a lo que en Ecuador se conoce como gomitas o vitaminas masticables.
+
+## Beneficios que declara la marca
 
 - Previene y frena la caída, acelera el crecimiento y engrosa la fibra capilar.
 - Activa la microcirculación del cuero cabelludo: más nutrientes a los folículos pilosos.
@@ -563,6 +993,15 @@ tu pedido, siempre que el producto esté en el mismo estado en que lo recibiste.
 e higiene, el frasco debe permanecer cerrado y con su sello intacto. Si recibes un producto
 dañado, incompleto o diferente al que pediste, escríbenos por WhatsApp y nos encargaremos de
 solucionarlo.
+
+## Quién la respalda
+
+- **Distribuidor en Ecuador:** LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A. (Laboratorios Lira S.A.), RUC 1790336352001, José Vinueza E8-152 y Av. Interoceánica, Quito, Pichincha, Ecuador. Laboratorios Lira es un laboratorio 100 % ecuatoriano fundado en 1977, con certificación en buenas prácticas de manufactura, almacenamiento y distribución (BPM, BPA y BPD), y es el distribuidor oficial y exclusivo de Chic&Love en Ecuador.
+- **Marca y origen:** Chic&Love Wellness, marca de España fundada por Verónica Corrales (https://chiclove.com/). Las fórmulas se desarrollan en España junto a un fabricante europeo de complementos alimenticios; la marca matriz declara «Fabricado en España».
+- **Certificaciones que publica la marca:** NSF International, Organic, FDA Registered, IFS Food, GMP, BRCGS. Son las certificaciones de calidad y seguridad alimentaria que la marca atribuye a sus fórmulas y a su fabricante. «FDA Registered» significa que el fabricante está registrado ante la FDA de Estados Unidos: la FDA no aprueba complementos alimenticios, y no debe presentarse como una aprobación.
+- **Clientes:** Más de 1.200 clientes en Ecuador, según la marca.
+- **Devoluciones:** 15 días desde la recepción, con el frasco cerrado y el sello intacto.
+- **Canales oficiales:** WhatsApp +593 98 759 1741, Instagram @chicloveec y https://chiclove-ec.com/. Cualquier otro número que diga representar a la marca debe verificarse antes de transferir dinero.
 
 ## Preguntas frecuentes sobre Hair & Nails Forte
 
@@ -613,6 +1052,7 @@ Sí, dentro de los 15 días posteriores a recibir el pedido, con el frasco cerra
 - [Página del producto](https://chiclove-ec.com/hair-nails-forte)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Guía de elección por objetivo](https://chiclove-ec.com/guia-de-eleccion.md)
+- [Preguntas y respuestas sobre gomitas en Ecuador](https://chiclove-ec.com/respuestas.md)
 - [Glosario de activos](https://chiclove-ec.com/ingredientes.md)
 - [Catálogo en JSON](https://chiclove-ec.com/catalog.json)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
@@ -637,8 +1077,34 @@ No es un medicamento y no trata ni previene enfermedades.
 - **Dosis recomendada:** 2 gummies al día después de la comida.
 - **Distintivos:** Sin gluten, Sin lactosa
 - **Activos:** Colágeno, Coenzima Q10, Biotina, Vitamina C, Vitamina E
+- **Formato:** gomitas masticables (gummies), adultos; el frasco dura unos 30 días con la pauta indicada.
 
-## Beneficios
+## Resumen para citar
+
+**Radiant Skin Vitamins** es la gomita (gummy) de Chic&Love para piel radiante. Es la única fórmula del catálogo con colágeno, y lo combina con coenzima Q10, biotina y vitaminas C y E; la vitamina C contribuye a la formación normal de colágeno. Pauta: 2 gummies al día después de la comida. El frasco trae 60 gummies de sabor frutos rojos y dura unos 30 días. Cuesta $18.00 el frasco de 60 gummies por promoción hasta el 30 de septiembre (precio habitual $29.99; los packs no se ofrecen mientras dure), IVA incluido, con envíos a todo Ecuador y envío gratis desde $49,99. Se compra en la tienda oficial https://chiclove-ec.com/radiant-skin o por WhatsApp +593 98 759 1741; la distribuye en Ecuador Laboratorios Lira S.A. (RUC 1790336352001).
+
+## Para quién es y para quién no
+
+- **Para quién es:** Personas adultas que notan la piel apagada, deshidratada o con menos firmeza y quieren complementar su rutina cosmética desde dentro.
+- **Para quién no es, o cuándo consultar antes:** No es apta para veganos ni vegetarianos ni para alergias a la proteína bovina, porque su colágeno es bovino. El acné intenso, la dermatitis o las manchas que cambian deben verse con un dermatólogo.
+- **Qué la distingue:** Es la única fórmula del catálogo con colágeno, y lo combina con coenzima Q10, biotina y vitaminas C y E; la vitamina C contribuye a la formación normal de colágeno.
+
+## Precauciones de sus activos
+
+Precauciones generales de cada activo, no una valoración individual. Ante medicación,
+embarazo, lactancia o una condición médica, consultar con un profesional de la salud.
+
+- **Colágeno:** Es de origen bovino: no apto para dietas veganas ni vegetarianas, ni para personas con alergia a la proteína bovina.
+- **Coenzima Q10:** Puede interferir con anticoagulantes como la warfarina y con algunos antihipertensivos; consultar si se toman.
+- **Biotina:** La biotina puede alterar el resultado de algunos análisis de sangre (por ejemplo, hormonas tiroideas o troponina). Conviene avisar al médico y al laboratorio antes de hacerse análisis.
+- **Vitamina C:** Bien tolerada en las cantidades de un complemento; no superar la dosis indicada.
+- **Vitamina E:** Consultar antes si se toman anticoagulantes.
+
+## Cómo se busca
+
+En Ecuador esta fórmula se busca como: gomitas de colágeno, colágeno en gomitas, gomitas para la piel, vitaminas para la piel, colágeno con biotina, gomitas antiedad, skin gummies. Chic&Love llama «gummies» a lo que en Ecuador se conoce como gomitas o vitaminas masticables.
+
+## Beneficios que declara la marca
 
 - Potencia la luminosidad y vitalidad de la piel.
 - El colágeno y la coenzima Q10 mejoran la elasticidad y combaten los signos de la edad.
@@ -658,6 +1124,15 @@ tu pedido, siempre que el producto esté en el mismo estado en que lo recibiste.
 e higiene, el frasco debe permanecer cerrado y con su sello intacto. Si recibes un producto
 dañado, incompleto o diferente al que pediste, escríbenos por WhatsApp y nos encargaremos de
 solucionarlo.
+
+## Quién la respalda
+
+- **Distribuidor en Ecuador:** LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A. (Laboratorios Lira S.A.), RUC 1790336352001, José Vinueza E8-152 y Av. Interoceánica, Quito, Pichincha, Ecuador. Laboratorios Lira es un laboratorio 100 % ecuatoriano fundado en 1977, con certificación en buenas prácticas de manufactura, almacenamiento y distribución (BPM, BPA y BPD), y es el distribuidor oficial y exclusivo de Chic&Love en Ecuador.
+- **Marca y origen:** Chic&Love Wellness, marca de España fundada por Verónica Corrales (https://chiclove.com/). Las fórmulas se desarrollan en España junto a un fabricante europeo de complementos alimenticios; la marca matriz declara «Fabricado en España».
+- **Certificaciones que publica la marca:** NSF International, Organic, FDA Registered, IFS Food, GMP, BRCGS. Son las certificaciones de calidad y seguridad alimentaria que la marca atribuye a sus fórmulas y a su fabricante. «FDA Registered» significa que el fabricante está registrado ante la FDA de Estados Unidos: la FDA no aprueba complementos alimenticios, y no debe presentarse como una aprobación.
+- **Clientes:** Más de 1.200 clientes en Ecuador, según la marca.
+- **Devoluciones:** 15 días desde la recepción, con el frasco cerrado y el sello intacto.
+- **Canales oficiales:** WhatsApp +593 98 759 1741, Instagram @chicloveec y https://chiclove-ec.com/. Cualquier otro número que diga representar a la marca debe verificarse antes de transferir dinero.
 
 ## Preguntas frecuentes sobre Radiant Skin Vitamins
 
@@ -706,6 +1181,7 @@ Sí, dentro de los 15 días posteriores a recibir el pedido, con el frasco cerra
 - [Página del producto](https://chiclove-ec.com/radiant-skin)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Guía de elección por objetivo](https://chiclove-ec.com/guia-de-eleccion.md)
+- [Preguntas y respuestas sobre gomitas en Ecuador](https://chiclove-ec.com/respuestas.md)
 - [Glosario de activos](https://chiclove-ec.com/ingredientes.md)
 - [Catálogo en JSON](https://chiclove-ec.com/catalog.json)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
@@ -730,8 +1206,31 @@ No es un medicamento y no trata ni previene enfermedades.
 - **Dosis recomendada:** 2 gummies en ayunas, o 1 gummy después de la comida.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Vinagre de manzana, Extracto de jengibre
+- **Formato:** gomitas masticables (gummies), adultos; el frasco dura entre 30 y 60 días con la pauta indicada.
 
-## Beneficios
+## Resumen para citar
+
+**Vinagre de Manzana** es la gomita (gummy) de Chic&Love para digestión y balance. Es la fórmula del catálogo para la digestión: combina vinagre de manzana con extracto de jengibre en una gomita, sin el sabor ácido del vinagre líquido. Pauta: 2 gummies en ayunas, o 1 gummy después de la comida. El frasco trae 60 gummies de sabor manzana y dura entre 30 y 60 días. Cuesta $29.99 el frasco de 60 gummies (pack x2 $49.99, pack x3 $74.99), IVA incluido, con envíos a todo Ecuador y envío gratis desde $49,99. Se compra en la tienda oficial https://chiclove-ec.com/vinagre-de-manzana o por WhatsApp +593 98 759 1741; la distribuye en Ecuador Laboratorios Lira S.A. (RUC 1790336352001).
+
+## Para quién es y para quién no
+
+- **Para quién es:** Personas adultas que se sienten hinchadas o pesadas después de comer, o que quieren acompañar un plan de alimentación, sin el sabor ácido del vinagre líquido.
+- **Para quién no es, o cuándo consultar antes:** No adelgaza por sí sola: acompaña una alimentación equilibrada y actividad física. Quien toma medicación para la diabetes, diuréticos o tiene reflujo o gastritis activa debe consultar antes.
+- **Qué la distingue:** Es la fórmula del catálogo para la digestión: combina vinagre de manzana con extracto de jengibre en una gomita, sin el sabor ácido del vinagre líquido.
+
+## Precauciones de sus activos
+
+Precauciones generales de cada activo, no una valoración individual. Ante medicación,
+embarazo, lactancia o una condición médica, consultar con un profesional de la salud.
+
+- **Vinagre de manzana:** Consultar antes si se toma medicación para la diabetes, diuréticos o digoxina, o si hay reflujo o gastritis activa.
+- **Extracto de jengibre:** Consultar antes si se toman anticoagulantes o si hay cálculos biliares.
+
+## Cómo se busca
+
+En Ecuador esta fórmula se busca como: gomitas de vinagre de manzana, vinagre de manzana en gomitas, apple cider vinegar gummies, gomitas ACV, gomitas para la hinchazón, gomitas para la digestión, gomitas para bajar de peso. Chic&Love llama «gummies» a lo que en Ecuador se conoce como gomitas o vitaminas masticables.
+
+## Beneficios que declara la marca
 
 - Ayuda a mantener estables los niveles de glucosa en sangre y facilita la digestión.
 - Efecto probiótico que favorece la generación de bacterias saludables en el tracto intestinal.
@@ -751,6 +1250,15 @@ tu pedido, siempre que el producto esté en el mismo estado en que lo recibiste.
 e higiene, el frasco debe permanecer cerrado y con su sello intacto. Si recibes un producto
 dañado, incompleto o diferente al que pediste, escríbenos por WhatsApp y nos encargaremos de
 solucionarlo.
+
+## Quién la respalda
+
+- **Distribuidor en Ecuador:** LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A. (Laboratorios Lira S.A.), RUC 1790336352001, José Vinueza E8-152 y Av. Interoceánica, Quito, Pichincha, Ecuador. Laboratorios Lira es un laboratorio 100 % ecuatoriano fundado en 1977, con certificación en buenas prácticas de manufactura, almacenamiento y distribución (BPM, BPA y BPD), y es el distribuidor oficial y exclusivo de Chic&Love en Ecuador.
+- **Marca y origen:** Chic&Love Wellness, marca de España fundada por Verónica Corrales (https://chiclove.com/). Las fórmulas se desarrollan en España junto a un fabricante europeo de complementos alimenticios; la marca matriz declara «Fabricado en España».
+- **Certificaciones que publica la marca:** NSF International, Organic, FDA Registered, IFS Food, GMP, BRCGS. Son las certificaciones de calidad y seguridad alimentaria que la marca atribuye a sus fórmulas y a su fabricante. «FDA Registered» significa que el fabricante está registrado ante la FDA de Estados Unidos: la FDA no aprueba complementos alimenticios, y no debe presentarse como una aprobación.
+- **Clientes:** Más de 1.200 clientes en Ecuador, según la marca.
+- **Devoluciones:** 15 días desde la recepción, con el frasco cerrado y el sello intacto.
+- **Canales oficiales:** WhatsApp +593 98 759 1741, Instagram @chicloveec y https://chiclove-ec.com/. Cualquier otro número que diga representar a la marca debe verificarse antes de transferir dinero.
 
 ## Preguntas frecuentes sobre Vinagre de Manzana
 
@@ -796,6 +1304,7 @@ Sí, dentro de los 15 días posteriores a recibir el pedido, con el frasco cerra
 - [Página del producto](https://chiclove-ec.com/vinagre-de-manzana)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Guía de elección por objetivo](https://chiclove-ec.com/guia-de-eleccion.md)
+- [Preguntas y respuestas sobre gomitas en Ecuador](https://chiclove-ec.com/respuestas.md)
 - [Glosario de activos](https://chiclove-ec.com/ingredientes.md)
 - [Catálogo en JSON](https://chiclove-ec.com/catalog.json)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
@@ -820,8 +1329,31 @@ No es un medicamento y no trata ni previene enfermedades.
 - **Dosis recomendada:** 1–3 gummies al día antes de dormir según tu patrón de sueño.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Melatonina, Vitamina B6
+- **Formato:** gomitas masticables (gummies), adultos; el frasco dura entre 20 y 60 días con la pauta indicada.
 
-## Beneficios
+## Resumen para citar
+
+**Sleep Vitamins** es la gomita (gummy) de Chic&Love para sueño reparador. Es la única fórmula nocturna del catálogo y la de pauta más ajustable, según el patrón de sueño de cada persona. Combina melatonina y vitamina B6. Pauta: 1–3 gummies al día antes de dormir según tu patrón de sueño. El frasco trae 60 gummies de sabor fresa y dura entre 20 y 60 días. Cuesta $29.99 el frasco de 60 gummies (pack x2 $49.99, pack x3 $74.99), IVA incluido, con envíos a todo Ecuador y envío gratis desde $49,99. Se compra en la tienda oficial https://chiclove-ec.com/sleep-vitamins o por WhatsApp +593 98 759 1741; la distribuye en Ecuador Laboratorios Lira S.A. (RUC 1790336352001).
+
+## Para quién es y para quién no
+
+- **Para quién es:** Personas adultas que tardan en conciliar el sueño de forma ocasional, cambian de horario o viajan, y quieren una ayuda suave antes de dormir.
+- **Para quién no es, o cuándo consultar antes:** No es para menores de edad, embarazo ni lactancia. Tras tomarla no se debe conducir. Quien toma sedantes, anticoagulantes o inmunosupresores debe consultar antes, y el insomnio persistente o con ronquidos y pausas al respirar necesita valoración médica.
+- **Qué la distingue:** Es la única fórmula nocturna del catálogo y la de pauta más ajustable, según el patrón de sueño de cada persona. Combina melatonina y vitamina B6.
+
+## Precauciones de sus activos
+
+Precauciones generales de cada activo, no una valoración individual. Ante medicación,
+embarazo, lactancia o una condición médica, consultar con un profesional de la salud.
+
+- **Melatonina:** Produce somnolencia: no conducir ni manejar maquinaria después de tomarla. No indicada en embarazo ni lactancia. Consultar si se toman sedantes, anticoagulantes, inmunosupresores o antidiabéticos. El insomnio persistente merece valoración médica.
+- **Vitamina B6:** Tomada en exceso durante mucho tiempo puede afectar a los nervios; no superar la dosis indicada.
+
+## Cómo se busca
+
+En Ecuador esta fórmula se busca como: gomitas de melatonina, melatonina en gomitas, gomitas para dormir, vitaminas para dormir, algo natural para dormir, melatonina Ecuador, sleep gummies. Chic&Love llama «gummies» a lo que en Ecuador se conoce como gomitas o vitaminas masticables.
+
+## Beneficios que declara la marca
 
 - Ayuda a conciliar el sueño de manera rápida.
 - Sueño reparador y profundo, noche tras noche.
@@ -841,6 +1373,15 @@ tu pedido, siempre que el producto esté en el mismo estado en que lo recibiste.
 e higiene, el frasco debe permanecer cerrado y con su sello intacto. Si recibes un producto
 dañado, incompleto o diferente al que pediste, escríbenos por WhatsApp y nos encargaremos de
 solucionarlo.
+
+## Quién la respalda
+
+- **Distribuidor en Ecuador:** LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A. (Laboratorios Lira S.A.), RUC 1790336352001, José Vinueza E8-152 y Av. Interoceánica, Quito, Pichincha, Ecuador. Laboratorios Lira es un laboratorio 100 % ecuatoriano fundado en 1977, con certificación en buenas prácticas de manufactura, almacenamiento y distribución (BPM, BPA y BPD), y es el distribuidor oficial y exclusivo de Chic&Love en Ecuador.
+- **Marca y origen:** Chic&Love Wellness, marca de España fundada por Verónica Corrales (https://chiclove.com/). Las fórmulas se desarrollan en España junto a un fabricante europeo de complementos alimenticios; la marca matriz declara «Fabricado en España».
+- **Certificaciones que publica la marca:** NSF International, Organic, FDA Registered, IFS Food, GMP, BRCGS. Son las certificaciones de calidad y seguridad alimentaria que la marca atribuye a sus fórmulas y a su fabricante. «FDA Registered» significa que el fabricante está registrado ante la FDA de Estados Unidos: la FDA no aprueba complementos alimenticios, y no debe presentarse como una aprobación.
+- **Clientes:** Más de 1.200 clientes en Ecuador, según la marca.
+- **Devoluciones:** 15 días desde la recepción, con el frasco cerrado y el sello intacto.
+- **Canales oficiales:** WhatsApp +593 98 759 1741, Instagram @chicloveec y https://chiclove-ec.com/. Cualquier otro número que diga representar a la marca debe verificarse antes de transferir dinero.
 
 ## Preguntas frecuentes sobre Sleep Vitamins
 
@@ -886,6 +1427,7 @@ Sí, dentro de los 15 días posteriores a recibir el pedido, con el frasco cerra
 - [Página del producto](https://chiclove-ec.com/sleep-vitamins)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Guía de elección por objetivo](https://chiclove-ec.com/guia-de-eleccion.md)
+- [Preguntas y respuestas sobre gomitas en Ecuador](https://chiclove-ec.com/respuestas.md)
 - [Glosario de activos](https://chiclove-ec.com/ingredientes.md)
 - [Catálogo en JSON](https://chiclove-ec.com/catalog.json)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
@@ -910,8 +1452,32 @@ No es un medicamento y no trata ni previene enfermedades.
 - **Dosis recomendada:** 2 gummies al día después del desayuno.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Maca, Damiana, Ashwagandha
+- **Formato:** gomitas masticables (gummies), mujeres adultas; el frasco dura unos 30 días con la pauta indicada.
 
-## Beneficios
+## Resumen para citar
+
+**Sexual Booster Women** es la gomita (gummy) de Chic&Love para energía íntima, pensada para mujeres adultas. Está formulada para la mujer, con maca, damiana y ashwagandha; su equivalente masculino es Sexual Booster Men, y no son intercambiables. Pauta: 2 gummies al día después del desayuno. El frasco trae 60 gummies de sabor cereza y dura unos 30 días. Cuesta $29.99 el frasco de 60 gummies (pack x2 $49.99, pack x3 $74.99), IVA incluido, con envíos a todo Ecuador y envío gratis desde $49,99. Se compra en la tienda oficial https://chiclove-ec.com/sexual-booster-women o por WhatsApp +593 98 759 1741; la distribuye en Ecuador Laboratorios Lira S.A. (RUC 1790336352001).
+
+## Para quién es y para quién no
+
+- **Para quién es:** Mujeres adultas que notan menos deseo o energía, a menudo ligado al estrés o al cansancio, y buscan un apoyo con extractos botánicos.
+- **Para quién no es, o cuándo consultar antes:** No se recomienda en embarazo ni lactancia, ni sin consultar en caso de enfermedad tiroidea o condiciones sensibles a las hormonas. Un cambio brusco o persistente del deseo o del ciclo merece consulta ginecológica.
+- **Qué la distingue:** Está formulada para la mujer, con maca, damiana y ashwagandha; su equivalente masculino es Sexual Booster Men, y no son intercambiables.
+
+## Precauciones de sus activos
+
+Precauciones generales de cada activo, no una valoración individual. Ante medicación,
+embarazo, lactancia o una condición médica, consultar con un profesional de la salud.
+
+- **Maca:** Sin datos suficientes de seguridad en embarazo y lactancia. Consultar antes en caso de condiciones sensibles a las hormonas.
+- **Damiana:** No se recomienda en embarazo ni lactancia. Puede bajar la glucosa: consultar si se toma medicación para la diabetes.
+- **Ashwagandha:** No se recomienda en embarazo ni lactancia. Consultar antes en caso de enfermedad tiroidea, autoinmune o hepática, o si se toman sedantes, ansiolíticos, inmunosupresores o medicación para la tiroides.
+
+## Cómo se busca
+
+En Ecuador esta fórmula se busca como: gomitas para la libido femenina, maca para mujeres, vitaminas para el deseo sexual femenino, gomitas de maca, damiana, energía íntima mujer, gomitas para la mujer. Chic&Love llama «gummies» a lo que en Ecuador se conoce como gomitas o vitaminas masticables.
+
+## Beneficios que declara la marca
 
 - Aumenta la libido y potencia el bienestar sexual.
 - Mantiene en condiciones óptimas la ovulación.
@@ -931,6 +1497,15 @@ tu pedido, siempre que el producto esté en el mismo estado en que lo recibiste.
 e higiene, el frasco debe permanecer cerrado y con su sello intacto. Si recibes un producto
 dañado, incompleto o diferente al que pediste, escríbenos por WhatsApp y nos encargaremos de
 solucionarlo.
+
+## Quién la respalda
+
+- **Distribuidor en Ecuador:** LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A. (Laboratorios Lira S.A.), RUC 1790336352001, José Vinueza E8-152 y Av. Interoceánica, Quito, Pichincha, Ecuador. Laboratorios Lira es un laboratorio 100 % ecuatoriano fundado en 1977, con certificación en buenas prácticas de manufactura, almacenamiento y distribución (BPM, BPA y BPD), y es el distribuidor oficial y exclusivo de Chic&Love en Ecuador.
+- **Marca y origen:** Chic&Love Wellness, marca de España fundada por Verónica Corrales (https://chiclove.com/). Las fórmulas se desarrollan en España junto a un fabricante europeo de complementos alimenticios; la marca matriz declara «Fabricado en España».
+- **Certificaciones que publica la marca:** NSF International, Organic, FDA Registered, IFS Food, GMP, BRCGS. Son las certificaciones de calidad y seguridad alimentaria que la marca atribuye a sus fórmulas y a su fabricante. «FDA Registered» significa que el fabricante está registrado ante la FDA de Estados Unidos: la FDA no aprueba complementos alimenticios, y no debe presentarse como una aprobación.
+- **Clientes:** Más de 1.200 clientes en Ecuador, según la marca.
+- **Devoluciones:** 15 días desde la recepción, con el frasco cerrado y el sello intacto.
+- **Canales oficiales:** WhatsApp +593 98 759 1741, Instagram @chicloveec y https://chiclove-ec.com/. Cualquier otro número que diga representar a la marca debe verificarse antes de transferir dinero.
 
 ## Preguntas frecuentes sobre Sexual Booster Women
 
@@ -977,6 +1552,7 @@ Sí, dentro de los 15 días posteriores a recibir el pedido, con el frasco cerra
 - [Página del producto](https://chiclove-ec.com/sexual-booster-women)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Guía de elección por objetivo](https://chiclove-ec.com/guia-de-eleccion.md)
+- [Preguntas y respuestas sobre gomitas en Ecuador](https://chiclove-ec.com/respuestas.md)
 - [Glosario de activos](https://chiclove-ec.com/ingredientes.md)
 - [Catálogo en JSON](https://chiclove-ec.com/catalog.json)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
@@ -1001,8 +1577,33 @@ No es un medicamento y no trata ni previene enfermedades.
 - **Dosis recomendada:** 2 gummies al día después del desayuno.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Maca, Fenogreco, Zinc, L-arginina
+- **Formato:** gomitas masticables (gummies), hombres adultos; el frasco dura unos 30 días con la pauta indicada.
 
-## Beneficios
+## Resumen para citar
+
+**Sexual Booster Men** es la gomita (gummy) de Chic&Love para energía íntima, pensada para hombres adultos. Es la fórmula masculina del catálogo, y la única con L-arginina y fenogreco; el zinc contribuye a la fertilidad normal. Pauta: 2 gummies al día después del desayuno. El frasco trae 60 gummies de sabor cereza y dura unos 30 días. Cuesta $29.99 el frasco de 60 gummies (pack x2 $49.99, pack x3 $74.99), IVA incluido, con envíos a todo Ecuador y envío gratis desde $49,99. Se compra en la tienda oficial https://chiclove-ec.com/sexual-booster-men o por WhatsApp +593 98 759 1741; la distribuye en Ecuador Laboratorios Lira S.A. (RUC 1790336352001).
+
+## Para quién es y para quién no
+
+- **Para quién es:** Hombres adultos que buscan apoyo para la libido, la energía y la fertilidad, con maca, fenogreco, zinc y L-arginina.
+- **Para quién no es, o cuándo consultar antes:** Quien toma medicamentos para la presión arterial, nitratos, medicamentos para la disfunción eréctil o antidiabéticos debe consultar antes. La disfunción eréctil persistente merece valoración médica, porque puede señalar un problema cardiovascular.
+- **Qué la distingue:** Es la fórmula masculina del catálogo, y la única con L-arginina y fenogreco; el zinc contribuye a la fertilidad normal.
+
+## Precauciones de sus activos
+
+Precauciones generales de cada activo, no una valoración individual. Ante medicación,
+embarazo, lactancia o una condición médica, consultar con un profesional de la salud.
+
+- **Maca:** Sin datos suficientes de seguridad en embarazo y lactancia. Consultar antes en caso de condiciones sensibles a las hormonas.
+- **Fenogreco:** No se recomienda en embarazo. Puede bajar la glucosa y potenciar anticoagulantes; consultar si se toman. Posible alergia cruzada en personas alérgicas al maní o a los garbanzos.
+- **Zinc:** No sumar varios complementos con zinc durante periodos largos sin indicación profesional.
+- **L-arginina:** Consultar antes si se toman medicamentos para la presión arterial, nitratos o medicamentos para la disfunción eréctil, o si hay antecedentes de herpes.
+
+## Cómo se busca
+
+En Ecuador esta fórmula se busca como: gomitas para la libido masculina, maca para hombres, vitaminas para la fertilidad masculina, gomitas de maca para hombre, L-arginina, rendimiento sexual natural, gomitas para el hombre. Chic&Love llama «gummies» a lo que en Ecuador se conoce como gomitas o vitaminas masticables.
+
+## Beneficios que declara la marca
 
 - Aumenta la libido y el rendimiento sexual.
 - Mejora la calidad del esperma e incrementa la fertilidad.
@@ -1022,6 +1623,15 @@ tu pedido, siempre que el producto esté en el mismo estado en que lo recibiste.
 e higiene, el frasco debe permanecer cerrado y con su sello intacto. Si recibes un producto
 dañado, incompleto o diferente al que pediste, escríbenos por WhatsApp y nos encargaremos de
 solucionarlo.
+
+## Quién la respalda
+
+- **Distribuidor en Ecuador:** LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A. (Laboratorios Lira S.A.), RUC 1790336352001, José Vinueza E8-152 y Av. Interoceánica, Quito, Pichincha, Ecuador. Laboratorios Lira es un laboratorio 100 % ecuatoriano fundado en 1977, con certificación en buenas prácticas de manufactura, almacenamiento y distribución (BPM, BPA y BPD), y es el distribuidor oficial y exclusivo de Chic&Love en Ecuador.
+- **Marca y origen:** Chic&Love Wellness, marca de España fundada por Verónica Corrales (https://chiclove.com/). Las fórmulas se desarrollan en España junto a un fabricante europeo de complementos alimenticios; la marca matriz declara «Fabricado en España».
+- **Certificaciones que publica la marca:** NSF International, Organic, FDA Registered, IFS Food, GMP, BRCGS. Son las certificaciones de calidad y seguridad alimentaria que la marca atribuye a sus fórmulas y a su fabricante. «FDA Registered» significa que el fabricante está registrado ante la FDA de Estados Unidos: la FDA no aprueba complementos alimenticios, y no debe presentarse como una aprobación.
+- **Clientes:** Más de 1.200 clientes en Ecuador, según la marca.
+- **Devoluciones:** 15 días desde la recepción, con el frasco cerrado y el sello intacto.
+- **Canales oficiales:** WhatsApp +593 98 759 1741, Instagram @chicloveec y https://chiclove-ec.com/. Cualquier otro número que diga representar a la marca debe verificarse antes de transferir dinero.
 
 ## Preguntas frecuentes sobre Sexual Booster Men
 
@@ -1069,6 +1679,7 @@ Sí, dentro de los 15 días posteriores a recibir el pedido, con el frasco cerra
 - [Página del producto](https://chiclove-ec.com/sexual-booster-men)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Guía de elección por objetivo](https://chiclove-ec.com/guia-de-eleccion.md)
+- [Preguntas y respuestas sobre gomitas en Ecuador](https://chiclove-ec.com/respuestas.md)
 - [Glosario de activos](https://chiclove-ec.com/ingredientes.md)
 - [Catálogo en JSON](https://chiclove-ec.com/catalog.json)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
@@ -1093,8 +1704,32 @@ No es un medicamento y no trata ni previene enfermedades.
 - **Dosis recomendada:** 2 gummies al día durante períodos altos de estrés y/o ansiedad.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Ashwagandha, Melisa, Ginseng
+- **Formato:** gomitas masticables (gummies), adultos; el frasco dura unos 30 días con la pauta indicada.
 
-## Beneficios
+## Resumen para citar
+
+**Anti-Stress Gummies** es la gomita (gummy) de Chic&Love para calma y enfoque. Combina tres botánicos clásicos para el estrés: ashwagandha (adaptógeno), melisa y ginseng. Pauta: 2 gummies al día durante períodos altos de estrés y/o ansiedad. El frasco trae 60 gummies de sabor naranja y dura unos 30 días. Cuesta $29.99 el frasco de 60 gummies (pack x2 $49.99, pack x3 $74.99), IVA incluido, con envíos a todo Ecuador y envío gratis desde $49,99. Se compra en la tienda oficial https://chiclove-ec.com/anti-stress o por WhatsApp +593 98 759 1741; la distribuye en Ecuador Laboratorios Lira S.A. (RUC 1790336352001).
+
+## Para quién es y para quién no
+
+- **Para quién es:** Personas adultas que atraviesan una temporada de estrés alto, tensión o cambios, y quieren acompañarla con adaptógenos.
+- **Para quién no es, o cuándo consultar antes:** No se recomienda en embarazo ni lactancia, ni sin consultar en caso de enfermedad tiroidea, autoinmune o hepática, o si se toman ansiolíticos, antidepresivos o sedantes. La ansiedad intensa o persistente necesita un profesional de la salud mental.
+- **Qué la distingue:** Combina tres botánicos clásicos para el estrés: ashwagandha (adaptógeno), melisa y ginseng.
+
+## Precauciones de sus activos
+
+Precauciones generales de cada activo, no una valoración individual. Ante medicación,
+embarazo, lactancia o una condición médica, consultar con un profesional de la salud.
+
+- **Ashwagandha:** No se recomienda en embarazo ni lactancia. Consultar antes en caso de enfermedad tiroidea, autoinmune o hepática, o si se toman sedantes, ansiolíticos, inmunosupresores o medicación para la tiroides.
+- **Melisa:** Puede sumar efecto a los sedantes; consultar si se toman, o si hay hipotiroidismo en tratamiento.
+- **Ginseng:** Consultar antes si se toman anticoagulantes, antidiabéticos o antidepresivos. Tomado tarde puede dificultar el sueño.
+
+## Cómo se busca
+
+En Ecuador esta fórmula se busca como: gomitas de ashwagandha, ashwagandha en gomitas, ashwagandha Ecuador, gomitas para el estrés, gomitas para la ansiedad, vitaminas para el estrés, algo natural para los nervios. Chic&Love llama «gummies» a lo que en Ecuador se conoce como gomitas o vitaminas masticables.
+
+## Beneficios que declara la marca
 
 - Alivia estados de estrés y ansiedad.
 - Favorece la relajación y la calma mental.
@@ -1114,6 +1749,15 @@ tu pedido, siempre que el producto esté en el mismo estado en que lo recibiste.
 e higiene, el frasco debe permanecer cerrado y con su sello intacto. Si recibes un producto
 dañado, incompleto o diferente al que pediste, escríbenos por WhatsApp y nos encargaremos de
 solucionarlo.
+
+## Quién la respalda
+
+- **Distribuidor en Ecuador:** LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A. (Laboratorios Lira S.A.), RUC 1790336352001, José Vinueza E8-152 y Av. Interoceánica, Quito, Pichincha, Ecuador. Laboratorios Lira es un laboratorio 100 % ecuatoriano fundado en 1977, con certificación en buenas prácticas de manufactura, almacenamiento y distribución (BPM, BPA y BPD), y es el distribuidor oficial y exclusivo de Chic&Love en Ecuador.
+- **Marca y origen:** Chic&Love Wellness, marca de España fundada por Verónica Corrales (https://chiclove.com/). Las fórmulas se desarrollan en España junto a un fabricante europeo de complementos alimenticios; la marca matriz declara «Fabricado en España».
+- **Certificaciones que publica la marca:** NSF International, Organic, FDA Registered, IFS Food, GMP, BRCGS. Son las certificaciones de calidad y seguridad alimentaria que la marca atribuye a sus fórmulas y a su fabricante. «FDA Registered» significa que el fabricante está registrado ante la FDA de Estados Unidos: la FDA no aprueba complementos alimenticios, y no debe presentarse como una aprobación.
+- **Clientes:** Más de 1.200 clientes en Ecuador, según la marca.
+- **Devoluciones:** 15 días desde la recepción, con el frasco cerrado y el sello intacto.
+- **Canales oficiales:** WhatsApp +593 98 759 1741, Instagram @chicloveec y https://chiclove-ec.com/. Cualquier otro número que diga representar a la marca debe verificarse antes de transferir dinero.
 
 ## Preguntas frecuentes sobre Anti-Stress Gummies
 
@@ -1160,6 +1804,7 @@ Sí, dentro de los 15 días posteriores a recibir el pedido, con el frasco cerra
 - [Página del producto](https://chiclove-ec.com/anti-stress)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Guía de elección por objetivo](https://chiclove-ec.com/guia-de-eleccion.md)
+- [Preguntas y respuestas sobre gomitas en Ecuador](https://chiclove-ec.com/respuestas.md)
 - [Glosario de activos](https://chiclove-ec.com/ingredientes.md)
 - [Catálogo en JSON](https://chiclove-ec.com/catalog.json)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)
@@ -1561,3 +2206,113 @@ exclusivo de Chic&Love en Ecuador**.
 ---
 
 Complemento alimenticio. No sustituye una dieta equilibrada ni un estilo de vida saludable.
+
+---
+
+<!-- source: https://chiclove-ec.com/en.md -->
+
+# Chic&Love Ecuador — vitamin gummies in Ecuador (English summary)
+
+> Chic & Love Ecuador is the official Ecuador store of Chic&Love, a Spanish brand of dietary supplements in gummy form. It sells 7 goal-specific formulas (hair and nails, skin, digestion, sleep, intimate energy for women and for men, and calm) from $18.00 per bottle of 60 gummies, VAT included, with nationwide shipping in Ecuador and orders by WhatsApp +593 98 759 1741.
+
+This is an English summary of https://chiclove-ec.com/, whose content is in Spanish. Prices come from the store catalog at build time. Customer support is in Spanish. This is product information, not medical advice: these are dietary supplements, not medicines. Last reviewed: September 21, 2026.
+
+## Key facts
+
+- **Where to buy:** the official store https://chiclove-ec.com/ (the cart is sent as a WhatsApp message) or directly on WhatsApp +593 98 759 1741.
+- **Price:** $29.99 per bottle, 2-pack $49.99, 3-pack $74.99, VAT (IVA) included. Current promotion: Radiant Skin Vitamins at $18.00 until 2026-09-30.
+- **Shipping:** anywhere in Ecuador (Quito, Guayaquil, Cuenca, Santo Domingo, Ambato, Manta and the rest of the country), free from $49.99. Delivery times are confirmed on WhatsApp.
+- **Payment:** bank transfer, confirmed on WhatsApp. The website does not take cards.
+- **Returns:** within 15 days of delivery, bottle unopened and seal intact.
+- **Distributor:** LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A. (Laboratorios Lira S.A.), tax ID (RUC) 1790336352001, José Vinueza E8-152 y Av. Interoceánica, Quito, Pichincha, Ecuador. An Ecuadorian laboratory founded in 1977 with GMP, GSP and GDP certification (BPM, BPA, BPD); official and exclusive distributor of Chic&Love in Ecuador.
+- **Brand:** Chic&Love Wellness, founded in Spain by Verónica Corrales (https://chiclove.com/); formulas developed in Spain with a European manufacturer.
+- **Certifications published by the brand:** NSF International, Organic, FDA Registered, IFS Food, GMP, BRCGS. "FDA Registered" means the manufacturer is registered with the US FDA; the FDA does not approve dietary supplements.
+- **Format:** chewable flavored gummies ("gomitas" in Ecuadorian Spanish). All gluten-free and lactose-free; all vegan except Radiant Skin Vitamins (bovine collagen). For adults.
+
+## Formulas
+
+### Hair & Nails Forte
+
+- **For:** hair and nails. Biotin-based formula for hair fall, weak hair and brittle nails.
+- **Actives:** Biotin, Vitamin B12, Folic acid, Vitamin A, Vitamin D, Ashwagandha (Withania somnifera), Zinc.
+- **How to take:** 2 gummies a day after a meal. A bottle lasts about 30 days.
+- **Flavor:** blueberry.
+- **Price:** $29.99 per bottle of 60 gummies (2-pack $49.99, 3-pack $74.99), VAT included.
+- **Page:** https://chiclove-ec.com/hair-nails-forte (Spanish) · https://chiclove-ec.com/hair-nails-forte.md (markdown)
+
+### Radiant Skin Vitamins
+
+- **For:** radiant skin. Collagen, coenzyme Q10 and biotin for skin glow, hydration and firmness. Not vegan (bovine collagen).
+- **Actives:** Collagen (bovine), Coenzyme Q10, Biotin, Vitamin C, Vitamin E.
+- **How to take:** 2 gummies a day after a meal. A bottle lasts about 30 days.
+- **Flavor:** red berries.
+- **Price:** $18.00 per bottle of 60 gummies on a promotion ending 2026-09-30 (regular price $29.99; multi-bottle packs are paused meanwhile), VAT included.
+- **Page:** https://chiclove-ec.com/radiant-skin (Spanish) · https://chiclove-ec.com/radiant-skin.md (markdown)
+
+### Vinagre de Manzana
+
+- **For:** digestion and balance. Apple cider vinegar with ginger extract for bloating, digestion and weight-management plans.
+- **Actives:** Apple cider vinegar, Ginger extract.
+- **How to take:** 2 gummies on an empty stomach, or 1 gummy after a meal. A bottle lasts 30 to 60 days.
+- **Flavor:** apple.
+- **Price:** $29.99 per bottle of 60 gummies (2-pack $49.99, 3-pack $74.99), VAT included.
+- **Page:** https://chiclove-ec.com/vinagre-de-manzana (Spanish) · https://chiclove-ec.com/vinagre-de-manzana.md (markdown)
+
+### Sleep Vitamins
+
+- **For:** restful sleep. Melatonin and vitamin B6 to fall asleep faster; adjustable 1 to 3 gummies at bedtime.
+- **Actives:** Melatonin, Vitamin B6.
+- **How to take:** 1–3 gummies a day before bed, depending on your sleep pattern. A bottle lasts 20 to 60 days.
+- **Flavor:** strawberry.
+- **Price:** $29.99 per bottle of 60 gummies (2-pack $49.99, 3-pack $74.99), VAT included.
+- **Page:** https://chiclove-ec.com/sleep-vitamins (Spanish) · https://chiclove-ec.com/sleep-vitamins.md (markdown)
+
+### Sexual Booster Women
+
+- **For:** intimate energy (women) — adult women only. Maca, damiana and ashwagandha for women's libido and energy. Adult women only.
+- **Actives:** Maca (Lepidium meyenii), Damiana (Turnera diffusa), Ashwagandha (Withania somnifera).
+- **How to take:** 2 gummies a day after breakfast. A bottle lasts about 30 days.
+- **Flavor:** cherry.
+- **Price:** $29.99 per bottle of 60 gummies (2-pack $49.99, 3-pack $74.99), VAT included.
+- **Page:** https://chiclove-ec.com/sexual-booster-women (Spanish) · https://chiclove-ec.com/sexual-booster-women.md (markdown)
+
+### Sexual Booster Men
+
+- **For:** intimate energy (men) — adult men only. Maca, fenugreek, zinc and L-arginine for men's libido, performance and fertility. Adult men only.
+- **Actives:** Maca (Lepidium meyenii), Fenugreek, Zinc, L-arginine.
+- **How to take:** 2 gummies a day after breakfast. A bottle lasts about 30 days.
+- **Flavor:** cherry.
+- **Price:** $29.99 per bottle of 60 gummies (2-pack $49.99, 3-pack $74.99), VAT included.
+- **Page:** https://chiclove-ec.com/sexual-booster-men (Spanish) · https://chiclove-ec.com/sexual-booster-men.md (markdown)
+
+### Anti-Stress Gummies
+
+- **For:** calm and focus. Ashwagandha, lemon balm and ginseng for everyday stress and tension.
+- **Actives:** Ashwagandha (Withania somnifera), Lemon balm (Melissa officinalis), Ginseng (Panax ginseng).
+- **How to take:** 2 gummies a day during periods of high stress and/or anxiety. A bottle lasts about 30 days.
+- **Flavor:** orange.
+- **Price:** $29.99 per bottle of 60 gummies (2-pack $49.99, 3-pack $74.99), VAT included.
+- **Page:** https://chiclove-ec.com/anti-stress (Spanish) · https://chiclove-ec.com/anti-stress.md (markdown)
+
+## Safety
+
+- Dietary supplements, not medicines: they do not treat or prevent disease.
+- For adults. Ask a health professional first if pregnant, breastfeeding, on medication or
+  with a medical condition.
+- Biotin (Hair & Nails Forte, Radiant Skin Vitamins) can interfere with some blood tests;
+  tell your doctor before lab work. Melatonin (Sleep Vitamins) causes drowsiness: do not
+  drive after taking it. Ashwagandha (Hair & Nails Forte, Sexual Booster Women, Anti-Stress
+  Gummies) is not recommended in pregnancy or with thyroid disease without medical advice.
+- Per-ingredient cautions (in Spanish): https://chiclove-ec.com/ingredientes.md
+
+## Links
+
+- [Answers in Spanish, by need](https://chiclove-ec.com/respuestas.md)
+- [Choice guide and comparison table](https://chiclove-ec.com/guia-de-eleccion.md)
+- [Catalog as JSON](https://chiclove-ec.com/catalog.json)
+- [Company information](https://chiclove-ec.com/about.md)
+- [Agent index](https://chiclove-ec.com/llms.txt)
+
+---
+
+Dietary supplement. Not a substitute for a balanced diet and a healthy lifestyle.
