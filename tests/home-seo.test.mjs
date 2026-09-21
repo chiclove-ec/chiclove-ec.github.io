@@ -32,3 +32,13 @@ test("la portada identifica claramente la tienda de vitaminas y sus productos", 
   assert.match(html, /<h1>Vitaminas y complementos alimenticios en <span class="accent-word">gummies<\/span><\/h1>/);
   assert.doesNotMatch(html, /productos de moda y estilo|nueva colección de productos de moda/i);
 });
+
+test("la portada prioriza solo la imagen hero del primer render", () => {
+  const html = read("index.html");
+  const preloads = [...html.matchAll(/<link rel="preload" as="image"[^>]*>/g)].map(([tag]) => tag);
+  assert.equal(preloads.length, 1, "la portada no debe precargar imágenes de tarjetas o secciones inferiores");
+  assert.match(
+    preloads[0],
+    /href="assets\/img\/splash-hair-nails-640\.webp"[^>]*imagesrcset="assets\/img\/splash-hair-nails-640\.webp 640w, assets\/img\/splash-hair-nails\.webp 1107w"[^>]*imagesizes="\(max-width: 720px\) 58vw, \(max-width: 1024px\) 330px, 455px"[^>]*fetchpriority="high"/
+  );
+});

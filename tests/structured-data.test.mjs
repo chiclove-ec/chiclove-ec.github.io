@@ -60,6 +60,20 @@ test("todo el JSON-LD publicado es válido", () => {
   }
 });
 
+test("cada ficha precarga solamente su hero responsive", () => {
+  const sizes = "(max-width: 720px) 70vw, (max-width: 1024px) 440px, 500px";
+  for (const product of catalog.CL_PRODUCTS) {
+    const html = read(product.id + ".html");
+    const preloads = [...html.matchAll(/<link rel="preload" as="image"[^>]*>/g)].map(([tag]) => tag);
+    assert.equal(preloads.length, 1, `${product.id}: debe haber un solo preload crítico`);
+    assert.match(preloads[0], new RegExp('href="' + product.heroSmall.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + '"'));
+    assert.match(preloads[0], new RegExp('imagesrcset="' + product.heroSmall.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ' 640w, ' + product.hero.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ' 1080w"'));
+    assert.match(preloads[0], new RegExp('imagesizes="' + sizes.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + '"'));
+    assert.match(preloads[0], /fetchpriority="high"/);
+    assert.doesNotMatch(preloads[0], /https?:\/\//, `${product.id}: el preload debe ser same-origin`);
+  }
+});
+
 test("el FAQPage de la portada coincide con las preguntas visibles", () => {
   const html = read("index.html");
   const faq = byType("index.html", "FAQPage");
