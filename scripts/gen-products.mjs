@@ -1230,8 +1230,13 @@ for (const p of catalog.CL_PRODUCTS) {
     'id="related-grid" data-products-grid data-limit="3" data-exclude="' + esc(p.id) + '"'
   );
   const favAnchor = '  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">';
+  const heroPreload =
+    '  <link rel="preload" as="image" href="' + esc(p.heroSmall) +
+    '" imagesrcset="' + esc(p.heroSmall) + ' 640w, ' + esc(p.hero) +
+    ' 1080w" imagesizes="(max-width: 720px) 70vw, (max-width: 1024px) 440px, 500px" fetchpriority="high">';
   html = html.replace(
     favAnchor,
+    heroPreload + "\n" +
     '  <script type="application/ld+json">' + JSON.stringify(productLd) + "</script>\n" +
       '  <script type="application/ld+json">' + JSON.stringify(activesLd) + "</script>\n" +
       '  <script type="application/ld+json">' + JSON.stringify(breadcrumbLd) + "</script>\n" +
