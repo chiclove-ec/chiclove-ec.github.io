@@ -42,6 +42,67 @@ export const FORMAT_SYNONYMS = Object.freeze([
   "complementos alimenticios masticables"
 ]);
 
+/* Formas en que la gente ESCRIBE la marca al buscarla: con «&», «and», «y», junta,
+   con «EC» en vez de «Ecuador», o con faltas frecuentes. Son formas de búsqueda, NO
+   nombres: el nombre oficial es uno solo, «Chic & Love Ecuador», y es el único que va en
+   `name`/`alternateName` de los datos estructurados. Google elige entre esos campos el
+   nombre que enseña en los resultados, y un alias corto o mal escrito podría acabar como
+   título del sitio (tests/brand-seo.test.mjs lo impide). Por eso estas variantes solo se
+   publican en los documentos para máquinas, explicadas como «es la misma tienda».
+   El dominio (con y sin «.com») lo añade agent-docs.mjs desde site.config.json. */
+export const BRAND_SEARCH_VARIANTS = Object.freeze([
+  "Chic&Love Ecuador",
+  "Chic & Love Ecuador",
+  "Chic and Love Ecuador",
+  "Chic y Love Ecuador",
+  "ChicyLove Ecuador",
+  "Chic Love Ecuador",
+  "ChicLove Ecuador",
+  "Chiclove Ecuador",
+  "Chic&Love EC",
+  "Chic and Love EC",
+  "ChicLove EC",
+  "Chiclove EC",
+  "Chic&Love Quito",
+  "Chic&Love gomitas",
+  "Chic&Love vitaminas",
+  "Chick and Love Ecuador",
+  "Chic n Love Ecuador",
+  "Shic Love Ecuador"
+]);
+
+/* Búsquedas genéricas de la categoría en Ecuador. Cada una tiene respuesta real en
+   /respuestas.md: no son palabras clave sueltas, son preguntas que el documento contesta. */
+export const CATEGORY_QUERIES = Object.freeze([
+  "gomitas Ecuador",
+  "gomitas de vitaminas Ecuador",
+  "vitaminas Ecuador",
+  "vitaminas en gomitas Ecuador",
+  "vitaminas masticables Ecuador",
+  "gummies Ecuador",
+  "suplementos alimenticios Ecuador",
+  "complementos alimenticios Ecuador",
+  "nutricosmética Ecuador",
+  "tienda de vitaminas online Ecuador",
+  "comprar vitaminas por WhatsApp Ecuador",
+  "gomitas con envío a domicilio Ecuador",
+  "gomitas Quito",
+  "gomitas Guayaquil",
+  "gomitas Cuenca",
+  "vitaminas Quito",
+  "vitaminas Guayaquil",
+  "vitaminas Cuenca",
+  "gomitas veganas Ecuador",
+  "gomitas sin gluten Ecuador",
+  "vitaminas para mujeres Ecuador",
+  "vitaminas para hombres Ecuador",
+  "vitaminas para el cabello Ecuador",
+  "colágeno Ecuador",
+  "melatonina Ecuador",
+  "ashwagandha Ecuador",
+  "biotina Ecuador"
+]);
+
 /* Ciudades de ejemplo de «envíos a todo Ecuador». No amplían la cobertura declarada:
    la concretan, porque la pregunta real suele ser «¿envían a Cuenca?». */
 export const EXAMPLE_CITIES = Object.freeze([
