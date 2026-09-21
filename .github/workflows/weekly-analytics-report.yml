@@ -1,13 +1,20 @@
 name: Weekly analytics report
 
 on:
-  # 14:00 UTC = 09:00 en Ecuador (America/Guayaquil), cada lunes.
+  # 14:43 UTC = 09:43 en Ecuador (America/Guayaquil), cada lunes.
+  # El minuto 43 es deliberado: GitHub concentra en el minuto 0 la mayor carga de
+  # cron del día, retrasa esas ejecuciones y puede descartarlas. Con "0 14" los
+  # dos runs programados salieron 4 h 27 min y 4 h 55 min tarde.
   schedule:
-    - cron: "0 14 * * 1"
+    - cron: "43 14 * * 1"
   workflow_dispatch:
 
 permissions:
   contents: read
+  # Un workflow programado solo avisa por correo al dueño del repositorio: el
+  # informe falló el 7 y el 14 de septiembre de 2026 y nadie se enteró en diez
+  # días. El issue deja el fallo a la vista de cualquiera que abra el repo.
+  issues: write
 
 concurrency:
   group: weekly-analytics-report
@@ -16,7 +23,7 @@ concurrency:
 jobs:
   report:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -48,3 +55,26 @@ jobs:
           REPORT_TO_EMAIL: marketing@laboratorioslira.com
           REPORT_TIMEZONE: America/Guayaquil
         run: python3 scripts/analytics_report.py
+
+      # Los valores viajan por `env:` y nunca interpolados dentro del `run:`,
+      # que es por donde entran las inyecciones en Actions.
+      - name: Escalar el fallo a un issue visible
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          ALERT_TITLE: El informe semanal de analítica no se envió
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          cuerpo="$(printf '%s\n\n%s\n\n%s' \
+            "La ejecución del $(date -u '+%d/%m/%Y a las %H:%M UTC') terminó sin enviar el informe a marketing@laboratorioslira.com." \
+            "Log completo: ${RUN_URL}" \
+            "Causas habituales: un secreto caducado (contraseña de aplicación de Gmail, clave de la cuenta de servicio de GA4) o una caída prolongada de Google que agotó los tres reintentos. Cuando esté corregido, relanza el informe con «Run workflow» y cierra este aviso.")"
+          abierto="$(gh issue list --state open --limit 100 --json number,title \
+            --jq 'map(select(.title == env.ALERT_TITLE)) | .[0].number // empty')"
+          if [ -n "${abierto}" ]; then
+            gh issue comment "${abierto}" --body "${cuerpo}"
+          else
+            gh issue create --title "${ALERT_TITLE}" --body "${cuerpo}"
+          fi
