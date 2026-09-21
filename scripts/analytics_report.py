@@ -27,7 +27,7 @@ import urllib.request
 from email.message import EmailMessage
 from email.utils import parseaddr
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Mapping, Optional
+from typing import Any, Callable, Dict, Iterable, List, Mapping, Optional
 from zoneinfo import ZoneInfo
 
 
@@ -38,10 +38,69 @@ DEFAULT_TO = "marketing@laboratorioslira.com"
 DEFAULT_TIMEZONE = "America/Guayaquil"
 MONTHS = ("ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic")
 REQUIRED_ENV = ("GA4_PROPERTY_ID", "GA4_SERVICE_ACCOUNT_JSON", "REPORT_SMTP_USER", "REPORT_SMTP_PASSWORD")
+RETRY_ATTEMPTS = 3
+RETRY_BACKOFF_SECONDS = 5
+# 408, 429 y la familia 5xx son congestión o mantenimiento del proveedor y pasan
+# solos; un 401 o un 403 son credencial inválida y reintentarlos solo retrasa el
+# aviso. El informe es semanal: si se pierde, no hay segunda oportunidad.
+RETRYABLE_STATUS = frozenset({408, 429, 500, 502, 503, 504})
+# Techo global de espera por reintentos. Un job cancelado por `timeout-minutes`
+# NO dispara el `if: failure()` que abre el aviso, así que los reintentos se
+# rinden antes de llegar ahí: más vale fallar a tiempo y en voz alta.
+RETRY_BUDGET_SECONDS = 180
 
 
 def b64url(value: bytes) -> str:
     return base64.urlsafe_b64encode(value).decode("ascii").rstrip("=")
+
+
+class TransientError(RuntimeError):
+    """Fallo de red o de servicio ajeno que merece otro intento."""
+
+
+class RetryBudget:
+    """Tiempo total que todo el informe puede gastar reintentando.
+
+    Es compartido: trece consultas a GA4 con tres intentos cada una sumarían
+    mucho más que el `timeout-minutes` del job si cada una contase aparte.
+    """
+
+    def __init__(self, seconds: float = RETRY_BUDGET_SECONDS) -> None:
+        self.remaining = float(seconds)
+
+    def spend(self, seconds: float) -> bool:
+        if seconds > self.remaining:
+            return False
+        self.remaining -= seconds
+        return True
+
+
+RETRY_BUDGET = RetryBudget()
+
+
+def with_retries(operation: Callable[[], Any], description: str, *,
+                 attempts: int = RETRY_ATTEMPTS, backoff: int = RETRY_BACKOFF_SECONDS,
+                 budget: Optional[RetryBudget] = None) -> Any:
+    """Repite `operation` mientras el fallo sea transitorio y quede presupuesto."""
+    budget = RETRY_BUDGET if budget is None else budget
+    last: Optional[TransientError] = None
+    for attempt in range(1, attempts + 1):
+        started = time.monotonic()
+        try:
+            return operation()
+        except TransientError as error:
+            last = error
+            if attempt == attempts:
+                break
+            pause = backoff * attempt
+            # Se cobra también lo que tardó el intento fallido: un timeout de 45 s
+            # consume presupuesto aunque no haya habido espera entre intentos.
+            if not budget.spend(time.monotonic() - started + pause):
+                print(f"{description}: sin presupuesto para más reintentos", flush=True)
+                break
+            print(f"{description}: intento {attempt} de {attempts} falló ({error}); reintento en {pause} s", flush=True)
+            time.sleep(pause)
+    raise RuntimeError(f"{description} falló tras {attempts} intentos: {last}")
 
 
 def http_json(url: str, data: Optional[bytes] = None, headers: Optional[Dict[str, str]] = None) -> Dict[str, Any]:
@@ -51,9 +110,15 @@ def http_json(url: str, data: Optional[bytes] = None, headers: Optional[Dict[str
             return json.loads(response.read().decode("utf-8"))
     except urllib.error.HTTPError as error:
         detail = error.read().decode("utf-8", "replace")
-        raise RuntimeError(f"Respuesta HTTP {error.code} de {url}: {detail[:800]}") from error
+        message = f"Respuesta HTTP {error.code} de {url}: {detail[:800]}"
+        raise (TransientError if error.code in RETRYABLE_STATUS else RuntimeError)(message) from error
     except urllib.error.URLError as error:
-        raise RuntimeError(f"No se pudo conectar con {url}: {error.reason}") from error
+        raise TransientError(f"No se pudo conectar con {url}: {error.reason}") from error
+
+
+def http_json_retrying(url: str, data: Optional[bytes] = None, headers: Optional[Dict[str, str]] = None,
+                       *, description: str) -> Dict[str, Any]:
+    return with_retries(lambda: http_json(url, data=data, headers=headers), description)
 
 
 def _valid_email(value: str) -> bool:
@@ -173,13 +238,14 @@ def access_token(credentials: Dict[str, Any]) -> str:
             raise RuntimeError("OpenSSL no pudo firmar la autenticación de GA4") from error
         assertion = f"{signing_input.decode('ascii')}.{b64url(signature_path.read_bytes())}"
 
-    token_response = http_json(
+    token_response = http_json_retrying(
         TOKEN_URL,
         data=urllib.parse.urlencode({
             "grant_type": "urn:ietf:params:oauth:grant-type:jwt-bearer",
             "assertion": assertion,
         }).encode("ascii"),
         headers={"Content-Type": "application/x-www-form-urlencoded"},
+        description="La autenticación con GA4",
     )
     token = token_response.get("access_token")
     if not token:
@@ -209,10 +275,11 @@ def run_report(token: str, property_id: str, start: dt.date, end: dt.date,
     if order_metric:
         payload["orderBys"] = [{"metric": {"metricName": order_metric}, "desc": True}]
 
-    response = http_json(
+    response = http_json_retrying(
         API_URL.format(property_id=urllib.parse.quote(property_id, safe="")),
         data=json.dumps(payload).encode("utf-8"),
         headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
+        description="La consulta a GA4",
     )
     rows: List[Dict[str, Any]] = []
     for row in response.get("rows", []):
@@ -416,17 +483,29 @@ def send_email(subject: str, html_body: str, text_body: str, config: Dict[str, A
     message["To"] = recipient
     message.set_content(text_body)
     message.add_alternative(html_body, subtype="html")
-    if port == 465:
-        with smtplib.SMTP_SSL(host, port, context=ssl.create_default_context(), timeout=45) as server:
-            server.login(username, password)
-            server.send_message(message)
-    else:
-        with smtplib.SMTP(host, port, timeout=45) as server:
-            server.ehlo()
-            server.starttls(context=ssl.create_default_context())
-            server.ehlo()
-            server.login(username, password)
-            server.send_message(message)
+
+    def deliver() -> None:
+        try:
+            if port == 465:
+                with smtplib.SMTP_SSL(host, port, context=ssl.create_default_context(), timeout=45) as server:
+                    server.login(username, password)
+                    server.send_message(message)
+            else:
+                with smtplib.SMTP(host, port, timeout=45) as server:
+                    server.ehlo()
+                    server.starttls(context=ssl.create_default_context())
+                    server.ehlo()
+                    server.login(username, password)
+                    server.send_message(message)
+        except smtplib.SMTPAuthenticationError as error:
+            # El texto del servidor basta para diagnosticar; la contraseña no se imprime.
+            raise RuntimeError(f"El servidor SMTP rechazó las credenciales (código {error.smtp_code})") from error
+        except (smtplib.SMTPRecipientsRefused, smtplib.SMTPSenderRefused) as error:
+            raise RuntimeError(f"El servidor SMTP rechazó la dirección del correo: {error}") from error
+        except (smtplib.SMTPException, OSError) as error:
+            raise TransientError(f"Fallo temporal del servidor SMTP: {error}") from error
+
+    with_retries(deliver, "El envío del informe")
 
 
 def sample_data() -> Dict[str, Any]:

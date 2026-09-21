@@ -100,28 +100,14 @@ indexHtml = upsertJsonLd(indexHtml, "FAQPage", {
 
 /* ---------- ItemList de la portada y CollectionPage de la tienda ---------- */
 
-const listItems = (image) =>
+// Las páginas de portada y catálogo son páginas resumen, no fichas de producto.
+// Google recomienda reservar el marcado Product para la página individual que
+// concentra toda la oferta; aquí basta con enlazar cada detalle desde el ItemList.
+const listItems = () =>
   catalog.CL_PRODUCTS.map((product, index) => ({
     "@type": "ListItem",
     position: index + 1,
-    item: {
-      "@type": "Product",
-      "@id": BASE + pagePath(product.id + ".html") + "#product",
-      name: product.name,
-      description: product.tagline + " " + product.desc,
-      sku: product.id,
-      image: image(product),
-      url: BASE + pagePath(product.id + ".html"),
-      category: product.goalLabel,
-      brand: { "@type": "Brand", name: "Chic&Love" },
-      offers: {
-        "@type": "Offer",
-        url: BASE + pagePath(product.id + ".html"),
-        priceCurrency: "USD",
-        price: clSinglePrice(product).toFixed(2),
-        seller: { "@id": BASE + "#organization" }
-      }
-    }
+    url: BASE + pagePath(product.id + ".html")
   }));
 
 // En la portada el ItemList vive dentro del @graph con Organization y WebSite.
@@ -133,11 +119,7 @@ if (!graphMatch) throw new Error("No se encontró el @graph de la portada");
 const graph = JSON.parse(graphMatch[1]);
 const itemList = graph["@graph"].find((node) => node["@type"] === "ItemList");
 if (!itemList) throw new Error("No se encontró el ItemList de la portada");
-itemList.itemListElement = listItems((product) => [
-  BASE + product.hero,
-  BASE + product.store,
-  BASE + product.splash
-]);
+itemList.itemListElement = listItems();
 itemList.isPartOf = { "@id": BASE + "#website" };
 itemList.about = { "@id": BASE + "#organization" };
 itemList.dateModified = CONTENT_MODIFIED;
@@ -262,7 +244,7 @@ const storeHtml = upsertJsonLd(readFileSync(storePath, "utf8"), "CollectionPage"
     "@type": "ItemList",
     name: "Colección Chic&Love",
     numberOfItems: catalog.CL_PRODUCTS.length,
-    itemListElement: listItems((product) => BASE + product.store)
+    itemListElement: listItems()
   }
 });
 writeFileSync(storePath, storeHtml);

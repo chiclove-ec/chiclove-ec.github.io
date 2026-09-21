@@ -109,25 +109,18 @@ test("los ItemList de portada y tienda reflejan el catálogo completo", () => {
     catalog.CL_PRODUCTS.forEach((product, index) => {
       const entry = list.itemListElement[index];
       assert.equal(entry.position, index + 1, `${label}: posición`);
-      assert.equal(entry.item.name, product.name, `${label}: nombre`);
-      assert.equal(entry.item.url, BASE + pagePath(product.id + ".html"), `${label}: URL`);
-      assert.equal(entry.item.category, product.goalLabel, `${label}: categoría`);
-      assert.equal(
-        entry.item.description,
-        product.tagline + " " + product.desc,
-        `${label}: descripción`
-      );
+      assert.equal(entry.url, BASE + pagePath(product.id + ".html"), `${label}: URL`);
+      assert.equal("item" in entry, false, `${label}: no debe redeclarar el Product en la página resumen`);
     });
   }
 });
 
-test("las ofertas de la tienda publican el precio vigente", () => {
+test("las páginas resumen no publican ofertas Product parciales", () => {
   const store = byType("tienda.html", "CollectionPage");
   catalog.CL_PRODUCTS.forEach((product, index) => {
-    const offer = store.mainEntity.itemListElement[index].item.offers;
-    assert.equal(offer.price, catalog.clSinglePrice(product).toFixed(2), product.id);
-    assert.equal(offer.priceCurrency, "USD");
-    assert.equal("availability" in offer, false, `${product.id}: no se debe inventar stock en tiempo real`);
+    const entry = store.mainEntity.itemListElement[index];
+    assert.equal(entry.url, BASE + pagePath(product.id + ".html"), product.id);
+    assert.equal("item" in entry, false, `${product.id}: no debe redeclarar el Product en la página resumen`);
   });
 });
 
@@ -137,6 +130,13 @@ test("cada página de producto publica oferta, envío y vendedor", () => {
     assert.ok(node, `${product.id}: falta el Product`);
     assert.equal(node.offers.price, catalog.clSinglePrice(product).toFixed(2), product.id);
     assert.equal("availability" in node.offers, false, `${product.id}: no se debe inventar stock en tiempo real`);
+    if (node.offers.priceValidUntil !== "2027-07-31") {
+      assert.match(
+        node.offers.validFrom ?? "",
+        /^\d{4}-\d{2}-\d{2}$/,
+        `${product.id}: la promoción debe declarar desde cuándo es válido el precio`
+      );
+    }
     assert.equal(node.offers.seller["@id"], BASE + "#organization", `${product.id}: vendedor`);
 
     const shipping = node.offers.shippingDetails;
@@ -206,11 +206,13 @@ test("la Organization declara alias de marca, contacto y ubicación", () => {
   assert.equal(org.hasOfferCatalog.itemListElement.length, catalog.CL_PRODUCTS.length);
 });
 
-test("la portada no duplica los productos en el catálogo de la Organization", () => {
+test("la portada referencia el catálogo sin redeclarar productos parciales", () => {
   const homeProducts = productNodes("index.html");
-  const ids = homeProducts.map((product) => product["@id"]).filter(Boolean);
-  assert.equal(ids.length, catalog.CL_PRODUCTS.length, "cada producto debe aparecer una sola vez en la portada");
-  assert.equal(new Set(ids).size, ids.length, "Google no debe recibir el mismo Product dos veces");
+  assert.equal(homeProducts.length, 0, "la portada no debe redeclarar Product en su página resumen");
+  const organization = byType("index.html", "Organization");
+  const ids = organization.hasOfferCatalog.itemListElement.map((entry) => entry.item["@id"]);
+  assert.equal(ids.length, catalog.CL_PRODUCTS.length, "el catálogo debe enlazar todos los productos");
+  assert.equal(new Set(ids).size, ids.length, "Google no debe recibir referencias duplicadas");
 });
 
 test("cada Product publica identidad, imagen, precio, envío y devoluciones", () => {
