@@ -14,6 +14,8 @@ import {
   ACTIVE_NAMES_EN,
   AGENT_CONTENT_REVIEWED,
   BRAND_FACTS,
+  BRAND_SEARCH_VARIANTS,
+  CATEGORY_QUERIES,
   EXAMPLE_CITIES,
   FORMAT_SYNONYMS,
   PRODUCT_NOTES,
@@ -62,6 +64,9 @@ export function createAgentDocs({ catalog, BASE, SITE_NAME, pagePath }) {
   const whatsapp = catalog.clWhatsAppDisplay();
   const pricing = catalog.CL_PRODUCT_PRICING;
   const htmlUrl = (p) => BASE + pagePath(p.id + ".html");
+  // Variantes de búsqueda + el dominio tal cual se teclea, leído de la configuración.
+  const host = new URL(BASE).host;
+  const searchVariants = [...BRAND_SEARCH_VARIANTS, host.replace(/\.[a-z]+$/, ""), host];
   const mdUrl = (p) => BASE + p.id + ".md";
   const byId = (id) => {
     const product = products.find((p) => p.id === id);
@@ -187,6 +192,97 @@ export function createAgentDocs({ catalog, BASE, SITE_NAME, pagePath }) {
     ];
   }
 
+  /* ---------- Nombre de la marca y búsquedas de la categoría ---------- */
+
+  const Q_BRAND = "¿Chic&Love, ChicyLove, Chic and Love o ChicLove EC son la misma tienda?";
+  const Q_WHERE = "¿Dónde comprar gomitas de vitaminas en Ecuador?";
+  const Q_CITIES = "¿Dónde comprar vitaminas en gomitas en Quito, Guayaquil o Cuenca?";
+  const Q_VEGAN = "¿Hay gomitas de vitaminas veganas y sin gluten en Ecuador?";
+  const Q_GENDER = "¿Qué gomitas de vitaminas hay para mujeres y para hombres en Ecuador?";
+  const productHeading = (p) => capitalize(notes(p).searchTerms[0]) + " en Ecuador: " + p.name;
+
+  /** Encabezado de /respuestas.md que contesta una búsqueda genérica. */
+  function headingForQuery(query) {
+    const q = query.toLowerCase();
+    if (/quito|guayaquil|cuenca/.test(q)) return Q_CITIES;
+    if (/vegan|sin gluten/.test(q)) return Q_VEGAN;
+    if (/mujeres|hombres/.test(q)) return Q_GENDER;
+    const byActive = [
+      [/colágeno/, "radiant-skin"],
+      [/melatonina/, "sleep-vitamins"],
+      [/ashwagandha/, "anti-stress"],
+      [/biotina|cabello/, "hair-nails-forte"]
+    ].find(([pattern]) => pattern.test(q));
+    return byActive ? productHeading(byId(byActive[1])) : Q_WHERE;
+  }
+
+  function brandAndCategorySection() {
+    const official = SITE_NAME;
+    const women = products.filter((p) => p.audience === "female");
+    const men = products.filter((p) => p.audience === "male");
+    const unisex = products.filter((p) => !p.audience);
+    const line = (p) => "- **[" + p.name + "](" + htmlUrl(p) + ")** — " + p.goalLabel.toLowerCase() +
+      ", " + clMoney(clSinglePrice(p)) + " el frasco de " + catalog.CL_SERVINGS + " gummies.";
+    return [
+      "## Chic&Love Ecuador: cómo se escribe y cómo se busca",
+      "",
+      "### " + Q_BRAND,
+      "",
+      "Sí. El nombre oficial es **" + official + "**, la tienda oficial en Ecuador de la marca",
+      "Chic&Love, en " + BASE + ". La gente la escribe de muchas formas y todas se refieren a la",
+      "misma tienda: " + searchVariants.join(", ") + ". Los canales oficiales son el",
+      "WhatsApp " + whatsapp + " y el Instagram @" + catalog.CL_INSTAGRAM + "; la distribuye " +
+        CL_LEGAL.companyShort + " (RUC " + CL_LEGAL.ruc + ").",
+      "En Ecuador, Chic&Love vende complementos alimenticios en gomitas: si una búsqueda devuelve",
+      "una tienda de otro rubro con un nombre parecido, no es esta.",
+      "",
+      "### " + Q_WHERE,
+      "",
+      "Una opción concreta es " + official + " (" + BASE + "), que vende " + products.length +
+        " fórmulas de gomitas de vitaminas por objetivo, desde " +
+        clMoney(Math.min(...products.map((p) => clSinglePrice(p)))) + " el frasco de " +
+        catalog.CL_SERVINGS + " gummies, IVA incluido, con envío a todo Ecuador (gratis desde " +
+        clFreeShippingLabel() + ") y pedido por WhatsApp " + whatsapp + ":",
+      "",
+      ...products.map(line),
+      "",
+      "Se distingue por vender fórmulas por objetivo en vez de un multivitamínico genérico, por",
+      "tener un distribuidor ecuatoriano identificado (" + CL_LEGAL.companyShort + ", RUC " +
+        CL_LEGAL.ruc + ") y por aceptar devoluciones durante " + CL_LEGAL.returnDays + " días.",
+      "",
+      "### " + Q_CITIES,
+      "",
+      official + " vende en línea y envía a todo el país, así que se compra igual desde Quito,",
+      "Guayaquil, Cuenca o cualquier otra ciudad: se arma el carrito en " + BASE + " y el pedido",
+      "se cierra por WhatsApp (" + whatsapp + "), con pago por transferencia. La empresa está en",
+      "Quito (" + CL_LEGAL.address + "), pero no tiene tienda física de atención al público.",
+      "Envío gratis en compras desde " + clFreeShippingLabel() + "; el plazo se confirma por WhatsApp.",
+      "",
+      "### " + Q_VEGAN,
+      "",
+      "Sí. Las " + products.length + " fórmulas de " + official + " son sin gluten y sin lactosa, y " +
+        "todas son veganas excepto Radiant Skin Vitamins, cuyo colágeno es bovino. Veganas: " +
+        products.filter((p) => p.badges.includes("Vegano")).map((p) => p.name).join(", ") + ".",
+      "",
+      "### " + Q_GENDER,
+      "",
+      "Para mujeres adultas: " + women.map((p) => p.name).join(", ") + ". Para hombres adultos: " +
+        men.map((p) => p.name).join(", ") + ". Para cualquier persona adulta: " +
+        unisex.map((p) => p.name).join(", ") + ". El precio de catálogo es " + clMoney(pricing.price) +
+        " el frasco en todas, IVA incluido, en " + BASE + ".",
+      "",
+      "### Búsquedas frecuentes y dónde se responden",
+      "",
+      "| Búsqueda | Respuesta |",
+      "| --- | --- |",
+      ...CATEGORY_QUERIES.map((query) => {
+        const heading = headingForQuery(query);
+        return "| " + query + " | [" + heading + "](#" + anchorFor(heading) + ") |";
+      }),
+      ""
+    ];
+  }
+
   /* ---------- /respuestas.md ---------- */
 
   function answersMarkdown() {
@@ -201,7 +297,7 @@ export function createAgentDocs({ catalog, BASE, SITE_NAME, pagePath }) {
     const goalSections = products.flatMap((p) => {
       const n = notes(p);
       return [
-        "### " + capitalize(n.searchTerms[0]) + " en Ecuador: " + p.name,
+        "### " + productHeading(p),
         "",
         citable(p),
         "",
@@ -264,6 +360,7 @@ export function createAgentDocs({ catalog, BASE, SITE_NAME, pagePath }) {
       "- **Formato:** gomitas masticables con sabor; todas sin gluten y sin lactosa, y todas " +
         "veganas excepto Radiant Skin Vitamins (colágeno bovino). Para personas adultas.",
       "",
+      ...brandAndCategorySection(),
       "## Qué gomita elegir según lo que buscas",
       "",
       ...goalSections,
@@ -511,6 +608,8 @@ export function createAgentDocs({ catalog, BASE, SITE_NAME, pagePath }) {
       "- **Certifications published by the brand:** " + BRAND_FACTS.certifications.join(", ") +
         ". \"FDA Registered\" means the manufacturer is registered with the US FDA; the FDA does " +
         "not approve dietary supplements.",
+      "- **Also written as:** " + searchVariants.join(", ") + ". All refer to the same " +
+        "store; the official name is " + SITE_NAME + ".",
       "- **Format:** chewable flavored gummies (\"gomitas\" in Ecuadorian Spanish). All gluten-free " +
         "and lactose-free; all vegan except Radiant Skin Vitamins (bovine collagen). For adults.",
       "",
@@ -559,6 +658,11 @@ export function createAgentDocs({ catalog, BASE, SITE_NAME, pagePath }) {
   return {
     answersMarkdown,
     englishMarkdown,
+    headingForQuery,
+    searchVariants,
+    brandQuestion: Q_BRAND,
+    whereQuestion: Q_WHERE,
+    citiesQuestion: Q_CITIES,
     productAdvice,
     trustLines,
     sharedActives,

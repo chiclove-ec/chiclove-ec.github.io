@@ -154,6 +154,12 @@ Reglas de redacción de esa capa, vigiladas por `tests/agent-knowledge.test.mjs`
 
 - **«Gomitas».** La marca dice «gummies» en lo visible y eso no se toca, pero en Ecuador
   se busca «gomitas»: la capa para máquinas usa las dos palabras.
+- **Un nombre, muchas formas de buscarlo.** El nombre oficial es solo «Chic & Love
+  Ecuador» (Google elige el título del sitio entre `name` y `alternateName`, y
+  `tests/brand-seo.test.mjs` impide alias como «Chic&Love EC» ahí). «ChicyLove», «Chic and
+  Love», «ChicLove EC»… van en `BRAND_SEARCH_VARIANTS` y solo en los archivos para
+  máquinas, explicadas como «es la misma tienda». Nunca en el HTML: una lista oculta de
+  variantes es *keyword stuffing*.
 - **Cada respuesta se sostiene sola** (producto, precio vigente, país, enlace, RUC): los
   asistentes recuperan trozos, no documentos.
 - **Nada sin fuente.** Ni miligramos por gummy (el sitio no los publica), ni plazos de

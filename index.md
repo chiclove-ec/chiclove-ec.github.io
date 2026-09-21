@@ -4,6 +4,8 @@
 > formato gummy para cabello y uñas, piel, digestión, sueño, energía íntima y calma. Desde $18.00 el frasco de 60 gummies, pedidos por WhatsApp (+593 98 759 1741) y envíos a todo el país.
 
 Chic&Love llama «gummies» a lo que en Ecuador se conoce como gomitas o vitaminas masticables.
+El nombre se escribe también Chic&Love Ecuador, Chic and Love Ecuador, ChicyLove, ChicLove
+o Chic&Love EC: todas son esta misma tienda.
 Las fórmulas se desarrollan en España con activos naturales (biotina, colágeno, coenzima Q10,
 melatonina, maca, ashwagandha, vinagre de manzana) y se distribuyen en Ecuador a través de
 Laboratorios Lira. Todas son sin gluten y sin lactosa. El sitio no procesa pagos ni pide

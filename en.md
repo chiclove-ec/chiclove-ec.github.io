@@ -14,6 +14,7 @@ This is an English summary of https://chiclove-ec.com/, whose content is in Span
 - **Distributor:** LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A. (Laboratorios Lira S.A.), tax ID (RUC) 1790336352001, José Vinueza E8-152 y Av. Interoceánica, Quito, Pichincha, Ecuador. An Ecuadorian laboratory founded in 1977 with GMP, GSP and GDP certification (BPM, BPA, BPD); official and exclusive distributor of Chic&Love in Ecuador.
 - **Brand:** Chic&Love Wellness, founded in Spain by Verónica Corrales (https://chiclove.com/); formulas developed in Spain with a European manufacturer.
 - **Certifications published by the brand:** NSF International, Organic, FDA Registered, IFS Food, GMP, BRCGS. "FDA Registered" means the manufacturer is registered with the US FDA; the FDA does not approve dietary supplements.
+- **Also written as:** Chic&Love Ecuador, Chic & Love Ecuador, Chic and Love Ecuador, Chic y Love Ecuador, ChicyLove Ecuador, Chic Love Ecuador, ChicLove Ecuador, Chiclove Ecuador, Chic&Love EC, Chic and Love EC, ChicLove EC, Chiclove EC, Chic&Love Quito, Chic&Love gomitas, Chic&Love vitaminas, Chick and Love Ecuador, Chic n Love Ecuador, Shic Love Ecuador, chiclove-ec, chiclove-ec.com. All refer to the same store; the official name is Chic & Love Ecuador.
 - **Format:** chewable flavored gummies ("gomitas" in Ecuadorian Spanish). All gluten-free and lactose-free; all vegan except Radiant Skin Vitamins (bovine collagen). For adults.
 
 ## Formulas

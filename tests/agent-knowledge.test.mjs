@@ -15,6 +15,8 @@ import {
   ACTIVE_CAUTIONS,
   ACTIVE_NAMES_EN,
   BRAND_FACTS,
+  BRAND_SEARCH_VARIANTS,
+  CATEGORY_QUERIES,
   PRODUCT_NOTES,
   ROUTINES
 } from "../scripts/lib/agent-knowledge.mjs";
@@ -249,4 +251,44 @@ test("la clave de IndexNow se publica y contiene su propio nombre", () => {
   const [file] = keys;
   assert.equal(read(file).trim() + ".txt", file, `${file} no contiene su propia clave`);
   assert.ok(loadPublicFiles().has(file), `${file} no está en la lista blanca del build`);
+});
+
+/* ---------- Formas de escribir la marca y búsquedas de la categoría ---------- */
+
+test("las formas de escribir la marca llegan a todos los archivos para máquinas", () => {
+  const host = new URL(BASE).host;
+  for (const file of ["respuestas.md", "en.md", "ai.txt", "agents.md", "catalog.json"]) {
+    const body = read(file);
+    for (const variant of [...BRAND_SEARCH_VARIANTS, host]) {
+      if (file === "agents.md" && variant === loadSiteConfig().brandName) continue;
+      assert.ok(body.includes(variant), `${file} no recoge la forma de búsqueda «${variant}»`);
+    }
+  }
+  for (const variant of ["ChicyLove", "Chic and Love", "Chic&Love EC"]) {
+    assert.ok(read("llms.txt").includes(variant), `llms.txt no menciona «${variant}»`);
+  }
+});
+
+test("las variantes son formas de búsqueda, nunca nombres en el HTML", () => {
+  // Google elige el título del sitio entre name y alternateName: una variante mal escrita
+  // ahí podría acabar como nombre en los resultados. En el HTML no entra ninguna.
+  const pages = ["index.html", "tienda.html", "about.html", "contact.html", "nosotros.html", ...products.map((p) => p.id + ".html")];
+  const informal = BRAND_SEARCH_VARIANTS.filter((v) => !["Chic&Love Ecuador", "Chic & Love Ecuador", "Chic and Love Ecuador"].includes(v));
+  for (const page of pages) {
+    const html = read(page).replaceAll("&amp;", "&");
+    for (const variant of informal) {
+      assert.ok(!html.includes(variant), `${page} incluye la variante «${variant}»`);
+    }
+  }
+});
+
+test("cada búsqueda de la categoría tiene su respuesta en respuestas.md", () => {
+  const body = read("respuestas.md");
+  const headings = new Set([...body.matchAll(/^#{2,3} (.+)$/gm)].map(([, heading]) => anchorFor(heading)));
+  for (const query of CATEGORY_QUERIES) {
+    const row = body.split("\n").find((line) => line.startsWith("| " + query + " | "));
+    assert.ok(row, `«${query}» no está en la tabla de búsquedas`);
+    const [, anchor] = row.match(/\(#([^)]+)\)/) || [];
+    assert.ok(headings.has(anchor), `«${query}» apunta a #${anchor}, que no es un encabezado`);
+  }
 });

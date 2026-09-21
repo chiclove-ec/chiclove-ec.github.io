@@ -59,5 +59,10 @@ test("el catálogo para máquinas no ofrece ChicLove EC como nombre de marca", (
   const data = JSON.parse(read("catalog.json"));
   assert.equal(data.brand.storefront, SEARCH_NAME);
   assert.ok(!data.brand.alternateNames.includes("Chic&Love EC"));
-  assert.ok(!FORBIDDEN_ALIAS.test(read("catalog.json")));
+  // «Chic&Love EC» sí puede aparecer como FORMA DE BÚSQUEDA (brand.searchVariants): es como
+  // la escribe la gente. Lo que no puede es ser un NOMBRE, que es lo que Google usa para
+  // elegir el título del sitio. Se comprueba todo el JSON salvo esas listas de búsqueda.
+  const { searchVariants, searchVariantsNote, categoryQueries, ...brand } = data.brand;
+  assert.ok(searchVariants.includes("Chic&Love EC"), "faltan las formas de búsqueda con EC");
+  assert.ok(!FORBIDDEN_ALIAS.test(JSON.stringify({ ...data, brand })));
 });

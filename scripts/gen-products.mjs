@@ -17,7 +17,7 @@ import { resolve } from "node:path";
 
 import { loadCatalog, projectRoot as root } from "./lib/catalog.mjs";
 import { anchorFor, createAgentDocs } from "./lib/agent-docs.mjs";
-import { AGENT_CONTENT_REVIEWED, BRAND_FACTS, EXAMPLE_CITIES, FORMAT_SYNONYMS, PRODUCT_NOTES, ROUTINES, ACTIVE_CAUTIONS } from "./lib/agent-knowledge.mjs";
+import { AGENT_CONTENT_REVIEWED, BRAND_FACTS, CATEGORY_QUERIES, EXAMPLE_CITIES, FORMAT_SYNONYMS, PRODUCT_NOTES, ROUTINES, ACTIVE_CAUTIONS } from "./lib/agent-knowledge.mjs";
 import { renderProductGrid } from "./lib/product-card.mjs";
 import { loadSiteConfig, pagePath } from "./lib/site-config.mjs";
 
@@ -249,6 +249,8 @@ function homeMarkdown() {
       catalog.clWhatsAppDisplay() + ") y envíos a todo el país.",
     "",
     "Chic&Love llama «gummies» a lo que en Ecuador se conoce como gomitas o vitaminas masticables.",
+    "El nombre se escribe también Chic&Love Ecuador, Chic and Love Ecuador, ChicyLove, ChicLove",
+    "o Chic&Love EC: todas son esta misma tienda.",
     "Las fórmulas se desarrollan en España con activos naturales (biotina, colágeno, coenzima Q10,",
     "melatonina, maca, ashwagandha, vinagre de manzana) y se distribuyen en Ecuador a través de",
     "Laboratorios Lira. Todas son sin gluten y sin lactosa. El sitio no procesa pagos ni pide",
@@ -677,6 +679,10 @@ function catalogJson() {
         name: "Chic&Love",
         storefront: SITE_NAME,
         alternateNames: ["Chic&Love", "Chic & Love", "Chic and Love Ecuador", "Chic&Love Wellness"],
+        // Formas de ESCRIBIR la marca al buscarla, no nombres de marca (ver agent-knowledge.mjs).
+        searchVariants: agentDocs.searchVariants,
+        searchVariantsNote: "Formas en que se escribe la marca al buscarla; todas son la misma tienda. El nombre oficial es " + SITE_NAME + ".",
+        categoryQueries: CATEGORY_QUERIES,
         slogan: "Tu dosis diaria de amor propio",
         parentBrand: BRAND_FACTS.parentBrand,
         originCountry: BRAND_FACTS.parentCountryCode,
@@ -888,6 +894,8 @@ function agentsMarkdown() {
     "## Identidad",
     "",
     "- **Nombre:** " + SITE_NAME + " (también «Chic&Love», «Chic and Love Ecuador»).",
+    "- **Se escribe también:** " + agentDocs.searchVariants.filter((v) => v !== SITE_NAME).join(", ") +
+      ". Son formas de buscar la misma tienda, no marcas distintas.",
     "- **Qué vende:** siete fórmulas de vitaminas en gummies para cabello y uñas, piel,",
     "  digestión, sueño, energía íntima y calma.",
     "- **Dónde opera:** todo Ecuador, desde Quito, Pichincha. Atención en español.",
@@ -1023,6 +1031,7 @@ function aiProfile() {
     "Product choice guide: " + BASE + "guia-de-eleccion.md",
     "Answers by need (Spanish): " + BASE + "respuestas.md",
     "English summary: " + BASE + "en.md",
+    "Also written as: " + agentDocs.searchVariants.join(", ") + " (same store).",
     "Local terms: the brand says \"gummies\"; in Ecuador they are searched as gomitas or vitaminas masticables.",
     "Markdown pages: use the .md twin of each HTML URL.",
     "Human ordering channel: WhatsApp " + catalog.clWhatsAppDisplay(),
@@ -1069,6 +1078,10 @@ function llmsIndex() {
     return heading;
   };
   const quickAnswers = [
+    answerLink(agentDocs.brandQuestion, "sí: todas son " + SITE_NAME + ", en " + BASE + "."),
+    answerLink(agentDocs.whereQuestion, "en " + BASE + ": " + catalog.CL_PRODUCTS.length +
+      " fórmulas por objetivo, envío a todo Ecuador y pedido por WhatsApp."),
+    answerLink(agentDocs.citiesQuestion, "compra en línea con envío a todo el país; la empresa está en Quito."),
     ...catalog.CL_PRODUCTS.map((p) => {
       const heading = answerHeadings.find((h) => h.endsWith(": " + p.name));
       if (!heading) throw new Error("respuestas.md no tiene la sección de " + p.name);
@@ -1103,6 +1116,7 @@ function llmsIndex() {
       catalog.clWhatsAppDisplay() + "." + promoNote + " La distribuye " + catalog.CL_LEGAL.companyShort +
       " (RUC " + catalog.CL_LEGAL.ruc + "), laboratorio ecuatoriano fundado en " +
       BRAND_FACTS.distributorFounded + "; la marca es de " + BRAND_FACTS.parentCountry + "." +
+      " El nombre se escribe también Chic and Love, ChicyLove, ChicLove o Chic&Love EC: es la misma tienda." +
       " Sitio estático en español (es-EC), sin " +
       "cuentas y sin pasarela de pago; la analítica de uso es opcional y requiere consentimiento.",
     "",
