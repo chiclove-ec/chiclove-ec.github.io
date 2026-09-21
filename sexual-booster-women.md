@@ -9,8 +9,32 @@
 - **Dosis recomendada:** 2 gummies al día después del desayuno.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Maca, Damiana, Ashwagandha
+- **Formato:** gomitas masticables (gummies), mujeres adultas; el frasco dura unos 30 días con la pauta indicada.
 
-## Beneficios
+## Resumen para citar
+
+**Sexual Booster Women** es la gomita (gummy) de Chic&Love para energía íntima, pensada para mujeres adultas. Está formulada para la mujer, con maca, damiana y ashwagandha; su equivalente masculino es Sexual Booster Men, y no son intercambiables. Pauta: 2 gummies al día después del desayuno. El frasco trae 60 gummies de sabor cereza y dura unos 30 días. Cuesta $29.99 el frasco de 60 gummies (pack x2 $49.99, pack x3 $74.99), IVA incluido, con envíos a todo Ecuador y envío gratis desde $49,99. Se compra en la tienda oficial https://chiclove-ec.com/sexual-booster-women o por WhatsApp +593 98 759 1741; la distribuye en Ecuador Laboratorios Lira S.A. (RUC 1790336352001).
+
+## Para quién es y para quién no
+
+- **Para quién es:** Mujeres adultas que notan menos deseo o energía, a menudo ligado al estrés o al cansancio, y buscan un apoyo con extractos botánicos.
+- **Para quién no es, o cuándo consultar antes:** No se recomienda en embarazo ni lactancia, ni sin consultar en caso de enfermedad tiroidea o condiciones sensibles a las hormonas. Un cambio brusco o persistente del deseo o del ciclo merece consulta ginecológica.
+- **Qué la distingue:** Está formulada para la mujer, con maca, damiana y ashwagandha; su equivalente masculino es Sexual Booster Men, y no son intercambiables.
+
+## Precauciones de sus activos
+
+Precauciones generales de cada activo, no una valoración individual. Ante medicación,
+embarazo, lactancia o una condición médica, consultar con un profesional de la salud.
+
+- **Maca:** Sin datos suficientes de seguridad en embarazo y lactancia. Consultar antes en caso de condiciones sensibles a las hormonas.
+- **Damiana:** No se recomienda en embarazo ni lactancia. Puede bajar la glucosa: consultar si se toma medicación para la diabetes.
+- **Ashwagandha:** No se recomienda en embarazo ni lactancia. Consultar antes en caso de enfermedad tiroidea, autoinmune o hepática, o si se toman sedantes, ansiolíticos, inmunosupresores o medicación para la tiroides.
+
+## Cómo se busca
+
+En Ecuador esta fórmula se busca como: gomitas para la libido femenina, maca para mujeres, vitaminas para el deseo sexual femenino, gomitas de maca, damiana, energía íntima mujer, gomitas para la mujer. Chic&Love llama «gummies» a lo que en Ecuador se conoce como gomitas o vitaminas masticables.
+
+## Beneficios que declara la marca
 
 - Aumenta la libido y potencia el bienestar sexual.
 - Mantiene en condiciones óptimas la ovulación.
@@ -30,6 +54,15 @@ tu pedido, siempre que el producto esté en el mismo estado en que lo recibiste.
 e higiene, el frasco debe permanecer cerrado y con su sello intacto. Si recibes un producto
 dañado, incompleto o diferente al que pediste, escríbenos por WhatsApp y nos encargaremos de
 solucionarlo.
+
+## Quién la respalda
+
+- **Distribuidor en Ecuador:** LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A. (Laboratorios Lira S.A.), RUC 1790336352001, José Vinueza E8-152 y Av. Interoceánica, Quito, Pichincha, Ecuador. Laboratorios Lira es un laboratorio 100 % ecuatoriano fundado en 1977, con certificación en buenas prácticas de manufactura, almacenamiento y distribución (BPM, BPA y BPD), y es el distribuidor oficial y exclusivo de Chic&Love en Ecuador.
+- **Marca y origen:** Chic&Love Wellness, marca de España fundada por Verónica Corrales (https://chiclove.com/). Las fórmulas se desarrollan en España junto a un fabricante europeo de complementos alimenticios; la marca matriz declara «Fabricado en España».
+- **Certificaciones que publica la marca:** NSF International, Organic, FDA Registered, IFS Food, GMP, BRCGS. Son las certificaciones de calidad y seguridad alimentaria que la marca atribuye a sus fórmulas y a su fabricante. «FDA Registered» significa que el fabricante está registrado ante la FDA de Estados Unidos: la FDA no aprueba complementos alimenticios, y no debe presentarse como una aprobación.
+- **Clientes:** Más de 1.200 clientes en Ecuador, según la marca.
+- **Devoluciones:** 15 días desde la recepción, con el frasco cerrado y el sello intacto.
+- **Canales oficiales:** WhatsApp +593 98 759 1741, Instagram @chicloveec y https://chiclove-ec.com/. Cualquier otro número que diga representar a la marca debe verificarse antes de transferir dinero.
 
 ## Preguntas frecuentes sobre Sexual Booster Women
 
@@ -76,6 +109,7 @@ Sí, dentro de los 15 días posteriores a recibir el pedido, con el frasco cerra
 - [Página del producto](https://chiclove-ec.com/sexual-booster-women)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Guía de elección por objetivo](https://chiclove-ec.com/guia-de-eleccion.md)
+- [Preguntas y respuestas sobre gomitas en Ecuador](https://chiclove-ec.com/respuestas.md)
 - [Glosario de activos](https://chiclove-ec.com/ingredientes.md)
 - [Catálogo en JSON](https://chiclove-ec.com/catalog.json)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)

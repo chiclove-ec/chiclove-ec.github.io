@@ -77,7 +77,9 @@ test("el código no incrusta el dominio: lo lee de site.config.json", () => {
 // para explicar precisamente cómo se muda el sitio.
 test("nada de lo publicado nombra un dominio propio distinto del declarado", () => {
   const publicFiles = loadPublicFiles();
-  const allowed = new Set([new URL(config.sourceOrigin).host, "github.com"]);
+  // chiclove.com es el sitio global de la marca matriz española (Chic&Love Wellness), no
+  // un dominio de esta tienda: la capa para agentes lo cita como fuente y no se muda.
+  const allowed = new Set([new URL(config.sourceOrigin).host, "github.com", "chiclove.com"]);
   const offenders = [];
   for (const file of tracked) {
     if (!TEXT_EXTENSIONS.has(extname(file))) continue;

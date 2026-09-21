@@ -5,6 +5,8 @@
 # Catálogo tipado en JSON: https://chiclove-ec.com/catalog.json
 # Guía de elección por objetivo: https://chiclove-ec.com/guia-de-eleccion.md
 # Glosario de activos: https://chiclove-ec.com/ingredientes.md
+# Preguntas y respuestas sobre gomitas de vitaminas en Ecuador: https://chiclove-ec.com/respuestas.md
+# English summary: https://chiclove-ec.com/en.md
 # Perfil estático para agentes: https://chiclove-ec.com/ai.txt
 # Cada página HTML tiene un gemelo markdown en la misma ruta con extensión .md
 

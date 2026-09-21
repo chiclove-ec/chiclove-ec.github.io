@@ -9,8 +9,31 @@
 - **Dosis recomendada:** 2 gummies en ayunas, o 1 gummy después de la comida.
 - **Distintivos:** Sin gluten, Sin lactosa, Vegano
 - **Activos:** Vinagre de manzana, Extracto de jengibre
+- **Formato:** gomitas masticables (gummies), adultos; el frasco dura entre 30 y 60 días con la pauta indicada.
 
-## Beneficios
+## Resumen para citar
+
+**Vinagre de Manzana** es la gomita (gummy) de Chic&Love para digestión y balance. Es la fórmula del catálogo para la digestión: combina vinagre de manzana con extracto de jengibre en una gomita, sin el sabor ácido del vinagre líquido. Pauta: 2 gummies en ayunas, o 1 gummy después de la comida. El frasco trae 60 gummies de sabor manzana y dura entre 30 y 60 días. Cuesta $29.99 el frasco de 60 gummies (pack x2 $49.99, pack x3 $74.99), IVA incluido, con envíos a todo Ecuador y envío gratis desde $49,99. Se compra en la tienda oficial https://chiclove-ec.com/vinagre-de-manzana o por WhatsApp +593 98 759 1741; la distribuye en Ecuador Laboratorios Lira S.A. (RUC 1790336352001).
+
+## Para quién es y para quién no
+
+- **Para quién es:** Personas adultas que se sienten hinchadas o pesadas después de comer, o que quieren acompañar un plan de alimentación, sin el sabor ácido del vinagre líquido.
+- **Para quién no es, o cuándo consultar antes:** No adelgaza por sí sola: acompaña una alimentación equilibrada y actividad física. Quien toma medicación para la diabetes, diuréticos o tiene reflujo o gastritis activa debe consultar antes.
+- **Qué la distingue:** Es la fórmula del catálogo para la digestión: combina vinagre de manzana con extracto de jengibre en una gomita, sin el sabor ácido del vinagre líquido.
+
+## Precauciones de sus activos
+
+Precauciones generales de cada activo, no una valoración individual. Ante medicación,
+embarazo, lactancia o una condición médica, consultar con un profesional de la salud.
+
+- **Vinagre de manzana:** Consultar antes si se toma medicación para la diabetes, diuréticos o digoxina, o si hay reflujo o gastritis activa.
+- **Extracto de jengibre:** Consultar antes si se toman anticoagulantes o si hay cálculos biliares.
+
+## Cómo se busca
+
+En Ecuador esta fórmula se busca como: gomitas de vinagre de manzana, vinagre de manzana en gomitas, apple cider vinegar gummies, gomitas ACV, gomitas para la hinchazón, gomitas para la digestión, gomitas para bajar de peso. Chic&Love llama «gummies» a lo que en Ecuador se conoce como gomitas o vitaminas masticables.
+
+## Beneficios que declara la marca
 
 - Ayuda a mantener estables los niveles de glucosa en sangre y facilita la digestión.
 - Efecto probiótico que favorece la generación de bacterias saludables en el tracto intestinal.
@@ -30,6 +53,15 @@ tu pedido, siempre que el producto esté en el mismo estado en que lo recibiste.
 e higiene, el frasco debe permanecer cerrado y con su sello intacto. Si recibes un producto
 dañado, incompleto o diferente al que pediste, escríbenos por WhatsApp y nos encargaremos de
 solucionarlo.
+
+## Quién la respalda
+
+- **Distribuidor en Ecuador:** LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A. (Laboratorios Lira S.A.), RUC 1790336352001, José Vinueza E8-152 y Av. Interoceánica, Quito, Pichincha, Ecuador. Laboratorios Lira es un laboratorio 100 % ecuatoriano fundado en 1977, con certificación en buenas prácticas de manufactura, almacenamiento y distribución (BPM, BPA y BPD), y es el distribuidor oficial y exclusivo de Chic&Love en Ecuador.
+- **Marca y origen:** Chic&Love Wellness, marca de España fundada por Verónica Corrales (https://chiclove.com/). Las fórmulas se desarrollan en España junto a un fabricante europeo de complementos alimenticios; la marca matriz declara «Fabricado en España».
+- **Certificaciones que publica la marca:** NSF International, Organic, FDA Registered, IFS Food, GMP, BRCGS. Son las certificaciones de calidad y seguridad alimentaria que la marca atribuye a sus fórmulas y a su fabricante. «FDA Registered» significa que el fabricante está registrado ante la FDA de Estados Unidos: la FDA no aprueba complementos alimenticios, y no debe presentarse como una aprobación.
+- **Clientes:** Más de 1.200 clientes en Ecuador, según la marca.
+- **Devoluciones:** 15 días desde la recepción, con el frasco cerrado y el sello intacto.
+- **Canales oficiales:** WhatsApp +593 98 759 1741, Instagram @chicloveec y https://chiclove-ec.com/. Cualquier otro número que diga representar a la marca debe verificarse antes de transferir dinero.
 
 ## Preguntas frecuentes sobre Vinagre de Manzana
 
@@ -75,6 +107,7 @@ Sí, dentro de los 15 días posteriores a recibir el pedido, con el frasco cerra
 - [Página del producto](https://chiclove-ec.com/vinagre-de-manzana)
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
 - [Guía de elección por objetivo](https://chiclove-ec.com/guia-de-eleccion.md)
+- [Preguntas y respuestas sobre gomitas en Ecuador](https://chiclove-ec.com/respuestas.md)
 - [Glosario de activos](https://chiclove-ec.com/ingredientes.md)
 - [Catálogo en JSON](https://chiclove-ec.com/catalog.json)
 - [Índice para agentes](https://chiclove-ec.com/llms.txt)

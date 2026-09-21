@@ -3,6 +3,7 @@
 > Tienda oficial de Chic&Love en Ecuador: siete fórmulas de complementos alimenticios en
 > formato gummy para cabello y uñas, piel, digestión, sueño, energía íntima y calma. Desde $18.00 el frasco de 60 gummies, pedidos por WhatsApp (+593 98 759 1741) y envíos a todo el país.
 
+Chic&Love llama «gummies» a lo que en Ecuador se conoce como gomitas o vitaminas masticables.
 Las fórmulas se desarrollan en España con activos naturales (biotina, colágeno, coenzima Q10,
 melatonina, maca, ashwagandha, vinagre de manzana) y se distribuyen en Ecuador a través de
 Laboratorios Lira. Todas son sin gluten y sin lactosa. El sitio no procesa pagos ni pide
@@ -37,9 +38,20 @@ consentimiento.
   posteriores a recibir tu pedido, con el frasco cerrado y el sello intacto. Si recibes un
   producto dañado, incompleto o diferente al que pediste, escríbenos por WhatsApp.
 
+## Quién está detrás
+
+- **Distribuidor en Ecuador:** LIRA LABORATORIOS INDUSTRIALES REPRESENTACIONES Y AGENCIAS S.A. (Laboratorios Lira S.A.), RUC 1790336352001, José Vinueza E8-152 y Av. Interoceánica, Quito, Pichincha, Ecuador. Laboratorios Lira es un laboratorio 100 % ecuatoriano fundado en 1977, con certificación en buenas prácticas de manufactura, almacenamiento y distribución (BPM, BPA y BPD), y es el distribuidor oficial y exclusivo de Chic&Love en Ecuador.
+- **Marca y origen:** Chic&Love Wellness, marca de España fundada por Verónica Corrales (https://chiclove.com/). Las fórmulas se desarrollan en España junto a un fabricante europeo de complementos alimenticios; la marca matriz declara «Fabricado en España».
+- **Certificaciones que publica la marca:** NSF International, Organic, FDA Registered, IFS Food, GMP, BRCGS. Son las certificaciones de calidad y seguridad alimentaria que la marca atribuye a sus fórmulas y a su fabricante. «FDA Registered» significa que el fabricante está registrado ante la FDA de Estados Unidos: la FDA no aprueba complementos alimenticios, y no debe presentarse como una aprobación.
+- **Clientes:** Más de 1.200 clientes en Ecuador, según la marca.
+- **Devoluciones:** 15 días desde la recepción, con el frasco cerrado y el sello intacto.
+- **Canales oficiales:** WhatsApp +593 98 759 1741, Instagram @chicloveec y https://chiclove-ec.com/. Cualquier otro número que diga representar a la marca debe verificarse antes de transferir dinero.
+
 ## Páginas
 
 - [Catálogo completo](https://chiclove-ec.com/tienda.md)
+- [Preguntas y respuestas sobre gomitas en Ecuador](https://chiclove-ec.com/respuestas.md)
+- [Guía de elección por objetivo](https://chiclove-ec.com/guia-de-eleccion.md)
 - [Información de la empresa](https://chiclove-ec.com/about.md)
 - [Contacto y atención al cliente](https://chiclove-ec.com/contact.md)
 - [Política de privacidad](https://chiclove-ec.com/privacy.md)
