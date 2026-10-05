@@ -890,7 +890,9 @@ p, li { text-wrap: pretty; }
 .cta-visual img { width: 100%; max-width: 460px; height: auto; max-height: none; filter: drop-shadow(0 30px 44px rgba(0,0,0,0.45)); rotate: 0deg; }
 
 /* ---------- Banda de promoción ---------- */
-/* main.js fija --a / --a-dark con el color del producto en promoción. */
+/* Varias promociones a la vez se apilan con la misma maqueta, de mayor a menor descuento. */
+.promo-bands { display: grid; gap: 20px; }
+/* main.js fija --a / --a-dark con el color del producto (o del grupo) en promoción. */
 .promo-band {
   position: relative;
   overflow: clip;
@@ -1826,6 +1828,7 @@ p, li { text-wrap: pretty; }
   .faq summary { padding: 18px; font-size: 14px; }
   .faq .faq-body { padding: 0 18px 18px; font-size: 13.5px; }
 
+  .promo-bands { gap: 14px; }
   .promo-band { padding: 0; grid-template-columns: minmax(0, 1fr) 38%; gap: 16px; border-radius: 28px; }
   .promo-band-copy { padding: 30px 0 30px 24px; }
   .promo-band-head { gap: 10px; }

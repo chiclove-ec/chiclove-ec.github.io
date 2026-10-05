@@ -687,71 +687,100 @@ function hydrateProductCard(card, product, revealDelay) {
   action.replaceWith(button);
 }
 
-/* ---------- banda de promoción ---------- */
-function promoBand(product, promo) {
-  var band = makeEl("a", "promo-band");
-  band.href = encodeURIComponent(product.id);
-  band.style.setProperty("--a", product.accent);
-  band.style.setProperty("--a-dark", product.accentDark);
-  band.setAttribute("aria-label", "Ver " + product.name + " con " + clPromoPercent(product) +
-    "% de descuento, " + clMoney(clSinglePrice(product)) + " en vez de " + clMoney(product.price));
+/* ---------- bandas de promoción ---------- */
+// Una banda anuncia una fórmula (y lleva a su ficha) o un grupo de fórmulas con el
+// mismo descuento (y lleva a la tienda). Comparten maqueta: cambian textos, color e imagen.
+function promoBand(band, eager) {
+  var product = band.product;
+  var promo = band.promo;
+  var group = band.group;
+  var price = clSinglePrice(product);
+  var link = makeEl("a", "promo-band" + (group ? " is-group" : ""));
+  link.href = group ? "tienda" : encodeURIComponent(product.id);
+  link.style.setProperty("--a", group ? group.accent : product.accent);
+  link.style.setProperty("--a-dark", group ? group.accentDark : product.accentDark);
+  link.setAttribute("aria-label", "Ver " + (group ? group.title.toLowerCase() : product.name) + " con " +
+    band.percent + "% de descuento, " + clMoney(price) + " en vez de " + clMoney(product.price) +
+    (group ? " cada frasco" : ""));
+  if (group) {
+    // En la tienda la colección ya está debajo: basta con bajar hasta ella.
+    link.addEventListener("click", function (event) {
+      var grid = document.querySelector("[data-products-grid]");
+      if (!document.body.classList.contains("page-store") || !grid) return;
+      event.preventDefault();
+      grid.scrollIntoView({ block: "start" });
+    });
+  }
 
   var copy = makeEl("div", "promo-band-copy");
   // El descuento vive en la chapa, no en el título: repetirlo en ambos sitios
   // le quita fuerza justo a la cifra que queremos que se lea primero.
   var head = makeEl("div", "promo-band-head");
   head.appendChild(makeEl("span", "promo-band-kicker", "Solo en " + promo.monthLabel));
-  head.appendChild(makeEl("span", "promo-band-badge", "−" + clPromoPercent(product) + "%"));
+  head.appendChild(makeEl("span", "promo-band-badge", "−" + band.percent + "%"));
   copy.appendChild(head);
-  copy.appendChild(makeEl("h2", "", product.short));
+  copy.appendChild(makeEl("h2", "", group ? group.title : product.short));
   var prices = makeEl("p", "promo-band-prices");
-  prices.appendChild(makeEl("strong", "", clMoney(clSinglePrice(product))));
+  prices.appendChild(makeEl("strong", "", clMoney(price)));
   prices.appendChild(makeEl("del", "", clMoney(product.price)));
   prices.appendChild(makeEl("span", "promo-band-vat", CL_VAT_NOTE));
   copy.appendChild(prices);
   var actions = makeEl("div", "promo-band-actions");
-  actions.appendChild(makeEl("span", "promo-band-cta", "Ver producto"));
+  actions.appendChild(makeEl("span", "promo-band-cta", group ? group.cta : "Ver producto"));
   actions.appendChild(makeEl("span", "promo-band-deadline", "Hasta el " + promo.endsLabel));
   copy.appendChild(actions);
 
-  // Imagen editorial de tienda: casi cuadrada, encaja en la banda mucho mejor
-  // que el splash (946×1600), que la estiraría a lo alto.
+  // Imagen editorial de tienda (o la composición del grupo, con el mismo fondo y
+  // tamaño): casi cuadrada, encaja en la banda mucho mejor que el splash (946×1600).
   var media = makeEl("div", "promo-band-media");
   var image = makeEl("img");
-  image.src = product.storeSmall;
-  image.srcset = product.storeSmall + " 640w, " + product.store + " 900w";
+  var imageSmall = group ? group.imageSmall : product.storeSmall;
+  image.src = imageSmall;
+  image.srcset = imageSmall + " 640w, " + (group ? group.image : product.store) + " 900w";
   image.sizes = "(max-width: 720px) 38vw, 360px";
   image.width = 900;
   image.height = 988;
   image.alt = "";
-  // Sin lazy: en la tienda la banda queda sobre el pliegue y es el foco de la promo.
+  // La primera banda va sin lazy: en la tienda queda sobre el pliegue y es el foco.
+  if (!eager) image.loading = "lazy";
   image.decoding = "async";
-  media.appendChild(image);
+  if (group && group.imageNarrow) {
+    // Un frasco suelto aguanta el recorte lateral del móvil; seis frascos en fila, no.
+    var picture = makeEl("picture");
+    var narrow = makeEl("source");
+    narrow.media = "(max-width: 520px)";
+    narrow.srcset = group.imageNarrow;
+    picture.append(narrow, image);
+    media.appendChild(picture);
+  } else {
+    media.appendChild(image);
+  }
 
-  band.append(copy, media);
-  return band;
+  link.append(copy, media);
+  return link;
 }
 
-// La banda anuncia un producto concreto: solo tiene sentido mientras ese producto
-// siga en la rejilla, así que desaparece al filtrar por otro objetivo.
-function promoBandFitsFilter(product) {
+// Cada banda anuncia fórmulas concretas: solo tiene sentido mientras alguna siga en
+// la rejilla, así que desaparece al filtrar por un objetivo que no incluye ninguna.
+function promoBandFitsFilter(band) {
   var grid = document.querySelector("[data-products-grid][data-filter]");
-  if (!grid || !product) return true;
+  if (!grid) return true;
   var filter = grid.getAttribute("data-filter") || "todos";
-  return filter === "todos" || product.goal === filter;
+  return filter === "todos" || band.products.some(function (product) { return product.goal === filter; });
 }
 
 function renderPromoBand() {
   var mounts = document.querySelectorAll("[data-promo-band]");
   if (!mounts.length) return;
-  var product = clPromotedProducts()[0] || null;
-  var promo = product ? clActivePromo(product) : null;
-  var show = !!promo && promoBandFitsFilter(product);
+  var bands = clPromoBands().filter(promoBandFitsFilter);
   mounts.forEach(function (mount) {
     var host = mount.querySelector(".wrap") || mount;
     host.textContent = "";
-    mount.hidden = !show;
-    if (show) host.appendChild(promoBand(product, promo));
+    mount.hidden = !bands.length;
+    if (!bands.length) return;
+    var stack = makeEl("div", "promo-bands");
+    bands.forEach(function (band, index) { stack.appendChild(promoBand(band, index === 0)); });
+    host.appendChild(stack);
   });
 }
 
@@ -997,9 +1026,7 @@ function initBusinessData() {
   var pack3Minimum = clCatalogMinimum("pricePack3");
   var whatsappDisplay = clWhatsAppDisplay();
   var instagramHandle = "@" + CL_INSTAGRAM;
-  var promoted = clPromotedProducts();
-  var featured = promoted[0] || null;
-  var featuredPromo = featured ? clActivePromo(featured) : null;
+  var promoBands = clPromoBands();
 
   function activateExternalLink(link, url, label) {
     if (!url) {
@@ -1035,9 +1062,16 @@ function initBusinessData() {
   document.querySelectorAll("[data-vat-faq]").forEach(function (el) {
     el.textContent = "Los precios publicados incluyen IVA y son los vigentes en la tienda. Antes de confirmar tu pedido podrás revisar el total de tu compra.";
   });
+  // «Radiant Skin −40% y toda la colección −25% en octubre»: una mención por banda.
+  var offerParts = promoBands.map(function (band) {
+    return (band.group ? band.group.label : band.product.short) + " −" + band.percent + "%";
+  });
+  var offerText = offerParts.length > 1
+    ? offerParts.slice(0, -1).join(", ") + " y " + offerParts[offerParts.length - 1]
+    : offerParts.join("");
   document.querySelectorAll("[data-catalog-offer]").forEach(function (el) {
-    el.textContent = featured
-      ? featured.short + " −" + clPromoPercent(featured) + "% en " + featuredPromo.monthLabel
+    el.textContent = promoBands.length
+      ? offerText + " en " + promoBands[0].promo.monthLabel
       : "Packs x2 por " + clMoney(pack2Minimum) + " y x3 por " + clMoney(pack3Minimum) + ".";
   });
 

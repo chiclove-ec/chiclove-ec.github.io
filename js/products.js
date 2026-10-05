@@ -38,16 +38,46 @@ const CL_PRODUCT_PRICING = Object.freeze({
    (UTC-5), así entra y sale a la vez para todo el mundo sin importar el reloj del
    visitante; al cerrarse, el sitio vuelve solo al precio de catálogo.
    `singleOnly` retira los packs mientras dure: al precio promocional dejarían de
-   ahorrar frente a comprar frascos sueltos. */
+   ahorrar frente a comprar frascos sueltos.
+   `group` junta en una sola banda de promoción las fórmulas que comparten descuento
+   (ver CL_PROMO_GROUPS); sin `group`, la fórmula tiene banda propia. */
+const CL_PROMO_OCTOBER = Object.freeze({
+  monthLabel: "octubre",
+  endsLabel: "31 de octubre",
+  singleOnly: true,
+  start: Date.parse("2026-10-01T00:00:00-05:00"),
+  end: Date.parse("2026-11-01T00:00:00-05:00"),
+  priceValidUntil: "2026-10-31"
+});
+
+/* Octubre: Radiant Skin repite el −40% de septiembre y el resto de la colección va al
+   −25% (29,99 × 0,75 = 22,49). Los packs se retiran en todas: 2 frascos a 22,49 suman
+   44,98 y 3 suman 67,47, menos que el pack x2 (49,99) y el pack x3 (74,99). */
 const CL_PROMOS = Object.freeze({
-  "radiant-skin": Object.freeze({
-    monthLabel: "septiembre",
-    endsLabel: "30 de septiembre",
-    price: 18.00,
-    singleOnly: true,
-    start: Date.parse("2026-09-01T00:00:00-05:00"),
-    end: Date.parse("2026-10-01T00:00:00-05:00"),
-    priceValidUntil: "2026-09-30"
+  "radiant-skin": Object.freeze({ ...CL_PROMO_OCTOBER, price: 18.00 }),
+  "hair-nails-forte": Object.freeze({ ...CL_PROMO_OCTOBER, price: 22.49, group: "coleccion" }),
+  "vinagre-de-manzana": Object.freeze({ ...CL_PROMO_OCTOBER, price: 22.49, group: "coleccion" }),
+  "sleep-vitamins": Object.freeze({ ...CL_PROMO_OCTOBER, price: 22.49, group: "coleccion" }),
+  "sexual-booster-women": Object.freeze({ ...CL_PROMO_OCTOBER, price: 22.49, group: "coleccion" }),
+  "sexual-booster-men": Object.freeze({ ...CL_PROMO_OCTOBER, price: 22.49, group: "coleccion" }),
+  "anti-stress": Object.freeze({ ...CL_PROMO_OCTOBER, price: 22.49, group: "coleccion" })
+});
+
+/* Bandas compartidas: las fórmulas de un mismo grupo deben tener la misma promoción
+   (precio y fechas), porque la banda anuncia un único precio. `label` es el nombre
+   corto de la franja superior. La imagen es la composición de los frascos del grupo
+   sobre el fondo de las fotos de tienda; `imageNarrow` es su versión vertical para
+   móvil, donde el hueco de la imagen es alto y estrecho y recortaría los laterales. */
+const CL_PROMO_GROUPS = Object.freeze({
+  coleccion: Object.freeze({
+    title: "Toda la colección",
+    label: "toda la colección",
+    cta: "Ver la colección",
+    image: "assets/img/promo-coleccion.webp",
+    imageSmall: "assets/img/promo-coleccion-640.webp",
+    imageNarrow: "assets/img/promo-coleccion-movil.webp",
+    accent: "#8C6FC9",
+    accentDark: "#6A4FA8"
   })
 });
 
@@ -581,6 +611,32 @@ function clHasPacks(product, now) {
 
 function clPromotedProducts(now) {
   return CL_PRODUCTS.filter(function (product) { return clActivePromo(product, now); });
+}
+
+/* Bandas de promoción vivas, de mayor a menor descuento: una por fórmula sin `group`
+   y una por grupo. Cada banda lleva sus productos (la tienda la oculta cuando el filtro
+   no deja ninguno a la vista) y el primero de ellos, del que salen precio y porcentaje. */
+function clPromoBands(now) {
+  var bands = [];
+  clPromotedProducts(now).forEach(function (product) {
+    var promo = clActivePromo(product, now);
+    var group = promo.group ? CL_PROMO_GROUPS[promo.group] : null;
+    if (promo.group && !group) throw new Error("Grupo de promoción sin ficha en CL_PROMO_GROUPS: " + promo.group);
+    var band = group && bands.find(function (known) { return known.groupId === promo.group; });
+    if (band) {
+      band.products.push(product);
+      return;
+    }
+    bands.push({
+      groupId: promo.group || "",
+      group: group,
+      product: product,
+      products: [product],
+      promo: promo,
+      percent: clPromoPercent(product, now)
+    });
+  });
+  return bands.sort(function (a, b) { return b.percent - a.percent; });
 }
 
 function clBestSingleBundle(product, quantity, now) {

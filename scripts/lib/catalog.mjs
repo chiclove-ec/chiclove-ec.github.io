@@ -25,7 +25,9 @@ export function loadCatalog() {
       "\nthis.CL_ACTIVES=CL_ACTIVES; this.clActiveInfo=clActiveInfo;" +
       "\nthis.CL_GOAL_GUIDE=CL_GOAL_GUIDE; this.CL_SERVINGS=CL_SERVINGS;" +
       "\nthis.CL_GOALS=CL_GOALS; this.CL_PRODUCT_PRICING=CL_PRODUCT_PRICING;" +
-      "\nthis.clBottleDuration=clBottleDuration;"
+      "\nthis.clBottleDuration=clBottleDuration;" +
+      "\nthis.CL_PROMOS=CL_PROMOS; this.CL_PROMO_GROUPS=CL_PROMO_GROUPS;" +
+      "\nthis.clPromotedProducts=clPromotedProducts; this.clPromoBands=clPromoBands;"
   ).call(catalog, Date);
   return catalog;
 }
