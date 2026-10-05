@@ -2,7 +2,7 @@
 // dejan de ahorrar, grupos que comparten de verdad la misma oferta y bandas bien formadas.
 // Cada promoción se evalúa en su propia ventana, así que estas pruebas no caducan con el mes.
 import { strict as assert } from "node:assert";
-import { existsSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { test } from "node:test";
 
@@ -98,4 +98,48 @@ test("las bandas agrupan, ordenan por descuento y desaparecen al cerrar la promo
       `${id}: la banda sigue viva al cerrar la promo`
     );
   }
+});
+
+test("con el reloj fijado, el catálogo evalúa las promociones en ese instante", () => {
+  for (const [id, promo] of promos) {
+    const opening = loadCatalog({ now: promo.start });
+    const closing = loadCatalog({ now: promo.end });
+    const product = (cat) => cat.CL_PRODUCTS.find((p) => p.id === id);
+    assert.ok(opening.clActivePromo(product(opening)), `${id}: la promo no está viva al abrir`);
+    assert.equal(loadCatalog({ now: promo.end - 1 }).clSinglePrice(product(opening)), promo.price, `${id}: el último instante ya no tiene precio de promo`);
+    assert.equal(closing.clActivePromo(product(closing)), null, `${id}: la promo sigue viva al cerrar`);
+    assert.equal(closing.clSinglePrice(product(closing)), product(closing).price, `${id}: no vuelve al precio de lista`);
+  }
+  // Una fecha creada fuera del catálogo se sigue reconociendo como fecha dentro.
+  const [id, promo] = promos[0];
+  const fixed = loadCatalog({ now: promo.end });
+  const product = fixed.CL_PRODUCTS.find((p) => p.id === id);
+  assert.ok(fixed.clActivePromo(product, new Date(promo.start)), "una Date de fuera no se evalúa");
+  assert.throws(() => loadCatalog({ now: "mañana" }), /CL_NOW/);
+});
+
+test("sin promociones vivas, la franja superior vuelve a anunciar los packs", () => {
+  const afterAll = Math.max(...promos.map(([, promo]) => promo.end));
+  const later = loadCatalog({ now: afterAll });
+  assert.equal(later.clPromoBands().length, 0);
+  assert.match(later.clCatalogOfferText(), /^Packs x2 por \$\d+\.\d{2} y x3 por \$\d+\.\d{2}\.$/);
+  for (const [, promo] of promos) {
+    assert.match(loadCatalog({ now: promo.start }).clCatalogOfferText(), new RegExp(" en " + promo.monthLabel + "$"));
+  }
+});
+
+test("la franja superior escrita en el HTML es la oferta vigente", () => {
+  // main.js la repinta al cargar; el HTML la lleva escrita para quien no ejecuta
+  // JavaScript. Si no coincide, alguien no regeneró al abrir o cerrar una promo.
+  const expected = catalog.clCatalogOfferText().replace(/&/g, "&amp;");
+  const pages = readdirSync(projectRoot).filter((file) => file.endsWith(".html"));
+  let found = 0;
+  for (const page of pages) {
+    const match = readFileSync(resolve(projectRoot, page), "utf8")
+      .match(/<span class="topbar-offer" data-catalog-offer>([^<]*)<\/span>/);
+    if (!match) continue;
+    found++;
+    assert.equal(match[1], expected, `${page}: la franja superior no es la oferta vigente (ejecuta npm run refresh)`);
+  }
+  assert.ok(found >= 10, `solo ${found} páginas llevan la franja superior`);
 });

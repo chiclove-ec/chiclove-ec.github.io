@@ -85,10 +85,12 @@ artefacto: va a la lista `forbidden` de `scripts/build.mjs` y a `.vercelignore`.
 `CL_PROMOS` en `js/products.js` abre y cierra la promoción sola en las fechas
 indicadas. Para anunciar varias fórmulas con el mismo descuento en una sola banda,
 dales el mismo `group` y describe la banda en `CL_PROMO_GROUPS` (ver README).
-La excepción son los datos estructurados de las fichas, que son
-estáticos: cuando la promo cierre, vuelve a ejecutar `npm run gen` y despliega
-para que el precio que ve Google regrese al de catálogo. El generador avisa por
-consola mientras haya un precio promocional escrito en el JSON-LD.
+Lo generado (JSON-LD, markdown, `catalog.json`, franja superior del HTML) lo pone al
+día `refresh-catalog.yml` a las 00:07 de Ecuador del día en que una promo abre o
+cierra. Si ves un issue «La actualización automática del catálogo no se completó»,
+abre el PR de la rama que indica o ejecuta `npm run refresh` y súbelo. Para ver hoy
+cómo quedará el sitio en otra fecha: `npm run refresh -- --now=<fecha ISO>` (y
+descarta el resultado).
 
 ## Seguridad
 

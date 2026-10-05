@@ -12,7 +12,7 @@
 // resultados enriquecidos. La parte interactiva la renderiza product-page.js (data-product-id).
 //
 // Reejecutar si cambia js/products.js:  npm run gen:products
-import { readFileSync, writeFileSync } from "node:fs";
+import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 import { loadCatalog, projectRoot as root } from "./lib/catalog.mjs";
@@ -1558,16 +1558,37 @@ writeFileSync(resolve(root, "llms.txt"), llmsIndex());
 writeFileSync(resolve(root, "llms-full.txt"), fullTextBundle());
 writeFileSync(resolve(root, "sitemap.xml"), sitemapXml());
 
+/* La franja superior de todas las páginas lleva la oferta vigente escrita en el HTML.
+   main.js la repinta al cargar, pero quien no ejecuta JavaScript (y el primer pintado
+   de cualquiera) leería una promo caducada: por eso se escribe aquí desde el catálogo,
+   también en las páginas escritas a mano. Va al final, tras escribir las fichas. */
+function syncCatalogOffer() {
+  const offer = esc(catalog.clCatalogOfferText());
+  const pattern = /(<span class="topbar-offer" data-catalog-offer>)[^<]*(<\/span>)/;
+  let pages = 0;
+  for (const file of readdirSync(root).filter((name) => name.endsWith(".html")).sort()) {
+    const html = readFileSync(resolve(root, file), "utf8");
+    if (!pattern.test(html)) continue;
+    // Con función de reemplazo: el texto lleva «$49.99», y «$4» sería un grupo.
+    const next = html.replace(pattern, (_, open, close) => open + offer + close);
+    if (next !== html) writeFileSync(resolve(root, file), next);
+    pages++;
+  }
+  return pages;
+}
+const offerPages = syncCatalogOffer();
+
 console.log(
   "Generadas " + count + " páginas de producto (.html + .md): " +
     catalog.CL_PRODUCTS.map((p) => p.id).join(", ") +
     "\nGenerados index.md, tienda.md, respuestas.md, en.md, guia-de-eleccion.md, ingredientes.md, agents.md, " +
-    "ai.txt, catalog.json, llms.txt y llms-full.txt"
+    "ai.txt, catalog.json, llms.txt y llms-full.txt" +
+    "\nOferta de la franja superior al día en " + offerPages + " páginas: " + catalog.clCatalogOfferText()
 );
 if (promoted.length) {
   console.warn(
     "\nAVISO: hay precio promocional escrito en los datos estructurados (" + promoted.join("; ") + ").\n" +
-    "La web se corrige sola al terminar la promo, pero estos JSON-LD y markdown no: vuelve a\n" +
-    "ejecutar `node scripts/gen-products.mjs` y despliega cuando la promo haya cerrado."
+    "La web se corrige sola en el navegador al terminar la promo; lo generado lo pone al día\n" +
+    ".github/workflows/refresh-catalog.yml a las 00:07 de Ecuador (a mano: `npm run refresh`)."
   );
 }

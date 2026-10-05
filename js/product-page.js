@@ -108,8 +108,9 @@
     promoNote.hidden = !promo;
     promoNote.textContent = promo ? "Promo hasta el " + promo.endsLabel : "";
   }
+  // En los dos sentidos: el HTML puede venir de antes de que una promo abriera o cerrara.
   var buyLabel = document.querySelector(".pd-buy-label");
-  if (buyLabel && variants.length === 1) buyLabel.textContent = "Tu presentación";
+  if (buyLabel) buyLabel.textContent = variants.length === 1 ? "Tu presentación" : "Elige tu presentación";
 
   function chooseVariant(index, restoreFocus) {
     state.variant = variants[index].key;
