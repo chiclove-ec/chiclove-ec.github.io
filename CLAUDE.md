@@ -105,8 +105,14 @@ dos veces.
   (`IntersectionObserver`): para capturas full-page hay que scrollear primero.
 - `frame-ancestors` no funciona por `<meta>`; en GitHub Pages lo cubre
   `js/frame-guard.js`.
-- La promoción de `CL_PROMOS` entra y sale sola por fecha, pero el JSON-LD es
-  estático: al cerrar la promo hay que regenerar y desplegar.
+- La promoción de `CL_PROMOS` entra y sale sola por fecha en el navegador. Lo
+  generado (JSON-LD, markdown, `catalog.json`, la franja superior del HTML) lo pone
+  al día `refresh-catalog.yml` a las 00:07 de Ecuador: regenera, abre un PR, espera
+  a CI y Cloudflare, lo fusiona y despliega. Hasta que se publique, la suite falla,
+  porque compara lo publicado con el catálogo de hoy. Para abrir el PR necesita que
+  el repo tenga activado «Allow GitHub Actions to create and approve pull requests»;
+  si no puede, deja la rama y un issue. A mano: `npm run refresh`, y
+  `npm run refresh -- --now=<ISO>` simula cualquier fecha.
 - **Nada de `aggregateRating` ni `review` mientras no haya reseñas reales.** Search
   Console avisa de que faltan en los «fragmentos de producto». Son avisos **no
   críticos**: la ficha ya califica por `offers`, y Google lo dice en el propio aviso.

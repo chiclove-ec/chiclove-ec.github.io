@@ -321,16 +321,32 @@ en una sola banda definida en `CL_PROMO_GROUPS` —título, color e imagen— qu
 a la tienda. La imagen del grupo `coleccion` es una composición de los frascos
 sobre el fondo de las fotos de tienda, con una versión vertical para móvil.
 
-La promoción **entra y sale sola** en las fechas indicadas: no hay que desplegar
-nada para que termine. La única excepción son los datos estructurados de las
-páginas de producto, que son estáticos:
+La promoción **entra y sale sola** en las fechas indicadas. La web visible cambia
+en el navegador a la hora exacta (00:00 de Ecuador), sin desplegar nada. Lo
+generado lleva los precios escritos: los datos estructurados, los gemelos
+markdown, `catalog.json`, `llms.txt` y la franja superior del HTML. Eso lo pone al
+día `.github/workflows/refresh-catalog.yml`, que corre a las 00:07 de Ecuador y
+reintenta a las 02:37 y a las 08:07:
+
+1. `npm run refresh` regenera con la fecha del día y, si algo cambió, adelanta
+   `contentModified` para que `dateModified` y el sitemap avisen a los buscadores.
+2. Pasa la suite, sube lo regenerado a la rama `auto/catalogo-<fecha>` y abre el PR.
+3. Lanza CI sobre la rama (lo que hace el `GITHUB_TOKEN` no dispara workflows),
+   espera a que `main` lo admita —CI y Cloudflare Pages en verde— y lo fusiona.
+4. Cloudflare publica el push a `main`; el workflow lanza además GitHub Pages.
+
+Si no llega al final, deja la rama y un issue con el enlace para abrir el PR a
+mano. Para abrir el PR necesita una opción del repositorio: *Settings → Actions →
+General → Workflow permissions → «Allow GitHub Actions to create and approve pull
+requests»*. Lo mismo se puede hacer a mano, y también simular cualquier fecha:
 
 ```bash
-node scripts/gen-products.mjs   # avisa si escribió un precio promocional en el JSON-LD
+npm run refresh                                       # con la fecha de hoy
+npm run refresh -- --now=2026-11-01T00:00:00-05:00    # cómo quedará al cerrar octubre
 ```
 
-Reejecútalo y despliega cuando la promo haya cerrado, para que el precio que ve
-Google vuelva al de catálogo.
+Desde Actions, *Run workflow* con el campo `simular` hace un simulacro completo:
+abre el PR con esa fecha, espera los checks y lo cierra sin fusionar.
 
 ## Build seguro
 

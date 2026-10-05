@@ -1022,11 +1022,9 @@ function initNavigationPrefetch() {
 /* ---------- datos comerciales desde una sola fuente ---------- */
 function initBusinessData() {
   var singleMinimum = clCurrentSingleMinimum();
-  var pack2Minimum = clCatalogMinimum("pricePack");
-  var pack3Minimum = clCatalogMinimum("pricePack3");
+  var catalogOffer = clCatalogOfferText();
   var whatsappDisplay = clWhatsAppDisplay();
   var instagramHandle = "@" + CL_INSTAGRAM;
-  var promoBands = clPromoBands();
 
   function activateExternalLink(link, url, label) {
     if (!url) {
@@ -1062,17 +1060,8 @@ function initBusinessData() {
   document.querySelectorAll("[data-vat-faq]").forEach(function (el) {
     el.textContent = "Los precios publicados incluyen IVA y son los vigentes en la tienda. Antes de confirmar tu pedido podrás revisar el total de tu compra.";
   });
-  // «Radiant Skin −40% y toda la colección −25% en octubre»: una mención por banda.
-  var offerParts = promoBands.map(function (band) {
-    return (band.group ? band.group.label : band.product.short) + " −" + band.percent + "%";
-  });
-  var offerText = offerParts.length > 1
-    ? offerParts.slice(0, -1).join(", ") + " y " + offerParts[offerParts.length - 1]
-    : offerParts.join("");
   document.querySelectorAll("[data-catalog-offer]").forEach(function (el) {
-    el.textContent = promoBands.length
-      ? offerText + " en " + promoBands[0].promo.monthLabel
-      : "Packs x2 por " + clMoney(pack2Minimum) + " y x3 por " + clMoney(pack3Minimum) + ".";
+    el.textContent = catalogOffer;
   });
 
   var whatsappContactMessage = "Hola Chic&Love, soy ... y quiero más información sobre las gummies.";

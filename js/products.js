@@ -639,6 +639,23 @@ function clPromoBands(now) {
   return bands.sort(function (a, b) { return b.percent - a.percent; });
 }
 
+/* Oferta de la franja superior: una mención por banda («Radiant Skin −40% y toda la
+   colección −25% en octubre») o, sin promoción, los packs. La pinta main.js y la
+   escribe el generador en el HTML, para que quien no ejecuta JavaScript no lea una
+   promo caducada. */
+function clCatalogOfferText(now) {
+  var bands = clPromoBands(now);
+  if (!bands.length) {
+    return "Packs x2 por " + clMoney(clCatalogMinimum("pricePack")) + " y x3 por " +
+      clMoney(clCatalogMinimum("pricePack3")) + ".";
+  }
+  var parts = bands.map(function (band) {
+    return (band.group ? band.group.label : band.product.short) + " −" + band.percent + "%";
+  });
+  var offer = parts.length > 1 ? parts.slice(0, -1).join(", ") + " y " + parts[parts.length - 1] : parts[0];
+  return offer + " en " + bands[0].promo.monthLabel;
+}
+
 function clBestSingleBundle(product, quantity, now) {
   var qty = Math.min(Math.max(parseInt(quantity, 10) || 0, 0), 99);
   var singleCents = Math.round(clSinglePrice(product, now) * 100);

@@ -1,0 +1,102 @@
+name: Refresh catalog on promo dates
+
+# Las promociones de js/products.js abren y cierran solas por fecha (hora de Ecuador):
+# la web visible cambia en el navegador sin desplegar nada. Lo generado, en cambio
+# —JSON-LD, markdown, catalog.json, llms.txt y la franja superior escrita en el HTML—,
+# lleva los precios escritos y se queda con los de la promo cerrada; además la suite
+# falla, porque compara lo publicado con el catálogo de hoy. Este workflow lo regenera
+# en cuanto cambia, abre un PR, espera a los checks obligatorios de `main` (CI y
+# Cloudflare Pages), lo fusiona y despliega. Sin nada que cambiar, termina en segundos.
+on:
+  # 05:07 UTC = 00:07 en Ecuador: siete minutos después de que una promo abra o cierre.
+  # Minutos lejos del 0 (ver weekly-analytics-report.yml); las pasadas de las 07:37 y
+  # las 13:07 UTC reintentan si la primera no llega a correr.
+  schedule:
+    - cron: "7 5 * * *"
+    - cron: "37 7 * * *"
+    - cron: "7 13 * * *"
+  workflow_dispatch:
+    inputs:
+      simular:
+        description: "Simulacro sin fusionar: fecha ISO a simular, p. ej. 2026-11-01T00:00:00-05:00. Abre el PR, espera los checks y lo cierra."
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: refresh-catalog
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    name: Regenerar y publicar si cambió algo
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    permissions:
+      contents: write       # empujar la rama con lo regenerado
+      pull-requests: write  # abrir, fusionar o cerrar el PR
+      actions: write        # lanzar CI y el despliegue de Pages
+      issues: write         # dejar un aviso visible si no se completa
+    env:
+      # Vacío en las ejecuciones programadas: el catálogo usa el reloj real.
+      CL_NOW: ${{ inputs.simular }}
+      ALERT_TITLE: La actualización automática del catálogo no se completó
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+
+      - name: Regenerar con la fecha
+        id: refresh
+        run: npm run refresh
+
+      - name: Suite de pruebas sobre lo regenerado
+        if: steps.refresh.outputs.changed == 'true'
+        run: npm test
+
+      # Los valores viajan por `env:` y nunca interpolados dentro del `run:`,
+      # que es por donde entran las inyecciones en Actions.
+      - name: Abrir el PR, esperar los checks obligatorios y fusionar
+        if: steps.refresh.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          SIMULATED: ${{ inputs.simular }}
+        run: bash scripts/refresh-catalog-pr.sh
+
+      - name: Escalar el fallo a un issue visible
+        if: failure() && inputs.simular == ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          REPO_URL: ${{ github.server_url }}/${{ github.repository }}
+        run: |
+          set -euo pipefail
+          rama="${RAMA:-}"
+          if [ -n "${rama}" ]; then
+            manual="Lo regenerado ya está en la rama ${rama}: ábrelo como PR en ${REPO_URL}/compare/main...${rama}?expand=1 y fusiónalo cuando pasen los checks."
+          else
+            manual="Arréglalo a mano: \`npm run refresh\`, revisa el resultado, súbelo en un PR y fusiónalo cuando pasen los checks."
+          fi
+          cuerpo="$(printf '%s\n\n%s\n\n%s\n\n%s' \
+            "La ejecución del $(date -u '+%d/%m/%Y a las %H:%M UTC') no terminó de publicar el catálogo regenerado. La web visible ya muestra los precios correctos (los calcula el navegador), pero el JSON-LD, los markdown y catalog.json siguen con los anteriores y la suite falla hasta que se publiquen." \
+            "Log completo: ${RUN_URL}" \
+            "${manual}" \
+            "Causas habituales: el repositorio no permite que Actions abra PRs (Settings → Actions → General → «Allow GitHub Actions to create and approve pull requests»), una caída de GitHub Actions o una prueba en rojo. Cierra este aviso cuando esté publicado; la siguiente ejecución que lo consiga lo cierra sola.")"
+          abierto="$(gh issue list --state open --limit 100 --json number,title \
+            --jq 'map(select(.title == env.ALERT_TITLE)) | .[0].number // empty')"
+          if [ -n "${abierto}" ]; then
+            gh issue comment "${abierto}" --body "${cuerpo}"
+          else
+            gh issue create --title "${ALERT_TITLE}" --body "${cuerpo}"
+          fi

@@ -1,0 +1,92 @@
+#!/usr/bin/env bash
+# Lo llama .github/workflows/refresh-catalog.yml cuando `npm run refresh` cambió algo
+# porque una promoción abrió o cerró. Sube lo regenerado a una rama, abre el PR, lanza
+# CI sobre ella (lo que hace el GITHUB_TOKEN no dispara workflows), espera a que `main`
+# lo admita —CI y Cloudflare Pages en verde— y lo fusiona. Después lanza el despliegue
+# de GitHub Pages; Cloudflare publica solo al ver el push a `main`.
+#
+# Con SIMULATED (la fecha de un simulacro) hace todo menos fusionar: comprueba que los
+# checks pasan con esa fecha, cierra el PR y borra la rama.
+set -euo pipefail
+
+: "${GH_TOKEN:?falta GH_TOKEN}" "${GH_REPO:?falta GH_REPO}"
+simulated="${SIMULATED:-}"
+dia="$(TZ=America/Guayaquil date +%F)"
+if [ -n "${simulated}" ]; then
+  rama="auto/simulacro-$(date -u +%Y%m%d%H%M%S)"
+  titulo="Simulacro del catálogo para ${simulated} (no se fusiona)"
+else
+  rama="auto/catalogo-${dia}"
+  titulo="Catálogo al día con las promociones del ${dia}"
+fi
+# El paso de aviso necesita la rama si algo falla más abajo.
+if [ -n "${GITHUB_ENV:-}" ]; then echo "RAMA=${rama}" >> "${GITHUB_ENV}"; fi
+
+git config user.name "github-actions[bot]"
+git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+gh auth setup-git
+git switch -c "${rama}"
+git add -A
+git commit -q -m "${titulo}" -m "Regenerado por refresh-catalog.yml: una promoción de js/products.js abrió o cerró y lo generado (JSON-LD, markdown, catalog.json y la franja superior del HTML) llevaba el precio anterior."
+# Una rama de hoy que ya exista es de un intento anterior: se reemplaza.
+git push --force origin "${rama}"
+
+pr="$(gh pr list --head "${rama}" --state open --json number --jq '.[0].number // empty')"
+if [ -z "${pr}" ]; then
+  cuerpo="$(printf '%s\n\n%s\n\n%s' \
+    "Una promoción de \`js/products.js\` abrió o cerró y lo generado llevaba el precio anterior. Esto es la salida de \`npm run refresh\` con la fecha del ${dia} en Ecuador." \
+    "La web visible ya había cambiado sola en el navegador; este PR pone al día lo que leen Google y los agentes (JSON-LD, markdown, \`catalog.json\`, \`llms.txt\`) y la franja superior escrita en el HTML." \
+    "Lo abrió y lo fusiona \`.github/workflows/refresh-catalog.yml\` en cuanto pasan los checks obligatorios de \`main\`.")"
+  url="$(gh pr create --base main --head "${rama}" --title "${titulo}" --body "${cuerpo}")"
+  pr="${url##*/}"
+fi
+echo "PR #${pr}: ${rama}"
+
+# Espera a que `main` admita el PR. CI se lanza una vez por cada versión de la rama:
+# relanzarlo sobre la misma lo cancelaría (concurrencia de ci.yml) y daría un falso fallo.
+limite=$(( $(date +%s) + 30 * 60 ))
+sha_con_ci=""
+while :; do
+  sha="$(gh pr view "${pr}" --json headRefOid --jq .headRefOid)"
+  if [ "${sha}" != "${sha_con_ci}" ]; then
+    gh workflow run ci.yml --ref "${rama}"
+    sha_con_ci="${sha}"
+  fi
+  estado="$(gh pr view "${pr}" --json mergeStateStatus --jq .mergeStateStatus)"
+  case "${estado}" in
+    CLEAN|UNSTABLE|HAS_HOOKS) break ;;
+    BEHIND) gh pr update-branch "${pr}" || true ;;
+    DIRTY) echo "::error::El PR #${pr} entra en conflicto con main."; exit 1 ;;
+  esac
+  fallidos="$(gh pr checks "${pr}" --required --json name,bucket \
+    --jq '[.[] | select(.bucket == "fail" or .bucket == "cancel") | .name] | join(", ")' || true)"
+  if [ -n "${fallidos}" ]; then
+    echo "::error::Fallaron checks obligatorios del PR #${pr}: ${fallidos}"
+    exit 1
+  fi
+  if [ "$(date +%s)" -ge "${limite}" ]; then
+    echo "::error::El PR #${pr} no quedó listo para fusionar en 30 minutos (estado: ${estado})."
+    exit 1
+  fi
+  sleep 30
+done
+
+if [ -n "${simulated}" ]; then
+  gh pr close "${pr}" --delete-branch \
+    --comment "Simulacro completado: con la fecha ${simulated} los checks obligatorios pasan y el PR se podía fusionar. No se fusiona."
+  echo "Simulacro completado sin fusionar."
+  exit 0
+fi
+
+gh pr merge "${pr}" --squash --delete-branch
+gh workflow run deploy-pages.yml --ref main
+echo "PR #${pr} fusionado; Cloudflare publica el push a main y GitHub Pages queda lanzado."
+
+# Si quedaba abierto un aviso de un intento fallido, ya no aplica.
+if [ -n "${ALERT_TITLE:-}" ]; then
+  abierto="$(gh issue list --state open --limit 100 --json number,title \
+    --jq 'map(select(.title == env.ALERT_TITLE)) | .[0].number // empty')"
+  if [ -n "${abierto}" ]; then
+    gh issue close "${abierto}" --comment "Resuelto: el PR #${pr} actualizó y publicó el catálogo."
+  fi
+fi

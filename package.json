@@ -22,6 +22,7 @@
     "gen": "npm run gen:products && npm run gen:jsonld",
     "gen:products": "node scripts/gen-products.mjs",
     "gen:jsonld": "node scripts/gen-jsonld.mjs",
+    "refresh": "node scripts/refresh-catalog.mjs",
     "set-origin": "node scripts/set-origin.mjs",
     "serve": "node scripts/serve.mjs",
     "test": "node --test --test-concurrency=1 tests/*.test.mjs",
