@@ -309,14 +309,19 @@ function homeMarkdown() {
 
 // Catálogo completo en markdown (/tienda.md).
 function storeMarkdown() {
-  const [first] = catalog.CL_PRODUCTS;
+  const pricing = catalog.CL_PRODUCT_PRICING;
+  // Con promoción viva el precio de cabecera es el de catálogo y la promoción va aparte:
+  // el frasco de la primera fórmula ya no vale por todas, y los packs pueden no ofrecerse.
+  const promoNote = catalog.clPromotedProducts().length
+    ? " Promoción vigente: " + agentDocs.promoSummary() + "."
+    : "";
   return [
     "# Tienda " + SITE_NAME + " — catálogo completo",
     "",
     "> Las siete fórmulas de Chic&Love disponibles en Ecuador, en gomitas (gummies), con precio,",
-    "> objetivo, sabor, dosis y activos. Precio por frasco de 60 gummies: " + clMoney(clSinglePrice(first)) +
-      ", pack x2 " + clMoney(first.pricePack) + ", pack x3 " + clMoney(first.pricePack3) +
-      ". Envío gratis en compras desde " + clFreeShippingLabel() + ". IVA incluido.",
+    "> objetivo, sabor, dosis y activos. Precio de catálogo por frasco de 60 gummies: " + clMoney(pricing.price) +
+      ", pack x2 " + clMoney(pricing.pricePack) + ", pack x3 " + clMoney(pricing.pricePack3) + "." + promoNote +
+      " Envío gratis en compras desde " + clFreeShippingLabel() + ". IVA incluido.",
     "",
     "Los pedidos se cierran por WhatsApp (" + catalog.clWhatsAppDisplay() + ") con pago por",
     "transferencia bancaria. Los precios publicados incluyen IVA y son los vigentes en la tienda.",
@@ -902,8 +907,11 @@ function agentsMarkdown() {
     "- **Precio:** " + clMoney(catalog.CL_PRODUCT_PRICING.price) + " el frasco de " +
       catalog.CL_SERVINGS + " gummies (pack x2 " + clMoney(catalog.CL_PRODUCT_PRICING.pricePack) +
       ", pack x3 " + clMoney(catalog.CL_PRODUCT_PRICING.pricePack3) + "). Precio más bajo vigente " +
-      "hoy en el catálogo: " + cheapest + ", por una promoción con fecha de cierre. Envío gratis " +
-      "en compras desde " + clFreeShippingLabel() + ". IVA incluido. El precio autoritativo de " +
+      "hoy en el catálogo: " + cheapest + "." +
+      (catalog.clPromotedProducts().length
+        ? " Promoción con fecha de cierre: " + agentDocs.promoSummary() + "."
+        : "") +
+      " Envío gratis en compras desde " + clFreeShippingLabel() + ". IVA incluido. El precio autoritativo de " +
       "cada fórmula es el de su ficha y el de [/catalog.json](" + BASE + "catalog.json).",
     "- **Devoluciones:** puedes solicitar una devolución o cambio dentro de los 15 días posteriores",
     "  a recibir tu pedido, si el frasco sigue cerrado y con el sello intacto.",
@@ -1059,12 +1067,9 @@ function aiProfile() {
    llmstxt.org y la comprueba tests/site-artifacts.test.mjs. */
 function llmsIndex() {
   const pricing = catalog.CL_PRODUCT_PRICING;
-  const promos = catalog.CL_PRODUCTS.filter((p) => clActivePromo(p));
-  const promoNote = promos.length
-    ? " Hay " + (promos.length === 1 ? "una promoción" : promos.length + " promociones") +
-      " viva" + (promos.length === 1 ? "" : "s") + " con fecha de cierre (" +
-      promos.map((p) => p.name + " a " + clMoney(clSinglePrice(p))).join("; ") +
-      "), así que el precio vigente de cada fórmula es el de su ficha."
+  const promoNote = catalog.clPromotedProducts().length
+    ? " Promoción con fecha de cierre: " + agentDocs.promoSummary() +
+      ". El precio vigente de cada fórmula es el de su ficha."
     : "";
 
   // Las respuestas rápidas enlazan encabezados reales de /respuestas.md: se leen del

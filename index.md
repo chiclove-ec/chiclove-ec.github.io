@@ -15,13 +15,13 @@ consentimiento.
 
 ## Colección
 
-- [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte.md): Cabello más fuerte. Uñas de acero. Cabello y uñas, sabor arándanos, $29.99.
+- [Hair & Nails Forte](https://chiclove-ec.com/hair-nails-forte.md): Cabello más fuerte. Uñas de acero. Cabello y uñas, sabor arándanos, $22.49.
 - [Radiant Skin Vitamins](https://chiclove-ec.com/radiant-skin.md): Tu piel, en modo glow. Piel radiante, sabor frutos rojos, $18.00.
-- [Vinagre de Manzana](https://chiclove-ec.com/vinagre-de-manzana.md): Digestión ligera. Digestión y balance, sabor manzana, $29.99.
-- [Sleep Vitamins](https://chiclove-ec.com/sleep-vitamins.md): Duerme profundo. Despierta increíble. Sueño reparador, sabor fresa, $29.99.
-- [Sexual Booster Women](https://chiclove-ec.com/sexual-booster-women.md): Enciende tu energía. Energía íntima, sabor cereza, $29.99.
-- [Sexual Booster Men](https://chiclove-ec.com/sexual-booster-men.md): Rendimiento al máximo. Energía íntima, sabor cereza, $29.99.
-- [Anti-Stress Gummies](https://chiclove-ec.com/anti-stress.md): Serenidad para días intensos. Calma y enfoque, sabor naranja, $29.99.
+- [Vinagre de Manzana](https://chiclove-ec.com/vinagre-de-manzana.md): Digestión ligera. Digestión y balance, sabor manzana, $22.49.
+- [Sleep Vitamins](https://chiclove-ec.com/sleep-vitamins.md): Duerme profundo. Despierta increíble. Sueño reparador, sabor fresa, $22.49.
+- [Sexual Booster Women](https://chiclove-ec.com/sexual-booster-women.md): Enciende tu energía. Energía íntima, sabor cereza, $22.49.
+- [Sexual Booster Men](https://chiclove-ec.com/sexual-booster-men.md): Rendimiento al máximo. Energía íntima, sabor cereza, $22.49.
+- [Anti-Stress Gummies](https://chiclove-ec.com/anti-stress.md): Serenidad para días intensos. Calma y enfoque, sabor naranja, $22.49.
 
 ## Preguntas frecuentes
 

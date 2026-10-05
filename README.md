@@ -310,7 +310,16 @@ un agente sin JavaScript: tras editar el catálogo o abrir una promoción ejecut
 id. Cada entrada define el precio promocional, la ventana (`start` / `end`, en hora
 de Ecuador) y los textos que se muestran. `singleOnly: true` retira los packs
 mientras dure: a precio promocional costarían más que comprar frascos sueltos, y
-los packs que ya estuvieran guardados en un carrito se convierten a frascos.
+los packs que ya estuvieran guardados en un carrito se convierten a frascos. Una
+prueba (`tests/promotions.test.mjs`) exige `singleOnly` exactamente cuando 2 o 3
+frascos sueltos al precio de promo cuestan lo mismo o menos que el pack.
+
+Portada y tienda anuncian cada promoción en una banda, de mayor a menor descuento.
+Una fórmula sin `group` tiene banda propia, con su foto de tienda, y lleva a su
+ficha. Las que comparten `group` (mismo precio y mismas fechas) se anuncian juntas
+en una sola banda definida en `CL_PROMO_GROUPS` —título, color e imagen— que lleva
+a la tienda. La imagen del grupo `coleccion` es una composición de los frascos
+sobre el fondo de las fotos de tienda, con una versión vertical para móvil.
 
 La promoción **entra y sale sola** en las fechas indicadas: no hay que desplegar
 nada para que termine. La única excepción son los datos estructurados de las

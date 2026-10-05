@@ -12,3 +12,11 @@ Las personas y escenas se generaron el 19 de julio de 2026 con la herramienta in
 | `editorial-gummy.webp` | Hombre joven latino con top azul petróleo sosteniendo una taza llena de ositos rojo cereza, medias lunas azules, discos borgoña y verdes, y corazones borgoña de gomita. |
 
 Los archivos finales se exportaron a WebP sin metadatos incrustados. Este registro documenta el origen técnico de las imágenes y evita depender de fotografías de stock o de terceros para los modelos humanos del sitio.
+
+## Composiciones sin generación
+
+`promo-coleccion.webp`, `promo-coleccion-640.webp` y `promo-coleccion-movil.webp` (banda de
+la promoción de octubre de 2026) no usan generación de imágenes: son un montaje de material
+propio. El fondo y el podio salen de `store-radiant-skin.webp`, con el frasco retirado y el
+hueco rellenado con el degradado del propio fondo; los seis frascos se recortaron de
+`family-bottles.webp` y se colocaron encima con sombras suaves.

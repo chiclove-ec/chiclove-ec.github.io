@@ -305,9 +305,12 @@ test("la lista blanca del build publica todos los artefactos nuevos", () => {
 /* ---------- Coherencia con el catálogo ---------- */
 
 test("los precios publicados coinciden con el catálogo", () => {
+  // El precio de lista cuenta aunque ninguna fórmula lo cobre hoy: con todo el catálogo
+  // en promoción, «antes $29.99» y «precio de catálogo» siguen siendo datos reales.
   const allowed = new Set(
     catalog.CL_PRODUCTS.flatMap((p) => [
       catalog.clMoney(catalog.clSinglePrice(p)),
+      catalog.clMoney(p.price),
       catalog.clMoney(p.pricePack),
       catalog.clMoney(p.pricePack3)
     ]).concat(catalog.clMoney(catalog.CL_FREE_SHIPPING))

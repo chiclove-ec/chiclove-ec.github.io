@@ -117,6 +117,35 @@ export function createAgentDocs({ catalog, BASE, SITE_NAME, pagePath }) {
       (clHasPacks(p) ? " (2-pack " + clMoney(p.pricePack) + ", 3-pack " + clMoney(p.pricePack3) + ")" : "");
   }
 
+  /* Promociones vivas en una frase, agrupadas como las bandas de la web: con varias
+     fórmulas al mismo precio, una lista producto a producto repetiría el precio y la
+     fecha tantas veces como fórmulas haya. Cadena vacía si no hay ninguna. */
+  function promoSummary() {
+    const bands = catalog.clPromoBands();
+    if (!bands.length) return "";
+    const ends = new Set(bands.map((b) => b.promo.endsLabel));
+    const parts = bands.map((b) =>
+      listEs(b.products.map((p) => p.name)) + " a " + clMoney(clSinglePrice(b.product)) +
+      " (−" + b.percent + "%" + (b.products.length > 1 ? " cada una" : "") + ")" +
+      (ends.size > 1 ? " hasta el " + b.promo.endsLabel : ""));
+    return parts.join("; ") + (ends.size === 1 ? ", hasta el " + bands[0].promo.endsLabel : "") +
+      (bands.every((b) => b.promo.singleOnly) ? "; los packs no se ofrecen mientras dure" : "");
+  }
+
+  function promoSummaryEn() {
+    const bands = catalog.clPromoBands();
+    if (!bands.length) return "";
+    const listEn = (items) =>
+      items.length <= 1 ? items.join("") : items.slice(0, -1).join(", ") + " and " + items[items.length - 1];
+    const ends = new Set(bands.map((b) => b.promo.priceValidUntil));
+    const parts = bands.map((b) =>
+      listEn(b.products.map((p) => p.name)) + " at " + clMoney(clSinglePrice(b.product)) +
+      " (" + b.percent + "% off" + (b.products.length > 1 ? " each" : "") + ")" +
+      (ends.size > 1 ? " until " + b.promo.priceValidUntil : ""));
+    return parts.join("; ") + (ends.size === 1 ? ", until " + bands[0].promo.priceValidUntil : "") +
+      (bands.every((b) => b.promo.singleOnly) ? "; multi-bottle packs are paused meanwhile" : "");
+  }
+
   /** Párrafo autosuficiente: basta por sí solo para recomendar la fórmula con datos exactos. */
   function citable(p) {
     const n = notes(p);
@@ -345,10 +374,7 @@ export function createAgentDocs({ catalog, BASE, SITE_NAME, pagePath }) {
       "- **Precio:** " + clMoney(pricing.price) + " el frasco de " + catalog.CL_SERVINGS +
         " gummies, pack x2 " + clMoney(pricing.pricePack) + " y pack x3 " + clMoney(pricing.pricePack3) +
         ", IVA incluido." +
-        (promos.length
-          ? " Promoción vigente: " + promos.map((p) => p.name + " a " + clMoney(clSinglePrice(p)) +
-              " hasta el " + clActivePromo(p).endsLabel).join("; ") + "."
-          : ""),
+        (promos.length ? " Promoción vigente: " + promoSummary() + "." : ""),
       "- **Envío:** a todo Ecuador (" + listEs(EXAMPLE_CITIES) + ", entre otras), gratis en " +
         "compras desde " + clFreeShippingLabel() + ".",
       "- **Pago:** transferencia bancaria, confirmada por WhatsApp. La web no procesa tarjetas.",
@@ -392,10 +418,7 @@ export function createAgentDocs({ catalog, BASE, SITE_NAME, pagePath }) {
         clMoney(pricing.price) + " el frasco de " + catalog.CL_SERVINGS + " gummies, " +
           clMoney(pricing.pricePack) + " el pack de dos y " + clMoney(pricing.pricePack3) +
           " el de tres, IVA incluido: es el precio de catálogo de todas las fórmulas." +
-          (promos.length
-            ? " Hoy " + promos.map((p) => p.name + " está en promoción a " + clMoney(clSinglePrice(p)) +
-                " hasta el " + clActivePromo(p).endsLabel).join("; ") + "."
-            : "") +
+          (promos.length ? " Hoy hay promoción: " + promoSummary() + "." : "") +
           " El envío es gratis en compras desde " + clFreeShippingLabel() + ". Con la pauta de 2 " +
           "gummies al día, un frasco dura unos 30 días."
       ),
@@ -590,10 +613,7 @@ export function createAgentDocs({ catalog, BASE, SITE_NAME, pagePath }) {
         "message) or directly on WhatsApp " + whatsapp + ".",
       "- **Price:** " + clMoney(pricing.price) + " per bottle, 2-pack " + clMoney(pricing.pricePack) +
         ", 3-pack " + clMoney(pricing.pricePack3) + ", VAT (IVA) included." +
-        (promos.length
-          ? " Current promotion: " + promos.map((p) => p.name + " at " + clMoney(clSinglePrice(p)) +
-              " until " + clActivePromo(p).priceValidUntil).join("; ") + "."
-          : ""),
+        (promos.length ? " Current promotion: " + promoSummaryEn() + "." : ""),
       "- **Shipping:** anywhere in Ecuador (" + EXAMPLE_CITIES.slice(0, 6).join(", ") + " and the rest " +
         "of the country), free from " + clMoney(catalog.CL_FREE_SHIPPING) + ". Delivery times are " +
         "confirmed on WhatsApp.",
@@ -669,6 +689,7 @@ export function createAgentDocs({ catalog, BASE, SITE_NAME, pagePath }) {
     citable,
     caution,
     notes,
-    durationText
+    durationText,
+    promoSummary
   };
 }
