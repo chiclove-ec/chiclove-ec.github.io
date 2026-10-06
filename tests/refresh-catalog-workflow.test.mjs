@@ -73,6 +73,11 @@ test("fusiona solo cuando main lo admite y el simulacro nunca fusiona", () => {
   assert.match(script, /BEHIND\)[\s\S]*?exit 1 ;;/, "si main avanza no se fusiona un commit sin verificar");
   const simulacro = script.indexOf('if [ -n "${simulated}" ]; then\n  gh pr close');
   assert.ok(simulacro > 0 && simulacro < script.indexOf("gh pr merge"), "el simulacro debe cerrar el PR antes de llegar a fusionar");
+  // El CI `pull_request` del PR del bot espera una aprobación que nunca llega: se cancela
+  // antes de fusionar o cerrar, o caducaría en rojo (comprobado el 2026-10-06).
+  const cancel = script.indexOf('gh run cancel "${run}"');
+  assert.ok(cancel > 0 && cancel < script.indexOf("gh pr close") && cancel < script.indexOf("gh pr merge"),
+    "hay que cancelar el CI pendiente del bot antes de cerrar o fusionar");
   // CI y Cloudflare comprueban con el reloj real: el simulacro ensaya con un commit vacío.
   assert.match(script, /git reset -q --hard\n  git commit -q --allow-empty/);
   assert.match(workflow, /if: failure\(\) && inputs\.simular == ''/, "un simulacro fallido no debe abrir avisos");
