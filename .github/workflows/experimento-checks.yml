@@ -1,0 +1,52 @@
+name: Experimento checks del bot (temporal, no fusionar)
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/experimento-checks.yml
+
+permissions:
+  contents: read
+
+jobs:
+  probar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      pull-requests: write
+      statuses: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          persist-credentials: false
+      - name: PR vacío del bot con estado de commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          rama="auto/experimento-$(date -u +%Y%m%d%H%M%S)"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          gh auth setup-git
+          git switch -c "${rama}"
+          git commit -q --allow-empty -m "Experimento: ¿cuenta un estado del GITHUB_TOKEN como check obligatorio?"
+          git push -q origin "${rama}"
+          sha="$(git rev-parse HEAD)"
+          url="$(gh pr create --base main --head "${rama}" --title "Experimento temporal (no fusionar)" --body "Se cierra solo.")"
+          pr="${url##*/}"
+          gh api "repos/${GH_REPO}/statuses/${sha}" -f state=success \
+            -f context="Pruebas, build y coherencia de lo generado" \
+            -f description="Experimento" >/dev/null
+          for i in $(seq 1 20); do
+            estado="$(gh pr view "${pr}" --json mergeStateStatus --jq .mergeStateStatus)"
+            rollup="$(gh api graphql -F n="${pr}" -f query='query($n:Int!){repository(owner:"chiclove-ec",name:"chiclove-ec.github.io"){pullRequest(number:$n){commits(last:1){nodes{commit{statusCheckRollup{contexts(first:20){nodes{__typename ... on CheckRun{name conclusion isRequired(pullRequestNumber:$n)} ... on StatusContext{context state creator{login} isRequired(pullRequestNumber:$n)}}}}}}}}}}' --jq '[.data.repository.pullRequest.commits.nodes[0].commit.statusCheckRollup.contexts.nodes[] | "\(.name // .context)=\(.conclusion // .state) req=\(.isRequired)"] | join("; ")')"
+            echo "intento ${i}: ${estado} :: ${rollup}"
+            if [ "${estado}" = "CLEAN" ]; then echo "RESULTADO: el estado del GITHUB_TOKEN CUMPLE el check obligatorio"; break; fi
+            sleep 30
+          done
+          [ "${estado}" = "CLEAN" ] || echo "RESULTADO: NO quedó CLEAN"
+          gh pr close "${pr}" --delete-branch --comment "Experimento terminado." >/dev/null
