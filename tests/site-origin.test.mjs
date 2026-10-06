@@ -232,11 +232,15 @@ test("el despliegue manual a Cloudflare pasa por CI y exige sus secretos", () =>
 });
 
 test("todas las acciones de GitHub están ancladas a un SHA", () => {
+  let checked = 0;
   for (const file of tracked) {
     if (!file.startsWith(".github/workflows/")) continue;
-    for (const [, ref] of read(file).matchAll(/uses:\s*([^\s]+)/g)) {
+    // Solo la clave `uses:` de un paso o de un job: «statuses: write» no es una acción.
+    for (const [, ref] of read(file).matchAll(/^\s*(?:-\s+)?uses:\s*([^\s#]+)/gm)) {
+      checked++;
       if (ref.startsWith("./")) continue; // workflow reutilizable del propio repositorio
       assert.match(ref, /@[0-9a-f]{40}$/, `${file} usa ${ref} sin anclar a un SHA`);
     }
   }
+  assert.ok(checked >= 10, `solo se encontraron ${checked} acciones: el patrón dejó de reconocerlas`);
 });

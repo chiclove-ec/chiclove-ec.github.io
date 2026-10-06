@@ -5,8 +5,9 @@ name: Refresh catalog on promo dates
 # —JSON-LD, markdown, catalog.json, llms.txt y la franja superior escrita en el HTML—,
 # lleva los precios escritos y se queda con los de la promo cerrada; además la suite
 # falla, porque compara lo publicado con el catálogo de hoy. Este workflow lo regenera
-# en cuanto cambia, abre un PR, espera a los checks obligatorios de `main` (CI y
-# Cloudflare Pages), lo fusiona y despliega. Sin nada que cambiar, termina en segundos.
+# en cuanto cambia, abre un PR, cumple los checks obligatorios de `main` (ejecuta él
+# mismo los pasos de CI; Cloudflare Pages construye la rama), lo fusiona y despliega.
+# Sin nada que cambiar, termina en segundos.
 on:
   # 05:07 UTC = 00:07 en Ecuador: siete minutos después de que una promo abra o cierre.
   # Minutos lejos del 0 (ver weekly-analytics-report.yml); las pasadas de las 07:37 y
@@ -18,7 +19,7 @@ on:
   workflow_dispatch:
     inputs:
       simular:
-        description: "Simulacro sin fusionar: fecha ISO a simular, p. ej. 2026-11-01T00:00:00-05:00. Abre el PR, espera los checks y lo cierra."
+        description: "Simulacro sin fusionar: fecha ISO a simular, p. ej. 2026-11-01T00:00:00-05:00. Regenera y prueba con esa fecha, y ensaya el PR con un commit vacío que cierra sin fusionar."
         required: false
         default: ""
 
@@ -37,7 +38,8 @@ jobs:
     permissions:
       contents: write       # empujar la rama con lo regenerado
       pull-requests: write  # abrir, fusionar o cerrar el PR
-      actions: write        # lanzar CI y el despliegue de Pages
+      statuses: write       # publicar el check de CI que el propio job ejecuta
+      actions: write        # lanzar el despliegue de GitHub Pages tras fusionar
       issues: write         # dejar un aviso visible si no se completa
     env:
       # Vacío en las ejecuciones programadas: el catálogo usa el reloj real.
@@ -71,6 +73,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
           SIMULATED: ${{ inputs.simular }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: bash scripts/refresh-catalog-pr.sh
 
       - name: Escalar el fallo a un issue visible

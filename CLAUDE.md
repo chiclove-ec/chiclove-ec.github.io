@@ -107,8 +107,9 @@ dos veces.
   `js/frame-guard.js`.
 - La promoción de `CL_PROMOS` entra y sale sola por fecha en el navegador. Lo
   generado (JSON-LD, markdown, `catalog.json`, la franja superior del HTML) lo pone
-  al día `refresh-catalog.yml` a las 00:07 de Ecuador: regenera, abre un PR, espera
-  a CI y Cloudflare, lo fusiona y despliega. Hasta que se publique, la suite falla,
+  al día `refresh-catalog.yml` a las 00:07 de Ecuador: regenera, abre un PR, ejecuta
+  él mismo los pasos de CI y los publica como estado del commit (un CI lanzado a mano
+  no se asocia al PR), espera a Cloudflare, lo fusiona y despliega. Hasta que se publique, la suite falla,
   porque compara lo publicado con el catálogo de hoy. Para abrir el PR necesita que
   el repo tenga activado «Allow GitHub Actions to create and approve pull requests»;
   si no puede, deja la rama y un issue. A mano: `npm run refresh`, y

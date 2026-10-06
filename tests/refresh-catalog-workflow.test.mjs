@@ -31,7 +31,7 @@ test("regenera con el script del repositorio y solo actúa si algo cambió", () 
 
 test("pide solo los permisos que usa y no deja credenciales en el checkout", () => {
   assert.match(workflow, /^permissions:\n\s+contents: read/m, "el permiso por defecto debe ser de lectura");
-  for (const scope of ["contents: write", "pull-requests: write", "actions: write", "issues: write"]) {
+  for (const scope of ["contents: write", "pull-requests: write", "statuses: write", "actions: write", "issues: write"]) {
     assert.ok(workflow.includes(scope), `falta ${scope}`);
   }
   assert.doesNotMatch(workflow, /pull_request_target/);
@@ -45,19 +45,35 @@ test("ningún valor de GitHub se interpola dentro de un run:", () => {
   for (const body of runs) assert.doesNotMatch(body, /\$\{\{/, `interpolación en un run:\n${body}`);
 });
 
-test("lanza CI y el despliegue de Pages, que el GITHUB_TOKEN no dispara solo", () => {
-  assert.match(read(".github/workflows/ci.yml"), /^\s+workflow_dispatch:/m, "ci.yml no admite el lanzamiento manual");
+test("cumple el check obligatorio de CI ejecutando los mismos pasos que ci.yml", () => {
+  // Lo que hace el GITHUB_TOKEN no dispara ci.yml, y un CI con workflow_dispatch no se
+  // asocia al PR (comprobado el 2026-10-06): el script lo ejecuta y publica el estado.
+  const ci = read(".github/workflows/ci.yml");
+  const jobName = ci.match(/^\s+name: (.+)$/m)[1];
+  assert.ok(script.includes(`check="${jobName}"`), `el estado debe llamarse igual que el job de ci.yml («${jobName}»)`);
+  for (const step of ["npm test", "npm run build:github", "npm run gen"]) {
+    assert.ok(ci.includes(`run: ${step}`) || ci.includes(`  ${step}\n`), `ci.yml ya no ejecuta ${step}`);
+    assert.ok(script.includes(`env -u CL_NOW ${step}`), `el script no ejecuta ${step} con el reloj real`);
+  }
+  assert.match(script, /npm run gen\nif ! git diff --quiet; then/, "falta la coherencia de lo generado");
+  const verify = script.indexOf("env -u CL_NOW npm test");
+  assert.ok(verify > 0 && verify < script.indexOf("git push"), "hay que verificar antes de subir");
+  assert.match(script, /gh api "repos\/\$\{GH_REPO\}\/statuses\/\$\{sha\}" -f state=success -f context="\$\{check\}"/);
+  assert.match(script, /gh workflow run deploy-pages\.yml --ref main/, "el push del GITHUB_TOKEN no dispara GitHub Pages");
   assert.match(read(".github/workflows/deploy-pages.yml"), /^\s+workflow_dispatch:/m);
-  assert.match(script, /gh workflow run ci\.yml --ref "\$\{rama\}"/);
-  assert.match(script, /gh workflow run deploy-pages\.yml --ref main/);
 });
 
 test("fusiona solo cuando main lo admite y el simulacro nunca fusiona", () => {
   assert.match(script, /set -euo pipefail/);
-  assert.match(script, /CLEAN\|UNSTABLE\|HAS_HOOKS\) break/, "debe esperar a que main admita el PR");
+  assert.match(script, /CLEAN\|UNSTABLE\|HAS_HOOKS\) if \[ "\$\{obligatorios\}" = "true" \]; then break; fi/,
+    "debe esperar a que main admita el PR y a ver todos los obligatorios en verde");
   assert.match(script, /gh pr checks "\$\{pr\}" --required/, "debe cortar en cuanto falle un check obligatorio");
-  assert.match(script, /gh pr merge "\$\{pr\}" --squash/, "main exige historial lineal");
+  assert.match(script, /gh pr merge "\$\{pr\}" --squash --delete-branch --match-head-commit "\$\{sha\}"/,
+    "main exige historial lineal y solo se fusiona el commit verificado");
+  assert.match(script, /BEHIND\)[\s\S]*?exit 1 ;;/, "si main avanza no se fusiona un commit sin verificar");
   const simulacro = script.indexOf('if [ -n "${simulated}" ]; then\n  gh pr close');
   assert.ok(simulacro > 0 && simulacro < script.indexOf("gh pr merge"), "el simulacro debe cerrar el PR antes de llegar a fusionar");
+  // CI y Cloudflare comprueban con el reloj real: el simulacro ensaya con un commit vacío.
+  assert.match(script, /git reset -q --hard\n  git commit -q --allow-empty/);
   assert.match(workflow, /if: failure\(\) && inputs\.simular == ''/, "un simulacro fallido no debe abrir avisos");
 });
