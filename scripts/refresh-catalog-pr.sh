@@ -75,8 +75,12 @@ gh api "repos/${GH_REPO}/statuses/${sha}" -f state=success -f context="${check}"
 limite=$(( $(date +%s) + 30 * 60 ))
 while :; do
   estado="$(gh pr view "${pr}" --json mergeStateStatus --jq .mergeStateStatus)"
+  # UNSTABLE = obligatorios en verde y algún check opcional (CodeQL) aún sin terminar.
+  # Se confirma además con la lista de obligatorios: el estado agregado puede ir con retraso.
+  obligatorios="$(gh pr checks "${pr}" --required --json bucket \
+    --jq 'length > 0 and all(.[]; .bucket == "pass")' || true)"
   case "${estado}" in
-    CLEAN|UNSTABLE|HAS_HOOKS) break ;;
+    CLEAN|UNSTABLE|HAS_HOOKS) if [ "${obligatorios}" = "true" ]; then break; fi ;;
     BEHIND)
       # `main` avanzó: el commit validado ya no es el que se fusionaría. Mejor parar
       # que fusionar algo sin comprobar; la siguiente pasada lo rehace desde `main`.

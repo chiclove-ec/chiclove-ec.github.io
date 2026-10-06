@@ -65,7 +65,8 @@ test("cumple el check obligatorio de CI ejecutando los mismos pasos que ci.yml",
 
 test("fusiona solo cuando main lo admite y el simulacro nunca fusiona", () => {
   assert.match(script, /set -euo pipefail/);
-  assert.match(script, /CLEAN\|UNSTABLE\|HAS_HOOKS\) break/, "debe esperar a que main admita el PR");
+  assert.match(script, /CLEAN\|UNSTABLE\|HAS_HOOKS\) if \[ "\$\{obligatorios\}" = "true" \]; then break; fi/,
+    "debe esperar a que main admita el PR y a ver todos los obligatorios en verde");
   assert.match(script, /gh pr checks "\$\{pr\}" --required/, "debe cortar en cuanto falle un check obligatorio");
   assert.match(script, /gh pr merge "\$\{pr\}" --squash --delete-branch --match-head-commit "\$\{sha\}"/,
     "main exige historial lineal y solo se fusiona el commit verificado");
