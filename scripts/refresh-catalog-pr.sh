@@ -74,6 +74,18 @@ gh api "repos/${GH_REPO}/statuses/${sha}" -f state=success -f context="${check}"
 # Espera a que `main` admita el PR (falta Cloudflare, que construye la rama).
 limite=$(( $(date +%s) + 30 * 60 ))
 while :; do
+  # GitHub sí crea un CI `pull_request` para el PR del bot, pero lo deja esperando
+  # aprobación (trata al bot como quien contribuye por primera vez), sin jobs, y al
+  # cerrarse el PR caduca en rojo. Se aprueba: el CI corre de verdad sobre el PR y su
+  # resultado también cuenta como el check obligatorio. Si no se pudiera, basta el estado.
+  for run in $(gh run list --branch "${rama}" --workflow ci.yml --json databaseId,conclusion \
+      --jq '.[] | select(.conclusion == "action_required") | .databaseId'); do
+    if gh api -X POST "repos/${GH_REPO}/actions/runs/${run}/approve" >/dev/null; then
+      echo "CI del PR aprobado: ejecución ${run}"
+    else
+      echo "::warning::No se pudo aprobar el CI ${run}; el check obligatorio lo cubre el estado publicado."
+    fi
+  done
   estado="$(gh pr view "${pr}" --json mergeStateStatus --jq .mergeStateStatus)"
   # UNSTABLE = obligatorios en verde y algún check opcional (CodeQL) aún sin terminar.
   # Se confirma además con la lista de obligatorios: el estado agregado puede ir con retraso.
@@ -99,15 +111,6 @@ while :; do
     exit 1
   fi
   sleep 30
-done
-
-# GitHub crea un CI `pull_request` para el PR del bot, pero lo deja esperando aprobación
-# (trata al bot como quien contribuye por primera vez) y sin jobs, así que no cuenta para
-# nada; el check obligatorio ya lo cumple el estado de arriba. Al cerrarse el PR esa
-# ejecución caducaría en rojo: se cancela antes para no dejar un falso fallo cada mes.
-for run in $(gh run list --branch "${rama}" --workflow ci.yml --json databaseId,status \
-    --jq '.[] | select(.status != "completed") | .databaseId'); do
-  gh run cancel "${run}" || true
 done
 
 if [ -n "${simulated}" ]; then
