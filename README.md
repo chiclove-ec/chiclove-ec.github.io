@@ -331,8 +331,11 @@ reintenta a las 02:37 y a las 08:07:
 1. `npm run refresh` regenera con la fecha del día y, si algo cambió, adelanta
    `contentModified` para que `dateModified` y el sitemap avisen a los buscadores.
 2. Pasa la suite, sube lo regenerado a la rama `auto/catalogo-<fecha>` y abre el PR.
-3. Lanza CI sobre la rama (lo que hace el `GITHUB_TOKEN` no dispara workflows),
-   espera a que `main` lo admita —CI y Cloudflare Pages en verde— y lo fusiona.
+3. Cumple los dos checks obligatorios de `main`. El de CI lo ejecuta él mismo
+   —los tres pasos de `ci.yml`, sobre el commit exacto que sube— y lo publica como
+   estado de ese commit: lo que hace el `GITHUB_TOKEN` no dispara `ci.yml`, y un CI
+   lanzado a mano no se asocia al PR. El de Cloudflare Pages llega al construirse
+   la rama. Con los dos en verde, fusiona ese mismo commit.
 4. Cloudflare publica el push a `main`; el workflow lanza además GitHub Pages.
 
 Si no llega al final, deja la rama y un issue con el enlace para abrir el PR a
@@ -345,8 +348,11 @@ npm run refresh                                       # con la fecha de hoy
 npm run refresh -- --now=2026-11-01T00:00:00-05:00    # cómo quedará al cerrar octubre
 ```
 
-Desde Actions, *Run workflow* con el campo `simular` hace un simulacro completo:
-abre el PR con esa fecha, espera los checks y lo cierra sin fusionar.
+Desde Actions, *Run workflow* con el campo `simular` hace un simulacro: regenera y
+pasa la suite con esa fecha, y ensaya el circuito del PR (permisos, checks,
+espera) con un commit vacío que cierra sin fusionar. El commit es vacío porque CI y
+Cloudflare comprueban con el reloj real: con el contenido de otra fecha fallarían
+siempre.
 
 ## Build seguro
 

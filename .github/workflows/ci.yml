@@ -2,13 +2,11 @@ name: CI
 
 # En `main` no se dispara sola: la lanza deploy-pages.yml antes de publicar,
 # de modo que un fallo de CI impide el despliegue en lugar de correr en paralelo.
-# `workflow_dispatch` es para refresh-catalog.yml: los PR que abre el GITHUB_TOKEN no
-# disparan `pull_request`, así que lanza CI a mano sobre su rama para que el check
-# obligatorio aparezca en el PR.
+# Los PR de refresh-catalog.yml no la disparan (son del GITHUB_TOKEN): ese workflow
+# ejecuta estos mismos pasos y publica el resultado con el nombre de este check.
 on:
   pull_request:
   workflow_call:
-  workflow_dispatch:
 
 permissions:
   contents: read
