@@ -101,6 +101,15 @@ while :; do
   sleep 30
 done
 
+# GitHub crea un CI `pull_request` para el PR del bot, pero lo deja esperando aprobación
+# (trata al bot como quien contribuye por primera vez) y sin jobs, así que no cuenta para
+# nada; el check obligatorio ya lo cumple el estado de arriba. Al cerrarse el PR esa
+# ejecución caducaría en rojo: se cancela antes para no dejar un falso fallo cada mes.
+for run in $(gh run list --branch "${rama}" --workflow ci.yml --json databaseId,status \
+    --jq '.[] | select(.status != "completed") | .databaseId'); do
+  gh run cancel "${run}" || true
+done
+
 if [ -n "${simulated}" ]; then
   gh pr close "${pr}" --delete-branch \
     --comment "Simulacro completado: el PR del bot quedó fusionable (${estado}) con los checks obligatorios en verde. No se fusiona."
