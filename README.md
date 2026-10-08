@@ -78,7 +78,7 @@ propio y `dist/` (el único artefacto publicable) se arma copiando por lista bla
 | `.editorconfig`, `.gitattributes`, `.nvmrc` | Convenciones de formato, finales de línea y versión de Node |
 | `CONTRIBUTING.md`, `CLAUDE.md` | Flujo de trabajo del repositorio, para personas y para agentes |
 | `SECURITY.md`, `LICENSE` | Política de reporte de vulnerabilidades y licencia propietaria |
-| `docs/` | Documentación de contexto; hoy, el diseño original del sitio (histórico) |
+| `docs/` | Documentación de diseño y desarrollo: estándares canónicos de UI/UX y arquitectura (`docs/estandares-de-diseno-y-desarrollo.md`), promociones mensuales y diseño histórico |
 
 ## Cómo verlo
 
@@ -526,6 +526,21 @@ curl -sI "$SITE/tienda.md" | grep -i content-type      # text/markdown
 
 Si `.md` no saliera como `text/markdown`, los agentes siguen leyéndolo igual (el
 contenido es texto plano) y `llms.txt` ya avisa de cómo pedirlo.
+
+## Estándares de diseño y desarrollo
+
+La especificación canónica y exhaustiva para mantener la estética uniforme, el sistema de diseño
+y la calidad del código se encuentra en [`docs/estandares-de-diseno-y-desarrollo.md`](docs/estandares-de-diseno-y-desarrollo.md).
+
+Principios clave que todo agente y desarrollador debe seguir:
+- **Estética editorial, cálida y dopaminérgica:** Uso exclusivo de los tokens oficiales de `css/styles.css`
+  (`--paper` #f7f4ef, `--card` #fffdfb, `--ink` #111112, `--muted` #716a63, `--line` rgba(19, 19, 19, 0.09)
+  y los acentos de las 7 fórmulas).
+- **Tipografía de sistema:** `ui-rounded`/`system-ui` fluido con `clamp()`. Sin Google Fonts para respetar
+  la CSP y maximizar la velocidad.
+- **Sin estilos inline:** La CSP no permite `unsafe-inline`. Toda variación visual se apoya en clases de utilidad.
+- **Mobile-First estricto:** Cero desbordamiento horizontal (`scrollWidth - clientWidth === 0`) verificado en 320px y 390px.
+- **Verificación obligatoria:** Ejecución de `npm run gen && npm run check` antes de cualquier commit o pull request.
 
 ## Seguridad
 

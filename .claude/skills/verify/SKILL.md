@@ -50,8 +50,8 @@ Flujos que importan:
   excluyen el producto; el JSON-LD `Product` trae oferta e InStock.
 - `producto.html?id=anti-stress` (heredada): sigue funcionando y canonicaliza a
   `/anti-stress.html`.
-- `producto.html?id=<inválido>` → fallback al primer producto (sin crash).
-- Móvil 390px: burger abre menú; `scrollWidth - clientWidth` debe ser 0.
+- Móvil 320px y 390px: burger abre menú; `document.documentElement.scrollWidth - document.documentElement.clientWidth` debe ser exactamente 0.
+- Uniformidad visual: verificar que se respetan los tokens y principios de [`docs/estandares-de-diseno-y-desarrollo.md`](../../../docs/estandares-de-diseno-y-desarrollo.md) (paleta `--paper`/`--card`/`--ink`, botones en píldora, micro-interacciones hover).
 
 ## Gotchas
 
@@ -63,3 +63,4 @@ Flujos que importan:
 - No usar estilos inline en HTML: la CSP no lleva `unsafe-inline` en style-src.
 - La analítica no carga hasta que se acepta el consentimiento: para probar los
   eventos hay que aceptar el banner primero.
+
