@@ -105,8 +105,18 @@ dos veces.
   (`IntersectionObserver`): para capturas full-page hay que scrollear primero.
 - `frame-ancestors` no funciona por `<meta>`; en GitHub Pages lo cubre
   `js/frame-guard.js`.
-- La promoción de `CL_PROMOS` entra y sale sola por fecha en el navegador. Lo
-  generado (JSON-LD, markdown, `catalog.json`, la franja superior del HTML) lo pone
+- La promoción de `CL_PROMOS` entra y sale sola por fecha en el navegador. La
+  especificación técnica exhaustiva y el procedimiento operativo mes a mes están
+  en [`docs/promociones-mensuales.md`](docs/promociones-mensuales.md). Cada mes,
+  las promociones deben incorporar:
+  1. Panel de promoción en inicio y tienda (`data-promo-band`), con kicker («Solo en <mes>»),
+     badge («−XX%»), precios, CTA y foto editorial. Fórmulas con igual descuento se
+     agrupan en una banda (`group` en `CL_PROMO_GROUPS`).
+  2. Etiquetas en secciones de productos con descuento: borde `.is-promo`, chapa
+     `.pcard-promo-tag`, precio anterior tachado, línea secundaria (`−XX% en <mes>`)
+     y píldora `.pcard-saving`. En ficha individual, aviso `#pd-promo` y variante rebajada.
+  3. `singleOnly: true` obligatorio si frascos sueltos salen más baratos que los packs.
+  Lo generado (JSON-LD, markdown, `catalog.json`, la franja superior del HTML) lo pone
   al día `refresh-catalog.yml` a las 00:07 de Ecuador: regenera, abre un PR, ejecuta
   él mismo los pasos de CI y los publica como estado del commit (un CI lanzado a mano
   no se asocia al PR), espera a Cloudflare, lo fusiona y despliega. Hasta que se publique, la suite falla,
@@ -114,6 +124,7 @@ dos veces.
   el repo tenga activado «Allow GitHub Actions to create and approve pull requests»;
   si no puede, deja la rama y un issue. A mano: `npm run refresh`, y
   `npm run refresh -- --now=<ISO>` simula cualquier fecha.
+
 - **Nada de `aggregateRating` ni `review` mientras no haya reseñas reales.** Search
   Console avisa de que faltan en los «fragmentos de producto». Son avisos **no
   críticos**: la ficha ya califica por `offers`, y Google lo dice en el propio aviso.
