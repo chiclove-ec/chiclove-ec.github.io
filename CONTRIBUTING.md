@@ -83,14 +83,31 @@ artefacto: va a la lista `forbidden` de `scripts/build.mjs` y a `.vercelignore`.
 ## Promociones
 
 `CL_PROMOS` en `js/products.js` abre y cierra la promoción sola en las fechas
-indicadas. Para anunciar varias fórmulas con el mismo descuento en una sola banda,
-dales el mismo `group` y describe la banda en `CL_PROMO_GROUPS` (ver README).
-Lo generado (JSON-LD, markdown, `catalog.json`, franja superior del HTML) lo pone al
-día `refresh-catalog.yml` a las 00:07 de Ecuador del día en que una promo abre o
-cierra. Si ves un issue «La actualización automática del catálogo no se completó»,
-abre el PR de la rama que indica o ejecuta `npm run refresh` y súbelo. Para ver hoy
-cómo quedará el sitio en otra fecha: `npm run refresh -- --now=<fecha ISO>` (y
-descarta el resultado).
+indicadas. La especificación técnica completa y el procedimiento operativo mes a
+mes están detallados en [`docs/promociones-mensuales.md`](docs/promociones-mensuales.md).
+
+Puntos clave de cada campaña mensual:
+- **Paneles en inicio y tienda:** Portada (`index.html`) y catálogo (`tienda.html`)
+  incluyen un panel de promoción (`data-promo-band`) con estética compacta, kicker
+  («Solo en <mes>»), badge de descuento («−XX%»), precios, CTA y fotografía
+  editorial. Las fórmulas que comparten descuento se agrupan en una sola banda
+  mediante `group` y `CL_PROMO_GROUPS`.
+- **Etiquetas en secciones de productos con descuento:** En las tarjetas (`.pcard`
+  en inicio, tienda y relacionados), los productos rebajados muestran el borde
+  acentuado (`.is-promo`), la etiqueta superior de porcentaje (`.pcard-promo-tag`),
+  el precio de lista tachado (`del`), la línea secundaria (`−XX% en <mes>`) y la
+  píldora de ahorro (`.pcard-saving`). En su ficha, se activa `#pd-promo` y la
+  variante individual con su badge de ahorro.
+- **Regla de packs (`singleOnly`):** Si comprar 2 o 3 frascos sueltos a precio de
+  promo cuesta lo mismo o menos que el pack, es obligatorio activar `singleOnly: true`
+  (retira los packs mientras dure la promo y cambia el selector a «Tu presentación»).
+- **Actualización automática:** Lo generado (JSON-LD, markdown, `catalog.json`,
+  franja superior del HTML) lo pone al día `refresh-catalog.yml` a las 00:07 de
+  Ecuador del día en que una promo abre o cierra. Si ves un issue «La actualización
+  automática del catálogo no se completó», abre el PR de la rama que indica o ejecuta
+  `npm run refresh` y súbelo. Para ver hoy cómo quedará el sitio en otra fecha:
+  `npm run refresh -- --now=<fecha ISO>` (y descarta el resultado).
+
 
 ## Seguridad
 
