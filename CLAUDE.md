@@ -73,6 +73,45 @@ npm run set-origin https://otro.dominio          # mudanza permanente (ver READM
 11. La analítica sólo puede registrar contexto agregado. `begin_checkout` y `generate_lead`
    significan que la ventana de WhatsApp se abrió; nunca los conviertas en `purchase` sin una
    confirmación real del pedido y nunca envíes el mensaje, teléfono o dirección.
+12. **Uniformidad estética y sistema de diseño inquebrantable.** Todo cambio debe respetar
+   escrupulosamente la estética actual (editorial, cálida, minimalista y dopaminérgica).
+   Prohibido introducir estilos o colores fuera de los tokens oficiales de `css/styles.css`
+   (`--paper`, `--card`, `--ink`, `--muted`, `--line` y las paletas por fórmula), sombras duras,
+   fuentes externas (la CSP bloquea orígenes externos) o alterar los radios estándar (`--r-lg`,
+   `--r-md`, `--r-sm`, píldora 999px). En móvil (320px y 390px), jamás permitir desbordamiento
+   horizontal (`scrollWidth - clientWidth === 0`). La guía canónica exhaustiva está en
+   [`docs/estandares-de-diseno-y-desarrollo.md`](docs/estandares-de-diseno-y-desarrollo.md).
+
+## Estándares de diseño y estética para agentes
+
+Antes de proponer o tocar cualquier archivo de la interfaz, el agente debe verificar que cumple la
+especificación de [`docs/estandares-de-diseno-y-desarrollo.md`](docs/estandares-de-diseno-y-desarrollo.md):
+
+- **Tokens y Paleta:**
+  - Fondo global: `--paper: #f7f4ef` (tono hueso/lino cálido editorial).
+  - Contenedores y tarjetas: `--card: #fffdfb` (blanco roto suave).
+  - Textos: `--ink: #111112` (títulos principales), `--ink-2: #35312e` (párrafos), `--muted: #716a63` (metadatos).
+  - Bordes: `--line: rgba(19, 19, 19, 0.09)`.
+  - Acentos de las 7 fórmulas: Lavanda (`#8c6fc9`), Rosa (`#f2a2ae`), Verde (`#35b34a`), Celeste (`#4fa8d8`),
+    Magenta (`#b3538f`), Teal (`#2e7fc2`), Azul rey (`#2b4fc7`).
+- **Tipografía del sistema:**
+  - Display: `ui-rounded, "Avenir Next", "Segoe UI", system-ui, sans-serif`.
+  - Cuerpo: `system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`.
+  - Nada de fuentes remotas (Google Fonts). Tamaños con escalado fluido `clamp()`.
+- **Componentes UI y Micro-interacciones:**
+  - Botones en píldora (`border-radius: 999px`), altura táctil >= 44px, elevación sutil en hover (`translateY(-2px)` / `-3px`) y active (`scale(0.97)`).
+  - Tarjetas `.pcard`: radio `--r-md` (20px), fondo `--card`, lift de botella WebP transparente en hover.
+  - Secciones y ancho: contenedor universal `.wrap` (`min(1180px, calc(100% - 48px))`), espaciado vertical consistente con `.section`.
+  - Animaciones: clase `.reveal` con `IntersectionObserver`, respetando `prefers-reduced-motion`.
+- **Mobile-First obligatorio:**
+  - Comprobar en 320px, 390px y 768px.
+  - Cero desbordamiento horizontal: `scrollWidth - clientWidth === 0`.
+- **Flujo de verificación del agente:**
+  1. Realizar cambios sin `style=` ni `<script>` inline.
+  2. `npm run gen` si se alteró el catálogo o contenido estructurado.
+  3. Subir token `?v=` si se modificó `css/styles.css` o `js/*.js`.
+  4. `npm run check` (build + suite 100% verde).
+  5. Validar con la skill `verify`.
 
 ## Despliegue
 

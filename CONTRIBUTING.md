@@ -74,11 +74,34 @@ artefacto: va a la lista `forbidden` de `scripts/build.mjs` y a `.vercelignore`.
 - **La CSP se escribe tres veces** (`_headers`, `vercel.json` y el `<meta>` de
   cada página) y deben ser idénticas. Cámbialas juntas.
 - **Comentarios y textos en español**, igual que el resto del repositorio.
+- **Uniformidad estética y tokens de diseño.** Todo cambio debe ajustarse a la estética
+  editorial, cálida y dopaminérgica del sitio. Usa exclusivamente los tokens de `css/styles.css`
+  (`--paper`, `--card`, `--ink`, `--muted`, `--line`, `--r-*`, `--shadow-*` y la paleta por fórmula).
+  Nunca uses fuentes remotas (la CSP bloquea orígenes externos).
+- **Mobile-first y cero desbordamiento horizontal.** El sitio se verifica en 320px y 390px;
+  `document.documentElement.scrollWidth - document.documentElement.clientWidth` debe ser estrictamente 0.
 - **Nada de emojis dentro de URLs de `wa.me`**: el redirect de WhatsApp los
   convierte en `U+FFFD`.
 - **Nunca** pongas credenciales en HTML, JavaScript ni en el repositorio. Los
   secretos del informe semanal viven en *Settings → Secrets and variables →
   Actions* (ver README).
+
+## Estándares de diseño y desarrollo
+
+La guía canónica completa para mantener la uniformidad visual, componentes y arquitectura está en
+[`docs/estandares-de-diseno-y-desarrollo.md`](docs/estandares-de-diseno-y-desarrollo.md).
+
+Puntos esenciales para agentes y colaboradores:
+1. **Paleta y tokens:** Fondo `--paper` (#f7f4ef), superficies `--card` (#fffdfb), tinta `--ink` (#111112),
+   y los colores propios de las 7 fórmulas (Lavanda, Rosa, Verde, Celeste, Magenta, Teal, Azul rey).
+2. **Tipografía del sistema:** `ui-rounded`/`system-ui` con escalado fluido `clamp()`. Sin Google Fonts.
+3. **Componentes:** Botones en píldora (`999px`) con micro-interacciones hover/active, tarjetas `.pcard` con
+   radio `--r-md` (20px), contenedor universal `.wrap` (máximo 1180px), y animaciones suaves con `.reveal`.
+4. **Verificación técnica obligatoria:** Antes de abrir un PR:
+   - `npm run gen`
+   - `npm run check` (build + 100% pruebas de node:test en verde)
+   - Actualización del token `?v=AAAAMMDD-N` si se tocaron estilos o scripts.
+
 
 ## Promociones
 
