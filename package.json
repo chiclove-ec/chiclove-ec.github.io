@@ -6,16 +6,15 @@
   "homepage": "https://chiclove-ec.com",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chiclove-ec/chiclove-ec.github.io.git"
+    "url": "git+https://github.com/chiclove-ec/chiclove-ec-Website.git"
   },
   "bugs": {
-    "url": "https://github.com/chiclove-ec/chiclove-ec.github.io/issues"
+    "url": "https://github.com/chiclove-ec/chiclove-ec-Website/issues"
   },
   "license": "UNLICENSED",
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs --target=generic",
-    "build:github": "node scripts/build.mjs --target=github-pages",
     "build:netlify": "node scripts/build.mjs --target=netlify",
     "build:cloudflare": "node scripts/build.mjs --target=cloudflare",
     "build:vercel": "node scripts/build.mjs --target=vercel",
@@ -26,7 +25,7 @@
     "set-origin": "node scripts/set-origin.mjs",
     "serve": "node scripts/serve.mjs",
     "test": "node --test --test-concurrency=1 tests/*.test.mjs",
-    "check": "npm run build:github && npm test"
+    "check": "npm run build:cloudflare && npm test"
   },
   "engines": {
     "node": ">=20"

@@ -1,4 +1,4 @@
-// Servidor estático que imita a producción: rutas sin extensión como GitHub Pages,
+// Servidor estático que imita a producción: rutas sin extensión como Cloudflare Pages,
 // 404 real con cuerpo de recuperación y negociación `Accept: text/markdown` con el mismo
 // módulo que usa la función de Cloudflare Pages. Se usa para desarrollo y en los tests.
 import { createServer } from "node:http";
@@ -43,7 +43,7 @@ export function createSiteServer(rootDir) {
     }
   }
 
-  // Resolución equivalente a GitHub Pages: /x → x, x.html, x/index.html.
+  // Resolución de rutas limpias: /x → x, x.html, x/index.html.
   async function resolveAsset(pathname) {
     const candidates = pathname.endsWith("/")
       ? [pathname + "index.html", pathname.slice(0, -1) + ".html"]

@@ -16,7 +16,7 @@ const projectRoot = resolve(scriptDir, "..");
 const outputDir = join(projectRoot, "dist");
 const targetArg = process.argv.find((arg) => arg.startsWith("--target="));
 const target = targetArg ? targetArg.slice("--target=".length) : "generic";
-const validTargets = new Set(["generic", "github-pages", "netlify", "cloudflare", "vercel"]);
+const validTargets = new Set(["generic", "netlify", "cloudflare", "vercel"]);
 
 if (!validTargets.has(target)) {
   throw new Error(`Target de despliegue no válido: ${target}`);
@@ -227,10 +227,6 @@ if (publishOrigin !== siteConfig.sourceOrigin) {
       }
     }
   }
-}
-
-if (target === "github-pages" || target === "generic") {
-  await writeFile(join(outputDir, ".nojekyll"), "", { flag: "wx" });
 }
 
 // functions/ y tests/ son código de despliegue/verificación: Cloudflare compila

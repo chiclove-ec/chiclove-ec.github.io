@@ -11,7 +11,7 @@ Sitio estático con build por lista blanca. Superficie: navegador.
 
 ```bash
 npm run gen     # no debe dejar diferencias en git
-npm run check   # build:github + la suite completa de node:test
+npm run check   # build:cloudflare + la suite completa de node:test
 ```
 
 Cubre CSP idéntica en las tres copias, referencias internas, lista blanca del
@@ -59,7 +59,7 @@ Flujos que importan:
   screenshots full-page: primero `document.documentElement.style.scrollBehavior = "auto"`
   y scrollear en pasos hasta el fondo, luego capturar.
 - La CSP por meta no admite `frame-ancestors` (ruido de consola si se agrega);
-  en GitHub Pages lo cubre `js/frame-guard.js`.
+  en Cloudflare lo aplica `_headers` y en cualquier otro host lo cubre `js/frame-guard.js`.
 - No usar estilos inline en HTML: la CSP no lleva `unsafe-inline` en style-src.
 - La analítica no carga hasta que se acepta el consentimiento: para probar los
   eventos hay que aceptar el banner primero.

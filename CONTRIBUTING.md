@@ -49,18 +49,22 @@ Detalles que hay que tener presentes y que las pruebas ya vigilan:
 
 - El dominio aparece también **como host suelto** en texto visible (la ficha de
   empresa de `/about`, el mensaje del 404), no solo como `https://…`.
-- Las URLs de **`github.com` no se mudan**: el repositorio se llama
-  `chiclove-ec.com` y seguirá llamándose así aunque el sitio cambie de
-  dominio. `rewriteOrigin` las aparta a propósito.
+- Las URLs de **`github.com` no se mudan**: son del repositorio, no del sitio,
+  y no cambian aunque el sitio cambie de dominio. `rewriteOrigin` las aparta a
+  propósito.
 
 El procedimiento completo está en la sección *El dominio del sitio* del README.
 
 ## Despliegue automático
 
-Cada push a `main` publica en GitHub Pages y, en cuanto se configure, también en
-Cloudflare Pages. Los dos workflows llaman antes a `ci.yml` y **no publican si la
-suite falla**. `deploy-cloudflare.yml` se salta solo mientras no existan sus
-secretos, así que hoy no ensucia el historial.
+El sitio se publica **solo en Cloudflare Pages**. Cada merge a `main` lo publica la
+integración Git nativa de Cloudflare, que ejecuta `npm test` antes del build y **no
+publica si la suite falla** (la versión anterior sigue servida). `ci.yml` es check
+obligatorio de los PR y `indexnow.yml` avisa a los buscadores cuando Cloudflare
+termina. `deploy-cloudflare.yml` es solo una vía manual de recuperación.
+
+GitHub Pages está retirado: no añadas workflows con las acciones de Pages ni un
+objetivo `github-pages` al build; una prueba lo impide.
 
 Si añades un archivo de configuración de hosting, recuerda mantenerlo fuera del
 artefacto: va a la lista `forbidden` de `scripts/build.mjs` y a `.vercelignore`.

@@ -1,7 +1,7 @@
 // Cloudflare Pages Function: negociación de contenido `Accept: text/markdown`.
 //
-// Cloudflare Pages es el único destino de despliegue del proyecto capaz de negociar
-// por cabecera (GitHub Pages y Netlify sirven estáticos sin lógica; ver README).
+// Cloudflare Pages es el único destino de despliegue del proyecto, y el único de los
+// hosts soportados capaz de negociar por cabecera (Netlify y Vercel no; ver README).
 // La lógica vive en scripts/lib/markdown-negotiation.mjs para poder testearla.
 import {
   MARKDOWN_CONTENT_TYPE,

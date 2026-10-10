@@ -13,7 +13,6 @@ dist/
 .editorconfig
 .gitattributes
 .gitignore
-.nojekyll
 .nvmrc
 CLAUDE.md
 CONTRIBUTING.md

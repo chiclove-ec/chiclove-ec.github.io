@@ -288,4 +288,4 @@ git add js/products.js [archivos regenerados]
 git commit -m "Promociones de [mes]: [resumen de ofertas]"
 git push origin main
 ```
-CI validará la suite y GitHub Pages desplegará automáticamente la nueva campaña.
+CI validará la suite y Cloudflare Pages publicará automáticamente la nueva campaña al llegar a `main`.

@@ -1,11 +1,15 @@
 name: CI
 
-# En `main` no se dispara sola: la lanza deploy-pages.yml antes de publicar,
-# de modo que un fallo de CI impide el despliegue en lugar de correr en paralelo.
-# Los PR de refresh-catalog.yml no la disparan (son del GITHUB_TOKEN): ese workflow
+# El sitio solo se publica en Cloudflare Pages, por su integración Git nativa, que
+# ejecuta `npm test` dentro de su propio build: si la suite falla, no publica. Este
+# workflow es el check obligatorio de los PR a `main` y deja constancia en cada push
+# a `main`; deploy-cloudflare.yml lo reutiliza antes de la vía manual de recuperación.
+# Los PR de refresh-catalog.yml no lo disparan (son del GITHUB_TOKEN): ese workflow
 # ejecuta estos mismos pasos y publica el resultado con el nombre de este check.
 on:
   pull_request:
+  push:
+    branches: [main]
   workflow_call:
 
 permissions:
@@ -35,7 +39,7 @@ jobs:
         run: npm test
 
       - name: El build seguro produce el artefacto público
-        run: npm run build:github
+        run: npm run build:cloudflare
 
       - name: Lo generado está al día con el catálogo
         # `npm run gen` es idempotente: si deja diferencias, alguien tocó
