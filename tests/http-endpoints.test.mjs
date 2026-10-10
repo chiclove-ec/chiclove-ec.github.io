@@ -16,7 +16,7 @@ describe("endpoints publicados", () => {
   before(async () => {
     // Se verifica el artefacto real, no el árbol de trabajo. El build reescribe dist/,
     // por eso `npm test` corre los ficheros en serie (--test-concurrency=1).
-    execFileSync(process.execPath, ["scripts/build.mjs", "--target=github-pages"], {
+    execFileSync(process.execPath, ["scripts/build.mjs", "--target=cloudflare"], {
       cwd: projectRoot,
       stdio: "pipe"
     });
@@ -33,7 +33,7 @@ describe("endpoints publicados", () => {
   // Las URLs que el sitio declara (canónicas, sitemap, JSON-LD) son limpias, sin `.html`.
   // Esta prueba las ejerce tal cual: si alguna dejara de servirse, el sitemap estaría
   // entregando a Google URLs muertas. En Cloudflare Pages el `.html` redirige (308) a la
-  // forma limpia, y GitHub Pages sirve las dos, así que la limpia es la única común.
+  // forma limpia, así que la limpia es la única que responde 200 directo.
   test("cada URL del sitemap se sirve tal como se declara", async () => {
     const sitemap = await (await get("/sitemap.xml")).text();
     const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, url]) => url);

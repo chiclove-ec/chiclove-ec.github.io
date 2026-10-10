@@ -14,9 +14,9 @@
 //                    al copiar a `dist/`, así que mientras los dos coincidan la
 //                    reescritura no hace nada.
 //
-// Mudarse de dominio es, por tanto, cambiar `canonicalOrigin` y desplegar: cada
-// host (GitHub Pages incluido) sirve el sitio declarando el dominio oficial, que
-// es justo lo que Google necesita para consolidar la mudanza. Cuando ya no haga
+// Mudarse de dominio es, por tanto, cambiar `canonicalOrigin` y desplegar: el
+// sitio se sirve declarando el dominio oficial desde cualquier host que lo
+// publique, que es justo lo que Google necesita para consolidar la mudanza. Cuando ya no haga
 // falta arrastrar la reescritura, `npm run set-origin <url>` reescribe también
 // las fuentes y deja los dos valores iguales otra vez.
 import { readFileSync } from "node:fs";
@@ -153,9 +153,8 @@ export function withoutGitHubUrls(text) {
  *
  * Las URLs del sitio son LIMPIAS (`/tienda`, no `/tienda.html`). Cloudflare Pages
  * redirige `/tienda.html` a `/tienda` con un 308, así que declarar el `.html` en
- * canónicas, sitemap y JSON-LD entregaba a Google URLs que redirigen. GitHub Pages
- * sirve las dos formas, de modo que la limpia es la única correcta en los dos
- * hosts a la vez.
+ * canónicas, sitemap y JSON-LD entregaba a Google URLs que redirigen: la forma
+ * limpia es la única que responde 200 directo.
  *
  * El nombre de ARCHIVO no cambia: `tienda.html` se sigue escribiendo y publicando
  * igual. Lo que cambia es la URL con la que el sitio se nombra a sí mismo.

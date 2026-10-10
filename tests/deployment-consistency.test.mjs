@@ -1,6 +1,6 @@
-// El sitio se publica en varios hosts y las cabeceras están escritas tres veces:
-// en `_headers` (Netlify/Cloudflare), en `vercel.json` y en el `<meta>` de cada
-// página (la única que aplica en GitHub Pages). Estas pruebas impiden que una
+// El sitio se publica en Cloudflare Pages y puede construirse para otros hosts, y
+// las cabeceras están escritas tres veces: en `_headers` (Cloudflare/Netlify), en
+// `vercel.json` y en el `<meta>` de cada página. Estas pruebas impiden que una
 // copia se quede atrás, que una referencia interna apunte a un archivo que el
 // build no publica y que el cache-busting se desincronice entre páginas.
 import { strict as assert } from "node:assert";
@@ -124,7 +124,7 @@ test("la CSP cierra los sinks y no reabre inline ni orígenes abiertos", () => {
   assert.ok(csp.includes("upgrade-insecure-requests"), "falta upgrade-insecure-requests");
 });
 
-test("las cabeceras que GitHub Pages no puede dar están en los hosts que sí", () => {
+test("las cabeceras HTTP de seguridad están en todos los hosts que las admiten", () => {
   const headersFile = read("_headers");
   const vercel = JSON.parse(read("vercel.json"));
   const vercelKeys = new Set(

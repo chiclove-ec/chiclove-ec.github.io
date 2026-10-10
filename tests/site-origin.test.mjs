@@ -160,7 +160,7 @@ test("el build reescribe el artefacto entero al publicar en otro dominio", () =>
     );
   } finally {
     // Deja dist/ como lo espera cualquier inspección posterior.
-    build(["--target=github-pages"]);
+    build(["--target=cloudflare"]);
   }
 });
 

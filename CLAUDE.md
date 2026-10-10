@@ -1,7 +1,8 @@
 # Guía del repositorio
 
-Sitio web estático de **Chic&Love Ecuador** (gummies de vitaminas), publicado en
-GitHub Pages desde `main`. HTML/CSS/JS vanilla, **sin dependencias** de runtime,
+Sitio web estático de **Chic&Love Ecuador** (gummies de vitaminas), publicado
+**solo en Cloudflare Pages** (<https://chiclove-ec.com>; `www` redirige ahí) desde `main`.
+HTML/CSS/JS vanilla, **sin dependencias** de runtime,
 build ni test. Node 20+ (CI usa la de `.nvmrc`). Nunca ejecutes `npm install`.
 
 Lee [`CONTRIBUTING.md`](CONTRIBUTING.md) para el flujo completo y el
@@ -11,7 +12,7 @@ Lee [`CONTRIBUTING.md`](CONTRIBUTING.md) para el flujo completo y el
 
 ```bash
 npm run gen     # regenera todo lo derivado del catálogo (idempotente)
-npm run check   # build:github + suite completa — lo que ejecuta CI
+npm run check   # build:cloudflare + suite completa — lo que ejecuta CI
 npm test        # solo la suite
 npm run serve   # sirve dist/ en :8765 con el comportamiento de producción
 
@@ -52,14 +53,13 @@ npm run set-origin https://otro.dominio          # mudanza permanente (ver READM
    `canonicalOrigin` al copiar a `dist/`. Para mudar el sitio de dominio, cambia
    `canonicalOrigin` y ya. Dos trampas que las pruebas cubren: el dominio
    aparece también como **host suelto** en texto visible (`/about`, el 404), y
-   las URLs de **github.com no se mudan** (el repo se llama igual que el dominio
-   de Pages).
+   las URLs de **github.com no se mudan** (son del repositorio, no del sitio).
 8. **`googlee70d0e2c8fe95f2c.html` no se borra** ni sale del build: es el testigo
    de verificación de Google Search Console. OJO con lo que ya **no** hace: en
    Cloudflare —el dominio oficial— la redirección a URLs limpias también se le
    aplica, así que `/googlee70d0e2c8fe95f2c.html` responde **308** hacia
    `/googlee70d0e2c8fe95f2c` en vez de 200. El contenido sigue ahí tras la
-   redirección, y en GitHub Pages sí responde 200 directo. Hoy la propiedad está
+   redirección. Hoy la propiedad está
    verificada por **DNS** (proveedor de nombres de dominio) y, como segundo método,
    por la **etiqueta `<meta name="google-site-verification">` de la portada**, que sí
    es inmune a la redirección. El archivo queda como tercer respaldo. No borres
@@ -115,22 +115,25 @@ especificación de [`docs/estandares-de-diseno-y-desarrollo.md`](docs/estandares
 
 ## Despliegue
 
-Push a `main` publica en **los dos destinos a la vez**:
+**Solo Cloudflare Pages.** Cada merge o push a `main` lo publica la **integración
+Git nativa** de Cloudflare (no Actions): proyecto `chiclove-ec`, build
+`npm test && npm run build:cloudflare`, salida `dist`, raíz `/`. La suite va dentro
+del comando de build, así que un test rojo impide publicar, y la versión anterior
+sigue servida: el sitio nunca se cae por un build fallido.
 
-- **GitHub Pages** — `deploy-pages.yml`, con `ci.yml` como portero.
-- **Cloudflare Pages** — **integración Git nativa** (no Actions): proyecto
-  `chiclove-ec`, build `npm test && npm run build:cloudflare`, salida `dist`,
-  raíz `/`. La suite va dentro del comando de build, así que un test rojo impide
-  publicar.
+**GitHub Pages está retirado y no debe volver**: las condiciones de GitHub no lo
+admiten como hosting de una tienda. No existe `deploy-pages.yml`, el build no tiene
+objetivo `github-pages`, la Pages del repositorio está desactivada en *Settings →
+Pages*, y `tests/cloudflare-deploy-workflow.test.mjs` falla si algún workflow vuelve
+a usar las acciones de Pages.
 
-Cloudflare es el destino final porque aplica `_headers` de verdad y ejecuta
-`functions/_middleware.js` (negociación `Accept: text/markdown`), cosas que
-GitHub Pages no permite.
+Tras cada push a `main`, `indexnow.yml` espera a que el check «Cloudflare Pages» del
+commit quede en verde y solo entonces avisa a IndexNow. `ci.yml` corre en cada PR
+(es check obligatorio de `main`, junto con «Cloudflare Pages») y en cada push a `main`.
 
-`deploy-cloudflare.yml` sigue en el repositorio pero **dormido**: se salta solo
-mientras no existan `CLOUDFLARE_API_TOKEN` y `CLOUDFLARE_ACCOUNT_ID`. No añadas
-esos secretos sin desconectar antes la integración Git, o cada push publicaría
-dos veces.
+`deploy-cloudflare.yml` es una **vía manual de recuperación** (Wrangler, solo
+`workflow_dispatch`): no escucha `push`, así que no compite con la integración Git.
+Nunca le añadas un disparador automático, o cada push publicaría dos veces.
 
 ## Gotchas verificados
 
@@ -142,8 +145,8 @@ dos veces.
   afecta a las siete páginas de producto tras `npm run gen`.
 - Los elementos `.reveal` están invisibles hasta que se hace scroll
   (`IntersectionObserver`): para capturas full-page hay que scrollear primero.
-- `frame-ancestors` no funciona por `<meta>`; en GitHub Pages lo cubre
-  `js/frame-guard.js`.
+- `frame-ancestors` no funciona por `<meta>`; en Cloudflare lo aplica `_headers`, y
+  `js/frame-guard.js` lo cubre en cualquier host que no envíe cabeceras propias.
 - La promoción de `CL_PROMOS` entra y sale sola por fecha en el navegador. La
   especificación técnica exhaustiva y el procedimiento operativo mes a mes están
   en [`docs/promociones-mensuales.md`](docs/promociones-mensuales.md). Cada mes,
@@ -158,7 +161,7 @@ dos veces.
   Lo generado (JSON-LD, markdown, `catalog.json`, la franja superior del HTML) lo pone
   al día `refresh-catalog.yml` a las 00:07 de Ecuador: regenera, abre un PR, ejecuta
   él mismo los pasos de CI y los publica como estado del commit (un CI lanzado a mano
-  no se asocia al PR), espera a Cloudflare, lo fusiona y despliega. Hasta que se publique, la suite falla,
+  no se asocia al PR), espera a Cloudflare y lo fusiona; Cloudflare publica el merge. Hasta que se publique, la suite falla,
   porque compara lo publicado con el catálogo de hoy. Para abrir el PR necesita que
   el repo tenga activado «Allow GitHub Actions to create and approve pull requests»;
   si no puede, deja la rama y un issue. A mano: `npm run refresh`, y

@@ -51,7 +51,7 @@ test("cumple el check obligatorio de CI ejecutando los mismos pasos que ci.yml",
   const ci = read(".github/workflows/ci.yml");
   const jobName = ci.match(/^\s+name: (.+)$/m)[1];
   assert.ok(script.includes(`check="${jobName}"`), `el estado debe llamarse igual que el job de ci.yml («${jobName}»)`);
-  for (const step of ["npm test", "npm run build:github", "npm run gen"]) {
+  for (const step of ["npm test", "npm run build:cloudflare", "npm run gen"]) {
     assert.ok(ci.includes(`run: ${step}`) || ci.includes(`  ${step}\n`), `ci.yml ya no ejecuta ${step}`);
     assert.ok(script.includes(`env -u CL_NOW ${step}`), `el script no ejecuta ${step} con el reloj real`);
   }
@@ -59,8 +59,11 @@ test("cumple el check obligatorio de CI ejecutando los mismos pasos que ci.yml",
   const verify = script.indexOf("env -u CL_NOW npm test");
   assert.ok(verify > 0 && verify < script.indexOf("git push"), "hay que verificar antes de subir");
   assert.match(script, /gh api "repos\/\$\{GH_REPO\}\/statuses\/\$\{sha\}" -f state=success -f context="\$\{check\}"/);
-  assert.match(script, /gh workflow run deploy-pages\.yml --ref main/, "el push del GITHUB_TOKEN no dispara GitHub Pages");
-  assert.match(read(".github/workflows/deploy-pages.yml"), /^\s+workflow_dispatch:/m);
+  // Cloudflare publica el push a main por su integración Git; IndexNow no se entera solo,
+  // porque lo que empuja el GITHUB_TOKEN no dispara `push`.
+  assert.match(script, /gh workflow run indexnow\.yml --ref main/, "el push del GITHUB_TOKEN no dispara el aviso a IndexNow");
+  assert.match(read(".github/workflows/indexnow.yml"), /^\s+workflow_dispatch:/m);
+  assert.doesNotMatch(script, /deploy-pages/, "el sitio ya no se publica en GitHub Pages");
 });
 
 test("fusiona solo cuando main lo admite y el simulacro nunca fusiona", () => {

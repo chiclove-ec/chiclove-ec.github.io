@@ -1,7 +1,6 @@
 # Chic&Love Ecuador — Sitio web
 
-[![CI](https://github.com/chiclove-ec/chiclove-ec.github.io/actions/workflows/ci.yml/badge.svg)](https://github.com/chiclove-ec/chiclove-ec.github.io/actions/workflows/ci.yml)
-[![Deploy](https://github.com/chiclove-ec/chiclove-ec.github.io/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/chiclove-ec/chiclove-ec.github.io/actions/workflows/deploy-pages.yml)
+[![CI](https://github.com/chiclove-ec/chiclove-ec-Website/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/chiclove-ec/chiclove-ec-Website/actions/workflows/ci.yml)
 
 Sitio estático (HTML/CSS/JS vanilla, sin dependencias de runtime ni de build) para la marca de
 gummies de vitaminas **Chic&Love Ecuador** — <https://chiclove-ec.com>.
@@ -71,7 +70,7 @@ propio y `dist/` (el único artefacto publicable) se arma copiando por lista bla
 | `scripts/serve.mjs`, `scripts/lib/` | Servidor local fiel a producción y lógica compartida (catálogo, negociación) |
 | `scripts/analytics_report.py` | Informe semanal de GA4 por correo (sin dependencias) |
 | `tests/` | Suite de `node:test` (`npm test`) |
-| `.github/workflows/` | CI, despliegue a GitHub Pages y a Cloudflare Pages, e informe semanal |
+| `.github/workflows/` | CI, aviso a IndexNow tras cada publicación de Cloudflare, catálogo por fecha, recuperación manual de Cloudflare e informe semanal |
 | `site.config.json` | **El dominio del sitio y el proyecto de Cloudflare — fuente única** |
 | `_headers`, `vercel.json`, `netlify.toml`, `wrangler.toml` | Cabeceras y configuración por proveedor de hosting |
 | `scripts/lib/site-config.mjs`, `scripts/set-origin.mjs` | Carga del dominio y mudanza permanente a otro |
@@ -123,8 +122,9 @@ que toda acción de GitHub esté anclada a un SHA.
 
 | Workflow | Cuándo | Qué hace |
 |---|---|---|
-| `ci.yml` | En cada pull request, y como paso previo del despliegue | `npm test`, `npm run build:github` y comprueba que `npm run gen` no deje diferencias |
-| `deploy-pages.yml` | Al empujar a `main` | Llama a `ci.yml` y **solo publica si pasa**; sube a GitHub Pages el `dist/` de la lista blanca |
+| `ci.yml` | En cada pull request (check obligatorio de `main`) y en cada push a `main` | `npm test`, `npm run build:cloudflare` y comprueba que `npm run gen` no deje diferencias |
+| `indexnow.yml` | En cada push a `main` | Espera a que el check «Cloudflare Pages» del commit quede en verde y avisa a IndexNow |
+| `refresh-catalog.yml` | 00:07 de Ecuador, con dos reintentos | Regenera lo derivado cuando una promoción abre o cierra, y lo fusiona por PR |
 | `deploy-cloudflare.yml` | Manual | Vía de recuperación con CI y Wrangler; la publicación normal la hace la integración Git nativa de Cloudflare, sin dos despliegues automáticos |
 | `weekly-analytics-report.yml` | Lunes 09:00 (Ecuador) | Envía por correo el informe de GA4 |
 
@@ -214,15 +214,14 @@ FAQ de la portada**; ambos generadores son idempotentes.
 
 `acceptmarkdown.com` exige responder `text/markdown` al negociar, `Vary: Accept`, `406` ante
 tipos no soportados y respetar los valores q. Eso necesita lógica en el servidor y
-**GitHub Pages no la permite**: sirve archivos estáticos, sin cabeceras propias ni código en
-el borde. Por eso el sitio publica los `.md` en URLs propias, los declara con `rel="alternate"`
+un host de estáticos puro no la permite: sin cabeceras propias ni código en el borde. Cloudflare
+Pages sí (ver abajo); aun así el sitio publica los `.md` en URLs propias, los declara con `rel="alternate"`
 y lo dice explícitamente en `llms.txt` y `agents.md`, para que un agente no pierda tiempo
 negociando.
 
 | Proveedor | Gemelos `.md` | Negociación por `Accept` |
 |---|---|---|
-| GitHub Pages (actual) | sí | no: sin cabeceras ni código en el borde |
-| Cloudflare Pages | sí | **sí**, vía `functions/_middleware.js` |
+| Cloudflare Pages (producción) | sí | **sí**, vía `functions/_middleware.js` |
 | Netlify | sí | no sin una edge function equivalente |
 | Vercel | sí | no: `has.value` usa RE2, sin lookahead para los valores q |
 
@@ -345,7 +344,8 @@ reintenta a las 02:37 y a las 08:07:
    estado de ese commit: lo que hace el `GITHUB_TOKEN` no dispara `ci.yml`, y un CI
    lanzado a mano no se asocia al PR. El de Cloudflare Pages llega al construirse
    la rama. Con los dos en verde, fusiona ese mismo commit.
-4. Cloudflare publica el push a `main`; el workflow lanza además GitHub Pages.
+4. Cloudflare publica el push a `main`; el workflow lanza además `indexnow.yml`, que
+   avisa a los buscadores en cuanto Cloudflare termina.
 
 Si no llega al final, deja la rama y un issue con el enlace para abrir el PR a
 mano. Para abrir el PR necesita una opción del repositorio: *Settings → Actions →
@@ -407,10 +407,10 @@ Cambia `canonicalOrigin` y despliega. Nada más:
 { "canonicalOrigin": "https://chiclove.ec", "sourceOrigin": "https://chiclove-ec.com", ... }
 ```
 
-A partir de ese commit **todos** los hosts publican el sitio declarando el
-dominio nuevo — GitHub Pages incluido. Eso es exactamente lo que Google necesita
-para consolidar la mudanza: el sitio viejo sigue respondiendo, pero dice que la
-dirección buena es la nueva.
+A partir de ese commit el sitio se publica declarando el dominio nuevo, también
+mientras el viejo siga apuntando a Cloudflare. Eso es exactamente lo que Google
+necesita para consolidar la mudanza: el sitio viejo sigue respondiendo, pero dice
+que la dirección buena es la nueva.
 
 Para probarlo sin tocar el repositorio:
 
@@ -433,8 +433,8 @@ npm run gen && npm run check                          # regenerar y comprobar
 Deja `sourceOrigin` y `canonicalOrigin` iguales otra vez. Ojo con dos cosas que
 el script ya resuelve: el dominio aparece también **como host suelto** en texto
 visible (la ficha de empresa de `/about`, el mensaje del 404), y las URLs de
-`github.com` **no** se mudan — el repositorio se llama `chiclove-ec.com`
-y seguirá llamándose así.
+`github.com` **no** se mudan — son del repositorio
+(`chiclove-ec/chiclove-ec-Website`), no del sitio.
 
 Después del cambio quedan dos pasos fuera del repositorio: apuntar el DNS y, en
 Google Search Console, dar de alta la propiedad nueva y usar **Cambio de
@@ -442,13 +442,19 @@ dirección** desde la anterior.
 
 ## Despliegue automático
 
-Cada push a `main` dispara los dos destinos. Ambos pasan por CI primero y
-**ninguno publica si la suite falla**.
+El sitio se publica **solo en Cloudflare Pages** (<https://chiclove-ec.com>; `www` redirige ahí).
+Cada merge o push a `main` dispara un build en Cloudflare, que **no publica si la
+suite falla**; en ese caso sigue servida la versión anterior, así que el sitio no
+se cae.
 
 | Destino | Mecanismo | Estado |
 |---|---|---|
-| GitHub Pages | `deploy-pages.yml` | **En producción.** Publica siempre |
 | Cloudflare Pages | Integración Git nativa de Cloudflare | **En producción.** Construye y publica en cada push a `main` |
+| GitHub Pages | — | **Retirado.** Las condiciones de GitHub no lo admiten como hosting de una tienda |
+
+GitHub Pages está desactivado en *Settings → Pages* y no existe ningún workflow que
+publique allí. `tests/cloudflare-deploy-workflow.test.mjs` falla si alguien vuelve a
+añadir las acciones de Pages, el objetivo `github-pages` del build o `.nojekyll`.
 
 ### Cómo está montado Cloudflare Pages
 
@@ -460,7 +466,7 @@ Cloudflare.
 | Ajuste | Valor |
 |---|---|
 | Proyecto | `chiclove-ec` (el de `cloudflare.projectName`; `wrangler.toml` debe coincidir) |
-| Repositorio | `chiclove-ec/chiclove-ec.com`, rama de producción `main` |
+| Repositorio | `chiclove-ec/chiclove-ec-Website`, rama de producción `main` |
 | Framework preset | *None* |
 | Comando de build | `npm test && npm run build:cloudflare` |
 | Directorio de salida | `dist` |
@@ -468,23 +474,23 @@ Cloudflare.
 | Node | el de `.nvmrc` |
 
 La suite va **dentro** del comando de build a propósito: si `npm test` falla, el
-build falla y Cloudflare no publica. Es el mismo portero que `ci.yml` pone delante
-de GitHub Pages.
+build falla y Cloudflare no publica. `ci.yml` ejecuta los mismos pasos en cada PR
+como check obligatorio de `main`, antes de que el merge llegue a Cloudflare.
 
 `deploy-cloudflare.yml` sigue en el repositorio como vía manual de recuperación
 (despliegue directo con Wrangler). Las credenciales `CLOUDFLARE_API_TOKEN` y
 `CLOUDFLARE_ACCOUNT_ID` están guardadas como secretos para esa vía, pero el workflow
 no escucha `push` y no compite con la integración Git nativa.
 
-### Por qué Cloudflare es el destino final
+### Por qué Cloudflare
 
-GitHub Pages sirve estáticos y **no deja definir cabeceras HTTP ni ejecutar
-código en el borde**. Cloudflare Pages sí, y eso desbloquea dos cosas que el
-repositorio ya tiene escritas y probadas:
+Un host de estáticos puro **no deja definir cabeceras HTTP ni ejecutar código en
+el borde**. Cloudflare Pages sí, y eso desbloquea dos cosas que el repositorio ya
+tiene escritas y probadas:
 
 - **`_headers`** aplica de verdad la CSP, HSTS, `X-Frame-Options`,
-  `Permissions-Policy` y el aislamiento entre orígenes. En Pages solo existe la
-  CSP por `<meta>` más el guard anti-frame.
+  `Permissions-Policy` y el aislamiento entre orígenes. La CSP por `<meta>` y el
+  guard anti-frame quedan como defensa adicional.
 - **`functions/_middleware.js`** responde a `Accept: text/markdown` con `Vary`,
   `406` y valores q, como pide acceptmarkdown.com. Vive en `functions/` en la
   raíz del repositorio, **no** dentro de `dist/`: Cloudflare lo compila aparte y
@@ -492,13 +498,12 @@ repositorio ya tiene escritas y probadas:
 
 ## Otros destinos y comprobación posterior
 
-Además de los dos automáticos, el build tiene objetivo propio para los demás
-proveedores; todos publican el mismo `dist/`:
+Además de Cloudflare, el build tiene objetivo propio para otros proveedores, por si
+algún día hiciera falta mudarse; todos publican el mismo `dist/`:
 
 | Proveedor | Cómo | Cabeceras HTTP | Negociación `Accept` |
 |---|---|---|---|
-| **GitHub Pages** *(en producción)* | *Settings → Pages → Source → GitHub Actions*. La publicación directa desde la rama expone archivos auxiliares y no debe activarse | Solo la CSP por `<meta>` + guard anti-frame | No |
-| **Cloudflare Pages** *(destino final)* | `npm run build:cloudflare`, salida `dist` | `_headers`, completas | **Sí**, `functions/_middleware.js` |
+| **Cloudflare Pages** *(producción)* | `npm run build:cloudflare`, salida `dist` | `_headers`, completas | **Sí**, `functions/_middleware.js` |
 | **Netlify** | Importa el repositorio; `netlify.toml` hace el resto | `_headers`, completas | No sin una edge function equivalente |
 | **Vercel** | Importa el repositorio; `vercel.json` hace el resto | En `vercel.json`, completas | No: `has.value` usa RE2, sin lookahead para los valores q |
 

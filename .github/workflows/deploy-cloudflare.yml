@@ -22,8 +22,8 @@ on:
 permissions:
   contents: read
   # Permite que Wrangler enlace el despliegue directo con el commit de GitHub.
-  # Así el repositorio recibe el estado y la URL de Pages igual que con una
-  # integración Git nativa, sin conectar Pages al repo ni afectar GitHub Pages.
+  # Así el repositorio recibe el estado y la URL del despliegue igual que con la
+  # integración Git nativa.
   deployments: write
 
 concurrency:

@@ -1,0 +1,72 @@
+name: Notify IndexNow after Cloudflare publishes
+
+# Cloudflare Pages publica cada push a `main` por su integración Git nativa (no por
+# Actions) y, al terminar, deja en el commit el check «Cloudflare Pages». Solo con ese
+# check en verde el contenido nuevo está de verdad en el dominio: entonces, y no
+# antes, se avisa a IndexNow (Bing, del que bebe el buscador de ChatGPT).
+#
+# El push que hace refresh-catalog.yml al fusionar es del GITHUB_TOKEN y no dispara
+# `push`: ese workflow lanza este con `workflow_dispatch` tras fusionar.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: true
+
+jobs:
+  notify-indexnow:
+    name: Notify search engines through IndexNow
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      checks: read  # leer el check «Cloudflare Pages» del commit
+    steps:
+      # Los valores viajan por `env:` y nunca interpolados dentro del `run:`,
+      # que es por donde entran las inyecciones en Actions.
+      - name: Esperar a que Cloudflare Pages publique este commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          limite=$(( $(date +%s) + 25 * 60 ))
+          while :; do
+            estado="$(gh api "repos/${GH_REPO}/commits/${SHA}/check-runs?check_name=Cloudflare%20Pages" \
+              --jq '[.check_runs[] | select(.app.slug == "cloudflare-workers-and-pages")]
+                    | sort_by(.id) | last // {} | "\(.status // "pendiente") \(.conclusion // "")"' \
+              || echo "sin-respuesta")"
+            case "${estado}" in
+              "completed success")
+                echo "Cloudflare Pages publicó ${SHA}."
+                break ;;
+              completed*)
+                echo "::error::Cloudflare Pages terminó en «${estado#completed }» para ${SHA}: no se avisa a IndexNow."
+                exit 1 ;;
+            esac
+            if [ "$(date +%s)" -ge "${limite}" ]; then
+              echo "::error::Cloudflare Pages no publicó ${SHA} en 25 minutos (estado: ${estado})."
+              exit 1
+            fi
+            sleep 20
+          done
+
+      - name: Check out published revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+
+      - name: Notify IndexNow
+        run: node scripts/indexnow.mjs

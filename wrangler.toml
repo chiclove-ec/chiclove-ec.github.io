@@ -1,8 +1,8 @@
 # Proyecto de Cloudflare Pages.
 #
 # El nombre debe coincidir con `cloudflare.projectName` de site.config.json; hay
-# una prueba que lo comprueba. El artefacto es el mismo `dist/` que publica
-# GitHub Pages, construido con `npm run build:cloudflare`.
+# una prueba que lo comprueba. El artefacto es el `dist/` de la lista blanca,
+# construido con `npm run build:cloudflare`.
 #
 # Las Pages Functions (la negociación `Accept: text/markdown`) viven en
 # `functions/` en la raíz del repositorio, NO dentro de `dist/`: Cloudflare las

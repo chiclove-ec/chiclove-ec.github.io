@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Lo llama .github/workflows/refresh-catalog.yml cuando `npm run refresh` cambió algo
 # porque una promoción abrió o cerró. Sube lo regenerado a una rama, abre el PR, espera
-# a que `main` lo admita y lo fusiona. Después lanza el despliegue de GitHub Pages;
-# Cloudflare publica solo al ver el push a `main`.
+# a que `main` lo admita y lo fusiona. Cloudflare Pages publica solo al ver el push a
+# `main`; después se lanza el aviso a IndexNow, que espera a que Cloudflare termine.
 #
 # El check obligatorio de CI no puede venir de ci.yml: lo que hace el GITHUB_TOKEN no
 # dispara `pull_request`, y un CI lanzado con `workflow_dispatch` corre pero GitHub no
@@ -44,7 +44,7 @@ sha="$(git rev-parse HEAD)"
 
 # Los tres pasos de ci.yml, sobre este commit y con el reloj real, como los haría CI.
 env -u CL_NOW npm test
-env -u CL_NOW npm run build:github
+env -u CL_NOW npm run build:cloudflare
 env -u CL_NOW npm run gen
 if ! git diff --quiet; then
   echo "::error::Lo generado no está al día con el catálogo en el commit que se iba a subir."
@@ -121,8 +121,10 @@ if [ -n "${simulated}" ]; then
 fi
 
 gh pr merge "${pr}" --squash --delete-branch --match-head-commit "${sha}"
-gh workflow run deploy-pages.yml --ref main
-echo "PR #${pr} fusionado; Cloudflare publica el push a main y GitHub Pages queda lanzado."
+# El push del GITHUB_TOKEN no dispara workflows: IndexNow se lanza a mano y espera
+# a que Cloudflare publique el commit fusionado antes de avisar.
+gh workflow run indexnow.yml --ref main
+echo "PR #${pr} fusionado; Cloudflare publica el push a main y el aviso a IndexNow queda lanzado."
 
 # Si quedaba abierto un aviso de un intento fallido, ya no aplica.
 if [ -n "${ALERT_TITLE:-}" ]; then

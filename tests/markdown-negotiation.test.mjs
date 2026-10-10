@@ -72,7 +72,7 @@ test("parseAccept descarta entradas malformadas", () => {
   assert.deepEqual(parseAccept(null), []);
 });
 
-test("normalizePagePath resuelve las variantes de URL de GitHub Pages", () => {
+test("normalizePagePath resuelve las variantes de URL limpias y con .html", () => {
   assert.equal(normalizePagePath("/"), "/index.html");
   assert.equal(normalizePagePath("/tienda"), "/tienda.html");
   assert.equal(normalizePagePath("/tienda.html"), "/tienda.html");

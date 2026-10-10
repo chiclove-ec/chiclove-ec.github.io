@@ -1,8 +1,9 @@
-// El deploy directo de Cloudflare Pages es una vía manual de recuperación.
-// La publicación normal ocurre por la integración Git nativa de Cloudflare,
-// evitando que dos despliegues automáticos compitan por el mismo proyecto.
+// El sitio se publica SOLO en Cloudflare Pages, por su integración Git nativa.
+// El deploy directo con Wrangler es una vía manual de recuperación, para que dos
+// despliegues automáticos no compitan por el mismo proyecto. GitHub Pages no se
+// usa: las condiciones de GitHub no lo admiten como hosting de una tienda.
 import { strict as assert } from "node:assert";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { resolve } from "node:path";
 import { test } from "node:test";
 
@@ -23,11 +24,32 @@ test("Cloudflare Pages conserva una vía manual sin despliegue automático dupli
     /\.\/\.github\/workflows\/ci\.yml/,
     "Cloudflare debe reutilizar CI antes de publicar"
   );
-  assert.doesNotMatch(
-    workflow,
-    /deploy-pages\.yml/,
-    "Cloudflare no debe modificar el workflow independiente de GitHub Pages"
-  );
+});
+
+test("ningún workflow publica en GitHub Pages", () => {
+  const dir = resolve(projectRoot, ".github/workflows");
+  assert.ok(!existsSync(resolve(dir, "deploy-pages.yml")), "deploy-pages.yml no debe volver");
+  for (const file of readdirSync(dir).filter((name) => /\.ya?ml$/.test(name))) {
+    const source = readFileSync(resolve(dir, file), "utf8");
+    for (const pattern of [
+      /actions\/(?:deploy|configure)-pages@/,
+      /actions\/upload-pages-artifact@/,
+      /^\s+pages: write/m,
+      /name: github-pages/,
+      /gh workflow run deploy-pages/
+    ]) {
+      assert.doesNotMatch(source, pattern, `${file} vuelve a publicar en GitHub Pages`);
+    }
+  }
+});
+
+test("el build ya no tiene objetivo de GitHub Pages", () => {
+  const build = readFileSync(resolve(projectRoot, "scripts/build.mjs"), "utf8");
+  const pkg = JSON.parse(readFileSync(resolve(projectRoot, "package.json"), "utf8"));
+  assert.doesNotMatch(build, /github-pages|\.nojekyll/, "scripts/build.mjs conserva el objetivo de GitHub Pages");
+  assert.ok(!("build:github" in pkg.scripts), "package.json conserva build:github");
+  assert.match(pkg.scripts.check, /build:cloudflare/, "npm run check debe construir lo que publica Cloudflare");
+  assert.ok(!existsSync(resolve(projectRoot, ".nojekyll")), ".nojekyll solo servía a GitHub Pages");
 });
 
 test("el deploy directo reporta su estado a GitHub usando secretos sin exponerlos", () => {

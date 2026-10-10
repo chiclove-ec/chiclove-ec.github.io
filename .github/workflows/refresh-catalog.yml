@@ -6,7 +6,8 @@ name: Refresh catalog on promo dates
 # lleva los precios escritos y se queda con los de la promo cerrada; además la suite
 # falla, porque compara lo publicado con el catálogo de hoy. Este workflow lo regenera
 # en cuanto cambia, abre un PR, cumple los checks obligatorios de `main` (ejecuta él
-# mismo los pasos de CI; Cloudflare Pages construye la rama), lo fusiona y despliega.
+# mismo los pasos de CI; Cloudflare Pages construye la rama) y lo fusiona: Cloudflare
+# publica el push a `main` por su integración Git.
 # Sin nada que cambiar, termina en segundos.
 on:
   # 05:07 UTC = 00:07 en Ecuador: siete minutos después de que una promo abra o cierre.
@@ -39,7 +40,7 @@ jobs:
       contents: write       # empujar la rama con lo regenerado
       pull-requests: write  # abrir, fusionar o cerrar el PR
       statuses: write       # publicar el check de CI que el propio job ejecuta
-      actions: write        # lanzar el despliegue de GitHub Pages tras fusionar
+      actions: write        # aprobar el CI del PR del bot y lanzar el aviso a IndexNow
       issues: write         # dejar un aviso visible si no se completa
     env:
       # Vacío en las ejecuciones programadas: el catálogo usa el reloj real.

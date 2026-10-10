@@ -22,7 +22,7 @@ El canal estándar y legible por máquina está en
 - Instagram: <https://www.instagram.com/chicloveec>
 
 Alternativamente, abre un
-[aviso de seguridad privado](https://github.com/chiclove-ec/chiclove-ec.github.io/security/advisories/new)
+[aviso de seguridad privado](https://github.com/chiclove-ec/chiclove-ec-Website/security/advisories/new)
 en GitHub. **No abras un issue público** para un fallo explotable.
 
 Incluye, si puedes: la URL afectada, los pasos para reproducirlo y el impacto.
@@ -30,10 +30,6 @@ Respondemos en español o en inglés. No ofrecemos recompensas económicas.
 
 ## Fuera de alcance
 
-- Limitaciones del espejo de GitHub Pages, que no permite definir algunas
-  cabeceras HTTP. El dominio de producción usa Cloudflare Pages y sí aplica
-  las cabeceras completas desde `_headers`; además, el sitio conserva las
-  defensas compatibles por `<meta>` y el guard anti-frame.
 - Reportes generados por escáneres automáticos sin un impacto demostrado.
 - Ingeniería social, phishing o denegación de servicio.
 
